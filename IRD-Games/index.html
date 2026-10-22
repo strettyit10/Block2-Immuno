@@ -245,6 +245,9 @@ html{scroll-behavior:smooth}
 .nav span.soon em,.menu .soon em{font-style:normal;font-family:var(--cond);font-weight:800;font-size:10.5px;letter-spacing:.14em;border:1.5px solid var(--line);border-radius:999px;padding:0 6px;line-height:1.5}
 
 .menu .mnone{padding:8px 10px 10px;font-size:14.5px;color:var(--muted)}
+.menu .mnote{margin:6px 4px 0;padding:8px 10px;border-radius:7px;background:var(--sunk);font-size:13.5px;line-height:1.4;color:var(--muted)}
+.menu .mnote a{display:inline;padding:0;color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.menu .mnote a:hover{background:none}
 .fmenu{max-height:min(62vh,460px);overflow-y:auto}
 .ctas{grid-template-columns:1fr 1fr}
 .hero{grid-template-columns:1fr minmax(300px,420px)}
@@ -281,53 +284,42 @@ html{scroll-behavior:smooth}
       <details class="dd" style="--c:var(--imm)">
         <summary class="btn sec"><i style="background:var(--imm)"></i>Immunology<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
         <div class="menu">
-          <div class="mh">Immunology &middot; 13 games &middot; 13 lectures</div>
-          <a href="IRD01_Builder.html"><span class="mt"><strong>IRD01 Builder</strong><small>Structure Builder &middot; Immune System (IL)</small></span><span class="lec">IRD01</span></a>
-          <a href="IRD02_Builder.html"><span class="mt"><strong>IRD02 Builder</strong><small>Structure Builder &middot; Overview of Immunology: Cells &amp; Tissues of the Immune System</small></span><span class="lec">IRD02</span></a>
-          <a href="IRD03_Builder.html"><span class="mt"><strong>IRD03 Builder</strong><small>Structure Builder &middot; Innate Immunity &amp; the Complement System</small></span><span class="lec">IRD03</span></a>
-          <a href="IRD04_Builder.html"><span class="mt"><strong>IRD04 Builder</strong><small>Structure Builder &middot; Introduction to Cytokines (IL)</small></span><span class="lec">IRD04</span></a>
-          <a href="IRD05_Builder.html"><span class="mt"><strong>IRD05 Builder</strong><small>Structure Builder &middot; Adaptive Immunity: Diversity &amp; Antigen Binding</small></span><span class="lec">IRD05</span></a>
-          <a href="IRD06_Builder.html"><span class="mt"><strong>IRD06 Builder</strong><small>Structure Builder &middot; Humoral Immune Response</small></span><span class="lec">IRD06</span></a>
-          <a href="IRD07_Builder.html"><span class="mt"><strong>IRD07 Builder</strong><small>Structure Builder &middot; TBL: Immunoglobulins</small></span><span class="lec">IRD07</span></a>
-          <a href="IRD08_Builder.html"><span class="mt"><strong>IRD08 Builder</strong><small>Structure Builder &middot; T Cell-Mediated Immunity</small></span><span class="lec">IRD08</span></a>
-          <a href="IRD10_Builder.html"><span class="mt"><strong>IRD10 Builder</strong><small>Structure Builder &middot; Mechanisms of Autoimmunity</small></span><span class="lec">IRD10</span></a>
-          <a href="IRD11_Builder.html"><span class="mt"><strong>IRD11 Builder</strong><small>Structure Builder &middot; TBL: Hypersensitivity Reactions</small></span><span class="lec">IRD11</span></a>
-          <a href="IRD12_Builder.html"><span class="mt"><strong>IRD12 Builder</strong><small>Structure Builder &middot; Mucosal &amp; Skin Immune System</small></span><span class="lec">IRD12</span></a>
-          <a href="IRD19_Builder.html"><span class="mt"><strong>IRD19 Builder</strong><small>Structure Builder &middot; Immunodeficiency Diseases</small></span><span class="lec">IRD19</span></a>
-          <a href="IRD28_Builder.html"><span class="mt"><strong>IRD28 Builder</strong><small>Structure Builder &middot; Transplantation Immunology</small></span><span class="lec">IRD28</span></a>
+          <div class="mh">Immunology &middot; 4 multi-lecture games &middot; 13 lectures</div>
+          <a href="HoyaDocs_IRD01-04_Match_Lab.html"><span class="mt"><strong>IRD01–04 Match Lab</strong><small>Match Lab &middot; Immune Foundations, Innate &amp; Cytokines</small></span><span class="lec">IRD01–04</span></a>
+          <a href="HoyaDocs_IRD05-08_Match_Lab.html"><span class="mt"><strong>IRD05–08 Match Lab</strong><small>Match Lab &middot; Adaptive Immunity: B Cells, Antibodies &amp; T Cells</small></span><span class="lec">IRD05–08</span></a>
+          <a href="HoyaDocs_IRD10-12_Match_Lab.html"><span class="mt"><strong>IRD10–12 Match Lab</strong><small>Match Lab &middot; Tolerance, Hypersensitivity &amp; Mucosal Immunity</small></span><span class="lec">IRD10–12</span></a>
+          <a href="HoyaDocs_IRD19_IRD28_Match_Lab.html"><span class="mt"><strong>IRD19 · 28 Match Lab</strong><small>Match Lab &middot; Immunodeficiency &amp; Transplantation</small></span><span class="lec">IRD19 · 28</span></a>
+          <div class="mnote">Looking for a single-lecture Builder? Use the <a href="#games" class="tosearch">search below</a> to find it by lecture.</div>
           <a class="all showall" href="#games" data-d="imm">Show all Immunology games below &darr;</a>
         </div>
       </details>
       <details class="dd" style="--c:var(--pat)">
         <summary class="btn sec"><i style="background:var(--pat)"></i>Pathology<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
         <div class="menu">
-          <div class="mh">Pathology &middot; 4 games &middot; 4 lectures</div>
-          <a href="IRD18_Builder.html"><span class="mt"><strong>IRD18 Builder</strong><small>Structure Builder &middot; Derm Inflammatory Diseases &amp; Topical Medicines</small></span><span class="lec">IRD18</span></a>
-          <a href="IRD20_Builder.html"><span class="mt"><strong>IRD20 Builder</strong><small>Structure Builder &middot; Derm Neoplastic Diseases</small></span><span class="lec">IRD20</span></a>
-          <a href="IRD21_Builder.html"><span class="mt"><strong>IRD21 Builder</strong><small>Structure Builder &middot; Rheumatologic Diseases</small></span><span class="lec">IRD21</span></a>
-          <a href="IRD23_Builder.html"><span class="mt"><strong>IRD23 Builder</strong><small>Structure Builder &middot; IRD Pathology Lab</small></span><span class="lec">IRD23</span></a>
+          <div class="mh">Pathology &middot; 2 multi-lecture games &middot; 4 lectures</div>
+          <a href="HoyaDocs_IRD21-22_Match_Lab.html"><span class="mt"><strong>IRD21–22 Match Lab</strong><small>Match Lab &middot; Rheumatologic Disease &amp; DMARDs</small></span><span class="lec">IRD21–22</span></a>
+          <a href="HoyaDocs_IRD18_IRD20_IRD23_IRD29_Match_Lab.html"><span class="mt"><strong>IRD18 · 20 · 23 · 29 Match Lab</strong><small>Match Lab &middot; Skin: Rashes, Blisters &amp; Tumors</small></span><span class="lec">IRD18 · 20 · 23 · 29</span></a>
+          <div class="mnote">Looking for a single-lecture Builder? Use the <a href="#games" class="tosearch">search below</a> to find it by lecture.</div>
           <a class="all showall" href="#games" data-d="pat">Show all Pathology games below &darr;</a>
         </div>
       </details>
       <details class="dd" style="--c:var(--pha)">
         <summary class="btn sec"><i style="background:var(--pha)"></i>Pharmacology<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
         <div class="menu">
-          <div class="mh">Pharmacology &middot; 7 games &middot; 7 lectures</div>
-          <a href="IRD14_Builder.html"><span class="mt"><strong>IRD14 Builder</strong><small>Structure Builder &middot; NSAIDs I</small></span><span class="lec">IRD14</span></a>
-          <a href="IRD15_Builder.html"><span class="mt"><strong>IRD15 Builder</strong><small>Structure Builder &middot; NSAIDs II</small></span><span class="lec">IRD15</span></a>
-          <a href="IRD16_Builder.html"><span class="mt"><strong>IRD16 Builder</strong><small>Structure Builder &middot; Adrenal Steroids (Glucocorticoids)</small></span><span class="lec">IRD16</span></a>
-          <a href="IRD22_Builder.html"><span class="mt"><strong>IRD22 Builder</strong><small>Structure Builder &middot; DMARDs &amp; Biologics in Rheumatology</small></span><span class="lec">IRD22</span></a>
-          <a href="IRD24_Builder.html"><span class="mt"><strong>IRD24 Builder</strong><small>Structure Builder &middot; Cancer Drugs I</small></span><span class="lec">IRD24</span></a>
-          <a href="IRD25_Builder.html"><span class="mt"><strong>IRD25 Builder</strong><small>Structure Builder &middot; Cancer Drugs II</small></span><span class="lec">IRD25</span></a>
-          <a href="IRD26_Builder.html"><span class="mt"><strong>IRD26 Builder</strong><small>Structure Builder &middot; Cancer Drugs III &amp; Immunosuppressants</small></span><span class="lec">IRD26</span></a>
+          <div class="mh">Pharmacology &middot; 3 multi-lecture games &middot; 7 lectures</div>
+          <a href="HoyaDocs_IRD14-16_Match_Lab.html"><span class="mt"><strong>IRD14–16 Match Lab</strong><small>Match Lab &middot; NSAIDs, Acetaminophen &amp; Glucocorticoids</small></span><span class="lec">IRD14–16</span></a>
+          <a href="HoyaDocs_IRD21-22_Match_Lab.html"><span class="mt"><strong>IRD21–22 Match Lab</strong><small>Match Lab &middot; Rheumatologic Disease &amp; DMARDs</small></span><span class="lec">IRD21–22</span></a>
+          <a href="HoyaDocs_IRD24-26_Match_Lab.html"><span class="mt"><strong>IRD24–26 Match Lab</strong><small>Match Lab &middot; Cancer Drugs &amp; Immunosuppressants</small></span><span class="lec">IRD24–26</span></a>
+          <div class="mnote">Looking for a single-lecture Builder? Use the <a href="#games" class="tosearch">search below</a> to find it by lecture.</div>
           <a class="all showall" href="#games" data-d="pha">Show all Pharmacology games below &darr;</a>
         </div>
       </details>
       <details class="dd" style="--c:var(--mic)">
         <summary class="btn sec"><i style="background:var(--mic)"></i>Microbiology<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
         <div class="menu">
-          <div class="mh">Microbiology &middot; 1 game &middot; 1 lecture</div>
-          <a href="IRD29_Builder.html"><span class="mt"><strong>IRD29 Builder</strong><small>Structure Builder &middot; Viral Exanthems</small></span><span class="lec">IRD29</span></a>
+          <div class="mh">Microbiology &middot; 1 multi-lecture game &middot; 1 lecture</div>
+          <a href="HoyaDocs_IRD18_IRD20_IRD23_IRD29_Match_Lab.html"><span class="mt"><strong>IRD18 · 20 · 23 · 29 Match Lab</strong><small>Match Lab &middot; Skin: Rashes, Blisters &amp; Tumors</small></span><span class="lec">IRD18 · 20 · 23 · 29</span></a>
+          <div class="mnote">Looking for a single-lecture Builder? Use the <a href="#games" class="tosearch">search below</a> to find it by lecture.</div>
           <a class="all showall" href="#games" data-d="mic">Show all Microbiology games below &darr;</a>
         </div>
       </details>
@@ -408,6 +400,70 @@ html{scroll-behavior:smooth}
   <div class="list" role="list">
     <div class="lhead" aria-hidden="true"><span>Game</span><span>Category</span><span>Game type</span><span>Questions</span><span>Lectures covered</span><span></span></div>
     <!-- Add one .row per game here (see 14. Block 6/Claude/CNS-Games/index.html for row markup). data-l uses the 2-digit IRD code, e.g. data-l="04". -->
+    <a class="row" href="HoyaDocs_IRD01-04_Match_Lab.html" data-d="imm" data-l="01 02 03 04" style="--c:var(--imm)">
+      <span class="c-name"><span class="disc-l"><i></i>Immunology</span><strong>IRD01–04 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (6 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>137</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD01–04</b>Immune Foundations, Innate &amp; Cytokines</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="row" href="HoyaDocs_IRD05-08_Match_Lab.html" data-d="imm" data-l="05 06 07 08" style="--c:var(--imm)">
+      <span class="c-name"><span class="disc-l"><i></i>Immunology</span><strong>IRD05–08 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (7 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>138</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD05–08</b>Adaptive Immunity: B Cells, Antibodies &amp; T Cells</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="row" href="HoyaDocs_IRD10-12_Match_Lab.html" data-d="imm" data-l="10 11 12" style="--c:var(--imm)">
+      <span class="c-name"><span class="disc-l"><i></i>Immunology</span><strong>IRD10–12 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (8 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>138</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD10–12</b>Tolerance, Hypersensitivity &amp; Mucosal Immunity</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="row" href="HoyaDocs_IRD19_IRD28_Match_Lab.html" data-d="imm" data-l="19 28" style="--c:var(--imm)">
+      <span class="c-name"><span class="disc-l"><i></i>Immunology</span><strong>IRD19 · 28 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (7 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>127</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD19 · 28</b>Immunodeficiency &amp; Transplantation</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="row" href="HoyaDocs_IRD14-16_Match_Lab.html" data-d="pha" data-l="14 15 16" style="--c:var(--pha)">
+      <span class="c-name"><span class="disc-l"><i></i>Pharmacology</span><strong>IRD14–16 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (7 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>135</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD14–16</b>NSAIDs, Acetaminophen &amp; Glucocorticoids</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="row" href="HoyaDocs_IRD21-22_Match_Lab.html" data-d="pat pha" data-l="21 22" style="--c:var(--pat)">
+      <span class="c-name"><span class="disc-l"><i></i>Pathology &middot; Pharmacology</span><strong>IRD21–22 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (7 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>119</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD21–22</b>Rheumatologic Disease &amp; DMARDs</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="row" href="HoyaDocs_IRD18_IRD20_IRD23_IRD29_Match_Lab.html" data-d="pat mic" data-l="18 20 23 29" style="--c:var(--pat)">
+      <span class="c-name"><span class="disc-l"><i></i>Pathology &middot; Microbiology</span><strong>IRD18 · 20 · 23 · 29 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (8 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>125</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD18 · 20 · 23 · 29</b>Skin: Rashes, Blisters &amp; Tumors</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="row" href="HoyaDocs_IRD24-26_Match_Lab.html" data-d="pha" data-l="24 25 26" style="--c:var(--pha)">
+      <span class="c-name"><span class="disc-l"><i></i>Pharmacology</span><strong>IRD24–26 Match Lab</strong></span>
+      <span class="c-type"><span class="type tc">Match Lab</span></span>
+      <span class="c-mode">Rapid Fire + Grid Lock (8 grids &middot; Easy/Hard)</span>
+      <span class="c-q"><b>135</b><small>Questions</small></span>
+      <span class="c-lec"><span><b>IRD24–26</b>Cancer Drugs &amp; Immunosuppressants</span></span>
+      <span class="c-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+    </a>
     <a class="row" href="IRD01_Builder.html" data-d="imm" data-l="01" style="--c:var(--imm)">
       <span class="c-name"><span class="disc-l"><i></i>Immunology</span><strong>IRD01 Builder</strong></span>
       <span class="c-type"><span class="type tg">Structure Builder</span></span>
@@ -641,7 +697,7 @@ html{scroll-behavior:smooth}
 
   <footer class="foot">
     <div class="rev">HoyaDocs &middot; Block 2 &middot; Immuno &middot; Immuno Games</div>
-    <div class="rev">Rev 2 &middot; Updated Oct 22, 2026</div>
+    <div class="rev">Rev 4 &middot; Updated Oct 22, 2026</div>
   </footer>
 
 </div>
@@ -684,6 +740,9 @@ html{scroll-behavior:smooth}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')all.forEach(function(d){if(d.open){d.open=false;d.querySelector('summary').focus();}});});
   apply();
 })();
+</script>
+<script>
+[].forEach.call(document.querySelectorAll('.tosearch'),function(a){a.addEventListener('click',function(e){e.preventDefault();var d=a.closest('details');if(d)d.removeAttribute('open');var q=document.getElementById('q');document.getElementById('games').scrollIntoView({behavior:'smooth'});if(q)setTimeout(function(){q.focus({preventScroll:true});},350);});});
 </script>
 </body>
 </html>

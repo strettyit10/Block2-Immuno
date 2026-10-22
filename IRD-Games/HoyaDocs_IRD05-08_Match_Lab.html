@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IRD05–08 Match Lab · HoyaDocs</title>
+<meta name="description" content="HoyaDocs IRD05–08 Match Lab: Adaptive Immunity: B Cells, Antibodies &amp; T Cells. Rapid Fire matching and Grid Lock charts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Graduate&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* HoyaDocs Match Lab engine v1.0
+   Layout: header + mode tabs; Home (mode cards, filters, mastery), Rapid Fire (one match per card), Grid Lock (chart + tile bank).
+   Colors are tokens on :root with a dark set. Every view stacks to one column on phones. */
+:root{
+  --bg:#EEF0F3; --surface:#FFFFFF; --sunk:#F5F7FA; --ink:#1A3363; --muted:#5B6274; --line:#D3D8E0; --chip:#E6E9EE;
+  --navy:#0F2244; --navy2:#1A3363; --onnavy:#F4F1EA; --silver:#6E7787; --tan:#5AAEE6;
+  --neuro:#5B4BC4; --path:#1F7F78; --drt:#C4631B; --pharm:#2368A8; --imm:#5B4BC4; --mic:#4D7C2A; --accent:#1D6FA8; --accent-ink:#ffffff;
+  --ok:#1d7a3e; --ok-bg:#e3f4e8; --bad:#b3261e; --bad-bg:#fbe7e5; --once:#b7791f; --once-bg:#fdf1dc;
+  --hy-bg:#FFF4C2; --hy-line:#D4A300; --hy-ink:#5E4700;
+  --k1:#2c55a0; --k2:#6b46c1; --k3:#a02c4f; --k4:#b45309; --k5:#0f6b6b; --k6:#85600f; --k7:#1d7a3e; --k8:#0369a1;
+  --given:#f5f7f9; --lock:#e9ecef; --clue-bg:#e3ecfa; --clue-ink:#1d3f7a; --clue-line:#9db6e3;
+  --f-display:"Graduate","Rockwell","Georgia",serif; --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif; --f-mono:"Barlow Condensed","Arial Narrow",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#11161c; --surface:#19212a; --sunk:#141b22; --ink:#e6eaee; --muted:#9aa6b2; --line:#2c3642; --chip:#232c36;
+  --neuro:#A99CF0; --path:#5CC2B8; --drt:#F0A060; --pharm:#7FB3EA; --imm:#A99CF0; --mic:#8CC06A; --navy:#0A1830; --navy2:#13284d; --onnavy:#F4F1EA; --silver:#9aa6b2; --tan:#5AAEE6; --accent:#8fb1f0; --accent-ink:#0d1520;
+  --ok:#6fd08f; --ok-bg:#16301f; --bad:#f28b82; --bad-bg:#3a1b19; --once:#f0c070; --once-bg:#3a2e12;
+  --hy-bg:#3a3110; --hy-line:#b8952a; --hy-ink:#f5e6a8;
+  --k1:#8fb1f0; --k2:#b9a3f5; --k3:#f08aa5; --k4:#f5a65b; --k5:#5cc2c0; --k6:#e3bb63; --k7:#6fd08f; --k8:#7cc4f0;
+  --given:#1d262f; --lock:#161d24; --clue-bg:#1c2b44; --clue-ink:#c4d6f7; --clue-line:#3b5687; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#11161c; --surface:#19212a; --sunk:#141b22; --ink:#e6eaee; --muted:#9aa6b2; --line:#2c3642; --chip:#232c36;
+  --neuro:#A99CF0; --path:#5CC2B8; --drt:#F0A060; --pharm:#7FB3EA; --imm:#A99CF0; --mic:#8CC06A; --navy:#0A1830; --navy2:#13284d; --onnavy:#F4F1EA; --silver:#9aa6b2; --tan:#5AAEE6; --accent:#8fb1f0; --accent-ink:#0d1520;
+  --ok:#6fd08f; --ok-bg:#16301f; --bad:#f28b82; --bad-bg:#3a1b19; --once:#f0c070; --once-bg:#3a2e12;
+  --hy-bg:#3a3110; --hy-line:#b8952a; --hy-ink:#f5e6a8;
+  --k1:#8fb1f0; --k2:#b9a3f5; --k3:#f08aa5; --k4:#f5a65b; --k5:#5cc2c0; --k6:#e3bb63; --k7:#6fd08f; --k8:#7cc4f0;
+  --given:#1d262f; --lock:#161d24; --clue-bg:#1c2b44; --clue-ink:#c4d6f7; --clue-line:#3b5687; color-scheme:dark }
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink)}
+body{font:15.5px/1.55 var(--f-body);margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 56px;display:grid;gap:16px}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.2}
+h1,h2{font-family:var(--f-display);font-weight:400;letter-spacing:.03em}
+h3{font-family:var(--f-mono);font-weight:800;letter-spacing:.03em}
+/* HoyaDocs hub shell: wordmark bar, section nav, navy varsity hero */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0 0}
+.word{font-family:var(--f-display);font-size:24px;letter-spacing:.04em;text-decoration:none;color:var(--ink);line-height:1}
+.word span{color:var(--silver)}
+.rev{font-family:var(--f-mono);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.topr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.themebtn{background:transparent;border:1.5px solid var(--line);border-radius:999px;font-family:var(--f-mono);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:5px 14px;cursor:pointer}
+.themebtn:hover{color:var(--ink);border-color:var(--ink)}
+.hubnav{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;border-top:3px solid var(--ink);border-bottom:1px solid var(--line)}
+.hubnav::-webkit-scrollbar{display:none}
+.hubnav a{flex:none;text-decoration:none;font-family:var(--f-mono);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:11px 12px 9px;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:7px}
+.hubnav a:hover{color:var(--ink)}
+.hubnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tan)}
+.hubnav a i{width:9px;height:9px;border-radius:2px;flex:none}
+.hubnav .sep{flex:none;width:1px;background:var(--line);margin:9px 6px}
+header.hero{background:var(--navy);color:var(--onnavy);border-radius:14px;padding:clamp(20px,3.5vw,36px) clamp(20px,4vw,40px);position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(255,255,255,.045) calc(10% - 1px) 10%),radial-gradient(ellipse at 88% 115%, rgba(90,174,230,.34), transparent 58%)}
+header.hero > *{position:relative}
+.hero .k{font-family:var(--f-mono);font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#8FCBF5}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5.4vw,52px);line-height:1.02;letter-spacing:.02em;margin:10px 0 4px;color:#F4F1EA;text-shadow:2px 2px 0 #1A3363,4px 4px 0 #5AAEE6}
+button{font:inherit;color:inherit}
+a{color:var(--accent)}
+.meta{font:500 .74rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0}
+header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px}
+header.top h1{font-size:clamp(1.5rem,3.4vw,2rem)}
+header.top .lede{margin:4px 0 0;color:var(--muted);max-width:66ch}
+.back{font:600 .8rem var(--f-body);text-decoration:none;color:var(--muted)}
+.back:hover{color:var(--ink)}
+.hdr-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:600 .86rem var(--f-body);background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.45;cursor:default}
+.btn.sm{padding:5px 10px;font-size:.8rem}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{font:700 .82rem var(--f-body);letter-spacing:.04em;text-transform:uppercase;background:none;border:0;border-bottom:3px solid transparent;padding:10px 12px 8px;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.panel h2{font-size:1.15rem}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.mode-card{display:grid;gap:10px;align-content:start}
+.mode-card .k{font:500 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mode-card h2{font-size:1.45rem}
+.mode-card p{margin:0;color:var(--muted)}
+.opts{display:grid;gap:8px}
+.optrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.optrow .lab{font:500 .7rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:76px}
+.seg{display:inline-flex;background:var(--chip);border-radius:9px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{font:600 .8rem var(--f-body);border:0;background:transparent;padding:5px 10px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.14)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 .78rem var(--f-body);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--c,var(--muted));flex:none}
+.chip[aria-pressed="false"]{opacity:.5;text-decoration:line-through;text-decoration-color:var(--muted)}
+.chip .n{font:500 .7rem var(--f-mono);color:var(--muted)}
+.statrow{display:flex;flex-wrap:wrap;gap:18px}
+.stat b{display:block;font:700 1.25rem var(--f-body);font-variant-numeric:tabular-nums}
+.stat span{font:500 .68rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bar{height:6px;background:var(--chip);border-radius:3px;overflow:hidden}
+.bar > i{display:block;height:100%;background:var(--ok);border-radius:3px;transition:width .3s}
+.lecrow{display:grid;grid-template-columns:auto minmax(0,1fr) 120px auto;gap:4px 10px;align-items:center;padding:6px 0;border-top:1px solid var(--line);font-size:.88rem}
+.lecrow:first-of-type{border-top:0}
+.lecrow .pct{font:500 .75rem var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums;min-width:52px;text-align:right}
+@media (max-width:560px){.lecrow{grid-template-columns:auto minmax(0,1fr) auto}.lecrow .bar{grid-column:1/-1;order:5}}
+.tag{font:600 .68rem var(--f-mono);letter-spacing:.05em;text-transform:uppercase;border-radius:5px;padding:2px 6px;color:#fff;background:var(--lc,var(--neuro));white-space:nowrap}
+:root[data-theme="dark"] .tag{color:#0d1520}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tag{color:#0d1520} }
+.hy{font:700 .66rem var(--f-mono);letter-spacing:.06em;background:var(--hy-bg);color:var(--hy-ink);border:1px solid var(--hy-line);border-radius:5px;padding:1px 6px}
+.hybox{background:var(--hy-bg);border:1.5px solid var(--hy-line);color:var(--hy-ink);border-radius:10px;padding:10px 12px;font-size:.9rem}
+.hybox b{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:2px}
+details.how{font-size:.9rem}
+details.how summary{cursor:pointer;font-weight:700}
+details.how ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+details.how li{margin:3px 0}
+
+/* Rapid fire */
+.rf-top{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.timer{height:5px;background:var(--chip);border-radius:3px;overflow:hidden}
+.timer i{display:block;height:100%;background:var(--accent);width:100%}
+.timer i.low{background:var(--bad)}
+.qcard{display:grid;gap:14px;max-width:820px;margin:0 auto;width:100%}
+.qhead{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.kind{font:700 .72rem var(--f-body);letter-spacing:.04em;text-transform:uppercase;color:var(--kc);border:1.5px solid var(--kc);border-radius:6px;padding:2px 8px}
+.qset{font-size:.82rem;color:var(--muted)}
+.prompt-lab{font:500 .7rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.prompt{font:600 clamp(1.15rem,2.6vw,1.4rem)/1.35 var(--f-body);margin:2px 0 0}
+.ask{font-size:.88rem;color:var(--muted);margin:0}
+.options{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;cursor:pointer;font-size:.95rem;line-height:1.4}
+.opt:hover:not([disabled]){border-color:var(--accent)}
+.opt .key{font:500 .75rem var(--f-mono);color:var(--muted);border:1px solid var(--line);border-radius:6px;height:24px;display:grid;place-items:center}
+.opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt[disabled]{cursor:default}
+.opt.dim{opacity:.55}
+.fb{border-radius:10px;padding:12px 14px;display:grid;gap:8px;font-size:.92rem}
+.fb.ok{background:var(--ok-bg);border:1px solid var(--ok)}
+.fb.bad{background:var(--bad-bg);border:1px solid var(--bad)}
+.fb h3{font:800 1.05rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.fb p{margin:0}
+.fb .also{font-size:.86rem;color:var(--muted)}
+.fb .also b{color:var(--ink)}
+.navrow{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}
+.kbd{font:500 .72rem var(--f-mono);color:var(--muted)}
+/* sequence */
+.seq-done{display:grid;gap:6px;counter-reset:s;padding:0;margin:0;list-style:none}
+.seq-done li{counter-increment:s;display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;align-items:start;background:var(--ok-bg);border:1px solid var(--ok);border-radius:8px;padding:7px 10px;font-size:.92rem}
+.seq-done li::before{content:counter(s);font:700 .8rem var(--f-mono);color:var(--ok);text-align:center}
+.seq-done li.slot{background:transparent;border:1.5px dashed var(--line);color:var(--muted)}
+.seq-done li.slot::before{color:var(--muted)}
+.seq-pool{display:grid;gap:6px}
+.seq-pool .opt{grid-template-columns:minmax(0,1fr)}
+.shake{animation:shake .32s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.shake{animation:none}}
+/* end */
+.end{display:grid;gap:14px;max-width:820px;margin:0 auto;width:100%}
+.big{font:700 clamp(2rem,6vw,3rem)/1 var(--f-display)}
+.misslist{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.misslist li{border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:8px;padding:8px 12px;font-size:.9rem;background:var(--surface)}
+.misslist .a{font-weight:700}
+.misslist .b{color:var(--muted)}
+
+/* Grid list */
+.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.gcard{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;display:grid;gap:6px;align-content:start}
+.gcard:hover{border-color:var(--accent)}
+.gcard h3{font-size:1.02rem}
+.gcard p{margin:0;font-size:.84rem;color:var(--muted)}
+.gcard .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:500 .72rem var(--f-mono);color:var(--muted)}
+.stars{font-size:.85rem;letter-spacing:1px;color:var(--once)}
+.stars .off{color:var(--line)}
+/* Grid play */
+.gwrap{display:grid;gap:12px}
+.gtable-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table.gt{border-collapse:separate;border-spacing:0;width:100%;min-width:560px}
+.gt th{font:700 .74rem var(--f-body);letter-spacing:.04em;text-transform:uppercase;text-align:left;padding:10px;border-bottom:1px solid var(--line);background:var(--sunk);vertical-align:bottom}
+.gt th small{display:block;font:500 .66rem var(--f-mono);letter-spacing:.03em;text-transform:none;color:var(--muted);margin-top:2px}
+.gt th.clue{background:var(--clue-bg);color:var(--clue-ink)}
+.gt th.clue small{color:var(--clue-ink)}
+.gt td{padding:5px;border-bottom:1px solid var(--line);vertical-align:top;min-width:120px}
+.gt tr:last-child td{border-bottom:0}
+.gt td + td,.gt th + th{border-left:1px solid var(--line)}
+.cell{width:100%;min-height:44px;border-radius:8px;padding:7px 9px;font-size:.88rem;line-height:1.3;text-align:left;display:flex;align-items:center;gap:6px}
+.cell.given{background:var(--given);font-weight:600}
+.cell.clue{background:var(--clue-bg);color:var(--clue-ink);border:1px solid var(--clue-line);font-weight:600}
+.cell.empty{border:1.5px dashed var(--line);background:transparent;cursor:pointer;color:var(--muted)}
+.cell.empty:hover,.cell.empty.drop{border-color:var(--accent);color:var(--ink)}
+.cell.sel{border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}
+.cell.locked{background:var(--lock);color:var(--muted);border:1px solid var(--line);cursor:not-allowed;font-size:.78rem}
+.cell.locked svg{width:13px;height:13px;flex:none}
+.cell.filled{background:var(--ok-bg);border:1px solid var(--ok);font-weight:600}
+.cell.pop{animation:pop .35s}
+@keyframes pop{0%{transform:scale(.94)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+.cell.err{animation:shake .32s;border-color:var(--bad)}
+.bank{background:var(--surface);border:1.5px solid var(--accent);border-radius:12px;padding:12px;display:grid;gap:8px;scroll-margin-bottom:16px}
+.bank .bh{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center;font-size:.86rem}
+.bank .bh b{font-weight:700}
+.tiles{display:flex;flex-wrap:wrap;gap:6px;max-height:34vh;overflow:auto}
+.tile{font:600 .84rem var(--f-body);background:var(--sunk);border:1.5px solid var(--line);border-radius:8px;padding:7px 10px;cursor:grab;display:inline-flex;gap:6px;align-items:center;max-width:100%;text-align:left}
+.tile:hover:not([disabled]){border-color:var(--accent)}
+.tile .ct{font:500 .7rem var(--f-mono);color:var(--muted)}
+.tile.out{opacity:.45;text-decoration:line-through;cursor:default}
+.tile.dragging{opacity:.4}
+.toast{font-size:.86rem;font-weight:600}
+.toast:empty{display:none}
+@media (max-width:560px){.tabs .long{display:none}}
+.toast.bad{color:var(--bad)}
+.toast.ok{color:var(--ok)}
+.notes{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.notes li{border-left:3px solid var(--ok);background:var(--surface);border-radius:6px;padding:6px 10px;font-size:.88rem}
+.notes li b{font-weight:700}
+.gdone{display:grid;gap:12px}
+footer{font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.empty-state{color:var(--muted);font-size:.9rem}
+/* condensed label sizing (Barlow Condensed reads small) */
+.mode-card .k,.optrow .lab,.stat span,.prompt-lab,.gcard .row{font-size:.82rem!important;font-weight:700!important;letter-spacing:.1em!important}
+.tag{font-size:.8rem!important;font-weight:800!important}
+.hy,.hybox b{font-size:.78rem!important;font-weight:800!important}
+.kbd,.lecrow .pct,.chip .n,.tile .ct,.opt .key{font-size:.85rem!important;font-weight:600!important}
+.gt th small{font-size:.76rem!important;font-weight:600!important}
+.seq-done li::before{font-size:.95rem!important}
+.btn,.seg button,.chip,.tabs button,.kind,.gt th{font-family:var(--f-mono)!important;letter-spacing:.06em;text-transform:uppercase}
+.btn{font-size:.95rem!important;font-weight:700!important}
+.btn.sm{font-size:.85rem!important}
+.seg button{font-size:.88rem!important;font-weight:700!important}
+.chip{font-size:.86rem!important;font-weight:700!important;text-transform:none;letter-spacing:.03em}
+.tabs button{font-size:15px!important;letter-spacing:.08em}
+.kind{font-size:.85rem!important;font-weight:800!important}
+.gt th{font-size:.86rem!important}
+.stat b{font-family:var(--f-mono);font-weight:800;font-size:1.5rem}
+.big{font-weight:400!important}
+.panel h2,.mode-card h2,.gwrap h2,.end h2,.gdone h2{font-size:1.35rem}
+.mode-card h2{font-size:1.6rem}
+#app{display:grid;gap:16px;min-width:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="word" href="../index.html">HOYA<span>DOCS</span></a>
+  <div class="topr">
+    <div class="rev" id="revLine"></div>
+    <button class="themebtn" id="themeBtn" type="button">Theme: auto</button>
+    <button class="themebtn" id="resetBtn" type="button">Reset progress</button>
+  </div>
+</header>
+<nav class="hubnav" aria-label="Sections">
+  <a href="../index.html">Home</a>
+  <span class="sep"></span>
+  <a href="index.html" aria-current="page"><i style="background:#5B4BC4"></i>Games</a>
+  <a href="../IRD-Study-Guides/index.html"><i style="background:#C4631B"></i>Study Guides</a>
+</nav>
+<header class="hero">
+  <div class="k" id="heroK"></div>
+  <h1 id="title"></h1>
+</header>
+<nav class="tabs" role="tablist" aria-label="Mode">
+  <button role="tab" data-view="home" aria-selected="true">Home</button>
+  <button role="tab" data-view="rf" aria-selected="false"><span class="long">Mode 1 · </span>Rapid Fire</button>
+  <button role="tab" data-view="glist" aria-selected="false"><span class="long">Mode 2 · </span>Grid Lock</button>
+</nav>
+<main id="app" aria-live="polite"></main>
+</div>
+
+<script>
+const DATA = {"id": "ird05-08", "code": "IRD05–08", "prefix": "IRD", "title": "Adaptive Immunity: B Cells, Antibodies & T Cells", "lectures": [{"k": "05", "name": "Adaptive Immunity: Diversity & Antigen Binding", "disc": "imm"}, {"k": "06", "name": "Humoral Immunity", "disc": "imm"}, {"k": "07", "name": "Immunoglobulins", "disc": "imm"}, {"k": "08", "name": "T Cell-Mediated Immunity", "disc": "imm"}], "los": {"05.1": "Steps generating antigen-receptor diversity: V(D)J recombination, junctions, pairing, SHM", "05.2": "Elimination of strongly self-reactive receptors: positive and negative selection", "05.3": "Structure, distribution, peptide loading and function of MHC class I and class II", "05.4": "Antigen recognition by antibodies versus T cell receptors", "05.5": "Therapeutic uses of natural and artificial antigen receptors", "06.1": "How B cells first encounter antigen and are activated (FDCs, linked recognition, CD40L)", "06.2": "T cell-dependent versus T cell-independent (iNKT, TI-1, TI-2) B cell activation", "06.3": "Steps of somatic hypermutation and class switch recombination; define affinity maturation", "06.4": "Roles of immunoglobulins in solution and via Fc receptors", "06.5": "B cell memory and how antibody class and affinity change with repeated exposure", "07.1": "Compare and contrast active and passive immunity", "07.2": "Label a bivalent Ig: antigen- vs effector-binding regions; when an antibody acts as antigen", "07.3": "Define isotype, allotype, idiotype, epitope, paratope, valency, affinity and avidity", "07.4": "Compare the five Ig classes: structure, function, roles in immunity and tissue frequency", "08.1": "Describe naive T-cell recirculation and how T cells get survival signals or become primed", "08.2": "Name the three professional APCs; compare conventional and plasmacytoid dendritic cells", "08.3": "Describe the signals needed to activate naive T cells and drive them to effector cells", "08.4": "Describe CD4 subset (Th1, Th2, Th17, Tfh, iTreg) and CD8 CTL differentiation and roles", "08.5": "Describe thymic T-cell development and central versus peripheral T-cell tolerance"}, "sets": [{"id": "s01", "lec": "05", "lo": "05.1", "kind": "structure-function", "title": "V(D)J component → job", "left": "Component", "right": "Job in recombination", "pairs": [{"a": "RAG1/RAG2", "b": "Cuts DNA at a 12/23 pair of signal sequences, leaving hairpin coding ends", "why": "RAG is the lymphocyte-specific recombinase: it makes the double-strand break. Signal ends are blunt; coding ends are sealed hairpins that need further processing.", "hy": true}, {"a": "Recombination signal sequence (RSS)", "b": "Heptamer–spacer–nonamer motif flanking every V, D and J segment", "why": "Every gene segment is flanked by an RSS: a conserved heptamer, a 12- or 23-bp spacer, and a conserved nonamer. RAG recognizes these motifs."}, {"a": "12/23 rule", "b": "Only two segments whose signals have different spacer lengths can be joined", "why": "One RSS must have a 12-bp spacer and the other a 23-bp spacer. This keeps joins ordered (e.g., V to D, D to J, not V to V)."}, {"a": "Ku70/80", "b": "Binds the broken DNA ends to begin non-homologous end joining", "why": "Ku70/80 is the end-binding component of the NHEJ machinery that RAG-made breaks rely on for repair."}, {"a": "Artemis with DNA-PKcs", "b": "Opens the hairpin coding ends, creating P-nucleotides", "why": "Artemis (activated by DNA-PKcs) nicks the hairpin open; off-center nicks leave palindromic P-nucleotides. Artemis defects cause radiosensitive T−B−NK+ SCID.", "hy": true}, {"a": "Terminal deoxynucleotidyl transferase (TdT)", "b": "Adds random N-nucleotides to the joint without a template", "why": "TdT-added N-nucleotides make junctional diversity the largest source of variability, concentrated in CDR3.", "hy": true}, {"a": "DNA ligase IV with XRCC4", "b": "Seals the processed coding ends into a coding joint", "why": "Ligase IV/XRCC4 is the final NHEJ step. Order: RAG cuts → Ku binds → Artemis opens → TdT adds → ligase IV seals."}, {"a": "T cell receptor excision circle (TREC)", "b": "Excised circle of intervening DNA; low levels flag SCID on newborn screens", "why": "The DNA between joined segments is lost as an excision circle. PCR across the TREC signal joint on a dried blood spot is the newborn SCID screen.", "hy": true}]}, {"id": "s02", "lec": "05", "lo": "05.2", "kind": "cause-effect", "title": "Developing lymphocyte → fate", "left": "Developing cell / event", "right": "Fate", "pairs": [{"a": "B-lineage cell that completes a productive heavy-chain VDJ", "b": "μ pairs with surrogate light chain; pre-BCR signal drives survival", "why": "B-cell positive selection happens at the pre-B stage: a pre-BCR (μ + surrogate light chain) signal confirms a working heavy chain.", "hy": true}, {"a": "Immature B cell whose IgM is strongly cross-linked by self antigen", "b": "Edits its light chain or dies by apoptosis", "why": "B-cell negative selection: strong self-binding in the marrow triggers receptor editing (new light-chain rearrangement) or apoptosis.", "hy": true}, {"a": "Double-positive thymocyte whose TCR cannot bind self-MHC", "b": "Dies by neglect without a survival signal", "why": "No signal = no survival. Most thymocytes fail positive selection and die by neglect."}, {"a": "Double-positive thymocyte binding self-MHC class I moderately", "b": "Becomes a CD8 single-positive T cell", "why": "Moderate binding to class I → keeps CD8 (MHC I × CD8 = 8)."}, {"a": "Double-positive thymocyte binding self-MHC class II moderately", "b": "Becomes a CD4 single-positive T cell", "why": "Moderate binding to class II → keeps CD4 (MHC II × CD4 = 8)."}, {"a": "Thymocyte binding self-peptide:MHC very strongly in the medulla", "b": "Clonal deletion in the thymus (negative selection)", "why": "Strong self-binding signals death. Failure of negative selection lets high-affinity self-reactive T cells escape and cause autoimmunity."}, {"a": "B cell that passes both marrow checkpoints", "b": "Leaves the marrow expressing surface IgM and IgD", "why": "Mature naive B cells co-express IgM and IgD with the same specificity, made by alternative splicing of one VDJ–Cμ–Cδ primary RNA."}]}, {"id": "s03", "lec": "05", "lo": "05.3", "kind": "structure-function", "title": "Antigen-processing molecule → role", "left": "Molecule", "right": "Role", "pairs": [{"a": "Proteasome", "b": "Cleaves cytosolic proteins into 8–10-amino-acid peptides for MHC I", "why": "Endogenous (cytosolic) antigen → proteasome → short peptides → TAP → MHC I in the ER → CD8 T cells.", "hy": true}, {"a": "TAP", "b": "Pumps peptides from the cytosol into the ER", "why": "TAP (transporter associated with antigen processing) moves proteasome peptides into the ER. TAP loss → little surface MHC I.", "hy": true}, {"a": "Tapasin", "b": "Bridges empty MHC I to TAP so peptides load in the ER", "why": "Tapasin, with calnexin/calreticulin, holds MHC I at TAP until a peptide binds. MHC I never uses CLIP."}, {"a": "β2-microglobulin", "b": "Invariant light chain that pairs with the MHC I α chain", "why": "MHC I = polymorphic α chain (α1–α3) + β2-microglobulin, with a closed groove that fits 8–10-mers."}, {"a": "Invariant chain", "b": "Blocks the MHC II groove in the ER and routes it to endosomes", "why": "The invariant chain prevents MHC II from picking up ER peptides and directs it to the endocytic pathway.", "hy": true}, {"a": "CLIP", "b": "Invariant-chain fragment left sitting in the MHC II groove", "why": "Proteolysis of the invariant chain in endosomes leaves only CLIP in the groove until it is exchanged."}, {"a": "HLA-DM", "b": "Removes CLIP so an endocytosed peptide can load onto MHC II", "why": "HLA-DM is the peptide exchanger for MHC II in the endosome. Exogenous antigen → MHC II → CD4 T cells.", "hy": true}]}, {"id": "s04", "lec": "05", "lo": "05.4", "kind": "structure-function", "title": "Antigen-receptor part → function", "left": "Receptor part", "right": "Function", "pairs": [{"a": "Complementarity-determining regions (CDRs)", "b": "Six hypervariable loops at the receptor tip that contact antigen", "why": "Three CDRs from each chain form the paratope; the rest of the V domain is a conserved scaffold.", "hy": true}, {"a": "CDR3", "b": "Most variable loop, centered on the V(D)J junction", "why": "CDR3 spans the joint, so junctional (N/P) diversity is concentrated there."}, {"a": "TCR CDR1 and CDR2", "b": "Mainly contact the MHC α-helices beside the peptide", "why": "On an αβ TCR, CDR1/CDR2 mostly touch the MHC helices while CDR3 sits over the peptide — the structural basis of MHC restriction."}, {"a": "CD3 (γ, δ, ε) and ζ chains", "b": "Invariant TCR partners whose ITAMs carry the signal", "why": "The TCR αβ dimer recognizes but cannot signal; CD3 and ζ ITAMs are phosphorylated by Lck after binding.", "hy": true}, {"a": "CD4 or CD8 coreceptor", "b": "Binds a nonpolymorphic MHC site and brings Lck to the TCR", "why": "CD4 binds MHC II, CD8 binds MHC I; both stabilize binding and carry the Lck kinase."}, {"a": "Igα/Igβ (CD79a/b)", "b": "ITAM-bearing signaling chains of the B cell receptor", "why": "Membrane Ig has a tiny cytoplasmic tail; Igα/Igβ do the signaling, like CD3 for the TCR."}, {"a": "γδ TCR", "b": "Recognizes non-peptide antigens, often without classical MHC", "why": "γδ T cells are 1–5% of blood T cells but ~20% of intraepithelial T cells; they bridge innate and adaptive immunity."}, {"a": "Hapten", "b": "Small molecule that is immunogenic only when attached to a carrier protein", "why": "A hapten can be bound by an antibody paratope but cannot recruit T-cell help alone; coupled to a carrier it elicits antibody (e.g., penicillin allergy)."}]}, {"id": "s05", "lec": "05", "lo": "05.5", "kind": "term-app", "title": "Antigen-receptor therapy → description", "left": "Therapy", "right": "Description", "pairs": [{"a": "Human rabies immune globulin", "b": "Pooled polyclonal antibodies to many epitopes; immediate passive protection", "why": "Given with the rabies vaccine after a bite: the immune globulin protects now; the vaccine builds active immunity.", "hy": true}, {"a": "Monoclonal antibody", "b": "Antibody from a single artificial plasma-cell clone recognizing one epitope", "why": "Monoclonals share one idiotype and one epitope; they can be linked to toxins or other effector molecules."}, {"a": "Tumor-infiltrating lymphocyte (TIL) therapy", "b": "Patient's own tumor T cells expanded ex vivo, using natural TCRs", "why": "TIL receptors came from natural V(D)J recombination and are MHC-restricted, unlike CARs."}, {"a": "CAR-T cell", "b": "T cell engineered with an antibody-derived receptor that needs no MHC", "why": "A CAR binds intact surface antigen directly (e.g., anti-CD19 for relapsed B-ALL) and bypasses MHC presentation."}, {"a": "Personalized mRNA cancer vaccine", "b": "Encodes neoantigens found by sequencing the tumor's DNA", "why": "Tumor DNA is sequenced to find mutated proteins (neoantigens) that the patient's T cells can recognize as foreign."}, {"a": "Chemotherapy before TIL infusion", "b": "Depletes remaining host T cells, including Tregs", "why": "Lymphodepletion removes competing and suppressive cells (Tregs); low-dose IL-2 after infusion then supports the TILs."}]}, {"id": "s06", "lec": "06", "lo": "06.1", "kind": "structure-function", "title": "Player → role in B-cell activation", "left": "Player", "right": "Role", "pairs": [{"a": "Follicular dendritic cell (FDC)", "b": "Stromal follicle cell displaying immune complexes to B cells; no MHC II", "why": "FDCs are stromal cells, not myeloid DCs: they hold unprocessed antigen (immune complexes) for BCRs and never prime T cells.", "hy": true}, {"a": "Subcapsular sinus macrophage", "b": "Captures lymph-borne antigen at the node edge and passes it to B cells", "why": "With FDCs, these macrophages are where naive B cells first meet intact antigen."}, {"a": "T follicular helper (TFH) cell", "b": "Gives CD40L and IL-21 to a B cell presenting its peptide", "why": "TFH help (CD40L + cytokines, IL-21 most potent) licenses germinal centers, SHM and class switching.", "hy": true}, {"a": "MHC class II on the B cell", "b": "Shows peptides from BCR-internalized antigen to TFH cells", "why": "B cells present antigen to get help, not to prime naive T cells."}, {"a": "Linked recognition", "b": "B and T cells recognize different epitopes of the same antigen", "why": "Basis of conjugate vaccines: B cells see the polysaccharide; T cells see peptides of the attached carrier protein."}, {"a": "T–B zone border", "b": "Where activated B cells and primed TFH cells first meet", "why": "After activation, both cells change chemokine receptors and migrate to the follicle edge."}, {"a": "Extrafollicular focus", "b": "Early site of short-lived IgM-secreting plasma cells", "why": "After help, a B cell either rapidly becomes an IgM plasma cell (extrafollicular) or enters a germinal center."}]}, {"id": "s07", "lec": "06", "lo": "06.2", "kind": "term-app", "title": "Antigen / stimulus → B-cell response", "left": "Antigen or stimulus", "right": "B-cell response", "pairs": [{"a": "Protein antigen with TFH help", "b": "Class switching, affinity maturation and long-lived memory", "why": "Only T-dependent (TFH) responses give the full package: SHM, CSR, affinity maturation and memory.", "hy": true}, {"a": "LPS at high dose (TI-1)", "b": "Polyclonal B-cell activation regardless of BCR specificity", "why": "High-dose LPS acts as a mitogen through TLR4 → polyclonal IgM (e.g., high IgM in gram-negative sepsis)."}, {"a": "LPS at low dose (TI-1)", "b": "Activates only B cells whose BCR binds LPS", "why": "At low concentration, only specific B cells concentrate enough LPS on their BCR to be activated."}, {"a": "Repetitive capsular polysaccharide (TI-2)", "b": "Extensive BCR cross-linking; mostly IgM, little memory", "why": "TI-2 responses are weak before ~2 years of age and give little or no memory.", "hy": true}, {"a": "Bacterial glycolipid with iNKT help", "b": "CD1-presented lipid; switching but little affinity maturation", "why": "iNKT cells see lipids on CD1 and help B cells switch, but give little affinity maturation or memory (not TFH help)."}, {"a": "Polysaccharide–protein conjugate vaccine", "b": "Carrier peptides recruit T help, protecting children under 2", "why": "Hib, pneumococcal and meningococcal conjugates convert a TI-2 antigen into a T-dependent response.", "hy": true}, {"a": "BAFF from dendritic cells", "b": "Boosts TI-2 responses and switching to IgG2", "why": "IgG2 is mainly directed at T-independent polysaccharide antigens."}]}, {"id": "s08", "lec": "06", "lo": "06.3", "kind": "term-def", "title": "Clue → switching / mutation molecule", "left": "Clue", "right": "Molecule", "pairs": [{"a": "Switches B cells to IgE in a helminth infection", "b": "IL-4 (with IL-13)", "why": "IgE switch = IL-4 + IL-13 from TFH cells in a Th2-type response.", "hy": true}, {"a": "Required for IgA switching in gut mucosa", "b": "TGF-β", "why": "TGF-β is the IgA switch factor (with IL-10 and IL-21 support)."}, {"a": "Most potent TFH cytokine; IgG1, IgG3 and IgA", "b": "IL-21", "why": "IL-21 regulates multiple T-dependent B-cell processes, including germinal center maintenance."}, {"a": "Drives IgG2 against capsular polysaccharide", "b": "BAFF", "why": "BAFF from DCs augments TI-2 responses and switching to IgG2."}, {"a": "Deaminates cytosine to uracil to start SHM and CSR", "b": "Activation-induced deaminase (AID)", "why": "AID is the shared first step for SHM and CSR. AID deficiency → AR hyper-IgM with giant germinal centers.", "hy": true}, {"a": "Removes uracils, leaving abasic sites", "b": "Uracil-N-glycosidase (UNG)", "why": "UNG → AP endonuclease nicks → double-strand breaks. UNG deficiency is another AR hyper-IgM."}, {"a": "Joins two switch regions, deleting the C genes between", "b": "Non-homologous end joining", "why": "CSR deletes intervening constant genes permanently; specificity (V region) is unchanged."}, {"a": "Error-prone repair that turns V-region uracils into point mutations", "b": "Base excision, mismatch repair, translesion synthesis", "why": "SHM subverts normal repair pathways; the mutated B cells with higher affinity are then selected (affinity maturation)."}]}, {"id": "s09", "lec": "06", "lo": "06.5", "kind": "cause-effect", "title": "Exposure / B cell → outcome", "left": "Scenario", "right": "Outcome", "pairs": [{"a": "Primary response to a protein vaccine", "b": "IgM spike first, then lower-affinity IgG", "why": "First exposure: lag phase, IgM first, then switched IgG of modest affinity.", "hy": true}, {"a": "Secondary response to the same protein", "b": "Faster, larger class-switched IgG of higher affinity", "why": "Memory B cells are already switched and mutated, so re-exposure gives rapid, high-affinity IgG.", "hy": true}, {"a": "Booster of a pure polysaccharide vaccine", "b": "No boost: mostly IgM again, of similar size", "why": "T-independent antigens give little or no memory, so the second dose is not boosted."}, {"a": "Naive B cell binding antigen already coated with IgG", "b": "Inhibited through FcγRIIB", "why": "The ITIM-bearing FcγRIIB blocks naive B cells when specific IgG already exists — feedback that limits new clones.", "hy": true}, {"a": "Memory B cell binding antigen already coated with IgG", "b": "Activated; its high-affinity BCR overrides FcγRIIB", "why": "Memory cells respond despite FcγRIIB, so most antibody after re-exposure comes from memory B cells."}, {"a": "Naive B cell that never meets its antigen", "b": "Lives only days before dying", "why": "Naive B cells are short-lived unless activated."}, {"a": "Memory B cell after vaccination", "b": "Can persist for decades", "why": "Long-lived memory B cells (and plasma cells) explain decades-long protection."}]}, {"id": "s10", "lec": "07", "lo": "07.1", "kind": "term-app", "title": "Source of protection → type of immunity", "left": "Source", "right": "Type and key feature", "pairs": [{"a": "Tetanus toxoid", "b": "Artificial active: slow onset, lasting memory", "why": "A toxoid is an inactivated toxin you respond to yourself. Toxoid = active; immune globulin = passive.", "hy": true}, {"a": "Tetanus immune globulin after a dirty wound", "b": "Human anti-toxin that protects an unimmunized patient now", "why": "Unimmunized + dirty wound → TIG (passive, immediate) plus toxoid (active, lasting) in different arms.", "hy": true}, {"a": "Sheep-derived antivenom", "b": "Passive antibody from another species; risks serum sickness", "why": "Foreign-species Ig provokes anti-isotypic antibodies → immune complexes → type III serum sickness."}, {"a": "Intravenous immunoglobulin (IVIG)", "b": "Pooled human IgG replacing antibody; needs repeat infusions", "why": "IgG half-life is ~3 weeks and no memory forms, so passive protection fades in weeks to months."}, {"a": "Maternal IgG across the placenta", "b": "Natural passive; protects the infant until about 6 months", "why": "Antibody deficiencies present after ~6 months, when maternal IgG wanes.", "hy": true}, {"a": "IgA in colostrum", "b": "Natural passive protection at the infant's gut mucosa", "why": "Breast-milk secretory IgA neutralizes microbes in the infant gut; it is not absorbed systemically."}, {"a": "Childhood chickenpox infection", "b": "Natural active immunity with long-lived memory", "why": "You made the response yourself after natural exposure → memory B and T cells."}]}, {"id": "s11", "lec": "07", "lo": "07.2", "kind": "structure-function", "title": "Ig region → function", "left": "Region", "right": "Function", "pairs": [{"a": "Fab", "b": "Monovalent antigen-binding fragment released by papain", "why": "Papain → 2 Fab + 1 Fc. Fab = VH + CH1 with VL + CL.", "hy": true}, {"a": "F(ab')2", "b": "Bivalent antigen-binding fragment left by pepsin", "why": "Pepsin cuts below the hinge disulfides, so both arms stay joined (still bivalent, can cross-link)."}, {"a": "Fc", "b": "Tail that binds Fc receptors and complement C1q", "why": "Antigen binding normal but effector function lost → think Fc (heavy-chain constant domains)."}, {"a": "Hinge", "b": "Flexible segment between CH1 and CH2 of IgG", "why": "The hinge lets the two Fab arms move independently. IgM and IgE lack a hinge."}, {"a": "CH4 domain", "b": "Extra heavy-chain constant domain of IgM and IgE", "why": "IgM and IgE have four CH domains instead of CH1–hinge–CH2–CH3."}, {"a": "Light chain (κ or λ)", "b": "Smaller partner chain; one B-cell clone uses only κ or only λ", "why": "Each IgG has two identical heavy and two identical light chains. A monoclonal B-cell expansion shows light-chain restriction (all κ or all λ)."}, {"a": "J chain", "b": "Links IgM into a pentamer and IgA into a dimer", "why": "J chain is found only in polymeric Ig and is needed for transport by the polymeric Ig receptor."}, {"a": "Secretory component", "b": "Remnant of the poly-Ig receptor that protects secretory IgA", "why": "Secretory IgA = dimer + J chain + secretory component; the component resists proteolysis in secretions."}]}, {"id": "s12", "lec": "07", "lo": "07.3", "kind": "term-def", "title": "Antibody vocabulary → definition", "left": "Term", "right": "Definition", "pairs": [{"a": "Isotype", "b": "Heavy-chain constant-region class shared by all members of a species", "why": "Isotype = class (IgM, IgG, IgA, IgE, IgD). Foreign-species Ig triggers anti-isotypic antibodies.", "hy": true}, {"a": "Allotype", "b": "Allelic constant-region variants that differ between people", "why": "Allo = allelic = another person of the same species; given someone else's Ig can trigger anti-allotypic antibodies."}, {"a": "Idiotype", "b": "Clone-unique V-region determinants that are themselves antigenic", "why": "Idiotype = V(D)J + SHM. Anti-drug antibodies against a monoclonal are usually anti-idiotypic → loss of response.", "hy": true}, {"a": "Epitope", "b": "Part of the antigen that the antibody binds", "why": "Epitopes can be linear or conformational; boiling destroys conformational epitopes."}, {"a": "Paratope", "b": "Antigen-binding site on the antibody, formed by the CDRs", "why": "Epitope = on antigen; paratope = on antibody."}, {"a": "Valency", "b": "Number of antigen-binding sites on one molecule", "why": "IgG monomer 2; secretory IgA dimer 4; IgM pentamer 10."}, {"a": "Affinity", "b": "Strength of a single paratope–epitope bond", "why": "High affinity matters most for neutralizing a soluble toxin."}, {"a": "Avidity", "b": "Total binding strength of all sites acting together", "why": "IgM has low affinity per site but high avidity from 10 sites. 'Valency × affinity' is only a memory aid, not an equation.", "hy": true}]}, {"id": "s13", "lec": "07", "lo": "07.4", "kind": "disease-finding", "title": "Ig finding → interpretation", "left": "Finding", "right": "Interpretation", "pairs": [{"a": "Positive anti-HAV IgM", "b": "Current or recent primary infection", "why": "Specific IgM = acute/recent infection; IgM is the first isotype of a primary response.", "hy": true}, {"a": "Specific IgG without IgM", "b": "Past infection or prior immunization", "why": "IgG persists and dominates later and secondary responses."}, {"a": "Isolated very low IgA with recurrent Giardia", "b": "Selective IgA deficiency", "why": "Most common primary immunodeficiency: sinopulmonary infections, Giardia, autoimmunity (celiac), false-negative IgA-based celiac tests.", "hy": true}, {"a": "Anaphylaxis at a first blood transfusion", "b": "Recipient anti-IgA reacting with donor IgA", "why": "IgA-deficient patients can make anti-IgA (anti-isotypic within the species) → use washed or IgA-deficient products."}, {"a": "High IgA and IgE, small platelets, eczema in a boy", "b": "Wiskott-Aldrich syndrome", "why": "WAS: eczema + thrombocytopenia with small platelets + infections; normal-to-low IgG/IgM with high IgA/IgE."}, {"a": "Jaundiced newborn, positive direct Coombs, Rh-negative mother", "b": "Maternal anti-RhD IgG crossed the placenta", "why": "Only IgG crosses the placenta (via FcRn) → hemolytic disease of the newborn, neonatal Graves, neonatal lupus."}, {"a": "Rheumatoid factor", "b": "IgM directed against the Fc of the patient's own IgG", "why": "An antibody acting as an antigen: RF is usually IgM anti-IgG Fc. Anti-CCP is more specific for rheumatoid arthritis."}]}, {"id": "s14", "lec": "08", "lo": "08.1", "kind": "structure-function", "title": "Homing / survival molecule → role", "left": "Molecule", "right": "Role", "pairs": [{"a": "L-selectin (CD62L)", "b": "Lets naive T cells roll on high endothelial venules", "why": "Naive T cells enter nodes from blood through HEVs into the paracortex."}, {"a": "CCR7", "b": "Responds to CCL19/CCL21 to home to the T-cell zone", "why": "CCR7 brings both naive T cells and mature DCs into the same FRC channels of the paracortex.", "hy": true}, {"a": "IL-7", "b": "Stromal survival cytokine for naive T cells", "why": "IL-7 comes from stromal cells (FRCs), not DCs. γc defect → no IL-7 signaling → T-cell−negative SCID.", "hy": true}, {"a": "Tonic self-peptide:MHC contact", "b": "Weak TCR signal that keeps naive T cells alive", "why": "Naive T-cell survival = self-peptide:MHC + IL-7, even without ever meeting antigen."}, {"a": "S1PR1", "b": "Receptor needed to exit the node into efferent lymph", "why": "After activation, CD69 internalizes S1PR1, so the T cell is retained in the node for several days."}, {"a": "VLA-4 and PSGL-1", "b": "Guide effector T cells into inflamed tissue", "why": "Effector T cells lose L-selectin and CCR7 and gain tissue-homing molecules."}, {"a": "CXCR5", "b": "Draws TFH and B cells into follicles", "why": "CXCR5 → B follicles (CXCL13); CCR7 → T zone."}]}, {"id": "s15", "lec": "08", "lo": "08.2", "kind": "structure-function", "title": "APC type → hallmark", "left": "Cell", "right": "Hallmark", "pairs": [{"a": "Conventional DC type 1 (cDC1)", "b": "Cross-presents exogenous antigen on MHC I to naive CD8 cells", "why": "Cross-presentation lets uninfected DCs prime CD8 T cells against viruses that infect only epithelium.", "hy": true}, {"a": "Conventional DC type 2 (cDC2)", "b": "Specialized to prime naive CD4 T cells", "why": "Both cDC subsets express MHC II; cDC2 mainly drives CD4 responses."}, {"a": "Plasmacytoid DC (pDC)", "b": "Senses viral nucleic acid via TLR7/TLR9; floods type I IFN", "why": "pDCs have low MHC II and prime naive T cells poorly; their job is early IFN-α/β.", "hy": true}, {"a": "Macrophage", "b": "Presents to effector Th1 cells to receive activating help", "why": "Only DCs prime naive T cells. Macrophages present to get IFN-γ help to kill ingested microbes."}, {"a": "B cell", "b": "Presents BCR-captured antigen to TFH cells to obtain help", "why": "BCR uptake concentrates specific antigen; the B cell gets CD40L + IL-21 in return."}, {"a": "Follicular dendritic cell", "b": "Holds intact antigen for B cells; no MHC II presentation", "why": "Trap: FDCs are not professional APCs. The three professional APCs are DCs, macrophages and B cells.", "hy": true}]}, {"id": "s16", "lec": "08", "lo": "08.3", "kind": "structure-function", "title": "Activation signaling molecule → role", "left": "Molecule", "right": "Role", "pairs": [{"a": "Lck", "b": "Coreceptor-associated kinase that phosphorylates CD3 ITAMs", "why": "Lck rides on CD4/CD8; phosphorylated ITAMs then recruit ZAP-70.", "hy": true}, {"a": "ZAP-70", "b": "Kinase that docks on phosphorylated ζ-chain ITAMs", "why": "ZAP-70 propagates the TCR signal downstream (PLCγ, Ca²⁺, Ras)."}, {"a": "Calcineurin", "b": "Ca²⁺-activated phosphatase blocked by cyclosporine and tacrolimus", "why": "Calcineurin dephosphorylates NFAT so it can enter the nucleus.", "hy": true}, {"a": "NFAT", "b": "Transcription factor that, with AP-1 and NF-κB, turns on IL-2", "why": "TCR + CD28 → NFAT/AP-1/NF-κB → IL-2, IL-2Rα (CD25) and CD69."}, {"a": "IL-2", "b": "Autocrine T-cell growth factor that also sustains Tregs", "why": "IL-2 drives clonal expansion (autocrine and paracrine) and is essential for CD25+FOXP3+ Tregs.", "hy": true}, {"a": "CD25 (IL-2Rα)", "b": "Chain that makes the IL-2 receptor high-affinity", "why": "CD25 is induced on activated T cells and expressed constitutively on Tregs."}, {"a": "Common γ chain (CD132)", "b": "Shared receptor chain for IL-2, 4, 7, 9, 15 and 21", "why": "All γc cytokines signal through JAK3: γc (X-linked) or JAK3 (AR) defects → T−B+NK− SCID.", "hy": true}]}, {"id": "s17", "lec": "08", "lo": "08.4", "kind": "structure-function", "title": "Effector molecule → action", "left": "Molecule", "right": "Action", "pairs": [{"a": "Perforin", "b": "Polymerizes into pores in the target cell membrane", "why": "CTLs polarize their MTOC and granules toward the target, then release perforin and granzymes.", "hy": true}, {"a": "Granzymes", "b": "Proteases that activate target-cell caspases", "why": "Granzymes enter through perforin pores and trigger apoptosis."}, {"a": "Fas ligand", "b": "Engages a death receptor on the target to trigger apoptosis", "why": "FasL–Fas is the granule-independent CTL killing pathway."}, {"a": "IFN-γ", "b": "Activates macrophages to kill ingested microbes", "why": "Th1 signature cytokine. IL-12R or IFN-γR defects → disseminated mycobacteria and Salmonella.", "hy": true}, {"a": "IL-4", "b": "Switches B cells to IgE and reinforces Th2", "why": "Th2: IL-4 → STAT6 → GATA3; products IL-4, IL-5, IL-13."}, {"a": "IL-5", "b": "Drives eosinophil growth and activation", "why": "Helminths → Th2 → IL-5 → eosinophilia."}, {"a": "IL-17", "b": "Makes stromal cells release G-CSF and chemokines that recruit neutrophils", "why": "Th17 defects → chronic mucocutaneous candidiasis and staph abscesses.", "hy": true}, {"a": "IL-22", "b": "IL-10-family cytokine driving epithelial repair and antimicrobial peptides", "why": "Th17-derived IL-22 strengthens barrier defense at skin and mucosa."}]}, {"id": "s18", "lec": "08", "lo": "08.5", "kind": "term-def", "title": "Tolerance mechanism → description", "left": "Mechanism", "right": "Description", "pairs": [{"a": "AIRE", "b": "Turns on tissue-restricted antigens in medullary thymic epithelium", "why": "AIRE is a gene regulator, not a killer. AIRE deficiency (APS-1): candidiasis + hypoparathyroidism + adrenal insufficiency.", "hy": true}, {"a": "Negative selection", "b": "Apoptosis of thymocytes that bind self-peptide:MHC strongly", "why": "Central tolerance by deletion happens mainly in the thymic medulla."}, {"a": "Natural (thymic) Treg", "b": "Self-reactive CD4 thymocyte diverted into a FOXP3+ suppressor", "why": "nTregs arise from thymocytes recognizing self with fairly high affinity; FOXP3 defect → IPEX."}, {"a": "Induced (peripheral) Treg", "b": "Forms from naive CD4 cells in the periphery with TGF-β and IL-2", "why": "iTreg: TGF-β + IL-2 → STAT5 → FOXP3. Both Treg types are CD25+FOXP3+."}, {"a": "Anergy", "b": "Unresponsiveness after signal 1 without costimulation", "why": "Peripheral tolerance: tissue cells lack B7, so self-reactive T cells that see them become anergic.", "hy": true}, {"a": "CTLA-4", "b": "Outcompetes CD28 for B7; expressed constitutively on Tregs", "why": "CTLA-4 binds B7 ~20× more avidly than CD28. Ipilimumab blocks it."}, {"a": "PD-1", "b": "Induced on activated T cells; binds PD-L1/PD-L2 in tissues", "why": "PD-1 brake is released by pembrolizumab/nivolumab (anti-PD-1) or atezolizumab (anti-PD-L1)."}]}], "seqs": [{"id": "q01", "lec": "05", "lo": "05.1", "title": "V(D)J recombination at a coding joint", "prompt": "Put the steps of V(D)J recombination in order (first → last).", "steps": ["RAG1/2 binds a 12/23 pair of RSSs", "RAG1/2 cuts, leaving hairpin coding ends", "Ku70/80 binds the DNA ends", "Artemis with DNA-PKcs opens the hairpins", "TdT adds random N-nucleotides", "DNA ligase IV/XRCC4 seals the coding joint"], "why": "RAG = cut; Ku = hold the ends; Artemis = open the hairpins; TdT = add; ligase IV/XRCC4 = seal. Defects in RAG or Artemis cause T−B−NK+ SCID.", "hy": true}, {"id": "q02", "lec": "05", "lo": "05.3", "title": "MHC class II peptide loading", "prompt": "Put the MHC class II loading pathway in order (first → last).", "steps": ["MHC II α and β chains assemble in the ER with the invariant chain", "Invariant chain blocks the groove and routes MHC II to endosomes", "Invariant chain is cleaved, leaving CLIP in the groove", "HLA-DM removes CLIP and loads an endocytosed peptide", "Peptide–MHC II complex travels to the cell surface"], "why": "Exogenous antigen → MHC II → CD4 T cells. MHC I skips all of this: it loads in the ER via TAP and tapasin.", "hy": true}, {"id": "q03", "lec": "06", "lo": "06.1", "title": "T cell-dependent B-cell activation", "prompt": "Put the events of T cell-dependent B-cell activation in order (first → last).", "steps": ["Naive B cell binds intact antigen on an FDC", "B cell internalizes antigen and presents peptide on MHC II", "B cell and primed TFH cell meet at the T–B border", "TCR engages peptide–MHC II and CD40L binds CD40", "TFH cytokines (e.g., IL-21) drive proliferation and germinal centers"], "why": "CD40–CD40L plus TFH cytokines license the germinal center reaction, SHM and class switching. CD40L defect → X-linked hyper-IgM.", "hy": true}, {"id": "q04", "lec": "06", "lo": "06.3", "title": "Class switch recombination", "prompt": "Put the molecular steps of class switch recombination in order (first → last).", "steps": ["AID deaminates C to U in two switch regions", "Uracil-N-glycosidase removes the uracils", "AP endonuclease nicks the abasic sites", "Nicks on both strands become double-strand breaks", "NHEJ joins the switch regions, deleting the C genes between"], "why": "AID → UNG → APE1 → DSB → NHEJ. The deletion is permanent, so a switched B cell cannot return to IgM. The V region (specificity) is unchanged."}, {"id": "q05", "lec": "07", "lo": "07.2", "title": "IgG heavy-chain domains", "prompt": "Order the IgG heavy-chain domains from the antigen-binding tip to the end of the Fc tail.", "steps": ["VH", "CH1", "Hinge", "CH2", "CH3"], "why": "Fab = VH + CH1 (with the light chain); Fc = CH2 + CH3. Papain cuts at the hinge. IgM and IgE have no hinge and an extra CH4."}, {"id": "q06", "lec": "07", "lo": "07.4", "title": "Serum immunoglobulin levels", "prompt": "Order the immunoglobulin classes by serum concentration (most → least abundant).", "steps": ["IgG", "IgA", "IgM", "IgD", "IgE"], "why": "Serum: G > A > M > D > E. But IgA is the most produced isotype body-wide, mostly secreted at mucosae.", "hy": true}, {"id": "q07", "lec": "08", "lo": "08.5", "title": "αβ T-cell development in the thymus", "prompt": "Put the stages of αβ T-cell development in order (first → last).", "steps": ["Double-negative thymocyte rearranges TCRβ and expresses a pre-TCR", "Becomes CD4+CD8+ double positive", "Rearranges TCRα to form the αβ TCR", "Positive selection on cortical epithelium (self-MHC)", "Negative selection in the medulla (strong self-binding removed)", "Single-positive naive T cell exits to the periphery"], "why": "β before α; cortex = positive selection, medulla = negative selection (with AIRE-driven tissue antigens).", "hy": true}, {"id": "q08", "lec": "08", "lo": "08.2", "title": "Conventional DC life cycle", "prompt": "Order the life cycle of a conventional DC from infection site to T-cell priming (first → last).", "steps": ["Immature cDC samples antigen in tissue using PRRs", "PRR signaling activates the DC and induces CCR7", "DC migrates through afferent lymphatics", "DC enters the paracortex with high MHC II and B7", "DC presents peptide:MHC to naive T cells"], "why": "Mature DCs are CCR7+, high MHC II, high B7 and stop taking up antigen — optimized to prime, not to sample."}], "grids": [{"id": "g01", "lec": "05", "lo": "05.1", "title": "Lymphocyte immunodeficiency chart", "blurb": "Hard: read the classic clue, name the defect, then fill its lymphocyte pattern and inheritance.", "cols": [{"h": "Defect", "dep": 3}, {"h": "Lymphocyte / Ig pattern", "dep": 0}, {"h": "Inheritance", "dep": 0}, {"h": "Classic clue"}], "rows": [["RAG1/RAG2 (null)", "T− B− NK+", "Autosomal recessive", "SCID, cells not radiosensitive"], ["Artemis", "T− B− NK+", "Autosomal recessive", "SCID with radiosensitive cells"], ["Hypomorphic RAG (Omenn)", "Few B; oligoclonal T", "Autosomal recessive", "Red scaly rash, eosinophilia, high IgE"], ["Common γ chain (CD132)", "T− B+ NK−", "X-linked", "Most common SCID; no IL-7/IL-15 signal"], ["JAK3", "T− B+ NK−", "Autosomal recessive", "Girl with SCID; CD132 expressed normally"], ["Adenosine deaminase", "T− B− NK−", "Autosomal recessive", "Toxic purine metabolites kill lymphocytes"], ["CD40 ligand", "Normal T/B; ↑IgM, ↓IgG/IgA/IgE", "X-linked", "Hyper-IgM, no germinal centers, PCP"], ["AID", "Normal T/B; ↑IgM, ↓IgG/IgA/IgE", "Autosomal recessive", "Hyper-IgM with giant germinal centers"]], "easyGiven": [0], "hardGiven": [3], "decoys": {"0": ["BTK", "FOXP3", "WASP"], "1": ["T+ B− NK+", "T− B− NK+ with ↑IgE only", "T+ B+ NK−"], "2": ["Mitochondrial", "Autosomal dominant"]}, "notes": ["Complete RAG loss: no V(D)J recombination → no T or B cells; NK cells don't rearrange, so they're spared.", "Artemis is an NHEJ factor, so all cells have DNA-repair defects → radiosensitive; RAG defects are not radiosensitive.", "Partial RAG activity lets a few oligoclonal, self-reactive T cells escape → erythroderma, lymphadenopathy, eosinophilia, high IgE.", "γc is shared by IL-2, 4, 7, 9, 15, 21: no IL-7 → no T cells, no IL-15 → no NK cells; B cells present but nonfunctional.", "JAK3 sits under γc, so the phenotype matches X-SCID but is autosomal recessive and γc is normal.", "ADA deficiency is second most common SCID; dATP accumulation is toxic to all lymphocytes, including NK.", "CD40L on activated CD4 T cells is needed for switching and germinal centers; PCP and Cryptosporidium are classic.", "AID (or UNG) defect: B cells get help but cannot switch or mutate → lymphadenopathy with giant germinal centers."], "hy": "SCID by phenotype: T−B−NK+ = RAG/Artemis; T−B+NK− = γc (X-linked, most common) or JAK3; T−B−NK− = ADA. Newborn screen = low TRECs. Hyper-IgM: CD40L (X-linked, no GCs) vs AID (AR, giant GCs)."}, {"id": "g02", "lec": "05", "lo": "05.2", "title": "B-cell development in the marrow", "blurb": "Hard: read the key event, name the stage, then fill its receptor and selection checkpoint.", "cols": [{"h": "Stage", "dep": 1}, {"h": "Key event"}, {"h": "Receptor expressed", "dep": 0}, {"h": "Checkpoint", "dep": 0}], "rows": [["Pro-B cell", "Heavy chain D–J, then V–DJ (RAG, TdT)", "No BCR yet", "None yet"], ["Large pre-B cell", "Pre-BCR signals proliferation", "μ + surrogate light chain", "Positive selection"], ["Small pre-B cell", "Light chain V–J rearrangement", "No BCR yet", "None yet"], ["Immature B cell", "Surface IgM tested against self", "IgM only", "Negative selection"], ["Mature naive B cell", "Leaves marrow to secondary organs", "IgM + IgD (same V region)", "Passed both"]], "easyGiven": [0], "hardGiven": [1], "decoys": {"0": ["Plasma cell", "Memory B cell", "Centroblast"], "2": ["IgG + IgA", "IgM + IgE"], "3": ["Affinity maturation", "Death by neglect"]}, "notes": ["Heavy-chain rearrangement comes first, with D–J before V–DJ; TdT adds N-nucleotides mainly here.", "A productive μ chain pairs with surrogate light chain; the pre-BCR signal is B-cell positive selection.", "After proliferating, the pre-B cell rearranges κ (then λ) light chain — V–J only, no D.", "Strong cross-linking by self antigen → receptor editing (new light chain) or apoptosis.", "IgM and IgD come from alternative splicing of one VDJ–Cμ–Cδ primary RNA, not class switching."], "hy": "Heavy chain before light chain (like TCRβ before TCRα). Pre-BCR = positive selection; immature B cell = negative selection by receptor editing or deletion. Naive B = IgM + IgD by alternative splicing."}, {"id": "g03", "lec": "05", "lo": "05.3", "title": "MHC class I vs class II", "blurb": "Hard: only the feature column is shown — fill both MHC columns from memory.", "cols": [{"h": "Feature"}, {"h": "MHC class I"}, {"h": "MHC class II"}], "rows": [["Expressed on", "All nucleated cells (not RBCs)", "DCs, macrophages, B cells, thymic epi"], ["HLA genes", "HLA-A, -B, -C", "HLA-DP, -DQ, -DR"], ["Chains", "α chain + β2-microglobulin", "α chain + β chain"], ["Peptide groove", "Closed; 8–10-mers", "Open-ended; longer peptides"], ["Peptide source", "Cytosolic (endogenous) proteins", "Endocytosed (exogenous) proteins"], ["Loading", "ER via TAP and tapasin", "Endosome; CLIP swapped by HLA-DM"], ["Presents to", "CD8 cytotoxic T cells", "CD4 helper T cells"]], "easyGiven": [0], "hardGiven": [0], "decoys": {"1": ["Only professional APCs", "α chain + invariant chain", "Endosome via CLIP"], "2": ["All nucleated cells", "CD8 T cells", "HLA-E, -F, -G"]}, "notes": ["Hepatocytes and epithelia have MHC I but little MHC II, so infected tissue cells are killed by CD8 cells.", "MHC genes are the most polymorphic in humans (polymorphism) and each person has several loci (polygeny).", "Both have two chains; only class II has two polymorphic chains forming the groove.", "Closed ends limit class I peptides to 8–10 residues; class II peptides overhang.", "Cross-presentation (cDC1) is the exception that puts exogenous antigen on MHC I.", "Only MHC II uses the invariant chain and CLIP; MHC I never does.", "Rule of 8: MHC I × CD8 = 8; MHC II × CD4 = 8."], "hy": "MHC I: all nucleated cells, endogenous peptide, TAP, β2m, CD8. MHC II: APCs, exogenous peptide, invariant chain/CLIP/HLA-DM, CD4. TAP defect → ↓MHC I; MHC II defect → bare lymphocyte syndrome (↓CD4)."}, {"id": "g04", "lec": "06", "lo": "06.4", "title": "Antibody effector functions", "blurb": "Hard: read the receptor or partner, name the function, then fill the isotype and effector cell.", "cols": [{"h": "Function", "dep": 2}, {"h": "Main isotype", "dep": 0}, {"h": "Receptor / partner"}, {"h": "Cell involved", "dep": 0}], "rows": [["Neutralization", "High-affinity IgG; IgA at mucosa", "None (Fab blocks binding)", "No cell needed"], ["Opsonization", "IgG", "FcγRI (CD64) on phagocytes", "Macrophage, neutrophil"], ["ADCC", "IgG", "FcγRIII (CD16)", "NK cell"], ["Classical complement", "IgM > IgG", "C1q", "No cell needed"], ["Immediate degranulation", "IgE", "FcεRI", "Mast cell, basophil"], ["Transport into secretions", "Dimeric IgA", "Poly-Ig receptor", "Mucosal epithelial cell"], ["Placental transfer", "IgG", "FcRn", "Syncytiotrophoblast"], ["Block naive B cells", "IgG", "FcγRIIB (ITIM)", "Naive B cell"]], "easyGiven": [0], "hardGiven": [2], "decoys": {"0": ["Agglutination of RBCs", "Antigen presentation"], "1": ["IgD", "IgE only"], "3": ["Eosinophil only", "Plasma cell"]}, "notes": ["Neutralization needs only the Fab — the key property is high affinity.", "IgG-coated bacteria are engulfed by splenic and hepatic phagocytes through activating Fcγ receptors.", "NK cells use CD16 to kill IgG-coated targets with perforin and granzymes (e.g., therapeutic IgG1 monoclonals).", "One IgM pentamer gives several Fc sites for C1q; IgG needs two molecules close together.", "Mast cells carry IgE on FcεRI at all times, so allergen cross-linking triggers degranulation within minutes.", "The poly-Ig receptor carries dimeric IgA across epithelium; its cleaved remnant is secretory component.", "Only IgG crosses the placenta, via FcRn — which also gives IgG its long half-life.", "Existing IgG plus FcγRIIB inhibits new naive B cells; memory B cells override it."], "hy": "FcγRIII (CD16) on NK = ADCC; FcεRI = mast cells/IgE; FcRn = placenta + long IgG half-life; IgM = best complement activator; FcγRIIB = inhibitory (ITIM)."}, {"id": "g05", "lec": "07", "lo": "07.4", "title": "The five immunoglobulin classes", "blurb": "Hard: read the classic clue, name the isotype, then fill its secreted form and defining feature.", "cols": [{"h": "Isotype", "dep": 2}, {"h": "Secreted form", "dep": 0}, {"h": "Classic clue"}, {"h": "Defining feature", "dep": 0}], "rows": [["IgG", "Monomer", "Rh-negative mother's antibody → HDN", "Crosses placenta; opsonin; ADCC"], ["IgM", "Pentamer + J chain", "Anti-HAV of this class = acute infection", "First made; best complement activator"], ["IgA", "Dimer + J chain + SC", "Dominant in tears, saliva, colostrum", "Mucosal neutralization; no complement"], ["IgE", "Monomer", "Hives within minutes of a bee sting", "Arms mast cells via FcεRI"], ["IgD", "Mostly membrane-bound", "Co-expressed with IgM on naive B cells", "Antigen receptor; <1% of serum Ig"]], "easyGiven": [0], "hardGiven": [2], "decoys": {"0": ["IgY", "IgG4"], "1": ["Trimer + J chain", "Hexamer"], "3": ["Only isotype made by plasma cells", "Crosses placenta via FcεRI"]}, "notes": ["IgG: most abundant in serum, dominates secondary responses, crosses the placenta via FcRn (half-life ≈ 3 weeks).", "IgM: first isotype of a primary response; 10 binding sites → low affinity, high avidity.", "Serum IgA is mostly monomeric IgA1; secretory IgA is a dimer with J chain and secretory component (SC).", "IgE: lowest serum level; allergy and helminth defense with eosinophils.", "IgD and IgM on naive B cells come from alternative splicing; IgD's secreted role is minor."], "hy": "Only IgG crosses the placenta. IgM = first + best complement fixer; IgA = mucosa, most produced overall; IgE = mast cells (type I); serum G > A > M > D > E."}, {"id": "g06", "lec": "08", "lo": "08.3", "title": "T-cell activation and brake signals", "blurb": "Hard: read the clinical or drug clue, name the T-cell molecule, then fill its partner and effect.", "cols": [{"h": "T-cell molecule", "dep": 3}, {"h": "Partner on APC", "dep": 0}, {"h": "Effect", "dep": 0}, {"h": "Clinical / drug clue"}], "rows": [["TCR with CD4 or CD8", "Peptide:MHC", "Signal 1: antigen specificity", "Alone, without costimulation → anergy"], ["CD28", "B7.1/B7.2 (CD80/CD86)", "Signal 2: costimulation", "Abatacept blocks its ligand (B7)"], ["IL-12 receptor", "IL-12", "Signal 3: drives Th1", "Defect → disseminated BCG, Salmonella"], ["LFA-1", "ICAM-1", "Tight adhesion; stable synapse", "Affinity rises after TCR engagement"], ["CD40L", "CD40", "Licenses APC: ↑IL-12, B7, CD70", "Defect → X-linked hyper-IgM"], ["CTLA-4", "B7.1/B7.2 (CD80/CD86)", "Brake; outcompetes CD28", "Ipilimumab target; colitis"], ["PD-1", "PD-L1/PD-L2", "Brake on activated T cells", "Nivolumab, pembrolizumab target"]], "easyGiven": [0], "hardGiven": [3], "decoys": {"0": ["CD69", "CCR7"], "1": ["MHC class I only", "CD16"], "2": ["Signal 2: cytokine secretion", "Exit from lymph node"]}, "notes": ["TCR binding alone (signal 1 only) causes anergy — a peripheral tolerance mechanism.", "B7 on activated DCs binding CD28 provides signal 2; effector T cells no longer need it.", "Signal 3 cytokines set the subset; IL-12 → STAT4 → T-bet → Th1.", "TCR engagement switches LFA-1 to high affinity so a transient scan becomes a days-long contact.", "CD40 is on the APC, CD40L on the T cell; licensing strengthens CD8 priming and drives B-cell help.", "CTLA-4 binds B7 ~20× more avidly than CD28; blocking it unleashes T cells → immune-related adverse events.", "PD-1 is induced on nearly all activated T cells; anti-PD-1 or anti-PD-L1 removes the tissue-level brake."], "hy": "Signal 1 = TCR–peptide:MHC; signal 2 = B7–CD28; signal 3 = cytokines. Signal 1 alone → anergy. Checkpoint drugs: ipilimumab = anti-CTLA-4; nivolumab/pembrolizumab = anti-PD-1; atezolizumab = anti-PD-L1."}, {"id": "g07", "lec": "08", "lo": "08.4", "title": "CD4 helper subsets", "blurb": "Hard: read the inducing cytokines, name the subset, then fill its STAT → master regulator, products and target.", "cols": [{"h": "Subset", "dep": 1}, {"h": "Inducing cytokines"}, {"h": "STAT → master regulator", "dep": 0}, {"h": "Signature products", "dep": 0}, {"h": "Main target / role", "dep": 0}], "rows": [["Th1", "IL-12 (+ IFN-γ)", "STAT4/STAT1 → T-bet", "IFN-γ", "Macrophages; intracellular microbes"], ["Th2", "IL-4", "STAT6 → GATA3", "IL-4, IL-5, IL-13", "Eosinophils, IgE; helminths"], ["Th17", "TGF-β + IL-6 (+ IL-23)", "STAT3 → RORγt", "IL-17, IL-22", "Neutrophils; extracellular bacteria, fungi"], ["Tfh", "IL-6 (+ IL-21)", "STAT3 → BCL6", "IL-21, CD40L", "B cells in germinal centers"], ["iTreg", "TGF-β + IL-2", "STAT5 → FOXP3", "IL-10, TGF-β", "Suppresses other T cells"]], "easyGiven": [0], "hardGiven": [1], "decoys": {"0": ["Th9", "CTL"], "2": ["STAT1 → GATA3", "STAT6 → T-bet", "STAT4 → RORγt"], "3": ["IL-2 only", "IL-1, TNF-α"], "4": ["Mast cells; viruses", "NK cells; tumors"]}, "notes": ["IL-12 from DCs drives Th1; IL-12R or IFN-γR defects → disseminated mycobacteria and Salmonella.", "IL-4 → GATA3 → IL-4/5/13: IgE switching and eosinophils against helminths (and allergy).", "IL-17 → neutrophil recruitment; IL-22 → antimicrobial peptides. Defects → mucocutaneous candidiasis, staph abscesses.", "Tfh migrate to the follicle edge (CXCR5) and drive germinal centers, switching and affinity maturation.", "TGF-β signals through SMADs (not JAK-STAT); IL-6 tips TGF-β toward Th17 instead of Treg. FOXP3 defect → IPEX."], "hy": "Cytokine → TF → product: IL-12 → T-bet → IFN-γ (Th1); IL-4 → GATA3 → IL-4/5/13 (Th2); TGF-β + IL-6 → RORγt → IL-17 (Th17); IL-6 → BCL6 → IL-21 (Tfh); TGF-β + IL-2 → FOXP3 (Treg)."}]};
+const META = {"block": "Block 2 · Immuno", "updated": "Oct 22, 2026", "rev": "1.0"};
+</script>
+<script>
+(function(){
+"use strict";
+/* ---------- helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const DISC={neuro:"Neuro",path:"Path",drt:"Radiology",pharm:"Pharm",imm:"Immuno",mic:"Micro"};
+const KIND={
+  "term-def":{l:"Term → Definition",c:"--k1"},
+  "term-app":{l:"Term → Application",c:"--k2"},
+  "disease-finding":{l:"Disease → Finding",c:"--k3"},
+  "cause-effect":{l:"Cause → Effect",c:"--k4"},
+  "lesion-deficit":{l:"Lesion → Deficit",c:"--k5"},
+  "drug-mech":{l:"Drug → Mechanism",c:"--k6"},
+  "structure-function":{l:"Structure → Function",c:"--k7"},
+  "image-finding":{l:"Image → Finding",c:"--k8"},
+  "sequence":{l:"Put in Order",c:"--k4"}
+};
+const LOCK='<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5 7V5a3 3 0 0 1 6 0v2h.5A1.5 1.5 0 0 1 13 8.5v5A1.5 1.5 0 0 1 11.5 15h-7A1.5 1.5 0 0 1 3 13.5v-5A1.5 1.5 0 0 1 4.5 7H5zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2z"/></svg>';
+const lecOf=k=>DATA.lectures.find(l=>l.k===k)||{k,name:"",disc:"imm"};
+const lecTag=k=>{const L=lecOf(k);return `<span class="tag" style="--lc:var(--${L.disc})" title="${esc(L.name)}">${esc(lecLabel(k))}</span>`;};
+const lecLabel=k=>(DATA.prefix||"IRD")+k;
+
+/* ---------- storage (per-viewer convenience only) ---------- */
+const SKEY="hoyadocs-matchlab-"+DATA.id;
+let S={items:{},grids:{},best:0,rounds:0};
+try{const raw=localStorage.getItem(SKEY);if(raw)S=Object.assign(S,JSON.parse(raw));}catch(e){}
+const save=()=>{try{localStorage.setItem(SKEY,JSON.stringify(S));}catch(e){}};
+const itemStat=k=>S.items[k]||(S.items[k]={n:0,ok:0,run:0,last:null});
+const mastered=k=>(S.items[k]&&S.items[k].run>=2);
+
+/* ---------- theme ---------- */
+let theme="auto";
+try{theme=localStorage.getItem("hoyadocs-theme")||"auto";}catch(e){}
+function applyTheme(){if(theme==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",theme);$("#themeBtn").textContent="Theme: "+theme;}
+$("#themeBtn").onclick=()=>{theme=theme==="auto"?"light":theme==="light"?"dark":"auto";try{localStorage.setItem("hoyadocs-theme",theme);}catch(e){}applyTheme();};
+applyTheme();
+$("#resetBtn").onclick=()=>{if(!confirmReset())return;S={items:{},grids:{},best:0,rounds:0};save();go("home");};
+function confirmReset(){const b=$("#resetBtn");if(b.dataset.arm){delete b.dataset.arm;b.textContent="Reset progress";return true;}b.dataset.arm="1";b.textContent="Tap again to reset";setTimeout(()=>{if(b.dataset.arm){delete b.dataset.arm;b.textContent="Reset progress";}},3000);return false;}
+
+/* ---------- static header ---------- */
+document.title=`${DATA.code} Match Lab · HoyaDocs`;
+$("#revLine").textContent=`${META.block} · ${DATA.code} · Rev ${META.rev} · Updated ${META.updated}`;
+$("#title").textContent=DATA.title;
+const DISCN={neuro:"Neuroscience",path:"Pathology",drt:"DRT",pharm:"Pharmacology",imm:"Immunology",mic:"Microbiology"};
+$("#heroK").textContent=`${DATA.code} · ${[...new Set(DATA.lectures.map(l=>DISCN[l.disc]||l.disc))].join(" · ")} · Match Lab`;
+
+/* ---------- item pool ---------- */
+const ITEMS=[];
+DATA.sets.forEach(s=>s.pairs.forEach((p,i)=>ITEMS.push({t:"pair",key:s.id+":"+i,set:s,p,i,lec:s.lec,kind:s.kind,lo:s.lo})));
+DATA.seqs.forEach(q=>ITEMS.push({t:"seq",key:q.id,q,lec:q.lec,kind:"sequence",lo:q.lo}));
+
+/* ---------- filters / settings ---------- */
+const F={lecs:new Set(DATA.lectures.map(l=>l.k)),kinds:new Set(Object.keys(KIND)),len:"20",timer:"off",dir:"mixed",focus:"all",diff:"easy"};
+const pool=()=>ITEMS.filter(it=>F.lecs.has(it.lec)&&F.kinds.has(it.kind)&&(F.focus==="all"||(F.focus==="new"?!mastered(it.key):(S.items[it.key]&&S.items[it.key].last===false))));
+
+/* ---------- router ---------- */
+let view="home";
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>go(b.dataset.view));
+function go(v,arg){
+  stopTimer();
+  view=v;
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.view===(v==="rfplay"||v==="rfend"?"rf":v==="grid"?"glist":v))));
+  if(v==="home")renderHome();
+  else if(v==="rf")renderRFSetup();
+  else if(v==="rfplay")renderQ();
+  else if(v==="rfend")renderEnd();
+  else if(v==="glist")renderGList();
+  else if(v==="grid")startGrid(arg);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ---------- shared bits ---------- */
+function segHTML(name,label,opts,cur){return `<div class="optrow"><span class="lab">${label}</span><div class="seg" role="group" aria-label="${label}">${opts.map(([v,t])=>`<button type="button" data-${name}="${v}" aria-pressed="${v===cur}">${t}</button>`).join("")}</div></div>`;}
+function bindSeg(root,name,cb){root.querySelectorAll(`[data-${name}]`).forEach(b=>b.onclick=()=>{F[name]=b.dataset[name];root.querySelectorAll(`[data-${name}]`).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));cb&&cb();});}
+function lecChips(){return `<div class="optrow"><span class="lab">Lectures</span><div class="chips">${DATA.lectures.map(l=>`<button type="button" class="chip" data-lec="${l.k}" aria-pressed="${F.lecs.has(l.k)}" style="--c:var(--${l.disc})"><i></i>${esc(lecLabel(l.k))} · ${esc(l.name)}</button>`).join("")}</div></div>`;}
+function kindChips(){const present=[...new Set(ITEMS.map(i=>i.kind))];return `<div class="optrow"><span class="lab">Match types</span><div class="chips">${present.map(k=>`<button type="button" class="chip" data-kind="${k}" aria-pressed="${F.kinds.has(k)}" style="--c:var(${KIND[k].c})"><i></i>${KIND[k].l} <span class="n">${ITEMS.filter(i=>i.kind===k).length}</span></button>`).join("")}</div></div>`;}
+function bindChips(root,cb){
+  root.querySelectorAll("[data-lec]").forEach(b=>b.onclick=()=>{const k=b.dataset.lec;if(F.lecs.has(k)){if(F.lecs.size>1)F.lecs.delete(k);}else F.lecs.add(k);b.setAttribute("aria-pressed",String(F.lecs.has(k)));cb&&cb();});
+  root.querySelectorAll("[data-kind]").forEach(b=>b.onclick=()=>{const k=b.dataset.kind;if(F.kinds.has(k)){const vis=[...F.kinds].filter(x=>ITEMS.some(i=>i.kind===x));if(vis.length>1)F.kinds.delete(k);}else F.kinds.add(k);b.setAttribute("aria-pressed",String(F.kinds.has(k)));cb&&cb();});
+}
+function stars(n){return `<span class="stars" aria-label="${n} of 3 stars">${[1,2,3].map(i=>i<=n?"★":'<span class="off">★</span>').join("")}</span>`;}
+
+/* ---------- HOME ---------- */
+function renderHome(){
+  const total=ITEMS.length, m=ITEMS.filter(i=>mastered(i.key)).length;
+  const gs=DATA.grids.length, ge=DATA.grids.filter(g=>(S.grids[g.id]||{}).easy).length, gh=DATA.grids.filter(g=>(S.grids[g.id]||{}).hard).length;
+  const kindsUsed=[...new Set(ITEMS.map(i=>i.kind))];
+  $("#app").innerHTML=`
+  <div class="grid2">
+    <section class="panel mode-card">
+      <span class="k">Mode 1</span>
+      <h2>Rapid Fire</h2>
+      <p>One match at a time, four choices, streak bonus, optional shot clock. Missed items come back later in the round, and every wrong pick shows you what that option actually matches.</p>
+      <div class="statrow"><div class="stat"><b>${ITEMS.filter(i=>i.t==="pair").length}</b><span>Matches</span></div><div class="stat"><b>${DATA.seqs.length}</b><span>Order-the-steps</span></div><div class="stat"><b>${S.best||0}</b><span>Best streak</span></div></div>
+      <div><button class="btn primary" type="button" id="goRF">Play Rapid Fire &rarr;</button></div>
+    </section>
+    <section class="panel mode-card">
+      <span class="k">Mode 2</span>
+      <h2>Grid Lock</h2>
+      <p>Fill a whole chart from a tile bank, sudoku style. <b>Easy</b> gives you the anchor column and some cells. <b>Hard</b> gives only the clue column, and each locked cell opens only after the cell it depends on is solved.</p>
+      <div class="statrow"><div class="stat"><b>${gs}</b><span>Grids</span></div><div class="stat"><b>${ge}/${gs}</b><span>Solved easy</span></div><div class="stat"><b>${gh}/${gs}</b><span>Solved hard</span></div></div>
+      <div><button class="btn primary" type="button" id="goG">Play Grid Lock &rarr;</button></div>
+    </section>
+  </div>
+  <section class="panel">
+    <div class="statrow" style="justify-content:space-between;align-items:end">
+      <div><h2>Mastery</h2><p class="ask" style="margin-top:2px">An item is mastered when you get it right twice in a row.</p></div>
+      <div class="stat"><b>${m}/${total}</b><span>Items mastered</span></div>
+    </div>
+    <div style="margin-top:10px">
+    ${DATA.lectures.map(l=>{const its=ITEMS.filter(i=>i.lec===l.k);const mm=its.filter(i=>mastered(i.key)).length;const pct=its.length?Math.round(100*mm/its.length):0;return `<div class="lecrow">${lecTag(l.k)}<span>${esc(l.name)}</span><div class="bar"><i style="width:${pct}%"></i></div><span class="pct">${mm}/${its.length}</span></div>`;}).join("")}
+    </div>
+  </section>
+  <section class="panel">
+    <details class="how">
+      <summary>How to play</summary>
+      <ul>
+        <li><b>Match types in this set:</b> ${kindsUsed.map(k=>KIND[k].l).join(" · ")}.</li>
+        <li><b>Rapid Fire:</b> press 1–4 to answer and Enter for the next card. Order-the-steps cards: tap the steps first to last; a wrong tap shakes and costs points.</li>
+        <li><b>Mixed direction</b> sometimes flips a card, showing the definition or finding and asking for the term.</li>
+        <li><b>Grid Lock:</b> tap an empty cell, then tap a tile (or drag the tile onto the cell). Decoy tiles are crossed out once you try them. A wrong tile counts as a mistake; three stars means no mistakes and no hints.</li>
+        <li><b>Hard mode:</b> the blue clue column is all you get. A padlock means that cell unlocks once the column named under its header is solved for that row.</li>
+        <li>Progress is kept in this browser only.</li>
+      </ul>
+    </details>
+  </section>`;
+  $("#goRF").onclick=()=>go("rf");
+  $("#goG").onclick=()=>go("glist");
+}
+
+/* ---------- RAPID FIRE: setup ---------- */
+function renderRFSetup(){
+  $("#app").innerHTML=`
+  <section class="panel opts">
+    <h2>Rapid Fire setup</h2>
+    ${lecChips()}
+    ${kindChips()}
+    ${segHTML("len","Length",[["10","10"],["20","20"],["40","40"],["all","All"]],F.len)}
+    ${segHTML("timer","Shot clock",[["off","Off"],["20","20 s"],["10","10 s"]],F.timer)}
+    ${segHTML("dir","Direction",[["fwd","Forward"],["mixed","Mixed"]],F.dir)}
+    ${segHTML("focus","Focus",[["all","Everything"],["new","Not mastered"],["miss","Last missed"]],F.focus)}
+    <div class="navrow"><span class="ask" id="poolCt"></span><button class="btn primary" id="startRF" type="button">Start &rarr;</button></div>
+  </section>`;
+  const root=$("#app");
+  const upd=()=>{const n=pool().length;$("#poolCt").textContent=`${n} item${n===1?"":"s"} match these filters.`;$("#startRF").disabled=!n;};
+  bindChips(root,upd);["len","timer","dir","focus"].forEach(n=>bindSeg(root,n,upd));upd();
+  $("#startRF").onclick=startRF;
+}
+
+/* ---------- RAPID FIRE: play ---------- */
+let RF=null, timerId=null;
+function stopTimer(){if(timerId){cancelAnimationFrame(timerId);timerId=null;}}
+function startRF(){
+  let p=shuffle(pool());
+  // interleave so the same set doesn't come back to back
+  const out=[];while(p.length){let i=p.findIndex(x=>!out.length||sid(x)!==sid(out[out.length-1]));if(i<0)i=0;out.push(p.splice(i,1)[0]);}
+  const n=F.len==="all"?out.length:Math.min(out.length,+F.len);
+  RF={q:out.slice(0,n).map(it=>({it,retry:false})),i:0,score:0,streak:0,best:0,first:0,firstOk:0,misses:[],answered:false};
+  go("rfplay");
+}
+const sid=it=>it.t==="pair"?it.set.id:it.q.id;
+function topBar(){
+  const tot=RF.q.length;
+  return `<div class="rf-top">
+    <div class="statrow">
+      <div class="stat"><b>${Math.min(RF.i+1,tot)}/${tot}</b><span>Card</span></div>
+      <div class="stat"><b>${RF.score}</b><span>Score</span></div>
+      <div class="stat"><b>${RF.streak}</b><span>Streak</span></div>
+      <div class="stat"><b>${RF.first?Math.round(100*RF.firstOk/RF.first)+"%":"—"}</b><span>First-try accuracy</span></div>
+    </div>
+    <button class="btn sm" type="button" id="quitRF">End round</button>
+  </div>
+  <div class="bar"><i style="width:${100*RF.i/tot}%;background:var(--accent)"></i></div>`;
+}
+function renderQ(){
+  if(RF.i>=RF.q.length){go("rfend");return;}
+  const cur=RF.q[RF.i]; RF.answered=false;
+  if(cur.it.t==="seq")return renderSeq(cur);
+  const it=cur.it,s=it.set,p=it.p;
+  if(cur.rev===undefined)cur.rev=F.dir==="mixed"&&Math.random()<.3;
+  if(!cur.opts){
+    const others=shuffle(s.pairs.filter((_,j)=>j!==it.i)).slice(0,3);
+    cur.opts=shuffle([p,...others]);
+  }
+  const K=KIND[s.kind]||KIND["term-def"];
+  const promptLab=cur.rev?s.right:s.left, ansLab=cur.rev?s.left:s.right;
+  $("#app").innerHTML=`${topBar()}
+  <section class="qcard panel">
+    <div class="qhead"><span class="kind" style="--kc:var(${K.c})">${cur.rev?esc(K.l.split(" → ").reverse().join(" → ")):K.l}</span>${lecTag(it.lec)}<span class="qset">${esc(s.title)}</span>${cur.retry?'<span class="hy" style="background:var(--once-bg);border-color:var(--once);color:var(--ink)">Retry</span>':""}</div>
+    ${F.timer!=="off"?'<div class="timer" aria-hidden="true"><i id="tbar"></i></div>':""}
+    <div><div class="prompt-lab">${esc(promptLab)}</div><p class="prompt">${esc(cur.rev?p.b:p.a)}</p></div>
+    <p class="ask">Pick the matching ${esc(ansLab.toLowerCase())}.</p>
+    <div class="options" role="group" aria-label="Answer choices">
+      ${cur.opts.map((o,k)=>`<button type="button" class="opt" data-k="${k}"><span class="key">${k+1}</span><span>${esc(cur.rev?o.a:o.b)}</span></button>`).join("")}
+    </div>
+    <div id="fbSlot"></div>
+  </section>`;
+  $("#quitRF").onclick=()=>go("rfend");
+  document.querySelectorAll(".opt[data-k]").forEach(b=>b.onclick=()=>answer(+b.dataset.k));
+  if(F.timer!=="off")runTimer(+F.timer,()=>answer(-1));
+}
+function runTimer(sec,onEnd){
+  const t0=performance.now();
+  const tick=now=>{const f=Math.max(0,1-(now-t0)/(sec*1000));const bar=$("#tbar");if(bar){bar.style.width=(f*100)+"%";bar.classList.toggle("low",f<.3);}RF.tleft=f;if(f<=0){timerId=null;onEnd();return;}timerId=requestAnimationFrame(tick);};
+  timerId=requestAnimationFrame(tick);
+}
+function record(cur,ok){
+  const st=itemStat(cur.it.key);st.n++;if(ok){st.ok++;st.run++;}else st.run=0;st.last=ok;
+  if(!cur.retry){RF.first++;if(ok)RF.firstOk++;}
+  if(ok){RF.streak++;RF.best=Math.max(RF.best,RF.streak);S.best=Math.max(S.best||0,RF.best);}else{RF.streak=0;}
+  if(!ok){
+    if(!RF.misses.includes(cur.it))RF.misses.push(cur.it);
+    if(!cur.retry){const at=Math.min(RF.q.length,RF.i+3+Math.floor(Math.random()*3));RF.q.splice(at,0,{it:cur.it,retry:true});}
+  }
+  save();
+}
+function answer(k){
+  if(RF.answered)return;RF.answered=true;stopTimer();
+  const cur=RF.q[RF.i],it=cur.it,s=it.set,p=it.p;
+  const chosen=k>=0?cur.opts[k]:null, ok=chosen===p;
+  let pts=0;if(ok){pts=100+Math.min(50,RF.streak*10);if(F.timer!=="off")pts+=Math.round(50*(RF.tleft||0));}
+  RF.score+=pts;record(cur,ok);
+  document.querySelectorAll(".opt[data-k]").forEach(b=>{const o=cur.opts[+b.dataset.k];b.disabled=true;if(o===p)b.classList.add("correct");else if(o===chosen)b.classList.add("wrong");else b.classList.add("dim");});
+  const ansTxt=cur.rev?p.a:p.b;
+  let also="";
+  if(chosen&&!ok)also=`<p class="also">You picked <b>${esc(cur.rev?chosen.a:chosen.b)}</b>, which matches <b>${esc(cur.rev?chosen.b:chosen.a)}</b>.</p>`;
+  $("#fbSlot").innerHTML=`<div class="fb ${ok?"ok":"bad"}">
+    <h3>${ok?`Correct · +${pts}`:k<0?"Time's up":"Not quite"}</h3>
+    ${ok?"":`<p>Correct match: <b>${esc(ansTxt)}</b></p>`}
+    ${p.why?`<p>${esc(p.why)}</p>`:""}
+    ${also}
+    ${p.hy?`<div class="hybox"><b>High yield · Step 1</b>${esc(p.a)} → ${esc(p.b)}</div>`:""}
+    <div class="navrow"><span class="kbd">${ok?"":"This one comes back later in the round. "}Enter = next</span><button class="btn primary" id="nextQ" type="button">Next &rarr;</button></div>
+  </div>`;
+  $("#nextQ").onclick=next;$("#nextQ").focus({preventScroll:true});
+  $("#fbSlot").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+function next(){RF.i++;renderQ();}
+function renderSeq(cur){
+  const q=cur.it.q;
+  if(!cur.order){cur.order=shuffle(q.steps.map((_,i)=>i));if(cur.order.every((v,i)=>v===i)&&q.steps.length>1)cur.order.reverse();}
+  cur.placed=0;cur.err=0;
+  const draw=()=>{
+    $("#app").innerHTML=`${topBar()}
+    <section class="qcard panel">
+      <div class="qhead"><span class="kind" style="--kc:var(${KIND.sequence.c})">${KIND.sequence.l}</span>${lecTag(q.lec)}<span class="qset">${esc(q.title)}</span>${cur.retry?'<span class="hy" style="background:var(--once-bg);border-color:var(--once);color:var(--ink)">Retry</span>':""}</div>
+      ${F.timer!=="off"?'<div class="timer" aria-hidden="true"><i id="tbar"></i></div>':""}
+      <p class="prompt">${esc(q.prompt)}</p>
+      <ol class="seq-done">${q.steps.map((s,i)=>i<cur.placed?`<li>${esc(s)}</li>`:i===cur.placed?`<li class="slot">Tap step ${i+1}…</li>`:"").join("")}</ol>
+      <div class="seq-pool" role="group" aria-label="Steps to place">${cur.order.filter(i=>i>=cur.placed).map(i=>`<button type="button" class="opt" data-s="${i}"><span>${esc(q.steps[i])}</span></button>`).join("")}</div>
+      <div class="navrow"><span class="kbd">Mistakes: ${cur.err}</span><button class="btn sm" type="button" id="giveUp">Show order</button></div>
+      <div id="fbSlot"></div>
+    </section>`;
+    $("#quitRF").onclick=()=>go("rfend");
+    $("#giveUp").onclick=()=>{cur.err=Math.max(cur.err,3);cur.placed=q.steps.length;finishSeq(cur,true);};
+    document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{
+      const i=+b.dataset.s;
+      if(i===cur.placed){cur.placed++;if(cur.placed>=q.steps.length){finishSeq(cur);}else draw();}
+      else{cur.err++;b.classList.remove("shake");void b.offsetWidth;b.classList.add("shake");$(".navrow .kbd").textContent="Mistakes: "+cur.err;}
+    });
+  };
+  draw();
+  if(F.timer!=="off")runTimer(+F.timer*2,()=>{cur.err=Math.max(cur.err,3);cur.placed=q.steps.length;finishSeq(cur,true);});
+}
+function finishSeq(cur,gaveUp){
+  if(RF.answered)return;RF.answered=true;stopTimer();
+  const q=cur.it.q, ok=!gaveUp&&cur.err===0;
+  const pts=gaveUp?0:Math.max(0,100-25*cur.err)+(ok?Math.min(50,RF.streak*10):0);
+  RF.score+=pts;record(cur,ok);
+  $("#app").querySelector(".seq-done").innerHTML=q.steps.map(s=>`<li>${esc(s)}</li>`).join("");
+  $("#app").querySelector(".seq-pool").innerHTML="";
+  $("#giveUp").remove();
+  $("#fbSlot").innerHTML=`<div class="fb ${ok?"ok":"bad"}">
+    <h3>${ok?`Perfect order · +${pts}`:gaveUp?"Here's the order":`Done with ${cur.err} mistake${cur.err===1?"":"s"} · +${pts}`}</h3>
+    ${q.why?`<p>${esc(q.why)}</p>`:""}
+    ${q.hy?`<div class="hybox"><b>High yield · Step 1</b>${esc(q.title)}: know this order cold.</div>`:""}
+    <div class="navrow"><span class="kbd">${ok?"":"This one comes back later in the round. "}Enter = next</span><button class="btn primary" id="nextQ" type="button">Next &rarr;</button></div>
+  </div>`;
+  $("#nextQ").onclick=next;$("#nextQ").focus({preventScroll:true});
+}
+document.addEventListener("keydown",e=>{
+  if(view!=="rfplay"||e.metaKey||e.ctrlKey||e.altKey)return;
+  if(/^[1-4]$/.test(e.key)&&!RF.answered){const b=$(`.opt[data-k="${+e.key-1}"]`);if(b){e.preventDefault();b.click();}}
+  else if(e.key==="Enter"&&RF.answered&&document.activeElement&&document.activeElement.id!=="quitRF"){const n=$("#nextQ");if(n&&document.activeElement!==n){e.preventDefault();n.click();}}
+});
+
+/* ---------- RAPID FIRE: end ---------- */
+function renderEnd(){
+  if(!RF){go("rf");return;}
+  S.rounds=(S.rounds||0)+1;save();
+  const acc=RF.first?Math.round(100*RF.firstOk/RF.first):0;
+  $("#app").innerHTML=`<section class="end panel">
+    <h2>Round complete</h2>
+    <div class="statrow">
+      <div class="stat"><b class="big">${acc}%</b><span>First-try accuracy</span></div>
+      <div class="stat"><b class="big">${RF.score}</b><span>Score</span></div>
+      <div class="stat"><b class="big">${RF.best}</b><span>Best streak</span></div>
+    </div>
+    ${RF.misses.length?`<h3>Review your misses</h3><ul class="misslist">${RF.misses.map(it=>it.t==="pair"?`<li>${lecTag(it.lec)} <span class="a">${esc(it.p.a)}</span> → <span class="b">${esc(it.p.b)}</span></li>`:`<li>${lecTag(it.lec)} <span class="a">${esc(it.q.title)}</span><br><span class="b">${it.q.steps.map(esc).join(" → ")}</span></li>`).join("")}</ul>`:`<p>No misses. Try a longer round, the shot clock, or Hard Grid Lock.</p>`}
+    <div class="navrow">
+      <button class="btn" type="button" id="home2">Home</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">${RF.misses.length?'<button class="btn" type="button" id="drill">Drill these misses</button>':""}<button class="btn primary" type="button" id="again">New round &rarr;</button></div>
+    </div>
+  </section>`;
+  $("#home2").onclick=()=>go("home");
+  $("#again").onclick=startRF;
+  const d=$("#drill");if(d)d.onclick=()=>{RF={q:shuffle(RF.misses).map(it=>({it,retry:false})),i:0,score:0,streak:0,best:0,first:0,firstOk:0,misses:[],answered:false};go("rfplay");};
+}
+
+/* ---------- GRID LOCK: list ---------- */
+function renderGList(){
+  const gs=DATA.grids.filter(g=>F.lecs.has(g.lec));
+  $("#app").innerHTML=`<section class="panel opts">
+    <h2>Grid Lock</h2>
+    ${segHTML("diff","Difficulty",[["easy","Easy · anchors + some cells given"],["hard","Hard · clue column only, locked chain"]],F.diff)}
+    ${lecChips()}
+  </section>
+  <div class="glist">${gs.length?gs.map(g=>{const st=S.grids[g.id]||{};return `<button type="button" class="gcard" data-g="${g.id}">
+    <div class="row">${lecTag(g.lec)}<span>${g.rows.length} rows × ${g.cols.length} cols</span></div>
+    <h3>${esc(g.title)}</h3><p>${esc(g.blurb)}</p>
+    <div class="row"><span>Easy ${stars(st.easy||0)}</span><span>Hard ${stars(st.hard||0)}</span></div>
+  </button>`;}).join(""):'<p class="empty-state">No grids for the selected lectures.</p>'}</div>`;
+  const root=$("#app");
+  bindSeg(root,"diff");bindChips(root,renderGList);
+  root.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>go("grid",b.dataset.g));
+}
+
+/* ---------- GRID LOCK: play ---------- */
+let G=null;
+function startGrid(id){
+  const g=DATA.grids.find(x=>x.id===id); if(!g){go("glist");return;}
+  const hard=F.diff==="hard", given=new Set(hard?g.hardGiven:g.easyGiven);
+  const cells=g.rows.map(r=>r.map((v,c)=>({v,given:given.has(c),filled:false})));
+  if(!hard){ // reveal ~30% of the remaining cells, but leave at least 2 blanks per column
+    g.cols.forEach((_,c)=>{if(given.has(c))return;const idx=shuffle(g.rows.map((_,r)=>r));const k=Math.min(Math.floor(g.rows.length*.3+Math.random()*.6),g.rows.length-2);idx.slice(0,Math.max(0,k)).forEach(r=>cells[r][c].given=true);});
+  }
+  const tileOrder={};g.cols.forEach((_,c)=>{tileOrder[c]=shuffle([...new Set(g.rows.map(r=>r[c])),...((g.decoys||{})[c]||[])]);});
+  G={g,hard,cells,sel:null,mistakes:0,hints:0,t0:Date.now(),tried:{},tileOrder,doneRows:new Set(),done:false,msg:"",msgCls:""};
+  g.rows.forEach((_,r)=>{if(rowDone(r))G.doneRows.add(r);});
+  G.sel=nextOpen(-1);
+  drawGrid();
+}
+const isOk=(r,c)=>G.cells[r][c].given||G.cells[r][c].filled;
+const rowDone=r=>G.cells[r].every((_,c)=>isOk(r,c));
+function locked(r,c){if(!G.hard)return false;const d=G.g.cols[c].dep;if(d===undefined||d===null)return false;return !isOk(r,d);}
+function open(r,c){return !isOk(r,c)&&!locked(r,c);}
+function nextOpen(from){const R=G.g.rows.length,C=G.g.cols.length,N=R*C;for(let k=1;k<=N;k++){const x=(from+k)%N,r=Math.floor(x/C),c=x%C;if(from<0&&k===N+1)break;if(open(r,c))return [r,c];}return null;}
+function remaining(c){const m={};G.g.rows.forEach((row,r)=>{if(!isOk(r,c))m[row[c]]=(m[row[c]]||0)+1;});return m;}
+function rowName(r){const g=G.g;const k=(G.hard?g.hardGiven:g.easyGiven)[0];return g.rows[r][k];}
+function drawGrid(){
+  const g=G.g,C=g.cols.length;
+  const tot=g.rows.length*C, done=g.rows.reduce((a,_,r)=>a+g.cols.reduce((b,_,c)=>b+(isOk(r,c)?1:0),0),0);
+  const givenCols=new Set(G.hard?g.hardGiven:g.easyGiven);
+  const head=g.cols.map((col,c)=>{const clue=G.hard&&givenCols.has(c);const dep=col.dep;return `<th scope="col" class="${clue?"clue":""}">${esc(col.h)}${clue?"<small>Clue · given</small>":G.hard&&dep!=null?`<small>${LOCK.replace('aria-hidden','style="width:10px;height:10px;vertical-align:-1px" aria-hidden')} after ${esc(g.cols[dep].h)}</small>`:""}</th>`;}).join("");
+  const body=g.rows.map((row,r)=>`<tr>${row.map((v,c)=>{
+    const cl=G.cells[r][c];
+    if(cl.given){const clue=G.hard&&givenCols.has(c);return `<td><div class="cell ${clue?"clue":"given"}">${esc(v)}</div></td>`;}
+    if(cl.filled)return `<td><div class="cell filled${cl.pop?" pop":""}">${esc(v)}</div></td>`;
+    if(locked(r,c))return `<td><button type="button" class="cell locked" disabled title="Solve ${esc(g.cols[g.cols[c].dep].h)} for this row first">${LOCK}<span>${esc(g.cols[g.cols[c].dep].h)} first</span></button></td>`;
+    const sel=G.sel&&G.sel[0]===r&&G.sel[1]===c;
+    return `<td><button type="button" class="cell empty${sel?" sel":""}${cl.err?" err":""}" data-r="${r}" data-c="${c}" aria-label="${esc(g.cols[c].h)}, row ${r+1}, empty">${sel?"Pick a tile":"—"}</button></td>`;
+  }).join("")}</tr>`).join("");
+  g.rows.forEach((_,r)=>g.cols.forEach((_,c)=>{G.cells[r][c].pop=false;G.cells[r][c].err=false;}));
+  const elapsed=Math.round((Date.now()-G.t0)/1000);
+  let bank="";
+  if(!G.done){
+    if(G.sel){
+      const c=G.sel[1],rem=remaining(c),tried=G.tried[c]||new Set();
+      const tiles=G.tileOrder[c].filter(v=>rem[v]||(!g.rows.some(rr=>rr[c]===v))).map(v=>{const dec=!g.rows.some(rr=>rr[c]===v);const out=dec&&tried.has(v);return `<button type="button" class="tile${out?" out":""}" ${out?"disabled":""} draggable="${!out}" data-v="${esc(v)}">${esc(v)}${rem[v]>1?`<span class="ct">×${rem[v]}</span>`:""}</button>`;}).join("");
+      bank=`<div class="bank" id="bank"><div class="bh"><span>Tiles for <b>${esc(g.cols[c].h)}</b> · row ${G.sel[0]+1}${G.hard?"":` (${esc(rowName(G.sel[0]))})`}</span><span class="toast ${G.msgCls}" id="toast" role="status">${esc(G.msg)}</span></div><div class="tiles">${tiles}</div></div>`;
+    } else bank=`<div class="bank"><span class="toast ${G.msgCls}" role="status">${esc(G.msg)||"Tap an empty cell to see its tiles."}</span></div>`;
+  }
+  const notes=[...G.doneRows].sort((a,b)=>a-b).filter(r=>g.notes&&g.notes[r]).map(r=>`<li><b>${esc(g.rows[r][g.easyGiven[0]])}:</b> ${esc(g.notes[r])}</li>`).join("");
+  $("#app").innerHTML=`<section class="gwrap">
+    <div class="rf-top">
+      <div>${lecTag(g.lec)} <span class="qset">${G.hard?"Hard":"Easy"}</span><h2 style="margin-top:4px">${esc(g.title)}</h2><p class="ask">${esc(g.blurb)}</p></div>
+      <div class="statrow"><div class="stat"><b>${done}/${tot}</b><span>Cells</span></div><div class="stat"><b>${G.mistakes}</b><span>Mistakes</span></div><div class="stat"><b>${G.hints}</b><span>Hints</span></div><div class="stat"><b id="clock">${fmt(elapsed)}</b><span>Time</span></div></div>
+    </div>
+    <div class="navrow"><button class="btn sm" type="button" id="gBack">&larr; All grids</button><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" type="button" id="gHint" ${G.done?"disabled":""}>Hint (fill one cell)</button><button class="btn sm" type="button" id="gRestart">Restart</button><button class="btn sm" type="button" id="gSwap">Switch to ${G.hard?"Easy":"Hard"}</button></div></div>
+    <div class="gtable-wrap"><table class="gt"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+    ${G.done?doneHTML():bank}
+    ${notes&&!G.done?`<div><h3 style="font-size:1rem;margin-bottom:6px">Solved rows</h3><ul class="notes">${notes}</ul></div>`:""}
+  </section>`;
+  $("#gBack").onclick=()=>go("glist");
+  $("#gRestart").onclick=()=>startGrid(g.id);
+  $("#gSwap").onclick=()=>{F.diff=G.hard?"easy":"hard";startGrid(g.id);};
+  $("#gHint").onclick=hint;
+  document.querySelectorAll(".cell.empty").forEach(b=>{
+    b.onclick=()=>{G.sel=[+b.dataset.r,+b.dataset.c];G.msg="";drawGrid();const t=$(".tile:not([disabled])");if(t)t.focus({preventScroll:true});const bk=$("#bank");if(bk)bk.scrollIntoView({block:"nearest",behavior:"smooth"});};
+    b.ondragover=e=>{e.preventDefault();b.classList.add("drop");};
+    b.ondragleave=()=>b.classList.remove("drop");
+    b.ondrop=e=>{e.preventDefault();const v=e.dataTransfer.getData("text/plain");place(+b.dataset.r,+b.dataset.c,v);};
+  });
+  document.querySelectorAll(".tile[data-v]").forEach(t=>{
+    t.onclick=()=>{if(G.sel)place(G.sel[0],G.sel[1],t.dataset.v);};
+    t.ondragstart=e=>{e.dataTransfer.setData("text/plain",t.dataset.v);t.classList.add("dragging");};
+    t.ondragend=()=>t.classList.remove("dragging");
+  });
+  const d=$("#gDone");if(d)d.onclick=()=>go("glist");
+  const h=$("#gHard");if(h)h.onclick=()=>{F.diff="hard";startGrid(g.id);};
+  const nx=$("#gNext");if(nx)nx.onclick=()=>{const L=DATA.grids;const i=L.indexOf(g);go("grid",L[(i+1)%L.length].id);};
+  tickClock();
+}
+const fmt=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+let clockT=null;
+function tickClock(){clearTimeout(clockT);if(view!=="grid"||!G||G.done)return;clockT=setTimeout(()=>{const el=$("#clock");if(el)el.textContent=fmt(Math.round((Date.now()-G.t0)/1000));tickClock();},1000);}
+function place(r,c,v){
+  if(G.done||!open(r,c))return;
+  const g=G.g;
+  if(g.rows[r][c]===v){
+    G.cells[r][c].filled=true;G.cells[r][c].pop=true;
+    G.msg="Correct.";G.msgCls="ok";
+    if(!G.doneRows.has(r)&&rowDone(r))G.doneRows.add(r);
+    const C=g.cols.length;G.sel=nextOpen(r*C+c);
+    if(!G.sel&&g.rows.every((_,rr)=>rowDone(rr)))finishGrid();
+  } else {
+    G.mistakes++;G.cells[r][c].err=true;G.msgCls="bad";
+    const inCol=g.rows.some(rr=>rr[c]===v);
+    if(inCol){G.msg=`“${v}” belongs in this column, but not this row.`;}
+    else{(G.tried[c]=G.tried[c]||new Set()).add(v);G.msg=`“${v}” is a decoy. It isn't in this chart.`;}
+    G.sel=[r,c];
+  }
+  drawGrid();
+}
+function hint(){
+  if(G.done)return;let t=G.sel&&open(...G.sel)?G.sel:nextOpen(-1);if(!t)return;
+  G.hints++;G.cells[t[0]][t[1]].filled=true;G.cells[t[0]][t[1]].pop=true;
+  if(rowDone(t[0]))G.doneRows.add(t[0]);
+  G.msg=`Hint: filled “${G.g.rows[t[0]][t[1]]}”.`;G.msgCls="";
+  const C=G.g.cols.length;G.sel=nextOpen(t[0]*C+t[1]);
+  if(!G.sel&&G.g.rows.every((_,rr)=>rowDone(rr)))finishGrid();
+  drawGrid();
+}
+function finishGrid(){
+  G.done=true;G.secs=Math.round((Date.now()-G.t0)/1000);
+  const pen=G.mistakes+2*G.hints;G.stars=pen===0?3:pen<=2?2:1;
+  const st=S.grids[G.g.id]||(S.grids[G.g.id]={});const k=G.hard?"hard":"easy";st[k]=Math.max(st[k]||0,G.stars);save();
+}
+function doneHTML(){
+  const g=G.g;
+  return `<section class="panel gdone">
+    <div class="statrow" style="align-items:center"><h2>Grid solved</h2>${stars(G.stars)}<span class="ask">${fmt(G.secs)} · ${G.mistakes} mistake${G.mistakes===1?"":"s"} · ${G.hints} hint${G.hints===1?"":"s"}</span></div>
+    ${g.hy?`<div class="hybox"><b>High yield · Step 1</b>${esc(g.hy)}</div>`:""}
+    <ul class="notes">${g.rows.map((row,r)=>g.notes&&g.notes[r]?`<li><b>${esc(row[g.easyGiven[0]])}:</b> ${esc(g.notes[r])}</li>`:"").join("")}</ul>
+    <div class="navrow"><button class="btn" type="button" id="gDone">All grids</button><div style="display:flex;gap:8px;flex-wrap:wrap">${G.hard?"":'<button class="btn" type="button" id="gHard">Try it on Hard</button>'}<button class="btn primary" type="button" id="gNext">Next grid &rarr;</button></div></div>
+  </section>`;
+}
+
+go("home");
+})();
+</script>
+</body>
+</html>
