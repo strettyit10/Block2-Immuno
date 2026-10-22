@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IRD04 Cytokines Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Graduate&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: HoyaDocs Immunology hub shell (wordmark bar, section nav, navy varsity hero) around one reading column (max 1000px) of LO "sheets". Block 2 palette: navy + green + silver. */
+:root{
+  --bg:#EEF0F3; --panel:#FFFFFF; --sunk:#F5F7FA; --ink:#1A3363; --muted:#5B6274; --line:#D3D8E0;
+  --navy:#0F2244; --navy2:#1A3363; --tint:#E6E9EE; --bd:#C5CBD6; --onnavy:#F4F1EA; --onnavy-mut:#A9B3C7;
+  --silver:#6E7787; --silver-hi:#C5CBD6;
+  --tan:#4CB36A; --tan-ink:#1E7A3C;
+  /* callouts */
+  --s1-bg:#FFF4C2; --s1-bd:#D4A300; --s1-ink:#5E4700;      /* Step 1 HY: yellow bg, darker yellow border */
+  --ex-bg:#E3F0FB; --ex-bd:#1D6FA8; --ex-ink:#0F3F66;      /* In-house exam */
+  --trap-bg:#FFEDE3; --trap-bd:#D2621B; --trap-ink:#86380A; /* Step 1 trap */
+  --mem-bg:#EFEBFB; --mem-bd:#5B4BC4; --mem-ink:#3F2F9E;   /* Memory tool */
+  --bz-bg:#DCF1EE; --bz-bd:#1F7F78; --bz-ink:#0F5F59;      /* Buzzwords */
+  /* discipline + diagram colors */
+  --imm:#5B4BC4; --pat:#1F7F78; --pha:#2368A8; --mic:#4D7C2A;
+  --c1:#2368A8; --c2:#C4631B; --c3:#1F7F78; --c4:#B8324A; --c5:#5B4BC4; --c6:#8C6D0A;
+  --c1-soft:#E0ECF8; --c2-soft:#FBE9DA; --c3-soft:#DCF1EE; --c4-soft:#F8DDE3; --c5-soft:#ECE9FA; --c6-soft:#F6EED2;
+  --good:#1C7A4A; --bad:#B42318;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --varsity:"Graduate","Rockwell","Georgia",serif;
+  --cond:"Barlow Condensed","Arial Narrow",sans-serif;
+  --mono-f:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.58}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+a{color:var(--tan-ink)}
+:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+h1,h2,h3,h4{text-wrap:balance}
+b,strong{color:inherit;font-weight:700}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:22px} li{margin:4px 0}
+ul ul{margin:3px 0}
+img{max-width:100%}
+
+/* hub shell */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0 12px}
+.word{font-family:var(--varsity);font-size:24px;letter-spacing:.04em;text-decoration:none;color:var(--ink);line-height:1}
+.word span{color:var(--silver)}
+.rev{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.topr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.themebtn{background:transparent;border:1.5px solid var(--line);border-radius:999px;font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:5px 14px;cursor:pointer}
+.themebtn:hover{color:var(--ink);border-color:var(--ink)}
+.hubnav{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;border-top:3px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:22px}
+.hubnav::-webkit-scrollbar{display:none}
+.hubnav a{flex:none;text-decoration:none;font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:11px 12px 9px;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:7px}
+.hubnav a:hover{color:var(--ink)}
+.hubnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tan)}
+.hubnav a i{width:9px;height:9px;border-radius:2px;flex:none}
+.hubnav .sep{flex:none;width:1px;background:var(--line);margin:9px 6px}
+/* hero */
+header.hero{background:var(--navy);color:var(--onnavy);border-radius:14px;padding:clamp(20px,3.5vw,36px) clamp(20px,4vw,40px);margin-bottom:20px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(255,255,255,.045) calc(10% - 1px) 10%),
+  radial-gradient(ellipse at 88% 115%, rgba(76,179,106,.34), transparent 58%)}
+header.hero > *{position:relative}
+.hero .k{font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#8FD9A4}
+.hero h1{font-family:var(--varsity);font-weight:400;font-size:clamp(28px,5.4vw,52px);line-height:1.02;letter-spacing:.02em;margin:10px 0 4px;color:#F4F1EA;text-shadow:2px 2px 0 #1A3363,4px 4px 0 #4CB36A}
+.hero .lede{color:#C5CBD6;max-width:62ch;margin:10px 0 0;font-size:15px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chip{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid rgba(238,233,222,.45);border-radius:6px;padding:4px 11px;color:#F4F1EA}
+
+/* panels */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 0 18px}
+.panel > h2{margin:0 0 10px;font-family:var(--cond);font-size:15px;text-transform:uppercase;letter-spacing:.14em;color:var(--tan-ink)}
+.lo-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.lo-list li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;margin:0}
+.lo-list .n{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-weight:800;font-size:13px;border-radius:7px;padding:3px 8px;margin-top:2px;white-space:nowrap}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:6px}
+nav.toc a{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+nav.toc a:hover{background:var(--navy);color:#F4F1EA;border-color:var(--navy)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.legend span{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 9px;border:1.5px solid}
+.lg-s1{background:var(--s1-bg);border-color:var(--s1-bd)!important;color:var(--s1-ink)}
+.lg-ex{background:var(--ex-bg);border-color:var(--ex-bd)!important;color:var(--ex-ink)}
+.lg-trap{background:var(--trap-bg);border-color:var(--trap-bd)!important;color:var(--trap-ink)}
+.lg-mem{background:var(--mem-bg);border-color:var(--mem-bd)!important;color:var(--mem-ink)}
+.lg-bz{background:var(--bz-bg);border-color:var(--bz-bd)!important;color:var(--bz-ink)}
+
+/* LO sections */
+section.lo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px clamp(16px,3vw,28px) 22px;margin:0 0 24px;scroll-margin-top:12px}
+section.lo > h2{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:start;font-family:var(--varsity);font-weight:400;font-size:clamp(20px,2.6vw,25px);letter-spacing:.03em;color:var(--ink);border-bottom:2px dashed var(--line);padding:18px 0 12px;margin:0 0 12px;line-height:1.25}
+section.lo > h2 .num{grid-row:1 / span 2;font-family:var(--cond);font-size:14px;font-weight:800;letter-spacing:.06em;background:var(--tan);color:#0F2244;min-width:46px;height:30px;padding:0 9px;border-radius:6px;box-shadow:0 3px 0 var(--tan-ink);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+section.lo > h2 .sub{grid-column:2;display:block;font-family:var(--body);font-weight:500;color:var(--muted);font-size:14px;letter-spacing:0;margin-top:4px}
+h3{font-family:var(--cond);font-weight:800;font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin:22px 0 6px;display:flex;align-items:center;gap:8px}
+h3 .step{font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+h4{font-family:var(--cond);font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:14px 0 4px}
+.goal{background:var(--sunk);border:1px dashed var(--bd);border-radius:10px;padding:10px 14px;font-size:14px;margin:6px 0 12px}
+.goal b{color:var(--tan-ink)}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--panel)}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+thead th{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+tbody th{background:var(--tint);color:var(--ink);font-weight:700}
+tbody tr:nth-child(even) td{background:var(--sunk)}
+
+/* callouts (collapsible) */
+.co{border-radius:10px;font-size:14px;border:1.5px solid;border-left-width:6px}
+.co .t{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px}
+.co p{margin:4px 0} .co ul{margin:4px 0}
+.s1{background:var(--s1-bg);border-color:var(--s1-bd);color:var(--s1-ink)}
+.ex{background:var(--ex-bg);border-color:var(--ex-bd);color:var(--ex-ink)}
+.trap{background:var(--trap-bg);border-color:var(--trap-bd);color:var(--trap-ink)}
+.mem{background:var(--mem-bg);border-color:var(--mem-bd);color:var(--mem-ink)}
+.bz{background:var(--bz-bg);border-color:var(--bz-bd);color:var(--bz-ink)}
+.s1 .t::before{content:"★ "} .ex .t::before{content:"◆ "} .trap .t::before{content:"⚠ "} .mem .t::before{content:"✎ "} .bz .t::before{content:"\201C "}
+.coset{display:grid;gap:6px;margin:0 0 14px 16px}
+details.co{padding:0 14px;margin:8px 0}
+.coset details.co{margin:0}
+details.co > summary{cursor:pointer;list-style:none;padding:8px 0;margin:0;display:flex;align-items:center;gap:8px}
+details.co > summary::-webkit-details-marker{display:none}
+details.co > summary::after{content:"+";margin-left:auto;font-size:16px;font-weight:800}
+details.co[open] > summary::after{content:"\2212"}
+details.co .cb{padding:0 0 10px}
+.bzlist{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.bzlist span{background:var(--panel);border:1px solid var(--bz-bd);border-radius:999px;padding:2px 10px;font-size:13px}
+.bzlist span b{color:var(--bz-ink)}
+
+/* guide questions (teaching blocks) */
+details.gq{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:12px 0 6px;padding:0 14px}
+details.gq > summary{cursor:pointer;list-style:none;padding:11px 0;font-weight:400;font-size:15.5px;display:flex;gap:10px;align-items:flex-start}
+details.gq > summary::-webkit-details-marker{display:none}
+details.gq > summary .qt{flex:1;min-width:0}
+details.gq > summary .qt b{font-weight:700}
+details.gq > summary::after{content:"+";flex:none;font-weight:800;font-size:18px;line-height:1;color:var(--tan-ink)}
+details.gq[open] > summary::after{content:"\2212"}
+.gqb{border-top:1px dashed var(--bd);padding:6px 0 12px;min-width:0}
+
+/* check-yourself + application questions */
+details.ask{border:1px solid var(--line);border-radius:10px;background:var(--sunk);margin:10px 0;padding:0 14px}
+details.ask > summary{cursor:pointer;list-style:none;padding:10px 0;font-weight:650;display:flex;gap:10px;align-items:flex-start}
+details.ask > summary .qt{flex:1;min-width:0;overflow-wrap:anywhere}
+details.ask > summary::-webkit-details-marker{display:none}
+details.ask > summary .q{flex:none;font-family:var(--cond);font-size:12px;font-weight:800;color:#FFFFFF;background:var(--tan-ink);border-radius:6px;padding:2px 7px;margin-top:2px}
+details.ask > summary::after{content:"reveal";margin-left:auto;flex:none;font-family:var(--cond);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--tan-ink);margin-top:3px}
+details.ask[open] > summary::after{content:"hide"}
+details.ask .a{border-top:1px dashed var(--bd);padding:8px 0 12px;font-size:14.5px}
+
+/* cards + grids */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-top:4px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.card h4{margin-top:0;color:var(--cc,var(--ink))}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:10px 0}
+.dcard{border:1px solid var(--line);border-left:5px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.dcard h4{margin:0 0 4px;font-family:var(--body);font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink)}
+.dcard p{margin:4px 0;font-size:13.5px}
+.tag{display:inline-block;font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:5px;color:#FFFFFF;background:var(--cc,var(--tan-ink));vertical-align:1px}
+
+/* flow chains (arrows) */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:12px 0}
+.flow .st{flex:1 1 120px;min-width:0;background:var(--sunk);border:1.5px solid var(--cc,var(--bd));border-radius:9px;padding:8px 10px;font-size:13.5px}
+.flow .st b{display:block;font-family:var(--cond);font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--cc,var(--ink))}
+.flow .ar{flex:none;align-self:center;font-weight:900;color:var(--muted);font-size:18px}
+@media (max-width:620px){.flow{flex-direction:column}.flow .ar{transform:rotate(90deg)}}
+
+/* figures */
+figure{margin:14px 0;background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure img{display:block;margin:0 auto;border-radius:8px;max-height:460px;object-fit:contain}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
+svg{max-width:100%;height:auto;display:block;margin:0 auto}
+svg text{font-family:var(--body);fill:var(--ink)}
+svg .mut{fill:var(--muted)}
+svg .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
+svg .box{fill:var(--tint);stroke:var(--navy2);stroke-width:1.5}
+
+/* image ID drill */
+.ntc{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:12px 0}
+.ntc details{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.ntc img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.ntc summary{cursor:pointer;list-style:none;font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.04em;padding:7px 9px;color:var(--tan-ink)}
+.ntc summary::-webkit-details-marker{display:none}
+.ntc .ans{padding:0 9px 9px;font-size:13px}
+
+/* mcq */
+.mcq{border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:10px;padding:12px 16px;margin:14px 0;background:var(--panel)}
+.mcq .stem{font-weight:600;margin:0 0 8px}
+.mcq .stem .qn{display:inline-block;font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13px;font-weight:800;border-radius:6px;padding:1px 7px;margin-right:6px}
+.opts{display:grid;gap:6px}
+.opts button{all:unset;cursor:pointer;display:block;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;background:var(--sunk);color:var(--ink)}
+.opts button:hover{border-color:var(--bd)}
+.opts button:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+.opts button.ok{border-color:var(--good);background:var(--bz-bg);color:var(--bz-ink);font-weight:700}
+.opts button.no{border-color:var(--bad);background:var(--trap-bg);color:var(--trap-ink);text-decoration:line-through}
+.mcq .exp{margin-top:10px;border-top:1px dashed var(--bd);padding-top:8px;font-size:14px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.tools button{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 12px;cursor:pointer}
+.score{font-family:var(--cond);font-weight:800;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* rapid review checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:9px;align-items:flex-start}
+.check input{margin-top:5px;accent-color:var(--tan-ink)}
+.kbd{font-family:var(--mono-f);font-size:12.5px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+.foot{margin-top:40px;padding-top:14px;border-top:3px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media print{details > *:not(summary){display:block!important} .themebtn,.tools{display:none}}
+
+/* shared fixes */
+.coset{grid-template-columns:minmax(0,1fr)}
+.two>*,.three>*{min-width:0}
+.co .scroll,.cb{max-width:100%;overflow-x:auto}
+.ntc summary img{margin:-7px -9px 7px;width:calc(100% + 18px)}
+
+/* jump-to groups + big-picture bullets */
+nav.toc .links{align-items:center}
+nav.toc a.xt{background:var(--navy);color:#F4F1EA;border-color:var(--navy);display:inline-flex;align-items:center;gap:6px}
+nav.toc a.xt::before{font-size:12px;opacity:.85}
+nav.toc a.xt[href="#map"]::before{content:"◎"}
+nav.toc a.xt[href="#mcq"]::before{content:"?"}
+nav.toc a.xt[href="#review"]::before{content:"✓"}
+nav.toc a.xt[href="#ntc"]::before,nav.toc a.xt[href="#imgid"]::before{content:"▣"}
+nav.toc a.xt:hover{background:var(--tan);border-color:var(--tan);color:#0F2244}
+nav.toc a.lo-l{border-left:4px solid var(--tan)}
+nav.toc .tsep{flex:none;width:1px;align-self:stretch;background:var(--line);margin:0 4px}
+ul.bigp{list-style:none;padding:0;margin:12px 0 4px;display:grid;gap:8px}
+ul.bigp > li{position:relative;margin:0;padding:8px 12px 8px 34px;background:var(--sunk);border:1px solid var(--line);border-left:4px solid var(--tan);border-radius:8px}
+ul.bigp > li::before{content:"➜";position:absolute;left:11px;top:8px;color:var(--tan-ink);font-weight:800}
+ul.bigp ul{margin:5px 0 0;padding-left:18px}
+ul.bigp ul li{margin:2px 0;list-style:"→  "}
+
+/* layout v3: light only, wider page, 3-up callouts */
+:root{color-scheme:light}
+.wrap{max-width:1320px}
+.coset{grid-template-columns:repeat(auto-fill,minmax(max(260px,calc((100% - 12px)/3)),1fr));align-items:start;gap:6px}
+
+/* IRD04 master-table self-test */
+table.mt td.hid{color:transparent;background:repeating-linear-gradient(45deg,var(--tint) 0 6px,var(--sunk) 6px 12px)!important;cursor:pointer}
+table.mt td.hid *{visibility:hidden}
+table.mt th:first-child{white-space:nowrap}
+.mtools button.on{background:var(--navy);color:#F4F1EA;border-color:var(--navy)}
+.ntc{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.ntc img{aspect-ratio:auto;object-fit:contain;background:#fff}
+.mut-s{font-weight:500;font-size:12px;color:var(--muted)}
+
+/* final pass: wide diagrams scroll on phones */
+@media (max-width:700px){figure.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}figure.wide > svg{min-width:640px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="word" href="../index.html">HOYA<span>DOCS</span></a>
+  <div class="topr">
+    <div class="rev">Block 2 &middot; Immunology &middot; IRD04 &middot; Rev 1.0 &middot; Updated Oct 22, 2026</div>
+  </div>
+</header>
+<nav class="hubnav" aria-label="Immunology sections">
+  <a href="../index.html">Home</a>
+  <span class="sep"></span>
+  <a href="../IRD-Games/index.html"><i style="background:#5B4BC4"></i>Immuno Games</a>
+  <a href="index.html" aria-current="page"><i style="background:#C4631B"></i>Study Guides</a>
+  <a href="../Pathology-Database/HoyaDocs_IRD_Pathology_Database.html"><i style="background:#1F7F78"></i>Path Database</a>
+  <a href="../Pharmacology-Database/HoyaDocs_IRD_Pharm_Database.html"><i style="background:#1F7F78"></i>Pharm Database</a>
+</nav>
+
+<header class="hero">
+  <div class="k">IRD04 &middot; Immunology &middot; Study Guide</div>
+  <h1>Introduction to Cytokines</h1>
+</header>
+
+<div class="panel">
+  <h2>Learning objectives</h2>
+  <ol class="lo-list">
+    <li><span class="n">LO 1</span><span>Explain what cytokines are and how they switch on, steer and then shut down immune responses and inflammation.</span></li>
+    <li><span class="n">LO 2</span><span>Tell apart autocrine, paracrine and endocrine cytokine signaling, and give a classic example of each.</span></li>
+    <li><span class="n">LO 3</span><span>Name the receptor families that cytokines and chemokines bind, and how each one passes its signal into the cell.</span></li>
+    <li><span class="n">LO 4</span><span>For every cytokine on the must-know list, state who makes it, what it acts on and what it does, and sort it as pro-inflammatory, regulatory, growth-inducing or chemotactic.</span></li>
+  </ol>
+  <div class="legend" aria-label="Callout key">
+    <span class="lg-s1">★ Step 1 HY</span>
+    <span class="lg-trap">⚠ Step 1 trap</span>
+    <span class="lg-mem">✎ Memory tool</span>
+    <span class="lg-bz">“ Buzzwords</span>
+  </div>
+</div>
+
+<nav class="panel toc" aria-label="Jump to">
+  <h2>Jump to</h2>
+  <div class="links">
+    <a class="xt" href="#map">Big picture</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="lo-l" href="#lo1">LO 1 · What cytokines do</a>
+    <a class="lo-l" href="#lo2">LO 2 · Signaling modes</a>
+    <a class="lo-l" href="#lo3">LO 3 · Receptor families</a>
+    <a class="lo-l" href="#lo4">LO 4 · Cytokines to know</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="xt" href="#master">Master table</a>
+    <a class="xt" href="#mcq">Practice MCQs</a>
+    <a class="xt" href="#review">Rapid review</a>
+  </div>
+</nav>
+
+<!-- ===================== MAP ===================== -->
+<section class="lo" id="map">
+  <h2><span class="num">MAP</span><span>Big picture</span></h2>
+  <figure class="wide"><svg viewBox="0 0 960 330" role="img" aria-label="Concept map: cytokine sources (macrophages and dendritic cells, infected and epithelial cells, T cells and marrow stroma) send cytokines by autocrine, paracrine or endocrine routes to receptor families (JAK-STAT class I and II, TNF receptor trimers, IL-1 receptor family, chemokine GPCRs), which produce five kinds of outcome: pro-inflammatory, type 2, regulatory, growth-inducing and chemotactic">
+    <defs><marker id="map-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+    <text x="110" y="24" font-size="13" text-anchor="middle" font-weight="800" class="mut">WHO MAKES THEM</text>
+    <text x="345" y="24" font-size="13" text-anchor="middle" font-weight="800" class="mut">HOW THEY TRAVEL</text>
+    <text x="580" y="24" font-size="13" text-anchor="middle" font-weight="800" class="mut">WHAT THEY BIND</text>
+    <text x="830" y="24" font-size="13" text-anchor="middle" font-weight="800" class="mut">WHAT THEY DO</text>
+    <rect x="20" y="44" width="180" height="70" rx="10" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+    <text x="110" y="70" font-size="14" text-anchor="middle" font-weight="700">Macrophages · DCs</text>
+    <text x="110" y="89" font-size="12" text-anchor="middle" class="mut">IL-1β, IL-6, TNF-α</text>
+    <text x="110" y="104" font-size="12" text-anchor="middle" class="mut">IL-12, IL-23, BAFF</text>
+    <rect x="20" y="132" width="180" height="70" rx="10" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+    <text x="110" y="158" font-size="14" text-anchor="middle" font-weight="700">Infected / epithelial</text>
+    <text x="110" y="177" font-size="12" text-anchor="middle" class="mut">IFN-α/β · CXCL8</text>
+    <text x="110" y="192" font-size="12" text-anchor="middle" class="mut">IL-25, IL-33, TSLP</text>
+    <rect x="20" y="220" width="180" height="90" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+    <text x="110" y="246" font-size="14" text-anchor="middle" font-weight="700">T cells · marrow</text>
+    <text x="110" y="265" font-size="12" text-anchor="middle" class="mut">IL-2, IFN-γ, IL-4/5/13</text>
+    <text x="110" y="280" font-size="12" text-anchor="middle" class="mut">IL-17, IL-10, TGF-β</text>
+    <text x="110" y="295" font-size="12" text-anchor="middle" class="mut">IL-7, G-/GM-/M-CSF</text>
+    <rect x="162" y="34" width="44" height="18" rx="5" style="fill:var(--c4)"/><text x="184" y="47" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO1</text>
+    <rect x="255" y="110" width="180" height="120" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+    <text x="345" y="140" font-size="14" text-anchor="middle" font-weight="700">Autocrine</text>
+    <text x="345" y="157" font-size="12" text-anchor="middle" class="mut">self (IL-2 → own T cell)</text>
+    <text x="345" y="180" font-size="14" text-anchor="middle" font-weight="700">Paracrine</text>
+    <text x="345" y="197" font-size="12" text-anchor="middle" class="mut">neighbor · most common</text>
+    <text x="345" y="220" font-size="12" text-anchor="middle" class="mut">Endocrine: triad → liver, brain</text>
+    <rect x="397" y="100" width="44" height="18" rx="5" style="fill:var(--c6)"/><text x="419" y="113" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO2</text>
+    <rect x="490" y="44" width="180" height="266" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+    <text x="580" y="76" font-size="14" text-anchor="middle" font-weight="700">Class I / II</text>
+    <text x="580" y="93" font-size="12" text-anchor="middle" class="mut">JAK–STAT · tyrosine-P</text>
+    <text x="580" y="128" font-size="14" text-anchor="middle" font-weight="700">TNF-R (trimer)</text>
+    <text x="580" y="145" font-size="12" text-anchor="middle" class="mut">NF-κB or caspases</text>
+    <text x="580" y="180" font-size="14" text-anchor="middle" font-weight="700">IL-1R family</text>
+    <text x="580" y="197" font-size="12" text-anchor="middle" class="mut">NF-κB (IL-1β, IL-33)</text>
+    <text x="580" y="232" font-size="14" text-anchor="middle" font-weight="700">GPCR</text>
+    <text x="580" y="249" font-size="12" text-anchor="middle" class="mut">chemokines → migration</text>
+    <text x="580" y="284" font-size="12" text-anchor="middle" class="mut">TGF-β: Ser/Thr kinase</text>
+    <rect x="632" y="34" width="44" height="18" rx="5" style="fill:var(--c5)"/><text x="654" y="47" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO3</text>
+    <rect x="720" y="44" width="220" height="42" rx="9" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+    <text x="830" y="70" font-size="13.5" text-anchor="middle" font-weight="700">Pro-inflammatory</text>
+    <rect x="720" y="96" width="220" height="42" rx="9" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+    <text x="830" y="122" font-size="13.5" text-anchor="middle" font-weight="700">Type 2 (worms, allergy)</text>
+    <rect x="720" y="148" width="220" height="42" rx="9" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+    <text x="830" y="174" font-size="13.5" text-anchor="middle" font-weight="700">Regulatory (brakes)</text>
+    <rect x="720" y="200" width="220" height="42" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+    <text x="830" y="226" font-size="13.5" text-anchor="middle" font-weight="700">Growth-inducing</text>
+    <rect x="720" y="252" width="220" height="42" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+    <text x="830" y="278" font-size="13.5" text-anchor="middle" font-weight="700">Chemotactic</text>
+    <rect x="902" y="34" width="44" height="18" rx="5" style="fill:var(--c4)"/><text x="924" y="47" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO4</text>
+    <path d="M200,80 Q230,90 252,140" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M200,167 L251,167" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M200,262 Q230,250 252,205" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M435,170 L486,170" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M670,170 Q695,170 716,70" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M670,170 Q695,170 716,118" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M670,170 L716,170" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M670,170 Q695,170 716,222" class="ln" marker-end="url(#map-ar)"/>
+    <path d="M670,170 Q695,170 716,272" class="ln" marker-end="url(#map-ar)"/>
+  </svg></figure>
+  <ul class="bigp">
+    <li>Cytokines = small <b>soluble messenger proteins</b> → bind a <b>specific receptor</b> → activate · proliferate · differentiate
+      <ul><li>Made by <b>any cell</b> (infected epithelium → IFN-α/β), not just leukocytes</li><li><b>Pleiotropic</b> · <b>redundant</b> · synergistic · antagonistic</li></ul></li>
+    <li>Travel <b>autocrine</b> (IL-2 → self) · <b>paracrine</b> (IL-2 → CD8⁺ neighbor) · <b>endocrine</b> (IL-1β/IL-6/TNF-α → liver + hypothalamus)</li>
+    <li>Receptors → <b>JAK–STAT</b> (tyrosine phosphorylation; γc = IL-2/4/7/9/15/21) · <b>TNF-R trimers</b> · IL-1R · chemokine <b>GPCRs</b></li>
+    <li>Early innate → <b>inflammatory triad</b> → fever · CRP/MBL · leukocyte recruitment
+      <ul><li>Excess → <b>septic shock</b> (TNF-α → vasodilation + leak)</li></ul></li>
+    <li>Adaptive → IL-2 expansion → Th polarization
+      <ul><li><b>IL-12</b> → Th1 → IFN-γ · <b>IL-4</b> → Th2 → IL-4/5/13 · <b>IL-6 + IL-23 + TGF-β</b> → Th17 → IL-17/22</li></ul></li>
+    <li>Shut-off → <b>IL-10 + TGF-β</b> → ↓ costimulation → Tregs · ↓ IL-2 → ↓ Bcl-2 → apoptosis · memory on <b>IL-7</b></li>
+    <li>Replenish → stromal <b>IL-7</b> (lymphoid) · <b>G-CSF</b> (neutrophils) · <b>GM-CSF / M-CSF</b> (myeloid)</li>
+  </ul>
+</section>
+
+<!-- ===================== LO 1 ===================== -->
+<section class="lo" id="lo1">
+  <h2><span class="num">LO 1</span><span>What cytokines do in immunity and inflammation</span><span class="sub">The messengers that start, steer and stop a response</span></h2>
+  <div class="goal"><b>By the end:</b> you can define a cytokine, name the five big families with an example of each, use the words pleiotropy / redundancy / synergy / antagonism correctly, explain how the inflammatory triad produces fever and acute-phase proteins, and describe how a response is turned off.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What is a cytokine, and who makes them?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Cytokine</b> = a <b>small, soluble protein</b> a cell secretes to <b>communicate</b>.
+        <ul><li>It works only by binding a <b>specific receptor</b> on the target cell → triggers a response in that cell.</li>
+        <li>Typical responses: <b>activation, proliferation, differentiation</b> of immune cells; some also cause <b>fever</b>.</li></ul></li>
+      <li><b>Who makes them?</b> <b>Both immune and non-immune cells.</b>
+        <ul><li>A <b>virally infected epithelial cell</b> secretes <b>type I IFN (IFN-α/β)</b> to warn its neighbors.</li>
+        <li>Epithelial cells also release <b>TNF</b> and the "alarmins" <b>IL-25, IL-33, TSLP</b>.</li>
+        <li>Bone marrow <b>stromal cells</b> make IL-7 and the CSFs.</li></ul></li>
+      <li><b>When?</b> A few are secreted <b>constantly at a low rate</b>; <b>most are made on demand</b> in response to infection, and secretion is <b>transient</b>.</li>
+      <li><b>Direction:</b> they can be <b>pro-inflammatory</b> (IL-1β, TNF-α, IL-6) or <b>anti-inflammatory</b> (IL-10, TGF-β).</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">True or false: only leukocytes can secrete cytokines.</span></summary><div class="a"><b>False.</b> Any cell can. Classic example: a virus-infected (non-immune) cell secretes IFN-α/β before any immune cell arrives.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> What are the five main cytokine families?</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Family</th><th>Named for / big idea</th><th>Examples to know</th></tr></thead>
+      <tbody>
+        <tr><th>Interleukins (IL)</th><td>Signal <b>between leukocytes</b> (and non-leukocytes). <b>Numbered by order of discovery, not function</b>.</td><td>IL-1β, IL-2, IL-4 … IL-33</td></tr>
+        <tr><th>Tumor necrosis factors (TNF)</th><td>Discovered by their ability to <b>kill tumor cells</b>; drive inflammation, activate endothelium, signal neutrophils and macrophages.</td><td>TNF-α, <b>LT-α (= TNF-β)</b>, LT-β; family also includes CD40L, FasL, BAFF</td></tr>
+        <tr><th>Interferons (IFN)</th><td><b>Interfere with viral replication</b>.</td><td><b>Type I</b>: IFN-α, IFN-β · <b>Type II</b>: IFN-γ</td></tr>
+        <tr><th>Colony-stimulating factors (CSF)</th><td>Bind receptors on <b>hematopoietic progenitors</b> → proliferation + differentiation.</td><td>GM-CSF, G-CSF, M-CSF</td></tr>
+        <tr><th>Transforming growth factors (TGF)</th><td>&gt;30 members; for immunity the key one is an <b>inhibitory</b> factor — "the brakes".</td><td><b>TGF-β</b></td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>Chemokines</b> (e.g., <b>CXCL8 = IL-8</b>) are a specialized group of chemotactic cytokines that move cells — covered in LO 3–4.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Can you predict what IL-17 does from its number?</span></summary><div class="a"><b>No.</b> IL numbers reflect order of discovery, not function, so each has to be learned (that is what the master table in LO 4 is for).</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> How do cytokines interact with each other and with many cells at once?</span></summary><div class="gqb">
+    <div class="three">
+      <div class="card" style="--cc:var(--c1)"><h4>Pleiotropy</h4><p>One cytokine → <b>many cell types</b>, different effects. (TNF-α acts on endothelium, hypothalamus, liver, leukocytes.)</p></div>
+      <div class="card" style="--cc:var(--c3)"><h4>Redundancy</h4><p><b>Different cytokines → overlapping effects.</b> (IL-4 and IL-13 both push IgE and share IL-4Rα.)</p></div>
+      <div class="card" style="--cc:var(--c2)"><h4>Synergy</h4><p>Combined effect &gt; sum. (IL-1β + TNF-α together amplify inflammation and leukocyte recruitment.)</p></div>
+    </div>
+    <div class="two" style="margin-top:12px">
+      <div class="card" style="--cc:var(--c4)"><h4>Antagonism</h4><p>One cytokine <b>blocks</b> another: <b>IFN-γ (Th1) suppresses IL-4–driven Th2 differentiation</b> → keeps the response "polarized" to the right program (and IL-4/IL-10 dampen Th1).</p></div>
+      <div class="card" style="--cc:var(--c5)"><h4>Combination = specific response</h4><p>The body mixes cytokines like a recipe: e.g., <b>TGF-β alone → Treg</b>, but <b>TGF-β + IL-6 (+ IL-23) → Th17</b>.</p></div>
+    </div>
+    <ul>
+      <li><b>Why therapeutic cytokines cause side effects:</b> they are <b>pleiotropic</b>. Given systemically, a cytokine hits <b>every cell bearing its receptor</b>, not just the intended target → fever, malaise, hypotension, capillary leak.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A patient given recombinant IFN-α for a tumor develops fever, fatigue and low mood. Which cytokine property best explains this?</span></summary><div class="a"><b>Pleiotropy</b>: IFN-α acts on many tissues (including brain), so systemic dosing produces effects far from the tumor.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — therapeutic cytokines</summary><div class="cb"><ul><li><b>Aldesleukin</b> (high-dose IL-2) → metastatic RCC, melanoma → classic <b>capillary leak syndrome</b>.</li><li><b>IFN-α</b> → chronic hepatitis B/C, hairy cell leukemia, Kaposi sarcoma; <b>IFN-β</b> → multiple sclerosis; <b>IFN-γ</b> → chronic granulomatous disease.</li><li>IFN side effects: <b>flu-like symptoms, depression, neutropenia</b>.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p><b>Pleiotropy ≠ redundancy.</b> Pleiotropy = <i>one</i> cytokine, <i>many</i> targets. Redundancy = <i>many</i> cytokines, <i>same</i> effect. A question about "side effects in many organs" wants pleiotropy.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> What is the inflammatory triad, and how does it cause fever and acute-phase proteins?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Triad = IL-1β, IL-6, TNF-α</b>, made mainly by <b>macrophages and dendritic cells</b> (IL-6 also by B and T cells).</li>
+      <li><b>Locally</b> → act on <b>endothelium</b> (↑ adhesion molecules, ↑ permeability) → <b>leukocyte migration</b>; IL-1β + TNF-α recruit cells and <b>synergize</b>.</li>
+      <li><b>At high levels → endocrine</b> (hormone-like): enter blood → distant organs:
+        <ul><li><b>Liver</b> → <b>acute-phase reactants</b>: <b>C-reactive protein (CRP)</b> and <b>mannose-binding lectin (MBL)</b> → bind microbes → complement + opsonization.</li>
+        <li><b>Brain (hypothalamus)</b> → ↑ temperature set point → <b>fever</b>.</li>
+        <li>Clinically: <b>fever, anorexia, malaise, leukocytosis (↑ WBC)</b>.</li></ul></li>
+      <li><b>Too much</b> → <b>cytokine storm / septic shock</b>: <b>TNF-α → systemic vasodilation + ↑ vascular permeability → hypotension</b>.</li>
+    </ul>
+    <figure class="wide"><svg viewBox="0 0 780 320" role="img" aria-label="Macrophages and dendritic cells release IL-1 beta, IL-6 and TNF-alpha. Locally they activate endothelium for leukocyte migration; via the blood they reach the hypothalamus causing fever, the liver making CRP and MBL, and bone marrow causing leukocytosis. Excess TNF-alpha causes septic shock.">
+      <defs><marker id="tri-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c4)"/></marker></defs>
+      <rect x="20" y="118" width="160" height="78" rx="12" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+      <text x="100" y="148" font-size="14" text-anchor="middle" font-weight="700">Macrophages</text>
+      <text x="100" y="167" font-size="14" text-anchor="middle" font-weight="700">+ dendritic cells</text>
+      <text x="100" y="185" font-size="11.5" text-anchor="middle" class="mut">(IL-6 also B, T cells)</text>
+      <rect x="225" y="96" width="120" height="34" rx="17" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/><text x="285" y="118" font-size="14" text-anchor="middle" font-weight="800">IL-1β</text>
+      <rect x="225" y="140" width="120" height="34" rx="17" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/><text x="285" y="162" font-size="14" text-anchor="middle" font-weight="800">IL-6</text>
+      <rect x="225" y="184" width="120" height="34" rx="17" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/><text x="285" y="206" font-size="14" text-anchor="middle" font-weight="800">TNF-α</text>
+      <path d="M180,157 L221,157" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#tri-ar)"/>
+      <rect x="380" y="30" width="12" height="270" rx="6" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.2"/>
+      <text x="386" y="18" font-size="12" class="mut" text-anchor="middle">blood (endocrine)</text>
+      <rect x="470" y="20" width="290" height="58" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+      <text x="485" y="44" font-size="14" font-weight="700">Hypothalamus</text><text x="485" y="64" font-size="12.5" class="mut">↑ set point → <tspan font-weight="700" style="fill:var(--ink)">fever</tspan> (IL-1β, IL-6, TNF-α)</text>
+      <rect x="470" y="92" width="290" height="58" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="485" y="116" font-size="14" font-weight="700">Liver</text><text x="485" y="136" font-size="12.5" class="mut">acute phase: <tspan font-weight="700" style="fill:var(--ink)">CRP, MBL</tspan> (IL-6 main driver)</text>
+      <rect x="470" y="164" width="290" height="58" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+      <text x="485" y="188" font-size="14" font-weight="700">Endothelium (local too)</text><text x="485" y="208" font-size="12.5" class="mut">↑ adhesion, leak → leukocytes migrate</text>
+      <rect x="470" y="236" width="290" height="58" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+      <text x="485" y="260" font-size="14" font-weight="700">Bone marrow</text><text x="485" y="280" font-size="12.5" class="mut">neutrophil release → <tspan font-weight="700" style="fill:var(--ink)">leukocytosis</tspan></text>
+      <path d="M345,157 L376,157" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#tri-ar)"/>
+      <path d="M392,60 L466,49" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#tri-ar)"/>
+      <path d="M392,121 L466,121" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#tri-ar)"/>
+      <path d="M392,193 L466,193" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#tri-ar)"/>
+      <path d="M392,262 L466,265" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#tri-ar)"/>
+      <text x="100" y="250" font-size="12.5" text-anchor="middle" font-weight="700" style="fill:var(--c4)">Excess TNF-α →</text>
+      <text x="100" y="268" font-size="12.5" text-anchor="middle" font-weight="700" style="fill:var(--c4)">vasodilation + leak →</text>
+      <text x="100" y="286" font-size="12.5" text-anchor="middle" font-weight="700" style="fill:var(--c4)">septic shock</text>
+    </svg><figcaption>The inflammatory triad acts locally on endothelium and, at high concentration, like a hormone on brain, liver and marrow.</figcaption></figure>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which single cytokine is the classic "endogenous pyrogen," and which is the main driver of hepatic CRP?</span></summary><div class="a"><b>IL-1β causes fever</b> (all three contribute); <b>IL-6</b> is the main driver of hepatic acute-phase proteins.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — acute phase + sepsis</summary><div class="cb"><ul><li><b>LPS (lipid A) → TLR4</b> on macrophages → TNF-α + IL-1 → septic shock.</li><li>Acute-phase ↑: CRP, ferritin, fibrinogen, <b>hepcidin</b>, serum amyloid A. ↓: albumin, transferrin.</li><li>IL-6 → hepcidin → <b>anemia of chronic disease</b>. TNF-α → <b>cachexia</b>.</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>"Hot T-bone stEAK"</b>: IL-<b>1</b> = <b>hot</b> (fever) · IL-<b>2</b> = T-cell growth · IL-<b>3</b> = bone marrow · IL-<b>4</b> = Ig<b>E</b> · IL-<b>5</b> = Ig<b>A</b> · IL-<b>6</b> = a<b>K</b>ute-phase proteins.</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"endogenous pyrogen"</b> → IL-1β</span><span><b>"CRP from the liver"</b> → IL-6</span><span><b>"hypotension in septic shock"</b> → TNF-α</span><span><b>"cachexia"</b> → TNF-α</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q5.</b> How does a cytokine response unfold over time — and how is it switched off?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 780 290" role="img" aria-label="Timeline of cytokine levels during an infection: inflammatory triad and type I interferons peak first, IL-2 and T helper cytokines peak next, IL-10 and TGF-beta rise late, then IL-7 stays low to maintain memory T cells">
+      <defs><marker id="tl-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <path d="M50,240 L760,240" class="ln" marker-end="url(#tl-ar)"/>
+      <path d="M50,240 L50,30" class="ln" marker-end="url(#tl-ar)"/>
+      <text x="755" y="262" font-size="12" text-anchor="end" class="mut">time after infection →</text>
+      <text x="26" y="140" font-size="12" class="mut" transform="rotate(-90 26 140)" text-anchor="middle">cytokine level</text>
+      <path d="M55,236 C110,236 120,60 170,60 C230,60 240,230 330,234" style="fill:none;stroke:var(--c4);stroke-width:3"/>
+      <text x="170" y="50" font-size="12.5" text-anchor="middle" font-weight="800" style="fill:var(--c4)">IL-1β · IL-6 · TNF-α · IFN-α/β</text>
+      <path d="M180,236 C260,236 280,95 340,95 C410,95 430,230 520,234" style="fill:none;stroke:var(--c1);stroke-width:3"/>
+      <text x="345" y="85" font-size="12.5" text-anchor="middle" font-weight="800" style="fill:var(--c1)">IL-2 · IL-12 · IFN-γ · IL-4 · IL-17</text>
+      <path d="M330,236 C420,236 450,135 520,135 C600,135 620,225 700,232" style="fill:none;stroke:var(--c3);stroke-width:3"/>
+      <text x="560" y="125" font-size="12.5" text-anchor="middle" font-weight="800" style="fill:var(--c3)">IL-10 · TGF-β rise late</text>
+      <path d="M600,226 L755,226" style="fill:none;stroke:var(--c5);stroke-width:3;stroke-dasharray:7 5"/>
+      <text x="705" y="186" font-size="12.5" text-anchor="middle" font-weight="800" style="fill:var(--c5)">low IL-7 → memory</text>
+      <text x="170" y="262" font-size="12" text-anchor="middle" class="mut">innate (hours)</text>
+      <text x="345" y="262" font-size="12" text-anchor="middle" class="mut">adaptive (days)</text>
+      <text x="530" y="262" font-size="12" text-anchor="middle" class="mut">resolution</text>
+    </svg><figcaption>Cytokine waves: innate alarm → adaptive expansion → regulatory brakes → memory.</figcaption></figure>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c4)"><b>Alarm</b>IL-1β, IL-6, TNF-α, IFN-α/β</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c1)"><b>Expand</b>CD4⁺ T → <b>IL-2</b> (~8 h burst) → T + B proliferation</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>Polarize</b>Th1 / Th2 / Th17 cytokines</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>Brake</b>IL-10 + TGF-β ↑ late</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c6)"><b>Contract</b>↓ IL-2 → ↓ Bcl-2 → apoptosis; memory on IL-7</div>
+    </div>
+    <ul>
+      <li><b>Built-in safety:</b> cytokine secretion is <b>transient</b>; as pathogen load falls, IL-1, TNF, type I IFN <b>and their receptors</b> decline.</li>
+      <li><b>Receptor control:</b> many receptors (e.g., the full, high-affinity <b>IL-2 receptor</b>) appear <b>only after activation</b> → only antigen-stimulated cells respond.</li>
+      <li><b>Inhibitory cytokines IL-10 + TGF-β</b> increase toward the end → ↓ inflammation.</li>
+      <li><b>↓ IL-2 → ↓ Bcl-2</b> (anti-apoptotic) in effector T cells → <b>apoptosis</b> → contraction.</li>
+      <li><b>Memory T cells</b> survive on <b>low-level IL-7</b>.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why does the effector T-cell army shrink after a cold clears?</span></summary><div class="a">IL-2 falls → <b>Bcl-2 falls</b> → effector T cells undergo <b>apoptosis</b>; only memory cells persist (IL-7).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p><b>Bcl-2 is anti-apoptotic.</b> Loss of survival cytokine (IL-2) → ↓ Bcl-2 → <b>intrinsic (mitochondrial) apoptosis</b>, not Fas-mediated killing.</p></div></details>
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><p><b>Cytokine release syndrome</b> after CAR-T or bispecific antibody therapy = massive IL-6 → fever, hypotension → treat with <b>tocilizumab</b> (anti-IL-6R).</p></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 1 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A 70-year-old with E. coli urosepsis has BP 78/40, warm flushed skin and fever. Which cytokine most directly explains the low blood pressure?</span></summary><div class="a"><b>TNF-α.</b> It activates endothelium → systemic vasodilation + ↑ vascular permeability → distributive (septic) shock.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">Predict: a mouse lacking IL-10 and TGF-β signaling is infected and clears the microbe. What happens to its inflammation afterward?</span></summary><div class="a"><b>Inflammation fails to resolve</b> (chronic inflammation/autoimmunity). The late "brake" cytokines that ↓ costimulation and induce Tregs are missing.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A patient's CRP climbs within a day of a pneumonia. Trace the path from lung to lab value.</span></summary><div class="a">Alveolar macrophages → <b>IL-6</b> (with IL-1β, TNF-α) → blood (<b>endocrine</b>) → <b>hepatocytes</b> → CRP.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">IFN-γ is added to a culture of naive CD4⁺ T cells also receiving IL-4. What happens to Th2 differentiation, and what is this interaction called?</span></summary><div class="a"><b>Th2 differentiation is suppressed</b> — <b>antagonism</b>, enforcing Th1 polarization.</div></details>
+</section>
+
+<!-- ===================== LO 2 ===================== -->
+<section class="lo" id="lo2">
+  <h2><span class="num">LO 2</span><span>Autocrine, paracrine and endocrine signaling</span><span class="sub">How far a cytokine travels to deliver its message</span></h2>
+  <div class="goal"><b>By the end:</b> you can define the three signaling modes, give the IL-2 and inflammatory-triad examples, and explain why most cytokine signaling stays local.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What do autocrine, paracrine and endocrine mean?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 840 270" role="img" aria-label="Three panels. Autocrine: a CD4 T cell secretes IL-2 that binds its own receptor. Paracrine: a CD4 T cell secretes IL-2 that acts on a neighboring CD8 T cell. Endocrine: a macrophage releases IL-1 beta, IL-6 and TNF-alpha into a blood vessel which carries them to the liver and brain.">
+      <defs><marker id="sig-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <rect x="10" y="10" width="250" height="250" rx="12" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.4"/>
+      <text x="135" y="36" font-size="15" text-anchor="middle" font-weight="800" style="fill:var(--c1)">AUTOCRINE</text>
+      <circle cx="135" cy="140" r="48" style="fill:var(--panel);stroke:var(--c1);stroke-width:2"/>
+      <text x="135" y="137" font-size="14" text-anchor="middle" font-weight="700">CD4⁺ T</text>
+      <text x="135" y="155" font-size="11.5" text-anchor="middle" class="mut">activated</text>
+      <path d="M170,108 C225,70 230,170 180,160" style="fill:none;stroke:var(--c1);stroke-width:2" marker-end="url(#sig-ar)"/>
+      <text x="222" y="92" font-size="13" text-anchor="middle" font-weight="800" style="fill:var(--c1)">IL-2</text>
+      <text x="135" y="220" font-size="12" text-anchor="middle" class="mut">same cell makes</text>
+      <text x="135" y="236" font-size="12" text-anchor="middle" class="mut">and responds</text>
+      <rect x="295" y="10" width="250" height="250" rx="12" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.4"/>
+      <text x="420" y="36" font-size="15" text-anchor="middle" font-weight="800" style="fill:var(--c3)">PARACRINE</text>
+      <circle cx="355" cy="140" r="40" style="fill:var(--panel);stroke:var(--c3);stroke-width:2"/>
+      <text x="355" y="145" font-size="13.5" text-anchor="middle" font-weight="700">CD4⁺ T</text>
+      <circle cx="485" cy="140" r="40" style="fill:var(--panel);stroke:var(--c3);stroke-width:2"/>
+      <text x="485" y="145" font-size="13.5" text-anchor="middle" font-weight="700">CD8⁺ T</text>
+      <path d="M397,140 L441,140" style="fill:none;stroke:var(--c3);stroke-width:2" marker-end="url(#sig-ar)"/>
+      <text x="420" y="122" font-size="13" text-anchor="middle" font-weight="800" style="fill:var(--c3)">IL-2</text>
+      <text x="420" y="220" font-size="12" text-anchor="middle" class="mut">acts on a nearby cell</text>
+      <text x="420" y="236" font-size="12" text-anchor="middle" class="mut">(most cytokine signaling)</text>
+      <rect x="580" y="10" width="250" height="250" rx="12" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.4"/>
+      <text x="705" y="36" font-size="15" text-anchor="middle" font-weight="800" style="fill:var(--c4)">ENDOCRINE</text>
+      <circle cx="635" cy="90" r="34" style="fill:var(--panel);stroke:var(--c4);stroke-width:2"/>
+      <text x="635" y="95" font-size="12.5" text-anchor="middle" font-weight="700">Mφ / DC</text>
+      <rect x="600" y="140" width="210" height="22" rx="11" style="fill:var(--panel);stroke:var(--c4);stroke-width:1.6"/>
+      <text x="705" y="156" font-size="11.5" text-anchor="middle" class="mut">blood</text>
+      <path d="M640,124 L652,137" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#sig-ar)"/>
+      <text x="735" y="76" font-size="12.5" text-anchor="middle" font-weight="800" style="fill:var(--c4)">IL-1β · IL-6</text>
+      <text x="735" y="94" font-size="12.5" text-anchor="middle" font-weight="800" style="fill:var(--c4)">TNF-α</text>
+      <rect x="600" y="190" width="95" height="36" rx="8" style="fill:var(--panel);stroke:var(--c4);stroke-width:1.4"/>
+      <text x="647" y="213" font-size="12.5" text-anchor="middle" font-weight="700">Liver</text>
+      <rect x="715" y="190" width="95" height="36" rx="8" style="fill:var(--panel);stroke:var(--c4);stroke-width:1.4"/>
+      <text x="762" y="213" font-size="12.5" text-anchor="middle" font-weight="700">Brain</text>
+      <path d="M647,163 L647,186" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#sig-ar)"/>
+      <path d="M762,163 L762,186" style="fill:none;stroke:var(--c4);stroke-width:2" marker-end="url(#sig-ar)"/>
+      <text x="705" y="248" font-size="12" text-anchor="middle" class="mut">CRP, MBL · fever</text>
+    </svg></figure>
+    <div class="scroll"><table>
+      <thead><tr><th>Mode</th><th>Definition</th><th>Classic example</th></tr></thead>
+      <tbody>
+        <tr><th>Autocrine</th><td>The <b>same cell</b> secretes and responds.</td><td><b>IL-2</b> from an activated CD4⁺ T helper → <b>its own proliferation</b> (clonal expansion).</td></tr>
+        <tr><th>Paracrine</th><td>Acts on a <b>nearby cell</b>; short range, low concentration.</td><td><b>IL-2</b> from CD4⁺ T helpers → <b>neighboring CD8⁺ T cells</b> proliferate (CD8⁺ cells make little IL-2 themselves).</td></tr>
+        <tr><th>Endocrine</th><td>Enters the <b>bloodstream</b> → acts at a <b>distant</b> organ.</td><td><b>IL-1β, IL-6, TNF-α</b> from macrophages/DCs → <b>liver</b> (CRP, MBL) + <b>brain</b> (fever).</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Cytokines work <b>mainly autocrine + paracrine</b>; <b>endocrine to a lesser extent</b> — when levels get high (acute inflammation, sepsis).</li>
+      <li>Same molecule, two modes: <b>IL-2 is both autocrine and paracrine</b>.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which mode is it when IL-2 secreted by a helper T cell makes that same cell divide?</span></summary><div class="a"><b>Autocrine.</b> If it made a neighboring CD8⁺ T cell divide, that would be paracrine.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> Why is most cytokine signaling local and low-level?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Specificity.</b> Low-level, short-range (paracrine) signaling means <b>only antigen-activated neighbors</b> — the cells that have <b>upregulated the receptor</b> — respond.</li>
+      <li><b>Safety.</b> Systemic spread at high concentration → fever, malaise, leukocytosis, and in excess → <b>cytokine storm / septic shock</b>.</li>
+      <li><b>Timing.</b> IL-2 is secreted in a brief burst (~<b>8 h</b> after activation) and drives clonal expansion via <b>JAK–STAT</b>.</li>
+    </ul>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c3)"><b>Low dose, local</b>only receptor-high (activated) cells respond</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c2)"><b>High dose, blood</b>acts like a hormone on every receptor-bearing tissue</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c4)"><b>Excess</b>shock, capillary leak, multi-organ effects</div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why do bystander T cells that have not seen antigen ignore IL-2 floating nearby?</span></summary><div class="a">They have not yet expressed the <b>high-affinity IL-2 receptor</b> (CD25 chain), which appears only after activation.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>High-affinity IL-2R α chain = <b>CD25</b>; constitutively high on <b>Tregs</b> (CD4⁺CD25⁺FOXP3⁺).</li><li><b>Basiliximab</b> = anti-CD25 (transplant induction). <b>Cyclosporine/tacrolimus</b> block calcineurin → ↓ IL-2 transcription.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>"Hormone-like" cytokine effects (fever, CRP) are <b>endocrine</b>, even though cytokines are not classic hormones. A question asking how a lung infection raises CRP wants <b>endocrine</b>, not paracrine.</p></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Auto = self</b> (autograph). <b>Para = beside</b> (paralegal next to the lawyer). <b>Endo = into the blood</b> (endocrine glands).</p></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 2 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A child with influenza has a fever of 39.5 °C. Which signaling mode carried the message from the infected airway to the hypothalamus?</span></summary><div class="a"><b>Endocrine</b> — IL-1β, IL-6 and TNF-α entered the circulation and acted on a distant organ.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A CD8⁺ T cell sitting beside an activated CD4⁺ helper begins dividing, though it makes little IL-2. Name the mode.</span></summary><div class="a"><b>Paracrine</b> — helper-derived IL-2 acts on the neighbor.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A drug blocks IL-2 transcription in T cells. Which two signaling routes for IL-2 are lost, and what is the clinical use?</span></summary><div class="a"><b>Both autocrine and paracrine</b> IL-2 signaling. Calcineurin inhibitors (cyclosporine, tacrolimus) are used to prevent <b>transplant rejection</b>.</div></details>
+</section>
+
+<!-- ===================== LO 3 ===================== -->
+<section class="lo" id="lo3">
+  <h2><span class="num">LO 3</span><span>Receptor families for cytokines and chemokines</span><span class="sub">JAK–STAT, TNF-R trimers, IL-1R and GPCRs</span></h2>
+  <div class="goal"><b>By the end:</b> you can name each cytokine receptor family with its signaling route and example ligands, draw JAK–STAT signaling, explain the γc / X-linked SCID link, and state how TNF and chemokine receptors work.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> Which receptor families bind cytokines, and how does each signal?</span></summary><div class="gqb">
+    <ul><li><b>Rule:</b> cytokines <b>always</b> act by binding a <b>specific receptor</b>. The receptor type decides the signal.</li></ul>
+    <div class="scroll"><table>
+      <thead><tr><th>Receptor family</th><th>Signaling</th><th>Example ligands</th></tr></thead>
+      <tbody>
+        <tr><th>Hematopoietin (class I) cytokine receptors — incl. common γ-chain (γc) family</th><td><b>JAK–STAT</b> (<b>tyrosine phosphorylation</b>)</td><td>γc: <b>IL-2, IL-4, IL-7</b>, IL-9, IL-15, IL-21 · others: IL-6, GM-CSF, G-CSF, IL-5, IL-12/23</td></tr>
+        <tr><th>Interferon (class II) cytokine receptors</th><td><b>JAK–STAT</b></td><td>IFN-α/β, IFN-γ, IL-10, IL-22</td></tr>
+        <tr><th>TNF receptor family (trimeric)</th><td><b>NF-κB</b> activation <i>or</i> <b>death domains → caspases → apoptosis</b></td><td>TNF-α, lymphotoxin, <b>CD40L</b>, <b>BAFF</b>, <b>FasL</b></td></tr>
+        <tr><th>IL-1 receptor family</th><td><b>NF-κB</b> → inflammatory genes</td><td>IL-1β, IL-33</td></tr>
+        <tr><th>Chemokine receptors = <b>GPCRs</b> (7-transmembrane)</th><td>G protein (<b>GDP → GTP</b>) → cytoskeletal change → <b>migration</b></td><td>CXCL8 (IL-8), other chemokines</td></tr>
+      </tbody>
+    </table></div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">IL-33 and IL-1β share a receptor family. Which transcription factor do they both activate?</span></summary><div class="a"><b>NF-κB</b> (IL-1 receptor family).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — other receptors</summary><div class="cb"><ul><li><b>TGF-β receptors</b> = <b>serine/threonine kinases</b> → <b>SMAD</b> signaling (not JAK–STAT).</li><li>IL-1R shares the intracellular <b>TIR domain → MyD88</b> pathway with TLRs.</li><li>Chemokine receptors double as HIV co-receptors: <b>CCR5</b> (macrophage-tropic) and <b>CXCR4</b> (T-tropic); <b>maraviroc</b> blocks CCR5.</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>"Just Another Kinase"</b> (JAK) <b>Signals Transcription Activation</b> (STAT). Chemokines are the <b>G</b>PS: <b>G</b>-protein receptors that <b>guide</b> cells.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> How does JAK–STAT signaling work?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 780 330" role="img" aria-label="JAK-STAT pathway: a cytokine binds two receptor chains spanning the membrane; associated JAK kinases phosphorylate tyrosines on the receptor; STAT proteins dock, get phosphorylated, dimerize, enter the nucleus and switch on target genes. Side note: IL-2 uses JAK1 and JAK3 and STAT5.">
+      <defs><marker id="jak-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c5)"/></marker></defs>
+      <rect x="20" y="108" width="520" height="26" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.2"/>
+      <text x="40" y="126" font-size="12" class="mut">plasma membrane</text>
+      <circle cx="210" cy="50" r="24" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:2"/>
+      <text x="210" y="55" font-size="12.5" text-anchor="middle" font-weight="800">IL-2</text>
+      <text x="210" y="16" font-size="12" text-anchor="middle" class="mut">1. cytokine binds</text>
+      <rect x="170" y="76" width="22" height="104" rx="6" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/>
+      <rect x="228" y="76" width="22" height="104" rx="6" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/>
+      <ellipse cx="160" cy="185" rx="26" ry="16" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.8"/>
+      <text x="160" y="190" font-size="12" text-anchor="middle" font-weight="800">JAK</text>
+      <ellipse cx="260" cy="185" rx="26" ry="16" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.8"/>
+      <text x="260" y="190" font-size="12" text-anchor="middle" font-weight="800">JAK</text>
+      <circle cx="198" cy="160" r="9" style="fill:var(--c2)"/><text x="198" y="164" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">P</text>
+      <circle cx="222" cy="160" r="9" style="fill:var(--c2)"/><text x="222" y="164" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">P</text>
+      <text x="40" y="232" font-size="12" class="mut">2. JAKs phosphorylate</text>
+      <text x="40" y="248" font-size="12" class="mut">receptor tyrosines</text>
+      <rect x="300" y="200" width="56" height="28" rx="14" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.8"/>
+      <text x="328" y="219" font-size="12" text-anchor="middle" font-weight="800">STAT</text>
+      <path d="M300,206 Q270,200 262,203" style="fill:none;stroke:var(--c5);stroke-width:1.8" marker-end="url(#jak-ar)"/>
+      <text x="370" y="196" font-size="12" class="mut">3. STAT docks,</text>
+      <text x="370" y="211" font-size="12" class="mut">gets tyrosine-P</text>
+      <rect x="300" y="268" width="56" height="26" rx="13" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.8"/>
+      <rect x="358" y="268" width="56" height="26" rx="13" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.8"/>
+      <text x="328" y="286" font-size="11.5" text-anchor="middle" font-weight="800">STAT-P</text>
+      <text x="386" y="286" font-size="11.5" text-anchor="middle" font-weight="800">STAT-P</text>
+      <path d="M328,230 L328,264" style="fill:none;stroke:var(--c5);stroke-width:1.8" marker-end="url(#jak-ar)"/>
+      <text x="200" y="285" font-size="12" text-anchor="middle" class="mut">4. dimerize</text>
+      <rect x="490" y="232" width="270" height="84" rx="40" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/>
+      <text x="625" y="262" font-size="14" text-anchor="middle" font-weight="800">Nucleus</text>
+      <text x="625" y="282" font-size="12.5" text-anchor="middle">5. target genes ON</text>
+      <text x="625" y="299" font-size="12" text-anchor="middle" class="mut">(T-cell proliferation)</text>
+      <path d="M416,281 L486,277" style="fill:none;stroke:var(--c5);stroke-width:1.8" marker-end="url(#jak-ar)"/>
+      <rect x="560" y="30" width="200" height="150" rx="10" style="fill:var(--sunk);stroke:var(--line);stroke-width:1.4"/>
+      <text x="575" y="54" font-size="13" font-weight="800">IL-2 example</text>
+      <text x="575" y="76" font-size="12.5">JAK1 + JAK3 → STAT5</text>
+      <text x="575" y="100" font-size="13" font-weight="800">γc → JAK3</text>
+      <text x="575" y="122" font-size="12.5">receptor has no kinase</text>
+      <text x="575" y="140" font-size="12.5">of its own: it borrows</text>
+      <text x="575" y="158" font-size="12.5">JAKs</text>
+    </svg></figure>
+    <ol>
+      <li>Cytokine binds → receptor chains come together.</li>
+      <li>Receptor-associated <b>JAKs</b> (Janus kinases) phosphorylate each other and the receptor on <b>tyrosines</b>.</li>
+      <li><b>STATs</b> dock on the phospho-tyrosines → get <b>tyrosine-phosphorylated</b>.</li>
+      <li>Phospho-STATs <b>dimerize</b> → enter the <b>nucleus</b> → turn on genes.</li>
+    </ol>
+    <ul>
+      <li>Key fact: signals from the <b>common cytokine (hematopoietin) receptor family</b> are transduced by <b>tyrosine phosphorylation</b>.</li>
+      <li><b>IL-2 → JAK1/JAK3 → STAT5</b> → T-cell proliferation genes. (Some summaries list STAT1/STAT3 for IL-2; the canonical answer is <b>STAT5</b>.)</li>
+      <li>Hematopoietic factors (IL-7, GM-CSF, G-CSF) also use this route.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">What biochemical event transduces the signal after a cytokine binds a common cytokine receptor?</span></summary><div class="a"><b>Tyrosine phosphorylation</b> by JAKs (of receptor and STATs).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — JAK drugs + defects</summary><div class="cb"><ul><li><b>JAK inhibitors</b> (tofacitinib, baricitinib, upadacitinib, ruxolitinib) → RA, psoriatic arthritis, UC, myelofibrosis.</li><li><b>JAK2 V617F</b> → myeloproliferative neoplasms (polycythemia vera).</li><li><b>STAT3</b> loss → <b>hyper-IgE (Job) syndrome</b> (↓ Th17). <b>JAK3</b> deficiency → autosomal recessive SCID (same T⁻B⁺NK⁻ picture as γc).</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>Cytokine receptors are <b>not</b> receptor tyrosine kinases. They have <b>no intrinsic kinase</b>; associated JAKs do the phosphorylating. (Insulin/growth-factor receptors are the true RTKs.)</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> What is the common γ chain, and why does losing it cause X-linked SCID?</span></summary><div class="gqb">
+    <ul>
+      <li><b>γc (CD132)</b> = shared signaling subunit of the <b>IL-2, IL-4, IL-7</b>, IL-9, IL-15 and IL-21 receptors; it partners with <b>JAK3</b>.</li>
+      <li>Gene on the <b>X chromosome</b> (IL2RG) → inherited defect = <b>X-linked SCID</b> (most common SCID).</li>
+    </ul>
+    <div class="scroll"><table>
+      <thead><tr><th>γc cytokine</th><th>What is lost without it</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><th>IL-7</th><td>T-cell development</td><td><b>No T cells</b></td></tr>
+        <tr><th>IL-15</th><td>NK-cell development</td><td><b>No NK cells</b></td></tr>
+        <tr><th>IL-2</th><td>T-cell proliferation, Treg maintenance</td><td>No clonal expansion</td></tr>
+        <tr><th>IL-4, IL-21</th><td>Th2 / class switch; B-cell → plasma cell</td><td>B cells <b>present but nonfunctional</b></td></tr>
+      </tbody>
+    </table></div>
+    <ul><li>Phenotype: <b>T⁻ B⁺ NK⁻</b>, severe infections from infancy.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why are B cells present in γc deficiency, yet antibody responses still fail?</span></summary><div class="a">B-cell development does not need γc, but B cells need <b>T-cell help</b> (absent) and <b>IL-21/IL-4</b> signals (γc-dependent) to switch and become plasma cells.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — SCID</summary><div class="cb"><ul><li>Newborn screen: ↓ <b>TRECs</b>; CXR: <b>absent thymic shadow</b>.</li><li>Infections: Candida, PCP, chronic diarrhea, failure to thrive; avoid live vaccines.</li><li>Other SCIDs: <b>ADA deficiency</b> (AR, toxic metabolites), <b>IL-7Rα</b> deficiency (AR, T⁻B⁺NK⁺). Treatment: HSCT.</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"CD132"</b> → common γ chain</span><span><b>"X-linked, no T or NK cells, B cells present"</b> → γc SCID</span><span><b>"tyrosine phosphorylation"</b> → JAK–STAT</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> How do TNF-family receptors signal?</span></summary><div class="gqb">
+    <ul>
+      <li><b>TNF is active as a trimer</b> → binds <b>trimeric TNF receptors</b>.</li>
+      <li>Two opposite outcomes, depending on the target cell:
+        <ul><li><b>NF-κB activation</b> → inflammatory gene expression (adhesion molecules, more cytokines).</li>
+        <li><b>Death domains → caspases → apoptosis</b>.</li></ul></li>
+      <li>Other TNF/TNFR pairs to know:
+        <ul><li><b>Fas–FasL</b> → apoptosis (cytotoxic lymphocytes kill Fas⁺ targets).</li>
+        <li><b>CD40–CD40L</b> → costimulation, <b>B-cell help</b> (class switching, germinal centers, memory B cells).</li>
+        <li><b>BAFF</b> → B-cell survival (via BAFF-R/TACI).</li></ul></li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">TNF binding to an endothelial cell upregulates adhesion molecules. Which arm of TNF-R signaling is that?</span></summary><div class="a">The <b>NF-κB</b> (inflammatory gene) arm, not the caspase/apoptosis arm.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><p><b>Fas or FasL defects → autoimmune lymphoproliferative syndrome (ALPS)</b>: lymphadenopathy, splenomegaly, autoimmune cytopenias, ↑ double-negative (CD4⁻CD8⁻) T cells.</p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>"TNF" sounds like killing, but in most clinical questions TNF-α acts through <b>NF-κB-driven inflammation</b> (shock, cachexia, granulomas). Apoptosis questions usually point to <b>Fas–FasL</b> or perforin/granzyme.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q5.</b> What receptors do chemokines use, and how does that make cells move?</span></summary><div class="gqb">
+    <div class="flow">
+      <div class="st" style="--cc:var(--c2)"><b>Chemokine</b>e.g., CXCL8 (IL-8) gradient</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>GPCR</b>7-transmembrane receptor on the cell</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c1)"><b>GDP → GTP</b>G protein activated</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>Cytoskeleton</b>actin rearranges, integrins activate</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c4)"><b>Directed migration</b>up the gradient</div>
+    </div>
+    <ul>
+      <li>Chemokine signaling is <b>always happening</b>:
+        <ul><li><b>Inflammatory</b> — recruits phagocytes to infection.</li>
+        <li><b>Homeostatic homing</b> — B cells to follicles / germinal centers, T cells to T-cell zones of lymph nodes.</li></ul></li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which class of receptor binds CXCL8?</span></summary><div class="a">A <b>G-protein–coupled receptor</b> (CXCR1/2).</div></details>
+  </div></details>
+
+  <h3><span class="step">Apply</span>LO 3 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A 5-month-old boy has thrush, PCP and failure to thrive. Flow cytometry: almost no T or NK cells, normal B-cell count; lymphocytes lack CD132. Which receptors are defective?</span></summary><div class="a"><b>γc-sharing receptors: IL-2R, IL-4R, IL-7R</b> (plus IL-9, IL-15, IL-21R) → X-linked SCID. No IL-7 signal → no T cells; no IL-15 → no NK cells.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A girl has the same T⁻B⁺NK⁻ picture as X-linked SCID but an autosomal recessive pedigree. Which kinase is likely missing?</span></summary><div class="a"><b>JAK3</b> — the kinase that partners with γc.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">Predict: a neutrophil treated with a drug that locks its G proteins in the GDP-bound state is exposed to IL-8. What happens?</span></summary><div class="a"><b>No chemotaxis</b> — chemokine GPCRs cannot activate their G protein, so no cytoskeletal rearrangement toward the gradient.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">Which receptor class would a drug blocking TGF-β signaling at the receptor target, and which intracellular messengers would fall?</span></summary><div class="a"><b>Serine/threonine kinase receptors</b> → ↓ <b>SMAD</b> phosphorylation (not JAK–STAT).</div></details>
+</section>
+
+<!-- ===================== LO 4 ===================== -->
+<section class="lo" id="lo4">
+  <h2><span class="num">LO 4</span><span>The cytokines to know</span><span class="sub">Source → target → action → category, axis by axis</span></h2>
+  <div class="goal"><b>By the end:</b> for all 26 must-know cytokines you can name the source, the target and the main action, sort each one as <b>pro-inflammatory, regulatory, growth-inducing or chemotactic</b>, and connect it to its classic disease or drug. Learn them in <b>axes</b> (stories), then lock them in with the <a href="#master">master table</a>.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> How do you sort the cytokines into categories?</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Category</th><th>What it means</th><th>Cytokines</th></tr></thead>
+      <tbody>
+        <tr><th><span class="tag" style="--cc:var(--c4)">Pro-inflammatory</span></th><td>Switch on / amplify innate or adaptive attack</td><td><b>IL-1β, IL-6, TNF-α</b> (triad) · IL-12, IL-23, IL-17, IL-22 · IFN-α, IFN-β, IFN-γ</td></tr>
+        <tr><th><span class="tag" style="--cc:var(--c3)">Regulatory</span></th><td>Anti-inflammatory; brakes; tolerance</td><td><b>IL-10, TGF-β</b></td></tr>
+        <tr><th><span class="tag" style="--cc:var(--c1)">Growth-inducing</span></th><td>Proliferation / differentiation / survival of cells</td><td><b>IL-2, IL-7, G-CSF, GM-CSF</b> (+ M-CSF) · BAFF · IL-21 (B cells)</td></tr>
+        <tr><th><span class="tag" style="--cc:var(--c2)">Chemotactic</span></th><td>Move cells to the site</td><td><b>CXCL8 (IL-8)</b> · IL-17 indirectly (induces chemokines)</td></tr>
+        <tr><th><span class="tag" style="--cc:var(--c5)">Type 2 subgroup</span></th><td>Anti-helminth / allergy; pro-inflammatory in the allergic sense, growth factors for B cells and eosinophils</td><td>IL-4, IL-5, IL-13 · alarmins <b>IL-25, IL-33, TSLP</b></td></tr>
+        <tr><th><span class="tag" style="--cc:var(--c6)">B-cell help subgroup</span></th><td>Class switching and plasma cells</td><td><b>CD40L</b>, IL-21, IL-4, TGF-β, BAFF</td></tr>
+      </tbody>
+    </table></div>
+    <ul><li>Categories <b>overlap</b>: TGF-β is regulatory but also helps make Th17; IL-2 is a T-cell growth factor yet Tregs depend on it.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Sort: IL-10, G-CSF, CXCL8, TNF-α.</span></summary><div class="a">IL-10 = <b>regulatory</b> · G-CSF = <b>growth-inducing</b> · CXCL8 = <b>chemotactic</b> · TNF-α = <b>pro-inflammatory</b>.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> The T-helper map: which cytokines make each subset, and what does each subset secrete?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 900 400" role="img" aria-label="A naive CD4 T cell in the center differentiates into four subsets. IL-12 with IFN-gamma gives Th1, which makes IFN-gamma, IL-2 and lymphotoxin-alpha to activate macrophages. IL-4 gives Th2, which makes IL-4, IL-5 and IL-13 for eosinophils, mast cells and IgE. IL-6 plus IL-23 plus TGF-beta gives Th17, which makes IL-17 and IL-22 for neutrophils and epithelial defense. TGF-beta with IL-2 and no IL-6 gives Tregs that make IL-10 and TGF-beta. IFN-gamma and IL-4 inhibit each other's subsets.">
+      <defs><marker id="th-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker>
+      <marker id="th-bar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M5,0 L5,10" style="stroke:var(--c4);stroke-width:3"/></marker></defs>
+      <rect x="20" y="20" width="290" height="120" rx="12" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/>
+      <text x="38" y="46" font-size="17" font-weight="800" style="fill:var(--c1)">Th1</text>
+      <text x="38" y="70" font-size="13">makes <tspan font-weight="700">IFN-γ, IL-2, LT-α</tspan></text>
+      <text x="38" y="92" font-size="12.5" class="mut">→ activates macrophages, IgG switch</text>
+      <text x="38" y="112" font-size="12.5" class="mut">→ intracellular microbes, granulomas</text>
+      <rect x="590" y="20" width="290" height="120" rx="12" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.8"/>
+      <text x="608" y="46" font-size="17" font-weight="800" style="fill:var(--c5)">Th2</text>
+      <text x="608" y="70" font-size="13">makes <tspan font-weight="700">IL-4, IL-5, IL-13</tspan></text>
+      <text x="608" y="92" font-size="12.5" class="mut">→ IgE, eosinophils, mast cells</text>
+      <text x="608" y="112" font-size="12.5" class="mut">→ helminths, allergy, asthma</text>
+      <rect x="20" y="260" width="290" height="120" rx="12" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.8"/>
+      <text x="38" y="286" font-size="17" font-weight="800" style="fill:var(--c2)">Th17</text>
+      <text x="38" y="310" font-size="13">makes <tspan font-weight="700">IL-17, IL-22</tspan> (+ IL-21)</text>
+      <text x="38" y="332" font-size="12.5" class="mut">→ neutrophils (via chemokines)</text>
+      <text x="38" y="352" font-size="12.5" class="mut">→ epithelial antimicrobial peptides</text>
+      <rect x="590" y="260" width="290" height="120" rx="12" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.8"/>
+      <text x="608" y="286" font-size="17" font-weight="800" style="fill:var(--c3)">Treg</text>
+      <text x="608" y="310" font-size="13">makes <tspan font-weight="700">IL-10, TGF-β</tspan></text>
+      <text x="608" y="332" font-size="12.5" class="mut">→ ↓ costimulation, ↓ inflammation</text>
+      <text x="608" y="352" font-size="12.5" class="mut">→ peripheral tolerance</text>
+      <circle cx="450" cy="200" r="56" style="fill:var(--panel);stroke:var(--navy2);stroke-width:2"/>
+      <text x="450" y="196" font-size="14" text-anchor="middle" font-weight="800">Naive</text>
+      <text x="450" y="214" font-size="14" text-anchor="middle" font-weight="800">CD4⁺ T</text>
+      <path d="M404,168 L314,128" class="ln" marker-end="url(#th-ar)"/>
+      <path d="M496,168 L586,128" class="ln" marker-end="url(#th-ar)"/>
+      <path d="M404,232 L314,272" class="ln" marker-end="url(#th-ar)"/>
+      <path d="M496,232 L586,272" class="ln" marker-end="url(#th-ar)"/>
+      <text x="330" y="168" font-size="13" text-anchor="middle" font-weight="800" style="fill:var(--c1)">IL-12</text>
+      <text x="330" y="184" font-size="11.5" text-anchor="middle" class="mut">(+ IFN-γ)</text>
+      <text x="570" y="168" font-size="13" text-anchor="middle" font-weight="800" style="fill:var(--c5)">IL-4</text>
+      <text x="570" y="184" font-size="11.5" text-anchor="middle" class="mut">(alarmins upstream)</text>
+      <text x="320" y="228" font-size="13" text-anchor="middle" font-weight="800" style="fill:var(--c2)">IL-6 + IL-23</text>
+      <text x="320" y="244" font-size="13" text-anchor="middle" font-weight="800" style="fill:var(--c2)">+ TGF-β</text>
+      <text x="580" y="228" font-size="13" text-anchor="middle" font-weight="800" style="fill:var(--c3)">TGF-β (+ IL-2)</text>
+      <text x="580" y="244" font-size="11.5" text-anchor="middle" class="mut">no IL-6</text>
+      <path d="M318,52 L582,52" style="fill:none;stroke:var(--c4);stroke-width:2;stroke-dasharray:6 4" marker-start="url(#th-bar)" marker-end="url(#th-bar)"/>
+      <text x="450" y="44" font-size="12" text-anchor="middle" font-weight="700" style="fill:var(--c4)">IFN-γ ⊣ Th2 · IL-4 / IL-10 ⊣ Th1</text>
+    </svg><figcaption>Inducing cytokines on the arrows; products and jobs in each box. The dashed bar = cross-inhibition (antagonism).</figcaption></figure>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which three cytokines push a naive CD4⁺ cell toward Th17, and what changes if IL-6 is absent?</span></summary><div class="a"><b>IL-6 + IL-23 + TGF-β.</b> Without IL-6, TGF-β alone favors <b>Tregs</b> instead.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Numbers match:</b> IL-<b>12</b> → Th<b>1</b> · IL-<b>4</b> → Th<b>2</b> (and Th2 makes IL-4) · IL-<b>17</b> from Th<b>17</b> · IL-<b>23</b> keeps Th<b>17</b> going. Th1 = <b>"cell-mediated"</b>, Th2 = <b>"too much antibody/allergy"</b>.</p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p><b>IL-12 vs IL-23</b>: both from DCs/macrophages and share the <b>p40</b> subunit, but IL-12 → <b>Th1</b>, IL-23 → <b>Th17</b>. <b>IL-6</b> is both an acute-phase triad member <i>and</i> a Th17 inducer.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> Th1 axis: IL-12, IFN-γ and the macrophage–NK loop</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c1)"><h4>IL-12 <span class="tag" style="--cc:var(--c4)">Pro-inflam</span></h4><p><b>Source:</b> dendritic cells, macrophages</p><p><b>Targets:</b> <b>NK cells</b> (activation) · naive CD4⁺ T (→ <b>Th1</b>)</p><p><b>Action:</b> Th1 then makes <b>IFN-γ</b> and <b>lymphotoxin-α</b></p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>IFN-γ (type II) <span class="tag" style="--cc:var(--c4)">Pro-inflam</span></h4><p><b>Source:</b> <b>Th1 cells, NK cells</b> (also CD8⁺ T)</p><p><b>Targets:</b> <b>macrophages</b>, B cells, T cells</p><p><b>Action:</b> <b>strongest macrophage activator</b> (↑ killing, ↑ MHC II) · favors <b>IgG</b> switch for opsonization · <b>inhibits Th2</b> · positive feedback on Th1</p></div>
+    </div>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c2)"><b>Macrophage / DC</b>makes IL-12</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c1)"><b>CD4⁺ → Th1</b>secretes IFN-γ</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c4)"><b>Macrophage activated</b>makes more IL-12</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>NK cells activated</b>also secrete IFN-γ</div>
+    </div>
+    <ul><li>Self-amplifying loop for <b>intracellular pathogens</b> (mycobacteria, Salmonella, Listeria).</li>
+    <li>In the gut, <b>enterocytes are especially vulnerable to IFN-γ and TNF</b> → Tregs (IL-10, TGF-β) are preferentially stimulated there to restrain Th1.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">When exposed to IL-12, a CD4⁺ T cell becomes what, and what does it make?</span></summary><div class="a">A <b>Th1</b> cell → <b>IFN-γ</b> (and LT-α) → activates macrophages → which make IL-12 → activates NK cells.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — Th1 axis</summary><div class="cb"><ul><li><b>IL-12R / IFN-γR defects</b> → disseminated <b>mycobacterial</b> (incl. BCG, MAC) and <b>Salmonella</b> infections.</li><li>IFN-γ drives <b>granulomas</b>; <b>IGRA</b> (TB blood test) measures IFN-γ release.</li><li>Recombinant <b>IFN-γ</b> → chronic granulomatous disease. <b>Ustekinumab</b> blocks p40 (IL-12 + IL-23).</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"activates NK cells"</b> → IL-12</span><span><b>"strongest macrophage activator"</b> → IFN-γ</span><span><b>"↑ MHC class II"</b> → IFN-γ</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> Type 2 axis: alarmins IL-25 / IL-33 / TSLP and Th2 cytokines IL-4 / IL-5 / IL-13</span></summary><div class="gqb">
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>Trigger</b>helminth succinate · worm burrowing · smoke · allergens</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c2)"><b>Epithelium</b>IL-25 · IL-33 · TSLP (alarmins)</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>ILC2 / DC</b>IL-4 (+ IL-5, IL-13)</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>Th2</b>IL-4, IL-5, IL-13 (positive feedback)</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c4)"><b>Effectors</b>IgE · mast cells · eosinophils · basophils · mucus</div>
+    </div>
+    <div class="scroll"><table>
+      <thead><tr><th>Alarmin</th><th>Source / trigger</th><th>Targets → result</th></tr></thead>
+      <tbody>
+        <tr><th>IL-25</th><td>Epithelium — gut <b>tuft cells</b> sensing helminth <b>succinate</b></td><td>ILC2s, T cells → <b>initiates Th2</b></td></tr>
+        <tr><th>IL-33</th><td>Epithelium (enterocytes, airway) released on <b>direct damage</b> (burrowing worms, smoke, pollutants); IL-1 family</td><td>ILC2s, Th2 → allergic inflammation</td></tr>
+        <tr><th>TSLP</th><td>Damaged <b>mucosal epithelium</b> (thymic stromal lymphopoietin)</td><td>DCs, ILC2s, Th2 → type 2 response</td></tr>
+      </tbody>
+    </table></div>
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c5)"><h4>IL-4</h4><p><b>Source:</b> <b>Th2</b> and <b>TFH</b> cells</p><p><b>Targets:</b> naive CD4⁺ (→ Th2) · <b>B cells</b> · mast cells</p><p><b>Action:</b> Th2 differentiation · <b>class switch to IgE</b> (and IgG1)</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>IL-5</h4><p><b>Source:</b> Th2 cells</p><p><b>Target:</b> <b>eosinophils</b></p><p><b>Action:</b> recruits + activates eosinophils · anti-helminth</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>IL-13</h4><p><b>Source:</b> Th2 cells</p><p><b>Targets:</b> airway epithelium, eosinophils, B cells</p><p><b>Action:</b> <b>mucus</b> production · asthma/allergy · IgE (shares IL-4Rα with IL-4)</p></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which cell type secretes IL-4 to make B cells switch to IgE inside lymphoid follicles?</span></summary><div class="a"><b>T follicular helper (TFH) cells</b> (Th2 cells also make IL-4).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — type 2 biologics</summary><div class="cb"><ul><li><b>Dupilumab</b> → IL-4Rα (blocks IL-4 + IL-13): atopic dermatitis, asthma.</li><li><b>Mepolizumab, reslizumab</b> → IL-5; <b>benralizumab</b> → IL-5Rα: eosinophilic asthma.</li><li><b>Tezepelumab</b> → TSLP: severe asthma. <b>Omalizumab</b> → IgE.</li><li>IL-13 also drives alternative (M2) macrophage activation.</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><ul><li><b>"Ain't too proud 2 BEG 4 help"</b>: IL-4 → Th<b>2</b>, <b>B</b>-cell growth, Ig<b>E</b>, Ig<b>G</b>.</li><li><b>"I have 5 BAEs"</b>: IL-5 → <b>B</b>-cell growth, Ig<b>A</b>, <b>E</b>osinophils.</li><li>Interleukin <b>thirtEEn</b> promotes Ig<b>E</b>.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p><b>IgE switch → IL-4</b>, but <b>eosinophilia → IL-5</b>. Both are Th2; a vignette with "25% eosinophils" wants IL-5, one with "↑ IgE" wants IL-4.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q5.</b> Th17 axis: IL-6, IL-23, TGF-β → IL-17 and IL-22</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c2)"><h4>IL-23 <span class="tag" style="--cc:var(--c4)">Pro-inflam</span></h4><p><b>Source:</b> DCs, macrophages</p><p><b>Target:</b> CD4⁺ T</p><p><b>Action:</b> with IL-6 + TGF-β → <b>Th17 differentiation/maintenance</b></p></div>
+      <div class="dcard" style="--cc:var(--c2)"><h4>IL-17 <span class="tag" style="--cc:var(--c2)">Chemotactic (indirect)</span></h4><p><b>Source:</b> <b>Th17 cells</b></p><p><b>Target:</b> stromal / epithelial cells</p><p><b>Action:</b> induces <b>chemokines</b> (e.g., CXCL8) → <b>neutrophil recruitment</b></p></div>
+      <div class="dcard" style="--cc:var(--c2)"><h4>IL-22 <span class="tag" style="--cc:var(--c4)">Pro-inflam</span></h4><p><b>Source:</b> Th17 (also ILC3)</p><p><b>Target:</b> <b>epithelial cells</b></p><p><b>Action:</b> epithelial <b>antimicrobial peptides</b>; barrier defense</p></div>
+    </div>
+    <ul><li>Th17 response targets <b>bacteria, some viruses and certain cancers</b>; IL-17 = neutrophils, IL-22 = epithelium.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A mouse lacks one Th17 cytokine: neutrophils arrive normally but gut epithelium makes no antimicrobial peptides. Which cytokine is missing?</span></summary><div class="a"><b>IL-22.</b></div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — Th17</summary><div class="cb"><ul><li>Boards emphasize Th17/IL-17 against <b>extracellular bacteria and fungi</b> → IL-17 pathway defects → <b>chronic mucocutaneous candidiasis</b>.</li><li><b>Hyper-IgE (Job) syndrome</b> = STAT3 loss → ↓ Th17: cold staph abscesses, retained baby teeth, eczema, ↑ IgE.</li><li>Psoriasis biologics: <b>secukinumab/ixekizumab</b> (IL-17A), <b>guselkumab/risankizumab</b> (IL-23 p19), <b>ustekinumab</b> (p40).</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"recruits neutrophils by inducing chemokines"</b> → IL-17</span><span><b>"antimicrobial peptides from epithelium"</b> → IL-22</span><span><b>"Candida + STAT3"</b> → Job syndrome</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q6.</b> Regulatory axis: IL-10 and TGF-β</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c3)"><h4>IL-10 <span class="tag" style="--cc:var(--c3)">Regulatory</span></h4><p><b>Source:</b> <b>Tregs, macrophages</b> (gut lamina propria Mφ/DCs are IL-10 makers)</p><p><b>Targets:</b> macrophages, DCs, T cells</p><p><b>Action:</b> suppresses inflammation · ↓ MHC II + costimulators · ↓ Th1 cytokines · induces Tregs</p></div>
+      <div class="dcard" style="--cc:var(--c3)"><h4>TGF-β <span class="tag" style="--cc:var(--c3)">Regulatory</span></h4><p><b>Source:</b> <b>Tregs, many cell types</b></p><p><b>Targets:</b> T cells, B cells, APCs</p><p><b>Action:</b> ↓ proliferation/differentiation ("brakes") · induces <b>Tregs</b> · <b>IgA class switch in gut mucosa</b> · with IL-6 → Th17</p></div>
+    </div>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c3)"><b>IL-10 + TGF-β</b>act on APCs / neighbors</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c1)"><b>↓ costimulatory molecules</b>(B7 / CD80-86)</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>No signal 2</b>self-reactive T cells → anergy or Tregs</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c6)"><b>Tregs make more IL-10 + TGF-β</b>self-perpetuating tolerance</div>
+    </div>
+    <ul><li>Result = <b>peripheral tolerance</b>: prevents autoimmunity and ends responses once the pathogen is gone.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">How does TGF-β inhibit the response to a self-antigen?</span></summary><div class="a">By <b>downregulating costimulatory molecule expression</b> → T cells get signal 1 without signal 2 → no full activation; Tregs induced.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>IL-10 / IL-10R deficiency</b> → very-early-onset IBD. <b>FOXP3</b> loss → <b>IPEX</b> (no Tregs).</li><li>TGF-β also drives <b>fibrosis</b> and wound healing (scar, keloid, pulmonary fibrosis).</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p>"TGF-β and IL-<b>10</b> both at<b>ten</b>uate the immune response." Gut <b>IgA</b> needs <b>TGF-β</b>: "<b>T</b>he <b>G</b>ut <b>F</b>avors IgA."</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q7.</b> Growth-inducing axis: IL-2, IL-7 and the colony-stimulating factors</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c1)"><h4>IL-2 <span class="tag" style="--cc:var(--c1)">Growth</span></h4><p><b>Source:</b> activated <b>CD4⁺ T helpers</b></p><p><b>Targets:</b> CD4⁺ (autocrine), CD8⁺ (paracrine), B cells, NK cells</p><p><b>Action:</b> <b>T-cell growth factor</b>; ~8 h burst; JAK1/3 → STAT5</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>IL-7 <span class="tag" style="--cc:var(--c1)">Growth</span></h4><p><b>Source:</b> <b>bone marrow stromal cells</b> (and thymic stroma)</p><p><b>Targets:</b> lymphoid progenitors · memory T</p><p><b>Action:</b> → <b>B, T, NK</b> cells · maintains <b>memory T cells</b></p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>G-CSF <span class="tag" style="--cc:var(--c1)">Growth</span></h4><p><b>Source:</b> stromal cells, macrophages</p><p><b>Target:</b> neutrophil precursors</p><p><b>Action:</b> <b>specifically drives neutrophils</b> during infection</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>GM-CSF <span class="tag" style="--cc:var(--c1)">Growth</span></h4><p><b>Source:</b> T cells, macrophages, stromal cells (many cells)</p><p><b>Target:</b> myeloid progenitors</p><p><b>Action:</b> <b>granulocytes + macrophages</b></p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>M-CSF <span class="tag" style="--cc:var(--c1)">Growth</span></h4><p><b>Source:</b> stromal cells, macrophages</p><p><b>Target:</b> monocyte precursors</p><p><b>Action:</b> monocyte / <b>macrophage</b> differentiation</p></div>
+    </div>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>Marrow stroma</b>replenishment after a response</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c1)"><b>GM-CSF + M-CSF</b>monocytes + granulocytes</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>G-CSF</b>neutrophils</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>IL-7</b>B, T, NK cells</div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">G-CSF vs GM-CSF: which is neutrophil-specific?</span></summary><div class="a"><b>G-CSF.</b> GM-CSF expands both granulocytes and macrophages; M-CSF = monocytes/macrophages.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — growth factor drugs</summary><div class="cb"><ul><li><b>Filgrastim / pegfilgrastim</b> (G-CSF) → chemo-induced neutropenia; stem-cell mobilization; bone pain.</li><li><b>Sargramostim</b> (GM-CSF) → marrow recovery after transplant.</li><li><b>Aldesleukin</b> (IL-2) → RCC, melanoma (capillary leak). IL-3 "functions like GM-CSF".</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p><b>IL-2 vs IL-7</b>: IL-2 = expand <i>activated mature</i> T cells; IL-7 = make <i>new</i> lymphocytes in marrow/thymus and keep memory T cells alive. Absent T cells at birth → IL-7 signaling problem, not IL-2.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q8.</b> B-cell help: CD40L, IL-21, IL-4, TGF-β and BAFF</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Molecule</th><th>Source</th><th>Effect on B cells</th></tr></thead>
+      <tbody>
+        <tr><th>CD40L (CD154)</th><td>Activated CD4⁺ T (<b>TFH</b>, Th1); membrane TNF-family</td><td>Binds <b>CD40</b> → <b>contact signal</b> for class switch + somatic hypermutation; germinal centers; <b>memory B cells</b>. Also activates DCs (↑ IL-12) and macrophages.</td></tr>
+        <tr><th>IL-21</th><td><b>TFH</b> (also Th17)</td><td><b>Most potent regulator of B-cell function</b> → class switch, plasma-cell differentiation (γc receptor)</td></tr>
+        <tr><th>IL-4</th><td>TFH / Th2</td><td>Switch to <b>IgE</b> (and IgG1)</td></tr>
+        <tr><th>TGF-β</th><td>Many cells (mucosa)</td><td>Switch to <b>IgA</b> in gut mucosa</td></tr>
+        <tr><th>IFN-γ</th><td>Th1</td><td>Switch to opsonizing <b>IgG</b></td></tr>
+        <tr><th>BAFF</th><td><b>Dendritic cells</b> (TNF family)</td><td>B-cell <b>survival</b>; in the <b>TI-2</b> pathway (polysaccharides) gives the switch signal → <b>IgG</b> (IgG2) without T cells</td></tr>
+      </tbody>
+    </table></div>
+    <ul><li>Which antibody class is made depends on <b>which cytokines the TFH cell "pours" onto the B cell</b>.</li>
+    <li>TI-2 antigens trigger <b>IgM</b> unless the presenting DC makes <b>BAFF</b> → class switch to IgG. Yes, <b>BAFF counts as a cytokine</b>.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which molecule is a "cytokine" that works by cell–cell contact instead of secretion?</span></summary><div class="a"><b>CD40L</b> — a membrane-bound TNF-family member.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>X-linked hyper-IgM syndrome</b> = CD40L defect → normal/↑ IgM, ↓↓ IgG/IgA/IgE, no germinal centers → <b>Pneumocystis, Cryptosporidium</b>, sinopulmonary infections.</li><li><b>Belimumab</b> (anti-BAFF/BLyS) → SLE.</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"most potent B-cell regulator"</b> → IL-21</span><span><b>"DC cytokine in TI-2 response"</b> → BAFF</span><span><b>"high IgM, no IgG, PCP"</b> → CD40L</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q9.</b> Interferons and TNF-α: antiviral and pro-inflammatory heavy hitters</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Feature</th><th>Type I (IFN-α, IFN-β)</th><th>Type II (IFN-γ)</th></tr></thead>
+      <tbody>
+        <tr><th>Main source</th><td><b>Virally infected cells</b> (any cell) + dendritic cells (plasmacytoid DCs = top IFN-α makers)</td><td><b>Th1, NK cells</b></td></tr>
+        <tr><th>Targets</th><td>Neighboring cells, immune cells</td><td>Macrophages (main), B and T cells</td></tr>
+        <tr><th>Main action</th><td><b>Inhibit viral replication</b> in neighbors</td><td><b>Activate macrophages</b>; positive feedback on Th1</td></tr>
+        <tr><th>MHC</th><td>↑ <b>MHC class I</b></td><td>↑ <b>MHC class II</b></td></tr>
+        <tr><th>Adaptive link</th><td>↑ antigen presentation, activate NK, promote Th1</td><td>IgG switch; inhibits Th2</td></tr>
+        <tr><th>Drug</th><td>IFN-α: hep B/C, hairy cell leukemia, Kaposi · <b>IFN-β: multiple sclerosis</b></td><td>IFN-γ: chronic granulomatous disease</td></tr>
+      </tbody>
+    </table></div>
+    <div class="dcard" style="--cc:var(--c4)"><h4>TNF-α <span class="tag" style="--cc:var(--c4)">Pro-inflam</span></h4><p><b>Source:</b> macrophages, DCs (also epithelium and others) · <b>Targets:</b> endothelium, neutrophils/macrophages, hypothalamus, liver</p><p><b>Action:</b> activates endothelium (↑ adhesion, <b>vasodilation, ↑ permeability</b>) · fever · <b>septic shock hypotension</b> · cachexia · maintains granulomas. Relatives: <b>LT-α (TNF-β)</b> from Th1 → inflammation + lymphoid tissue organization.</p></div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Uninfected epithelial cells next to a virus-infected one become resistant to the virus before T cells arrive. Why?</span></summary><div class="a"><b>Type I IFN (IFN-α/β)</b> from the infected cell → neighbors switch on antiviral programs.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY — anti-TNF</summary><div class="cb"><p><b>Infliximab, adalimumab, certolizumab, golimumab</b> (antibodies) and <b>etanercept</b> (decoy receptor) → RA, IBD, psoriasis, ankylosing spondylitis. Granulomas need TNF → <b>screen for latent TB first</b>.</p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p><b>Type I IFN ↑ MHC I; IFN-γ ↑ MHC II.</b> And etanercept is a <b>fusion receptor</b> ("-cept"), not a monoclonal antibody ("-mab").</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q10.</b> Chemotactic: CXCL8 (IL-8)</span></summary><div class="gqb">
+    <div class="dcard" style="--cc:var(--c2)"><h4>CXCL8 / IL-8 <span class="tag" style="--cc:var(--c2)">Chemotactic</span></h4><p><b>Source:</b> fibroblasts, macrophages, neutrophils (and endothelial / epithelial cells)</p><p><b>Target:</b> <b>neutrophils</b> and other phagocytes, via <b>GPCRs</b></p><p><b>Action:</b> <b>major neutrophil chemoattractant</b> to the inflammatory site; IL-17 works upstream by inducing it.</p></div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">IL-17 is not a chemokine, yet it brings in neutrophils. How?</span></summary><div class="a">It makes tissue cells <b>produce chemokines</b> (e.g., CXCL8), which neutrophils follow via GPCRs.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>"Clean up on aisle 8"</b> — IL-8 calls in the neutrophil clean-up crew.</p></div></details>
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><p>Neutrophil chemoattractants: <b>IL-8, C5a, LTB4</b>, kallikrein, bacterial N-formyl peptides. <b>Leukocyte adhesion deficiency</b> (CD18) → neutrophils cannot exit vessels → no pus, delayed cord separation, neutrophilia.</p></div></details>
+  </div>
+
+  <h3 id="master"><span class="step">Table</span>Master cytokine table — all cytokines to know</h3>
+  <p>Self-test: hide a column, then click any blurred cell to reveal it.</p>
+  <div class="tools mtools"><button type="button" data-col="2">Hide source</button><button type="button" data-col="3">Hide target</button><button type="button" data-col="4">Hide action</button><button type="button" data-col="5">Hide clinical / drug</button><button type="button" data-col="all">Show all</button></div>
+  <div class="scroll"><table class="mt">
+    <thead><tr><th>Cytokine</th><th>Category</th><th>Main source</th><th>Main target(s)</th><th>Key action</th><th>Clinical / drug link</th></tr></thead>
+    <tbody>
+      <tr><th>IL-1β</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>Macrophages, DCs</td><td>Hypothalamus, endothelium, liver, leukocytes</td><td><b>Fever</b>; leukocyte migration; acute-phase reactants</td><td>Inflammasome (caspase-1) cleaves pro-IL-1β; <b>anakinra</b> (IL-1R antagonist); "osteoclast-activating factor"</td></tr>
+      <tr><th>IL-2</th><td><span class="tag" style="--cc:var(--c1)">Growth</span></td><td>Activated CD4⁺ T helpers</td><td>CD4⁺ (autocrine), CD8⁺ (paracrine), B, NK</td><td><b>T-cell proliferation</b> via JAK1/3–STAT5; ~8 h burst</td><td><b>Aldesleukin</b> (RCC, melanoma; capillary leak); cyclosporine/tacrolimus ↓ IL-2; basiliximab (anti-CD25); γc → X-SCID</td></tr>
+      <tr><th>IL-4</th><td><span class="tag" style="--cc:var(--c5)">Type 2 · growth</span></td><td>Th2, TFH</td><td>Naive CD4⁺, B cells, mast cells</td><td>→ Th2; <b>IgE</b> (+ IgG1) switch</td><td><b>Dupilumab</b> (IL-4Rα); γc receptor</td></tr>
+      <tr><th>IL-5</th><td><span class="tag" style="--cc:var(--c5)">Type 2 · growth</span></td><td>Th2</td><td><b>Eosinophils</b></td><td>Recruits/activates eosinophils; anti-helminth</td><td><b>Mepolizumab</b>, reslizumab; benralizumab (IL-5Rα) → eosinophilic asthma</td></tr>
+      <tr><th>IL-6</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>Macrophages, DCs, B and T cells</td><td>Liver, hypothalamus, naive CD4⁺</td><td><b>Acute-phase proteins</b> (CRP); fever; → Th17 (with IL-23, TGF-β)</td><td><b>Tocilizumab</b> (anti-IL-6R): RA, cytokine release syndrome; ↑ hepcidin → anemia of chronic disease</td></tr>
+      <tr><th>IL-7</th><td><span class="tag" style="--cc:var(--c1)">Growth</span></td><td>Bone marrow (and thymic) stromal cells</td><td>Lymphoid progenitors, memory T</td><td>→ <b>B, T, NK</b>; maintains <b>memory T</b></td><td>γc → no T cells in X-SCID; IL-7Rα deficiency → T⁻B⁺NK⁺ SCID</td></tr>
+      <tr><th>IL-10</th><td><span class="tag" style="--cc:var(--c3)">Regulatory</span></td><td>Tregs, macrophages</td><td>Macrophages, DCs, T cells</td><td>↓ inflammation; ↓ MHC II + costimulation; induces Tregs</td><td>IL-10/IL-10R loss → very-early-onset IBD</td></tr>
+      <tr><th>IL-12</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>DCs, macrophages</td><td><b>NK cells</b>, naive CD4⁺</td><td>Activates NK; → <b>Th1</b> (IFN-γ, LT-α)</td><td>IL-12R defect → disseminated mycobacteria/Salmonella; <b>ustekinumab</b> (p40)</td></tr>
+      <tr><th>IL-13</th><td><span class="tag" style="--cc:var(--c5)">Type 2</span></td><td>Th2</td><td>Airway epithelium, eosinophils, B cells</td><td><b>Mucus</b>; asthma/allergy; IgE</td><td>Dupilumab (shared IL-4Rα); tralokinumab (anti-IL-13)</td></tr>
+      <tr><th>IL-17</th><td><span class="tag" style="--cc:var(--c2)">Chemotactic (indirect)</span></td><td>Th17</td><td>Stromal / epithelial cells</td><td>Induces chemokines → <b>neutrophil recruitment</b></td><td>Defects → mucocutaneous <b>candidiasis</b>; Job (STAT3); <b>secukinumab</b>, ixekizumab (psoriasis)</td></tr>
+      <tr><th>IL-21</th><td><span class="tag" style="--cc:var(--c6)">Growth · B-help</span></td><td>TFH (also Th17)</td><td>B cells (germinal center)</td><td><b>Most potent B-cell regulator</b>; class switch, plasma cells</td><td>γc receptor → nonfunctional B cells in X-SCID</td></tr>
+      <tr><th>IL-22</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>Th17, ILC3</td><td><b>Epithelial cells</b></td><td>Epithelial <b>antimicrobial peptides</b>; barrier</td><td>Keratinocyte activation in psoriasis</td></tr>
+      <tr><th>IL-23</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>DCs, macrophages</td><td>CD4⁺ T</td><td>Promotes/maintains <b>Th17</b></td><td><b>Guselkumab, risankizumab</b> (p19); ustekinumab (p40) → psoriasis, Crohn</td></tr>
+      <tr><th>IL-25</th><td><span class="tag" style="--cc:var(--c5)">Type 2 alarmin</span></td><td>Epithelium — gut <b>tuft cells</b> (helminth succinate)</td><td>ILC2s, T cells</td><td><b>Initiates Th2</b> polarization</td><td>Anti-helminth "weep and sweep"</td></tr>
+      <tr><th>IL-33</th><td><span class="tag" style="--cc:var(--c5)">Type 2 alarmin</span></td><td>Damaged epithelium (worms, smoke, pollutants)</td><td>ILC2s, Th2</td><td>Initiates Th2; IL-1 family</td><td>Asthma / allergic airway inflammation</td></tr>
+      <tr><th>TNF-α</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>Macrophages, DCs (epithelium too)</td><td>Endothelium, neutrophils, Mφ, hypothalamus, liver</td><td>Endothelial activation, <b>vasodilation + permeability</b>; fever; <b>septic shock</b>; cachexia; granulomas</td><td><b>Infliximab, adalimumab, etanercept</b> → screen for latent TB</td></tr>
+      <tr><th>CD40L</th><td><span class="tag" style="--cc:var(--c6)">B-help (TNF fam.)</span></td><td>Activated CD4⁺ T (TFH, Th1)</td><td>CD40 on B cells, DCs, Mφ</td><td>Contact signal: <b>class switch</b>, SHM, germinal centers, memory B</td><td>Defect → <b>X-linked hyper-IgM</b></td></tr>
+      <tr><th>CXCL8 / IL-8</th><td><span class="tag" style="--cc:var(--c2)">Chemotactic</span></td><td>Fibroblasts, macrophages, neutrophils</td><td><b>Neutrophils</b> (GPCR)</td><td>Recruits phagocytes to inflammation</td><td>"Clean up on aisle 8"; LAD → no migration</td></tr>
+      <tr><th>IFN-α (type I)</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td><b>Virally infected cells</b>, (plasmacytoid) DCs</td><td>Neighboring cells, NK, immune cells</td><td><b>Inhibit viral replication</b>; ↑ MHC I; promote Th1</td><td>Hep B/C, hairy cell leukemia, Kaposi; flu-like, depression</td></tr>
+      <tr><th>IFN-β (type I)</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>Virally infected cells (fibroblasts), DCs</td><td>Neighboring cells, immune cells</td><td>Same antiviral state as IFN-α</td><td><b>Multiple sclerosis</b></td></tr>
+      <tr><th>IFN-γ (type II)</th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td><b>Th1, NK</b> (CD8⁺)</td><td><b>Macrophages</b>, B, T cells</td><td>Macrophage activation; ↑ MHC II; IgG switch; ⊣ Th2</td><td>CGD therapy; IGRA TB test; IL-12/IFN-γ axis → mycobacteria</td></tr>
+      <tr><th>G-CSF</th><td><span class="tag" style="--cc:var(--c1)">Growth</span></td><td>Stromal cells, macrophages</td><td>Neutrophil precursors</td><td><b>Neutrophil</b> production</td><td><b>Filgrastim</b> (chemo neutropenia, stem-cell mobilization)</td></tr>
+      <tr><th>GM-CSF</th><td><span class="tag" style="--cc:var(--c1)">Growth</span></td><td>T cells, macrophages, stromal cells</td><td>Myeloid progenitors</td><td><b>Granulocytes + macrophages</b></td><td><b>Sargramostim</b> (marrow recovery)</td></tr>
+      <tr><th>TGF-β</th><td><span class="tag" style="--cc:var(--c3)">Regulatory</span></td><td>Tregs, many cells</td><td>T, B cells, APCs</td><td>↓ proliferation; ↓ costimulation; → Tregs; <b>IgA switch</b>; + IL-6 → Th17</td><td>Fibrosis; SMAD (Ser/Thr kinase receptor)</td></tr>
+      <tr><th>BAFF</th><td><span class="tag" style="--cc:var(--c1)">Growth · B-help</span></td><td><b>Dendritic cells</b></td><td>B cells (BAFF-R, TACI)</td><td>B-cell survival; <b>TI-2 → IgG2</b> switch</td><td><b>Belimumab</b> → SLE</td></tr>
+      <tr><th>TSLP</th><td><span class="tag" style="--cc:var(--c5)">Type 2 alarmin</span></td><td>Damaged mucosal epithelium</td><td>DCs, ILC2s, Th2</td><td>Drives type 2 responses</td><td><b>Tezepelumab</b> → severe asthma</td></tr>
+      <tr><th>M-CSF <span class="mut-s">(also covered)</span></th><td><span class="tag" style="--cc:var(--c1)">Growth</span></td><td>Stromal cells, macrophages</td><td>Monocyte precursors</td><td>Monocyte / macrophage differentiation</td><td>With RANKL → osteoclast formation</td></tr>
+      <tr><th>LT-α / TNF-β <span class="mut-s">(also covered)</span></th><td><span class="tag" style="--cc:var(--c4)">Pro-inflam</span></td><td>Th1</td><td>Endothelium, lymphoid stroma</td><td>Inflammation; lymphoid tissue organization (LT-β = membrane partner)</td><td>TNF family; trimeric TNF-R</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3><span class="step">Apply</span>LO 4 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A traveler returns with a hookworm infection, 25% eosinophils and high IgE. Name the T-helper subset and the two cytokines behind each finding.</span></summary><div class="a"><b>Th2: IL-5 → eosinophilia; IL-4 (+ IL-13) → IgE.</b> Upstream, gut alarmins (IL-25 from tuft cells, IL-33, TSLP) started it.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A patient on chemotherapy has an ANC of 300/µL. Which recombinant cytokine most specifically restores neutrophils, and how does it differ from sargramostim?</span></summary><div class="a"><b>G-CSF (filgrastim)</b> — neutrophil-specific. Sargramostim (GM-CSF) is broader: granulocytes + macrophages.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A child mounts an IgG2 response to pneumococcal capsular polysaccharide without T-cell help. Which DC cytokine allowed the class switch?</span></summary><div class="a"><b>BAFF</b> — TNF-family cytokine from DCs; provides the T-independent (TI-2) switch signal.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">A psoriasis patient's skin shows neutrophil microabscesses. Trace the cytokine chain from DC to neutrophil.</span></summary><div class="a"><b>IL-23 (+ IL-6, TGF-β) → Th17 → IL-17 → keratinocyte chemokines (CXCL8) → neutrophils</b>; IL-22 → keratinocyte proliferation.</div></details>
+  <details class="ask"><summary><span class="q">A5</span><span class="qt">In the intestinal lamina propria, most B cells switch to one isotype. Which isotype and which cytokine?</span></summary><div class="a"><b>IgA, driven by TGF-β</b> — secretory IgA neutralizes microbes at the mucosal surface without inflammation.</div></details>
+</section>
+
+<!-- ===================== MCQ ===================== -->
+<section class="lo" id="mcq">
+  <h2><span class="num">MCQ</span><span>Practice questions</span><span class="sub">Click an answer to see the explanation.</span></h2>
+  <div class="tools"><span class="score" id="score">Score: 0 / 0</span><button type="button" id="resetq">Reset</button></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">1</span>A 6-month-old boy has oral thrush, Pneumocystis pneumonia and chronic diarrhea. His maternal uncle died in infancy of infections. Flow cytometry shows almost no CD3⁺ T cells or CD56⁺ NK cells, but normal numbers of CD19⁺ B cells. A defect in which molecule best explains these findings?</p>
+    <div class="opts"><button data-k="A">A. CD40 ligand</button><button data-k="B">B. Adenosine deaminase</button><button data-k="C">C. Common γ chain (CD132)</button><button data-k="D">D. IL-7 receptor α chain</button><button data-k="E">E. STAT3</button></div>
+    <div class="exp" hidden><b>C. Common γ chain.</b> X-linked pattern + T⁻B⁺NK⁻ = γc deficiency (shared by IL-2, IL-4, IL-7, IL-9, IL-15, IL-21 receptors). No IL-7 → no T cells; no IL-15 → no NK cells. <b>A</b> CD40L gives hyper-IgM with normal T-cell numbers. <b>B</b> ADA is autosomal recessive and usually T⁻B⁻NK⁻. <b>D</b> IL-7Rα deficiency is autosomal recessive with <b>normal NK cells</b>. <b>E</b> STAT3 loss = hyper-IgE syndrome.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">2</span>A 45-year-old woman with rheumatoid arthritis is about to start adalimumab. Her physician orders an interferon-γ release assay first. Which normal function of the targeted cytokine explains the need for this test?</p>
+    <div class="opts"><button data-k="A">A. Inducing IgE class switching in B cells</button><button data-k="B">B. Recruiting eosinophils to tissue</button><button data-k="C">C. Inhibiting viral replication in epithelial cells</button><button data-k="D">D. Maintaining granulomas that contain mycobacteria</button><button data-k="E">E. Driving neutrophil production in the marrow</button></div>
+    <div class="exp" hidden><b>D.</b> Adalimumab blocks <b>TNF-α</b>, which is required to form and maintain granulomas; blocking it can <b>reactivate latent TB</b>. <b>A</b> is IL-4, <b>B</b> IL-5, <b>C</b> type I IFN, <b>E</b> G-CSF.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">3</span>A man with metastatic renal cell carcinoma receives high-dose recombinant IL-2. Two days later he develops hypotension, weight gain, peripheral edema and pulmonary congestion. Which property of cytokines best explains these effects?</p>
+    <div class="opts"><button data-k="A">A. Pleiotropy</button><button data-k="B">B. Redundancy</button><button data-k="C">C. Antagonism</button><button data-k="D">D. Autocrine restriction</button><button data-k="E">E. Receptor downregulation</button></div>
+    <div class="exp" hidden><b>A. Pleiotropy</b> — systemic IL-2 acts on many cell types (endothelium, lymphocytes, NK cells) → <b>capillary leak syndrome</b>. <b>B</b> redundancy means different cytokines share an effect. <b>C</b> antagonism = one blocks another. <b>D</b> and <b>E</b> would limit, not spread, effects.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">4</span>A 30-year-old man returns from rural Southeast Asia with abdominal pain and iron-deficiency anemia. Stool shows hookworm eggs. CBC shows 22% eosinophils. Which cytokine most directly explains the eosinophilia?</p>
+    <div class="opts"><button data-k="A">A. IL-4</button><button data-k="B">B. IL-5</button><button data-k="C">C. IL-12</button><button data-k="D">D. IFN-γ</button><button data-k="E">E. IL-17</button></div>
+    <div class="exp" hidden><b>B. IL-5</b> (Th2) recruits and activates eosinophils. <b>A</b> IL-4 drives Th2 and IgE switching — the classic distractor. <b>C, D</b> are Th1. <b>E</b> IL-17 recruits neutrophils.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">5</span>A 58-year-old woman receiving chemotherapy for breast cancer has an absolute neutrophil count of 400/µL. Her oncologist prescribes a recombinant cytokine to specifically increase neutrophil production. Which cytokine is it?</p>
+    <div class="opts"><button data-k="A">A. IL-7</button><button data-k="B">B. GM-CSF</button><button data-k="C">C. M-CSF</button><button data-k="D">D. IL-2</button><button data-k="E">E. G-CSF</button></div>
+    <div class="exp" hidden><b>E. G-CSF (filgrastim)</b> specifically drives neutrophils. <b>B</b> GM-CSF (sargramostim) works but is broader (granulocytes + macrophages), so it is not the most specific. <b>A</b> IL-7 → lymphocytes. <b>C</b> M-CSF → monocytes/macrophages. <b>D</b> IL-2 → T-cell growth.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">6</span>A 34-year-old man with plaque psoriasis starts ustekinumab, an antibody against the p40 subunit shared by two cytokines made by dendritic cells. Differentiation of which T-helper subsets will be most reduced?</p>
+    <div class="opts"><button data-k="A">A. Th2 and Treg</button><button data-k="B">B. Th1 and Th2</button><button data-k="C">C. Th1 and Th17</button><button data-k="D">D. Th17 and Treg</button><button data-k="E">E. TFH and Th2</button></div>
+    <div class="exp" hidden><b>C.</b> p40 is shared by <b>IL-12 (→ Th1)</b> and <b>IL-23 (→ Th17)</b>. Th2 needs IL-4; Tregs need TGF-β (+ IL-2); TFH depend on IL-21/IL-6 and contact signals.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">7</span>A 2-year-old boy has recurrent otitis, sinusitis and Pneumocystis pneumonia. Serum IgM is elevated; IgG, IgA and IgE are nearly undetectable. Lymph nodes lack germinal centers. Which molecule is most likely defective?</p>
+    <div class="opts"><button data-k="A">A. BAFF on dendritic cells</button><button data-k="B">B. IL-21 receptor on B cells</button><button data-k="C">C. TGF-β in mucosa</button><button data-k="D">D. CD40 ligand on CD4⁺ T cells</button><button data-k="E">E. IL-10 on regulatory T cells</button></div>
+    <div class="exp" hidden><b>D. CD40L</b> — X-linked hyper-IgM: no contact signal for class switching or germinal centers; PCP because CD40L also activates macrophages. <b>A</b> BAFF loss would mainly reduce B-cell survival. <b>B</b> IL-21R loss impairs B cells but not this classic triad. <b>C</b> would only affect IgA. <b>E</b> → IBD-like inflammation.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">8</span>In a skin abscess, neutrophils migrate up a gradient of CXCL8 secreted by local macrophages and fibroblasts. Binding of CXCL8 to its receptor on the neutrophil directly triggers which event?</p>
+    <div class="opts"><button data-k="A">A. JAK-mediated tyrosine phosphorylation of STATs</button><button data-k="B">B. GDP-to-GTP exchange on a heterotrimeric G protein</button><button data-k="C">C. SMAD phosphorylation by a serine/threonine kinase</button><button data-k="D">D. Death-domain recruitment of caspase-8</button><button data-k="E">E. MyD88-dependent NF-κB activation</button></div>
+    <div class="exp" hidden><b>B.</b> Chemokine receptors are <b>GPCRs</b> → G-protein activation → cytoskeletal rearrangement → migration. <b>A</b> class I/II cytokine receptors. <b>C</b> TGF-β receptor. <b>D</b> TNF-R/Fas. <b>E</b> IL-1R/TLR family.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">9</span>A 3-year-old girl develops disseminated infection after BCG vaccination and later has Salmonella bacteremia. Her T-cell, B-cell and neutrophil counts are normal. A receptor defect for a cytokine made by macrophages and dendritic cells is found. Which downstream process is most impaired?</p>
+    <div class="opts"><button data-k="A">A. IgE class switching by B cells</button><button data-k="B">B. Neutrophil oxidative burst</button><button data-k="C">C. Eosinophil recruitment</button><button data-k="D">D. Complement activation by MBL</button><button data-k="E">E. IFN-γ production by Th1 and NK cells</button></div>
+    <div class="exp" hidden><b>E.</b> <b>IL-12 receptor deficiency</b> → no Th1 differentiation or NK activation → ↓ <b>IFN-γ</b> → macrophages cannot kill intracellular mycobacteria/Salmonella. <b>A, C</b> are Th2 functions. <b>B</b> = NADPH oxidase (CGD). <b>D</b> is hepatic acute-phase output, independent of IL-12.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">10</span>A 67-year-old man with lobar pneumonia has a temperature of 39.4 °C and a serum C-reactive protein of 180 mg/L. Which cytokine is the principal stimulus for hepatic CRP synthesis?</p>
+    <div class="opts"><button data-k="A">A. IL-6</button><button data-k="B">B. IL-10</button><button data-k="C">C. IL-2</button><button data-k="D">D. TGF-β</button><button data-k="E">E. IFN-α</button></div>
+    <div class="exp" hidden><b>A. IL-6</b>, acting in an <b>endocrine</b> fashion on hepatocytes (IL-1β and TNF-α contribute). <b>B, D</b> are regulatory. <b>C</b> is a T-cell growth factor. <b>E</b> is antiviral.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">11</span>In a mouse model, B cells in the intestinal lamina propria fail to switch to the dominant mucosal isotype, while IgE and IgG responses in the spleen are normal. Loss of which cytokine best explains this?</p>
+    <div class="opts"><button data-k="A">A. IL-4</button><button data-k="B">B. IFN-γ</button><button data-k="C">C. TGF-β</button><button data-k="D">D. IL-12</button><button data-k="E">E. IL-17</button></div>
+    <div class="exp" hidden><b>C. TGF-β</b> is required for <b>IgA</b> class switching in gut mucosa. <b>A</b> IL-4 → IgE (normal here). <b>B</b> IFN-γ → IgG. <b>D</b> IL-12 → Th1. <b>E</b> IL-17 → neutrophils.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">12</span>A 19-year-old woman has had persistent Candida infections of the nails, mouth and skin since childhood, without invasive fungal disease. Neutrophil function tests are normal. A defect in which cytokine pathway is most likely?</p>
+    <div class="opts"><button data-k="A">A. IL-5</button><button data-k="B">B. IFN-β</button><button data-k="C">C. IL-10</button><button data-k="D">D. IL-17</button><button data-k="E">E. GM-CSF</button></div>
+    <div class="exp" hidden><b>D. IL-17</b> (Th17) recruits neutrophils and boosts epithelial defense at mucosa and skin → defects cause <b>chronic mucocutaneous candidiasis</b>. <b>A</b> → eosinophils. <b>B</b> → antiviral. <b>C</b> loss → excess inflammation (IBD). <b>E</b> → myeloid production (and alveolar macrophage function).</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">13</span>Specialized intestinal epithelial cells detect succinate produced by a newly established helminth and release a cytokine that activates type 2 innate lymphoid cells, starting a Th2 response. Which cytokine is released?</p>
+    <div class="opts"><button data-k="A">A. IL-12</button><button data-k="B">B. IL-25</button><button data-k="C">C. IL-22</button><button data-k="D">D. CXCL8</button><button data-k="E">E. IFN-γ</button></div>
+    <div class="exp" hidden><b>B. IL-25</b> from <b>tuft cells</b> — an epithelial alarmin (with IL-33 and TSLP). <b>A, E</b> drive Th1. <b>C</b> is a Th17 product acting on epithelium. <b>D</b> recruits neutrophils.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">14</span>A 28-year-old woman with systemic lupus erythematosus has persistent disease activity. She is started on a monoclonal antibody against a TNF-family cytokine, made largely by dendritic cells, that promotes survival of B cells (including autoreactive ones). Which cytokine is targeted?</p>
+    <div class="opts"><button data-k="A">A. CD40 ligand</button><button data-k="B">B. IL-6</button><button data-k="C">C. TNF-α</button><button data-k="D">D. IL-21</button><button data-k="E">E. BAFF</button></div>
+    <div class="exp" hidden><b>E. BAFF (BLyS)</b> — targeted by <b>belimumab</b>. <b>A</b> CD40L is TNF family but expressed by T cells. <b>B</b> tocilizumab targets IL-6R. <b>C</b> anti-TNF drugs are not standard SLE therapy (can induce drug-induced lupus). <b>D</b> IL-21 is from TFH, not a TNF-family member.</div></div>
+</section>
+
+<!-- ===================== REVIEW ===================== -->
+<section class="lo" id="review">
+  <h2><span class="num">✓</span><span>Rapid review</span></h2>
+  <ul class="check">
+    <li><input id="r1" type="checkbox"><label for="r1">Cytokines = small soluble proteins that <b>always act through specific receptors</b>; made by <b>any cell</b> (infected epithelium → IFN-α/β).</label></li>
+    <li><input id="r2" type="checkbox"><label for="r2">Five families: <b>IL, TNF, IFN, CSF, TGF</b>; IL numbers = order of discovery.</label></li>
+    <li><input id="r3" type="checkbox"><label for="r3"><b>Pleiotropy</b> (one → many cells) explains side effects of therapeutic cytokines; redundancy = many → same effect.</label></li>
+    <li><input id="r4" type="checkbox"><label for="r4">Antagonism: <b>IFN-γ ⊣ IL-4–driven Th2</b> differentiation.</label></li>
+    <li><input id="r5" type="checkbox"><label for="r5">Triad <b>IL-1β, IL-6, TNF-α</b> (Mφ/DC) → endocrine → liver (CRP, MBL) + hypothalamus (fever); IL-1β = fever.</label></li>
+    <li><input id="r6" type="checkbox"><label for="r6"><b>TNF-α</b> → vasodilation + ↑ permeability → hypotension in <b>septic shock</b>.</label></li>
+    <li><input id="r7" type="checkbox"><label for="r7">Autocrine = IL-2 → own CD4⁺ T; paracrine = IL-2 → neighboring CD8⁺; endocrine = triad → liver/brain.</label></li>
+    <li><input id="r8" type="checkbox"><label for="r8">Shut-off: IL-10 + TGF-β rise late; ↓ IL-2 → ↓ Bcl-2 → effector apoptosis; memory on <b>IL-7</b>.</label></li>
+    <li><input id="r9" type="checkbox"><label for="r9">Class I/II receptors → <b>JAK–STAT = tyrosine phosphorylation</b>; IL-2 → JAK1/3 → STAT5.</label></li>
+    <li><input id="r10" type="checkbox"><label for="r10"><b>γc (CD132)</b> shared by IL-2, IL-4, IL-7 (+9, 15, 21) receptors → defect = <b>X-linked SCID</b> (T⁻B⁺NK⁻).</label></li>
+    <li><input id="r11" type="checkbox"><label for="r11">TNF = trimer → trimeric TNF-R → NF-κB <i>or</i> caspases; family: Fas–FasL, CD40–CD40L, BAFF. Chemokines → <b>GPCRs</b>. TGF-β → Ser/Thr kinase (SMAD).</label></li>
+    <li><input id="r12" type="checkbox"><label for="r12">Mφ/DC <b>IL-12</b> → NK activation + Th1 → <b>IFN-γ</b> → macrophages → more IL-12 (loop).</label></li>
+    <li><input id="r13" type="checkbox"><label for="r13">Th2: <b>IL-4</b> (IgE; from Th2 + <b>TFH</b>), <b>IL-5</b> (eosinophils), <b>IL-13</b> (mucus); alarmins <b>IL-25</b> (tuft cells), <b>IL-33</b>, <b>TSLP</b>.</label></li>
+    <li><input id="r14" type="checkbox"><label for="r14">Th17 ← <b>IL-6 + IL-23 + TGF-β</b>; makes <b>IL-17</b> (chemokines → neutrophils) + <b>IL-22</b> (epithelial AMPs).</label></li>
+    <li><input id="r15" type="checkbox"><label for="r15"><b>TGF-β</b> ↓ costimulatory molecules → tolerance; induces Tregs; <b>IgA switch in gut</b>.</label></li>
+    <li><input id="r16" type="checkbox"><label for="r16"><b>G-CSF</b> = neutrophils (filgrastim); <b>GM-CSF</b> = granulocytes + macrophages; M-CSF = macrophages; <b>IL-7</b> = B, T, NK.</label></li>
+    <li><input id="r17" type="checkbox"><label for="r17">B-cell help: <b>CD40L</b> (hyper-IgM if absent), <b>IL-21</b> (most potent B regulator), <b>BAFF</b> from DCs (TI-2 → IgG2; belimumab).</label></li>
+    <li><input id="r18" type="checkbox"><label for="r18">Type I IFN (infected cells) → antiviral + ↑ MHC I; IFN-γ (Th1, NK) → macrophages + ↑ MHC II; <b>CXCL8</b> = neutrophil chemokine.</label></li>
+  </ul>
+</section>
+
+<footer class="foot">
+  <div class="rev">HoyaDocs &middot; Block 2 &middot; Immunology &middot; IRD04</div>
+  <div class="rev">Rev 1.0 &middot; Updated Oct 22, 2026</div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='ird04';
+  var answered=0, right=0, score=document.getElementById('score');
+  function upd(){ if(score) score.textContent='Score: '+right+' / '+answered; }
+  document.querySelectorAll('.mcq').forEach(function(q){
+    var ans=q.getAttribute('data-ans');
+    q.querySelectorAll('.opts button').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(q.dataset.done) return;
+        q.dataset.done='1'; answered++;
+        var k=b.getAttribute('data-k');
+        if(k===ans){ b.classList.add('ok'); right++; }
+        else { b.classList.add('no'); q.querySelector('[data-k="'+ans+'"]').classList.add('ok'); }
+        q.querySelector('.exp').hidden=false; upd();
+      });
+    });
+  });
+  var rs=document.getElementById('resetq');
+  if(rs) rs.addEventListener('click',function(){
+    answered=0; right=0; upd();
+    document.querySelectorAll('.mcq').forEach(function(q){
+      delete q.dataset.done; q.querySelector('.exp').hidden=true;
+      q.querySelectorAll('button').forEach(function(b){ b.classList.remove('ok','no'); });
+    });
+  });
+  document.querySelectorAll('.check input').forEach(function(c){
+    try{ if(localStorage.getItem(KEY+'-'+c.id)==='1') c.checked=true; }catch(e){}
+    c.addEventListener('change',function(){ try{ localStorage.setItem(KEY+'-'+c.id, c.checked?'1':'0'); }catch(e){} });
+  });
+})();
+</script>
+<script>
+(function(){function op(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(h);if(!t)return;var d=t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}setTimeout(function(){t.scrollIntoView();},30);}window.addEventListener('hashchange',op);op();})();
+</script>
+<script>
+(function(){
+  var t=document.querySelector('table.mt'); if(!t) return;
+  var btns=document.querySelectorAll('.mtools button');
+  btns.forEach(function(b){ b.addEventListener('click',function(){
+    var c=b.getAttribute('data-col');
+    if(c==='all'){ t.querySelectorAll('td.hid').forEach(function(x){x.classList.remove('hid');}); btns.forEach(function(x){x.classList.remove('on');}); return; }
+    var on=!b.classList.contains('on'); b.classList.toggle('on',on);
+    t.querySelectorAll('tbody tr').forEach(function(r){ var td=r.children[parseInt(c,10)]; if(td) td.classList.toggle('hid',on); });
+  });});
+  t.addEventListener('click',function(e){ var td=e.target.closest('td.hid'); if(td) td.classList.remove('hid'); });
+})();
+</script>
+</body>
+</html>

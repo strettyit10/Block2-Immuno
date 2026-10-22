@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IRD01 Immune System Intro Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Graduate&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: HoyaDocs Immunology hub shell (wordmark bar, section nav, navy varsity hero) around one reading column (max 1000px) of LO "sheets". Block 2 palette: navy + green + silver. */
+:root{
+  --bg:#EEF0F3; --panel:#FFFFFF; --sunk:#F5F7FA; --ink:#1A3363; --muted:#5B6274; --line:#D3D8E0;
+  --navy:#0F2244; --navy2:#1A3363; --tint:#E6E9EE; --bd:#C5CBD6; --onnavy:#F4F1EA; --onnavy-mut:#A9B3C7;
+  --silver:#6E7787; --silver-hi:#C5CBD6;
+  --tan:#4CB36A; --tan-ink:#1E7A3C;
+  /* callouts */
+  --s1-bg:#FFF4C2; --s1-bd:#D4A300; --s1-ink:#5E4700;      /* Step 1 HY: yellow bg, darker yellow border */
+  --ex-bg:#E3F0FB; --ex-bd:#1D6FA8; --ex-ink:#0F3F66;      /* In-house exam */
+  --trap-bg:#FFEDE3; --trap-bd:#D2621B; --trap-ink:#86380A; /* Step 1 trap */
+  --mem-bg:#EFEBFB; --mem-bd:#5B4BC4; --mem-ink:#3F2F9E;   /* Memory tool */
+  --bz-bg:#DCF1EE; --bz-bd:#1F7F78; --bz-ink:#0F5F59;      /* Buzzwords */
+  /* discipline + diagram colors */
+  --imm:#5B4BC4; --pat:#1F7F78; --pha:#2368A8; --mic:#4D7C2A;
+  --c1:#2368A8; --c2:#C4631B; --c3:#1F7F78; --c4:#B8324A; --c5:#5B4BC4; --c6:#8C6D0A;
+  --c1-soft:#E0ECF8; --c2-soft:#FBE9DA; --c3-soft:#DCF1EE; --c4-soft:#F8DDE3; --c5-soft:#ECE9FA; --c6-soft:#F6EED2;
+  --good:#1C7A4A; --bad:#B42318;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --varsity:"Graduate","Rockwell","Georgia",serif;
+  --cond:"Barlow Condensed","Arial Narrow",sans-serif;
+  --mono-f:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.58}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+a{color:var(--tan-ink)}
+:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+h1,h2,h3,h4{text-wrap:balance}
+b,strong{color:inherit;font-weight:700}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:22px} li{margin:4px 0}
+ul ul{margin:3px 0}
+img{max-width:100%}
+
+/* hub shell */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0 12px}
+.word{font-family:var(--varsity);font-size:24px;letter-spacing:.04em;text-decoration:none;color:var(--ink);line-height:1}
+.word span{color:var(--silver)}
+.rev{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.topr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.themebtn{background:transparent;border:1.5px solid var(--line);border-radius:999px;font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:5px 14px;cursor:pointer}
+.themebtn:hover{color:var(--ink);border-color:var(--ink)}
+.hubnav{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;border-top:3px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:22px}
+.hubnav::-webkit-scrollbar{display:none}
+.hubnav a{flex:none;text-decoration:none;font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:11px 12px 9px;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:7px}
+.hubnav a:hover{color:var(--ink)}
+.hubnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tan)}
+.hubnav a i{width:9px;height:9px;border-radius:2px;flex:none}
+.hubnav .sep{flex:none;width:1px;background:var(--line);margin:9px 6px}
+/* hero */
+header.hero{background:var(--navy);color:var(--onnavy);border-radius:14px;padding:clamp(20px,3.5vw,36px) clamp(20px,4vw,40px);margin-bottom:20px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(255,255,255,.045) calc(10% - 1px) 10%),
+  radial-gradient(ellipse at 88% 115%, rgba(76,179,106,.34), transparent 58%)}
+header.hero > *{position:relative}
+.hero .k{font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#8FD9A4}
+.hero h1{font-family:var(--varsity);font-weight:400;font-size:clamp(28px,5.4vw,52px);line-height:1.02;letter-spacing:.02em;margin:10px 0 4px;color:#F4F1EA;text-shadow:2px 2px 0 #1A3363,4px 4px 0 #4CB36A}
+.hero .lede{color:#C5CBD6;max-width:62ch;margin:10px 0 0;font-size:15px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chip{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid rgba(238,233,222,.45);border-radius:6px;padding:4px 11px;color:#F4F1EA}
+
+/* panels */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 0 18px}
+.panel > h2{margin:0 0 10px;font-family:var(--cond);font-size:15px;text-transform:uppercase;letter-spacing:.14em;color:var(--tan-ink)}
+.lo-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.lo-list li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;margin:0}
+.lo-list .n{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-weight:800;font-size:13px;border-radius:7px;padding:3px 8px;margin-top:2px;white-space:nowrap}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:6px}
+nav.toc a{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+nav.toc a:hover{background:var(--navy);color:#F4F1EA;border-color:var(--navy)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.legend span{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 9px;border:1.5px solid}
+.lg-s1{background:var(--s1-bg);border-color:var(--s1-bd)!important;color:var(--s1-ink)}
+.lg-ex{background:var(--ex-bg);border-color:var(--ex-bd)!important;color:var(--ex-ink)}
+.lg-trap{background:var(--trap-bg);border-color:var(--trap-bd)!important;color:var(--trap-ink)}
+.lg-mem{background:var(--mem-bg);border-color:var(--mem-bd)!important;color:var(--mem-ink)}
+.lg-bz{background:var(--bz-bg);border-color:var(--bz-bd)!important;color:var(--bz-ink)}
+
+/* LO sections */
+section.lo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px clamp(16px,3vw,28px) 22px;margin:0 0 24px;scroll-margin-top:12px}
+section.lo > h2{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:start;font-family:var(--varsity);font-weight:400;font-size:clamp(20px,2.6vw,25px);letter-spacing:.03em;color:var(--ink);border-bottom:2px dashed var(--line);padding:18px 0 12px;margin:0 0 12px;line-height:1.25}
+section.lo > h2 .num{grid-row:1 / span 2;font-family:var(--cond);font-size:14px;font-weight:800;letter-spacing:.06em;background:var(--tan);color:#0F2244;min-width:46px;height:30px;padding:0 9px;border-radius:6px;box-shadow:0 3px 0 var(--tan-ink);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+section.lo > h2 .sub{grid-column:2;display:block;font-family:var(--body);font-weight:500;color:var(--muted);font-size:14px;letter-spacing:0;margin-top:4px}
+h3{font-family:var(--cond);font-weight:800;font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin:22px 0 6px;display:flex;align-items:center;gap:8px}
+h3 .step{font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+h4{font-family:var(--cond);font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:14px 0 4px}
+.goal{background:var(--sunk);border:1px dashed var(--bd);border-radius:10px;padding:10px 14px;font-size:14px;margin:6px 0 12px}
+.goal b{color:var(--tan-ink)}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--panel)}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+thead th{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+tbody th{background:var(--tint);color:var(--ink);font-weight:700}
+tbody tr:nth-child(even) td{background:var(--sunk)}
+
+/* callouts (collapsible) */
+.co{border-radius:10px;font-size:14px;border:1.5px solid;border-left-width:6px}
+.co .t{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px}
+.co p{margin:4px 0} .co ul{margin:4px 0}
+.s1{background:var(--s1-bg);border-color:var(--s1-bd);color:var(--s1-ink)}
+.ex{background:var(--ex-bg);border-color:var(--ex-bd);color:var(--ex-ink)}
+.trap{background:var(--trap-bg);border-color:var(--trap-bd);color:var(--trap-ink)}
+.mem{background:var(--mem-bg);border-color:var(--mem-bd);color:var(--mem-ink)}
+.bz{background:var(--bz-bg);border-color:var(--bz-bd);color:var(--bz-ink)}
+.s1 .t::before{content:"★ "} .ex .t::before{content:"◆ "} .trap .t::before{content:"⚠ "} .mem .t::before{content:"✎ "} .bz .t::before{content:"\201C "}
+.coset{display:grid;gap:6px;margin:0 0 14px 16px}
+details.co{padding:0 14px;margin:8px 0}
+.coset details.co{margin:0}
+details.co > summary{cursor:pointer;list-style:none;padding:8px 0;margin:0;display:flex;align-items:center;gap:8px}
+details.co > summary::-webkit-details-marker{display:none}
+details.co > summary::after{content:"+";margin-left:auto;font-size:16px;font-weight:800}
+details.co[open] > summary::after{content:"\2212"}
+details.co .cb{padding:0 0 10px}
+.bzlist{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.bzlist span{background:var(--panel);border:1px solid var(--bz-bd);border-radius:999px;padding:2px 10px;font-size:13px}
+.bzlist span b{color:var(--bz-ink)}
+
+/* guide questions (teaching blocks) */
+details.gq{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:12px 0 6px;padding:0 14px}
+details.gq > summary{cursor:pointer;list-style:none;padding:11px 0;font-weight:400;font-size:15.5px;display:flex;gap:10px;align-items:flex-start}
+details.gq > summary::-webkit-details-marker{display:none}
+details.gq > summary .qt{flex:1;min-width:0}
+details.gq > summary .qt b{font-weight:700}
+details.gq > summary::after{content:"+";flex:none;font-weight:800;font-size:18px;line-height:1;color:var(--tan-ink)}
+details.gq[open] > summary::after{content:"\2212"}
+.gqb{border-top:1px dashed var(--bd);padding:6px 0 12px;min-width:0}
+
+/* check-yourself + application questions */
+details.ask{border:1px solid var(--line);border-radius:10px;background:var(--sunk);margin:10px 0;padding:0 14px}
+details.ask > summary{cursor:pointer;list-style:none;padding:10px 0;font-weight:650;display:flex;gap:10px;align-items:flex-start}
+details.ask > summary .qt{flex:1;min-width:0;overflow-wrap:anywhere}
+details.ask > summary::-webkit-details-marker{display:none}
+details.ask > summary .q{flex:none;font-family:var(--cond);font-size:12px;font-weight:800;color:#FFFFFF;background:var(--tan-ink);border-radius:6px;padding:2px 7px;margin-top:2px}
+details.ask > summary::after{content:"reveal";margin-left:auto;flex:none;font-family:var(--cond);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--tan-ink);margin-top:3px}
+details.ask[open] > summary::after{content:"hide"}
+details.ask .a{border-top:1px dashed var(--bd);padding:8px 0 12px;font-size:14.5px}
+
+/* cards + grids */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-top:4px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.card h4{margin-top:0;color:var(--cc,var(--ink))}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:10px 0}
+.dcard{border:1px solid var(--line);border-left:5px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.dcard h4{margin:0 0 4px;font-family:var(--body);font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink)}
+.dcard p{margin:4px 0;font-size:13.5px}
+.tag{display:inline-block;font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:5px;color:#FFFFFF;background:var(--cc,var(--tan-ink));vertical-align:1px}
+
+/* flow chains (arrows) */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:12px 0}
+.flow .st{flex:1 1 120px;min-width:0;background:var(--sunk);border:1.5px solid var(--cc,var(--bd));border-radius:9px;padding:8px 10px;font-size:13.5px}
+.flow .st b{display:block;font-family:var(--cond);font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--cc,var(--ink))}
+.flow .ar{flex:none;align-self:center;font-weight:900;color:var(--muted);font-size:18px}
+@media (max-width:620px){.flow{flex-direction:column}.flow .ar{transform:rotate(90deg)}}
+
+/* figures */
+figure{margin:14px 0;background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure img{display:block;margin:0 auto;border-radius:8px;max-height:460px;object-fit:contain}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
+svg{max-width:100%;height:auto;display:block;margin:0 auto}
+svg text{font-family:var(--body);fill:var(--ink)}
+svg .mut{fill:var(--muted)}
+svg .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
+svg .box{fill:var(--tint);stroke:var(--navy2);stroke-width:1.5}
+
+/* image ID drill */
+.ntc{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:12px 0}
+.ntc details{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.ntc img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.ntc summary{cursor:pointer;list-style:none;font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.04em;padding:7px 9px;color:var(--tan-ink)}
+.ntc summary::-webkit-details-marker{display:none}
+.ntc .ans{padding:0 9px 9px;font-size:13px}
+
+/* mcq */
+.mcq{border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:10px;padding:12px 16px;margin:14px 0;background:var(--panel)}
+.mcq .stem{font-weight:600;margin:0 0 8px}
+.mcq .stem .qn{display:inline-block;font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13px;font-weight:800;border-radius:6px;padding:1px 7px;margin-right:6px}
+.opts{display:grid;gap:6px}
+.opts button{all:unset;cursor:pointer;display:block;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;background:var(--sunk);color:var(--ink)}
+.opts button:hover{border-color:var(--bd)}
+.opts button:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+.opts button.ok{border-color:var(--good);background:var(--bz-bg);color:var(--bz-ink);font-weight:700}
+.opts button.no{border-color:var(--bad);background:var(--trap-bg);color:var(--trap-ink);text-decoration:line-through}
+.mcq .exp{margin-top:10px;border-top:1px dashed var(--bd);padding-top:8px;font-size:14px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.tools button{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 12px;cursor:pointer}
+.score{font-family:var(--cond);font-weight:800;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* rapid review checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:9px;align-items:flex-start}
+.check input{margin-top:5px;accent-color:var(--tan-ink)}
+.kbd{font-family:var(--mono-f);font-size:12.5px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+.foot{margin-top:40px;padding-top:14px;border-top:3px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media print{details > *:not(summary){display:block!important} .themebtn,.tools{display:none}}
+
+/* shared fixes */
+.coset{grid-template-columns:minmax(0,1fr)}
+.two>*,.three>*{min-width:0}
+.co .scroll,.cb{max-width:100%;overflow-x:auto}
+.ntc summary img{margin:-7px -9px 7px;width:calc(100% + 18px)}
+
+/* jump-to groups + big-picture bullets */
+nav.toc .links{align-items:center}
+nav.toc a.xt{background:var(--navy);color:#F4F1EA;border-color:var(--navy);display:inline-flex;align-items:center;gap:6px}
+nav.toc a.xt::before{font-size:12px;opacity:.85}
+nav.toc a.xt[href="#map"]::before{content:"◎"}
+nav.toc a.xt[href="#mcq"]::before{content:"?"}
+nav.toc a.xt[href="#review"]::before{content:"✓"}
+nav.toc a.xt[href="#ntc"]::before,nav.toc a.xt[href="#imgid"]::before{content:"▣"}
+nav.toc a.xt:hover{background:var(--tan);border-color:var(--tan);color:#0F2244}
+nav.toc a.lo-l{border-left:4px solid var(--tan)}
+nav.toc .tsep{flex:none;width:1px;align-self:stretch;background:var(--line);margin:0 4px}
+ul.bigp{list-style:none;padding:0;margin:12px 0 4px;display:grid;gap:8px}
+ul.bigp > li{position:relative;margin:0;padding:8px 12px 8px 34px;background:var(--sunk);border:1px solid var(--line);border-left:4px solid var(--tan);border-radius:8px}
+ul.bigp > li::before{content:"➜";position:absolute;left:11px;top:8px;color:var(--tan-ink);font-weight:800}
+ul.bigp ul{margin:5px 0 0;padding-left:18px}
+ul.bigp ul li{margin:2px 0;list-style:"→  "}
+
+/* layout v3: light only, wider page, 3-up callouts */
+:root{color-scheme:light}
+.wrap{max-width:1320px}
+.coset{grid-template-columns:repeat(auto-fill,minmax(max(260px,calc((100% - 12px)/3)),1fr));align-items:start;gap:6px}
+
+/* final pass: wide diagrams scroll on phones */
+@media (max-width:700px){figure.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}figure.wide > svg{min-width:640px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="word" href="../index.html">HOYA<span>DOCS</span></a>
+  <div class="topr">
+    <div class="rev">Block 2 &middot; Immunology &middot; IRD01 &middot; Rev 1.0 &middot; Updated Oct 22, 2026</div>
+  </div>
+</header>
+<nav class="hubnav" aria-label="Immunology sections">
+  <a href="../index.html">Home</a>
+  <span class="sep"></span>
+  <a href="../IRD-Games/index.html"><i style="background:#5B4BC4"></i>Immuno Games</a>
+  <a href="index.html" aria-current="page"><i style="background:#C4631B"></i>Study Guides</a>
+  <a href="../Pathology-Database/HoyaDocs_IRD_Pathology_Database.html"><i style="background:#1F7F78"></i>Path Database</a>
+  <a href="../Pharmacology-Database/HoyaDocs_IRD_Pharm_Database.html"><i style="background:#1F7F78"></i>Pharm Database</a>
+</nav>
+
+<header class="hero">
+  <div class="k">IRD01 &middot; Immunology &middot; Study Guide</div>
+  <h1>Introduction to the Immune System</h1>
+</header>
+
+<div class="panel">
+  <h2>Learning objectives</h2>
+  <ol class="lo-list">
+    <li><span class="n">LO 1</span><span>Contrast the fast, generic innate defenses with the slower, antigen-specific (adaptive) defenses, and name the physical and chemical barriers that keep microbes out in the first place.</span></li>
+    <li><span class="n">LO 2</span><span>Walk through what the innate system does once a microbe gets in: spotting it, eating it, sounding the cytokine alarm, local inflammation and the body-wide acute phase response.</span></li>
+    <li><span class="n">LO 3</span><span>Explain what the complement proteins accomplish and the ways the cascade gets switched on.</span></li>
+    <li><span class="n">LO 4</span><span>Trace how dendritic cells kick-start adaptive immunity, and what helper T cells, cytotoxic T cells, B cells/plasma cells and antibodies each contribute.</span></li>
+  </ol>
+  <div class="legend" aria-label="Callout key">
+    <span class="lg-s1">★ Step 1 HY</span>
+    <span class="lg-trap">⚠ Step 1 trap</span>
+    <span class="lg-mem">✎ Memory tool</span>
+    <span class="lg-bz">“ Buzzwords</span>
+  </div>
+</div>
+
+<nav class="panel toc" aria-label="Jump to">
+  <h2>Jump to</h2>
+  <div class="links">
+    <a class="xt" href="#map">Big picture</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="lo-l" href="#lo1">LO 1 · Innate vs adaptive + barriers</a>
+    <a class="lo-l" href="#lo2">LO 2 · Innate response</a>
+    <a class="lo-l" href="#lo3">LO 3 · Complement</a>
+    <a class="lo-l" href="#lo4">LO 4 · Dendritic cells, T, B, antibodies</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="xt" href="#mcq">Practice MCQs</a>
+    <a class="xt" href="#review">Rapid review</a>
+  </div>
+</nav>
+
+<!-- ===================== MAP ===================== -->
+<section class="lo" id="map">
+  <h2><span class="num">MAP</span><span>Big picture</span></h2>
+  <figure class="wide"><svg viewBox="0 0 900 340" role="img" aria-label="Concept map: barriers are breached; macrophages recognize and eat the pathogen and release cytokines that drive inflammation and the acute phase response; the pathogen directly activates complement by lectin and alternative pathways; dendritic cells carry antigen on MHC II to CD4 helper T cells, which help CD8 cytotoxic T cells and B cells; B cells become plasma cells whose antibodies trigger the classical complement pathway"><defs><marker id="m-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+    <path d="M100,60 L100,36 L785,36 L785,58" class="ln" marker-end="url(#m-ar)"/>
+    <rect x="330" y="24" width="250" height="20" rx="4" style="fill:var(--panel)"/>
+    <text x="455" y="38" font-size="12" text-anchor="middle" class="mut">pathogen surface triggers complement directly</text>
+    <rect x="20" y="60" width="160" height="80" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+    <text x="100" y="84" font-size="14" font-weight="700" text-anchor="middle">Barriers</text>
+    <text x="100" y="104" font-size="11.5" text-anchor="middle" class="mut">skin · mucosa · cilia</text>
+    <text x="100" y="121" font-size="11.5" text-anchor="middle" class="mut">HCl · lysozyme · lactic acid</text>
+    <rect x="230" y="60" width="170" height="80" rx="10" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+    <text x="315" y="84" font-size="14" font-weight="700" text-anchor="middle">Macrophage</text>
+    <text x="315" y="104" font-size="11.5" text-anchor="middle" class="mut">TLRs bind PAMPs</text>
+    <text x="315" y="121" font-size="11.5" text-anchor="middle" class="mut">phagocytose → cytokines</text>
+    <rect x="450" y="60" width="190" height="80" rx="10" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+    <text x="545" y="84" font-size="14" font-weight="700" text-anchor="middle">Inflammation</text>
+    <text x="545" y="104" font-size="11.5" text-anchor="middle" class="mut">local: vasodilation, recruit</text>
+    <text x="545" y="121" font-size="11.5" text-anchor="middle" class="mut">systemic: IL-1 fever, IL-6 CRP</text>
+    <rect x="690" y="60" width="190" height="80" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+    <text x="785" y="84" font-size="14" font-weight="700" text-anchor="middle">Complement</text>
+    <text x="785" y="104" font-size="11.5" text-anchor="middle" class="mut">lectin · alternative · classical</text>
+    <text x="785" y="121" font-size="11.5" text-anchor="middle" class="mut">opsonize · inflame · lyse</text>
+    <path d="M180,100 L228,100" class="ln" marker-end="url(#m-ar)"/>
+    <path d="M400,100 L448,100" class="ln" marker-end="url(#m-ar)"/>
+    <path d="M100,140 L100,250 L228,250" class="ln" marker-end="url(#m-ar)"/>
+    <text x="108" y="200" font-size="11.5" class="mut">antigen picked up</text>
+    <rect x="230" y="210" width="170" height="80" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+    <text x="315" y="234" font-size="14" font-weight="700" text-anchor="middle">Dendritic cell</text>
+    <text x="315" y="254" font-size="11.5" text-anchor="middle" class="mut">antigen on MHC II</text>
+    <text x="315" y="271" font-size="11.5" text-anchor="middle" class="mut">lymphatics → lymph node</text>
+    <path d="M400,250 L448,250" class="ln" marker-end="url(#m-ar)"/>
+    <rect x="450" y="210" width="180" height="80" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+    <text x="540" y="234" font-size="14" font-weight="700" text-anchor="middle">CD4+ T helper</text>
+    <text x="540" y="254" font-size="11.5" text-anchor="middle" class="mut">the coordinator:</text>
+    <text x="540" y="271" font-size="11.5" text-anchor="middle" class="mut">cytokine "help"</text>
+    <rect x="680" y="180" width="160" height="56" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+    <text x="760" y="203" font-size="13.5" font-weight="700" text-anchor="middle">CD8+ CTL</text>
+    <text x="760" y="222" font-size="11.5" text-anchor="middle" class="mut">kills infected cells</text>
+    <rect x="680" y="262" width="160" height="56" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+    <text x="760" y="285" font-size="13.5" font-weight="700" text-anchor="middle">B → plasma cell</text>
+    <text x="760" y="304" font-size="11.5" text-anchor="middle" class="mut">antibodies + memory</text>
+    <path d="M630,240 L678,212" class="ln" marker-end="url(#m-ar)"/>
+    <path d="M630,262 L678,288" class="ln" marker-end="url(#m-ar)"/>
+    <path d="M840,290 L872,290 L872,142" class="ln" marker-end="url(#m-ar)"/>
+    <text x="866" y="170" font-size="11" text-anchor="end" class="mut">classical</text>
+    <rect x="20" y="148" width="44" height="18" rx="5" style="fill:var(--c6)"/><text x="42" y="161" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO1</text>
+    <rect x="450" y="148" width="44" height="18" rx="5" style="fill:var(--c4)"/><text x="472" y="161" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO2</text>
+    <rect x="690" y="148" width="44" height="18" rx="5" style="fill:var(--c3)"/><text x="712" y="161" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO3</text>
+    <rect x="230" y="298" width="44" height="18" rx="5" style="fill:var(--c5)"/><text x="252" y="311" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO4</text>
+  </svg></figure>
+  <ul class="bigp">
+    <li>3 systems → <b>innate</b> (fast, generic, no memory) · <b>adaptive</b> (slow, specific, memory) · <b>complement</b> (protein cascade helping both)</li>
+    <li>Barriers first → physical (skin, mucosa, cilia) + chemical (HCl, lysozyme, lactic acid)
+      <ul><li>Breach → 3 things at once: macrophages · dendritic cells · complement</li></ul></li>
+    <li>Macrophage → PAMP recognition (TLRs) → phagocytosis → cytokines
+      <ul><li>Local inflammation → vasodilation, leaky vessels, recruit monocytes + neutrophils</li>
+      <li>Acute phase (systemic) → IL-1 fever · IL-6 liver CRP · IL-8 neutrophils · IL-12 NK cells · TNF-α all</li></ul></li>
+    <li>Complement → opsonize (C3b) · inflame (C3a, C5a) · lyse (MAC)
+      <ul><li>Lectin + alternative = pathogen direct · classical = antibody–antigen</li></ul></li>
+    <li>Dendritic cell → MHC II → CD4+ Th = <b>innate–adaptive link</b>
+      <ul><li>Th → helps CD8 (CTL kill: granules, Fas) · B cells (plasma + memory) · macrophage recruitment</li>
+      <li>Antibody → neutralize · block attachment · agglutinate · opsonize · activate complement</li></ul></li>
+  </ul>
+</section>
+
+<!-- ===================== LO 1 ===================== -->
+<section class="lo" id="lo1">
+  <h2><span class="num">LO 1</span><span>Innate vs adaptive immunity + barriers</span><span class="sub">Two speeds of defense, and the walls in front of both</span></h2>
+  <div class="goal"><b>By the end:</b> you can fill in the innate vs adaptive table from memory, sort any immune cell or molecule into the right arm, explain why the adaptive response is slow but remembered, and match each chemical barrier to its site.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What are the three parts of the immune system, and how do they relate?</span></summary><div class="gqb">
+    <ol>
+      <li><b>Innate immune system</b> → the "first responders": already on site, react immediately, same response to every invader.</li>
+      <li><b>Specific (adaptive) immune system</b> → trained specialists (<b>T cells and B cells</b>) that must be activated, then launch a response tailored to one invader.</li>
+      <li><b>Complement system</b> → a cascade of plasma proteins (<b>C1–C9</b>) that works <b>alongside both</b>.</li>
+    </ol>
+    <ul>
+      <li>They are <b>not separate silos</b>:
+        <ul><li>Innate <b>dendritic cells</b> switch on the adaptive system (LO 4).</li>
+        <li>Adaptive <b>antibodies</b> switch on complement (classical pathway, LO 3).</li></ul></li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Name one way innate immunity "talks to" adaptive immunity, and one way adaptive talks back.</span></summary><div class="a">Innate → adaptive: <b>dendritic cells</b> carry antigen to CD4+ T cells. Adaptive → innate/complement: <b>antibodies</b> trigger the classical complement pathway and opsonize for phagocytes; Th cells recruit macrophages.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> How exactly do innate and adaptive immunity differ?</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Feature</th><th>Innate</th><th>Specific (adaptive)</th></tr></thead>
+      <tbody>
+        <tr><th>Where are the cells?</th><td><b>Already at the site</b> of infection</td><td>T and B cells wait <b>away from the site</b> (lymph nodes, MALT)</td></tr>
+        <tr><th>Specificity</th><td><b>Nonspecific</b> / generalized</td><td><b>Specific</b> for one antigen</td></tr>
+        <tr><th>Speed</th><td><b>Immediate</b> (minutes–hours)</td><td><b>Slow</b> (days–weeks); slowest on first exposure</td></tr>
+        <tr><th>Memory</th><td><b>None</b> → same response every time</td><td><b>Yes</b> → faster, stronger on re-exposure</td></tr>
+        <tr><th>Activation needed?</th><td>No</td><td><b>Yes</b> → must be activated (primed)</td></tr>
+        <tr><th>Receptors per cell</th><td>Each cell expresses <b>many types</b> of receptors (all innate cells carry the same broad set)</td><td>Each cell expresses <b>only one type</b> of receptor (one antigen)</td></tr>
+        <tr><th>Clonality</th><td>Cells <b>lack clonality</b></td><td>Cells <b>have clonality</b> (one clone = one specificity)</td></tr>
+        <tr><th>Members</th><td>Physical + chemical barriers, <b>macrophages, dendritic cells, neutrophils, basophils, eosinophils, NK cells, complement</b></td><td><b>CD4+ T cells, CD8+ T cells, B cells, plasma cells, antibodies</b></td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>Main advantage of adaptive</b> = <b>immunologic memory</b>. <b>Main disadvantage</b> = <b>slow</b> (days to weeks on first exposure).
+        <ul><li>Why slow? Specific lymphocytes are rare and sit in lymphoid tissue → must be found by antigen-carrying dendritic cells → activated → multiply before they can act.</li></ul></li>
+      <li><b>Clonal expansion</b> = an activated antigen-specific lymphocyte proliferates into many identical cells.</li>
+      <li><b>Contraction</b> = once the pathogen is cleared, most of those cells die by apoptosis; a few survive as <b>memory cells</b> that can expand again on re-exposure.
+        <ul><li>You may see this die-off loosely called "clonal deletion"; the standard meaning of clonal deletion is removing <b>self-reactive</b> lymphocytes during development.</li></ul></li>
+      <li><b>Humoral vs cellular</b> (in-house definitions):
+        <ul><li><b>Humoral immunity</b> = the soluble arm: <b>antibodies and complement</b>.</li>
+        <li><b>Cellular immunity</b> = <b>all the cells</b>.</li></ul></li>
+      <li><b>Pathogen size → which innate cell</b>:
+        <ul><li><b>Small</b> pathogens (bacteria) → <b>macrophages, neutrophils</b> (phagocytose them; neutrophils mainly attack <b>extracellular</b> bacteria).</li>
+        <li><b>Huge</b> pathogens (worms, too big to eat) → <b>eosinophils, basophils</b> (release granule contents onto the surface).</li></ul></li>
+    </ul>
+    <figure><svg viewBox="0 0 640 250" role="img" aria-label="Response size over time: innate response is a small fast bump that is the same size at first exposure and re-exposure; the primary adaptive response peaks after about a week; the secondary adaptive response after re-exposure is faster and much larger" style="max-width:680px"><defs><marker id="t-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <path d="M60,200 L615,200" class="ln" marker-end="url(#t-ar)"/>
+      <path d="M60,200 L60,22" class="ln" marker-end="url(#t-ar)"/>
+      <text x="24" y="112" font-size="11.5" class="mut" transform="rotate(-90 24 112)" text-anchor="middle">response size</text>
+      <path d="M370,200 L370,30" style="stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4;fill:none"/>
+      <path d="M62,198 C72,150 82,150 92,150 C104,150 112,190 140,198" style="fill:none;stroke:var(--c2);stroke-width:3"/>
+      <path d="M372,198 C382,150 392,150 402,150 C414,150 422,190 450,198" style="fill:none;stroke:var(--c2);stroke-width:3"/>
+      <path d="M120,198 C175,198 200,118 240,118 C285,118 300,188 355,196" style="fill:none;stroke:var(--c1);stroke-width:3"/>
+      <path d="M385,198 C405,196 415,72 455,72 C515,72 545,155 605,170" style="fill:none;stroke:var(--c5);stroke-width:3"/>
+      <text x="92" y="140" font-size="12.5" font-weight="800" text-anchor="middle" style="fill:var(--c2)">Innate</text>
+      <text x="240" y="92" font-size="12.5" font-weight="800" text-anchor="middle" style="fill:var(--c1)">Primary adaptive</text>
+      <text x="240" y="108" font-size="11.5" text-anchor="middle" class="mut">days–weeks</text>
+      <text x="472" y="36" font-size="12.5" font-weight="800" style="fill:var(--c5)">Secondary: faster, bigger</text>
+      <text x="472" y="52" font-size="11.5" class="mut">memory cells</text>
+      <text x="62" y="220" font-size="11.5" class="mut">1st exposure</text>
+      <text x="370" y="220" font-size="11.5" text-anchor="middle" class="mut">re-exposure</text>
+      <text x="612" y="220" font-size="11.5" text-anchor="end" class="mut">time →</text>
+      <text x="362" y="140" font-size="11" text-anchor="end" class="mut">same size</text>
+    </svg><figcaption>Innate = same small, fast bump every time (no memory). Adaptive = slow the first time, fast and large the second time.</figcaption></figure>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Sort these: NK cell, plasma cell, eosinophil, complement, CD8+ T cell, dendritic cell, lysozyme.</span></summary><div class="a"><b>Innate:</b> NK cell, eosinophil, complement, dendritic cell, lysozyme. <b>Adaptive:</b> plasma cell, CD8+ T cell.</div></details>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">An innate cell vs a T cell: which one carries many receptor types, and which one has clonality?</span></summary><div class="a">The <b>innate cell</b> carries many receptor types (a broad set shared by all innate cells) and <b>lacks clonality</b>. The <b>T cell</b> carries one receptor specificity and <b>has clonality</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>Innate receptors are <b>germline-encoded</b> (e.g., <b>TLRs</b>); adaptive receptors are made by <b>V(D)J recombination</b> → huge diversity.</li><li>Boards phrase humoral vs cellular as <b>B cells/antibody</b> vs <b>T-cell–mediated</b> immunity.</li><li>Worms → <b>eosinophils</b> (with IgE/mast cells); bacteria → <b>neutrophils</b>.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><ul><li><b>NK cells</b> are lymphocytes but <b>innate</b> (no antigen-specific receptor, no memory).</li><li><b>Dendritic cells</b> are innate, even though their job is to activate adaptive cells.</li><li>"Clonal deletion" (development, self-reactive cells) ≠ <b>contraction</b> (post-infection die-off).</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Innate = fire alarm sprinklers</b>: always installed, go off fast, spray everything the same way. <b>Adaptive = SWAT team</b>: has to be called and briefed, but brings the exact tool, and remembers the building next time.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> What barriers stop microbes before any immune cell is needed?</span></summary><div class="gqb">
+    <ul>
+      <li>Barriers are the <b>first level of innate immunity</b>; everything else starts only once they are breached.</li>
+      <li><b>Physical barriers</b> → try to <b>stop entry</b>:
+        <ul><li><b>Skin</b></li>
+        <li><b>Mucosa</b> of the <b>respiratory, gastrointestinal and urinary tracts</b></li>
+        <li><b>Cilia</b> → sweep mucus and trapped microbes out of the airways</li></ul></li>
+      <li><b>Chemical barriers</b> → try to <b>kill</b> microbes <b>before they cause infection</b>:</li>
+    </ul>
+    <div class="scroll"><table>
+      <thead><tr><th>Site</th><th>Chemical barrier</th><th>How it protects</th></tr></thead>
+      <tbody>
+        <tr><th>Stomach</th><td><b>Hydrochloric acid (HCl)</b></td><td>Low pH kills swallowed microbes</td></tr>
+        <tr><th>Sweat and tears</th><td><b>Lysozyme</b></td><td>Enzyme that <b>breaks down peptidoglycan</b> in bacterial cell walls → most active vs <b>gram-positive</b> bacteria</td></tr>
+        <tr><th>Vagina</th><td><b>Lactic acid</b></td><td>Acidic pH inhibits pathogen growth</td></tr>
+      </tbody>
+    </table></div>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>Barrier breached</b>cut, burn, acid suppression</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c2)"><b>Macrophages</b>recognize → innate system on</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c5)"><b>Dendritic cells</b>carry antigen → T and B cells</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c3)"><b>Complement</b>triggered directly (lectin, alternative)</div>
+    </div>
+    <p>These three things make up the <b>initial immune response</b> once a pathogen gets past the barriers.</p>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why is lysozyme much better at killing <i>Staphylococcus</i> than <i>E. coli</i>?</span></summary><div class="a">Lysozyme digests <b>peptidoglycan</b>. Gram-positives (Staph) have a thick, exposed peptidoglycan wall; gram-negatives (E. coli) hide a thin layer under an <b>outer membrane</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>Acid suppression</b> (PPIs, H2 blockers) → ↑ risk of enteric infection: <b><i>C. difficile</i></b>, <b><i>Salmonella</i></b>, <i>Campylobacter</i>.</li><li><b>Burn injury</b> → loss of skin barrier → <b><i>Pseudomonas</i></b>, Staph infections.</li><li><b>Primary ciliary dyskinesia</b> (Kartagener) → recurrent sinusitis/bronchiectasis from failed mucociliary clearance.</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"Breaks down peptidoglycan"</b> → lysozyme</span><span><b>"Tears and sweat"</b> → lysozyme</span><span><b>"Long-term PPI + diarrhea"</b> → lost HCl barrier</span><span><b>"Vaginal pH"</b> → lactic acid (lactobacilli)</span></div></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 1 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A child gets a booster vaccine. Her antibody response is faster and much larger than after the first dose. What explains this?</span></summary><div class="a"><b>Immunologic memory.</b> Memory B and T cells left after the first clonal expansion respond rapidly; the innate system would respond identically both times.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A man on a proton-pump inhibitor for 3 years develops bacterial gastroenteritis. Which defense was weakened?</span></summary><div class="a"><b>The chemical barrier of gastric HCl.</b> Less acid → more swallowed bacteria survive into the gut, even though his immune cells are normal.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A traveler has an intestinal worm infection. Which innate cells are best suited, and why not neutrophils?</span></summary><div class="a"><b>Eosinophils (and basophils).</b> The worm is too big to phagocytose; eosinophils release granule contents onto its surface. Neutrophils/macrophages handle small pathogens they can engulf.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">Predict: a week after a first infection, most pathogen-specific T cells disappear. Is the person losing protection?</span></summary><div class="a"><b>No — this is contraction.</b> Effector cells die off by apoptosis once the pathogen is gone; a small pool of <b>memory cells</b> remains for a faster response next time.</div></details>
+</section>
+
+<!-- ===================== LO 2 ===================== -->
+<section class="lo" id="lo2">
+  <h2><span class="num">LO 2</span><span>The innate response to infection</span><span class="sub">Recognize → eat → alarm → inflame → whole-body response</span></h2>
+  <div class="goal"><b>By the end:</b> you can explain how a macrophage recognizes and destroys a microbe, list what inflammation does locally, match IL-1 / IL-6 / IL-8 / IL-12 / TNF-α to their effects, and explain where CRP comes from and why it is measured.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> How does a macrophage know a microbe is there?</span></summary><div class="gqb">
+    <ul>
+      <li>Macrophages carry <b>pattern-recognition receptors</b>, e.g., <b>Toll-like receptors (TLRs)</b>.</li>
+      <li>These bind <b>PAMPs</b> (pathogen-associated molecular patterns) = conserved molecules found on microbes but not on our cells.
+        <ul><li><b>PAMPs = MAMPs</b> (microbe-associated molecular patterns): two names, same thing → found <b>on pathogens</b>.</li>
+        <li><b>DAMPs</b> (damage-associated molecular patterns) → released by <b>damaged host cells/tissue</b>.</li></ul></li>
+      <li>Innate responses unfold in two waves:
+        <ul><li><b>Innate immediate</b> immunity → <b>macrophages</b> (phagocytosis + cytokines), <b>dendritic cells</b>, <b>inflammation</b>.</li>
+        <li><b>Innate induced</b> immunity (called in hours later) → <b>neutrophils</b>, other <b>granulocytes</b>, <b>NK cells</b>.</li></ul></li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A sterile crush injury (no microbes) still triggers inflammation. What did the macrophages detect?</span></summary><div class="a"><b>DAMPs</b> released by the damaged host cells — not PAMPs, since no pathogen is present.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>Classic PAMPs: <b>LPS</b> (gram-negative) → <b>TLR4/CD14</b>; <b>flagellin</b> → <b>TLR5</b>; viral nucleic acids → endosomal TLRs.</li><li>TLR signaling → <b>NF-κB</b> → pro-inflammatory cytokines (IL-1, IL-6, TNF-α).</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>PAMP and MAMP are <b>synonyms</b>, not two classes. The real contrast is <b>PAMP (microbe)</b> vs <b>DAMP (damaged self)</b>.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> How does a macrophage destroy what it finds?</span></summary><div class="gqb">
+    <div class="flow">
+      <div class="st" style="--cc:var(--c2)"><b>Engulf</b>membrane wraps around the microbe</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c2)"><b>Phagosome</b>microbe now inside a vesicle</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c4)"><b>Phagolysosome</b>phagosome fuses with lysosomes</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c4)"><b>Digest</b>lysosomal enzymes break it down</div>
+    </div>
+    <ul>
+      <li><b>Few microbes</b> → macrophages clear them alone.</li>
+      <li><b>Too many</b> → macrophages release <b>cytokines</b> (signaling proteins) that "sound the alarm" → inflammation + recruitment of backup.</li>
+    </ul>
+    <h4>The recruited phagocytes</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Cell</th><th>Location</th><th>Role</th></tr></thead>
+      <tbody>
+        <tr><th>Monocyte</th><td><b>Blood</b></td><td>Precursor → enters tissue and <b>differentiates into a macrophage</b></td></tr>
+        <tr><th>Macrophage</th><td><b>Tissues</b></td><td>Recognizes and phagocytoses pathogens; releases cytokines</td></tr>
+        <tr><th>Neutrophil</th><td>Circulates in <b>blood</b>, enters tissue when recruited</td><td>Phagocyte that helps destroy pathogens at the site</td></tr>
+      </tbody>
+    </table></div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A monocyte and a Kupffer cell: same lineage or different?</span></summary><div class="a"><b>Same lineage.</b> Monocyte = blood form; macrophage = tissue form (Kupffer cell is the liver's macrophage).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>Phagocytes also kill with the <b>respiratory burst</b>: <b>NADPH oxidase</b> → reactive oxygen species.</li><li>Defective NADPH oxidase = <b>chronic granulomatous disease</b> → infections with catalase-positive organisms.</li><li>Tissue macrophages: <b>Kupffer</b> (liver), <b>microglia</b> (brain), <b>alveolar macrophages</b> (lung), <b>osteoclasts</b> (bone).</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Monocyte → Macrophage = "Moves out, Matures."</b> Leaves the blood (moves out) and becomes the tissue macrophage (matures).</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> What does cytokine-driven inflammation do at the site?</span></summary><div class="gqb">
+    <ol>
+      <li><b>Recruits more immune cells</b>: macrophages, monocytes, neutrophils.</li>
+      <li><b>Triggers local processes</b>:
+        <ul><li><b>Vasodilation</b> → redness, heat</li>
+        <li><b>↑ Vascular permeability</b> → swelling; plasma proteins and cells reach the tissue</li>
+        <li><b>Mast-cell activation + degranulation</b> → release of more cytokines</li>
+        <li>Activation of the <b>clotting system</b> and the <b>kinin system</b></li></ul></li>
+      <li><b>Stimulates macrophages to release more cytokines</b> (interleukins) → the <b>acute phase response</b> (Q4).</li>
+    </ol>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which two vascular changes explain a red, warm, swollen infected finger?</span></summary><div class="a"><b>Vasodilation</b> (red, warm) and <b>increased vascular permeability</b> (swollen).</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> What is the acute phase response, and what does each interleukin do?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Acute phase response</b> = macrophage interleukins (<b>IL-1, IL-6, TNF-α</b>) travel <b>through the bloodstream</b> → <b>systemic</b> inflammatory response (fever, liver acute phase proteins).
+        <ul><li>Local inflammation = at the site. Acute phase = <b>whole-body</b> effects of the same cytokines.</li></ul></li>
+    </ul>
+    <figure><svg viewBox="0 0 640 300" role="img" aria-label="Macrophage in the center releases IL-1 to the brain causing fever, lethargy and reduced appetite; IL-6 to the liver causing acute phase proteins such as CRP; IL-8 recruiting and activating neutrophils; IL-12 and IL-2 activating NK cells; TNF-alpha shares all these effects" style="max-width:680px"><defs><marker id="c-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <circle cx="320" cy="150" r="58" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.8"/>
+      <text x="320" y="146" font-size="14" font-weight="700" text-anchor="middle">Macrophage</text>
+      <text x="320" y="164" font-size="11.5" text-anchor="middle" class="mut">TNF-α: all of these</text>
+      <rect x="20" y="20" width="210" height="70" rx="10" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <text x="125" y="44" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c4)">IL-1 → brain</text>
+      <text x="125" y="64" font-size="11.5" text-anchor="middle" class="mut">fever · lethargy</text>
+      <text x="125" y="80" font-size="11.5" text-anchor="middle" class="mut">↓ appetite</text>
+      <rect x="410" y="20" width="210" height="70" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="515" y="44" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c6)">IL-6 → liver</text>
+      <text x="515" y="64" font-size="11.5" text-anchor="middle" class="mut">acute phase proteins</text>
+      <text x="515" y="80" font-size="11.5" text-anchor="middle" class="mut">(opsonins, e.g., CRP)</text>
+      <rect x="20" y="210" width="210" height="70" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+      <text x="125" y="234" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c1)">IL-8 → neutrophils</text>
+      <text x="125" y="256" font-size="11.5" text-anchor="middle" class="mut">recruits + activates</text>
+      <rect x="410" y="210" width="210" height="70" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+      <text x="515" y="234" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c5)">IL-12 (+ IL-2) → NK</text>
+      <text x="515" y="256" font-size="11.5" text-anchor="middle" class="mut">activate natural killer cells</text>
+      <path d="M275,115 L232,82" class="ln" marker-end="url(#c-ar)"/>
+      <path d="M365,115 L408,82" class="ln" marker-end="url(#c-ar)"/>
+      <path d="M275,185 L232,218" class="ln" marker-end="url(#c-ar)"/>
+      <path d="M365,185 L408,218" class="ln" marker-end="url(#c-ar)"/>
+    </svg><figcaption>IL-2 is made mainly by activated T cells, not macrophages; it is grouped here because it also activates NK cells.</figcaption></figure>
+    <h4>Opsonins and CRP</h4>
+    <ul>
+      <li><b>Opsonin</b> = a molecule that <b>coats a pathogen</b> so macrophages and neutrophils can recognize and phagocytose it more easily.
+        <ul><li>Examples: acute phase proteins (<b>CRP</b>), complement fragments (<b>C3b</b>), antibodies (<b>IgG</b>).</li></ul></li>
+      <li><b>C-reactive protein (CRP)</b>:
+        <ul><li>Made by the <b>liver</b> → in response to <b>IL-6</b> → acts as an <b>opsonin</b>.</li>
+        <li>Measured in serum as a <b>marker of inflammation</b>; level tracks the <b>severity</b> of infection/inflammation.</li></ul></li>
+    </ul>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c2)"><b>Macrophage</b>at infected site</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c6)"><b>IL-6</b>through blood</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c6)"><b>Liver</b>hepatocytes</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c3)"><b>CRP ↑</b>opsonin + lab marker</div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which interleukin would you block to reduce neutrophil recruitment to a site? To lower CRP?</span></summary><div class="a"><b>IL-8</b> for neutrophil recruitment; <b>IL-6</b> to lower CRP.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>IL-1 and TNF-α → hypothalamic <b>PGE<sub>2</sub></b> → raised set point → fever. <b>NSAIDs</b> lower fever by blocking PGE<sub>2</sub> synthesis.</li><li><b>IL-12</b> also drives naive CD4+ T cells toward <b>Th1</b>.</li><li><b>TNF-α</b> mediates <b>septic shock</b> and <b>cachexia</b>.</li><li>Main opsonins: <b>C3b and IgG</b>. CRP and ESR are <b>nonspecific</b> inflammation markers.</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><ul><li><b>"Hot T-bone stEAK"</b>: IL-1 fever (<b>hot</b>), IL-2 <b>T</b> cells, IL-3 <b>bone</b> marrow, IL-4 Ig<b>E</b>, IL-5 Ig<b>A</b>, IL-6 a<b>K</b>ute phase.</li><li>IL-8: <b>"Clean up on aisle 8"</b> → neutrophils clear the mess.</li><li>Opsonin = a <b>fork in a slippery meatball</b>: the phagocyte grabs the handle.</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"Endogenous pyrogen"</b> → IL-1 (TNF-α)</span><span><b>"Acute phase reactant"</b> → IL-6 → liver</span><span><b>"Neutrophil chemokine"</b> → IL-8 (CXCL8)</span><span><b>"Toll-like receptor"</b> → PAMP recognition</span><span><b>"Phagolysosome"</b> → digestion step</span></div></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 2 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A patient with pneumonia has fever, lethargy and no appetite. Which macrophage cytokine, acting on the brain, best explains this?</span></summary><div class="a"><b>IL-1</b> (TNF-α similar). Acts on the hypothalamus → fever plus "sickness behavior."</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">Serum CRP rises sharply during a bacterial infection. Which cytokine stimulated which organ?</span></summary><div class="a"><b>IL-6 → liver (hepatocytes).</b> CRP is an acute phase protein and opsonin.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A macrophage at an infection site cannot secrete IL-8. Which step is most directly impaired?</span></summary><div class="a"><b>Recruitment and activation of neutrophils.</b> IL-8 is the main neutrophil chemokine.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">Predict: a drug blocks lysosome fusion with phagosomes. What happens to engulfed bacteria?</span></summary><div class="a"><b>They survive inside the phagosome.</b> Without phagolysosome formation, no digestive enzymes reach them (a trick some intracellular bacteria use).</div></details>
+</section>
+
+<!-- ===================== LO 3 ===================== -->
+<section class="lo" id="lo3">
+  <h2><span class="num">LO 3</span><span>The complement system</span><span class="sub">Three jobs, three triggers</span></h2>
+  <div class="goal"><b>By the end:</b> you can define complement, list its three functions, and say which pathway each trigger uses and whether it needs antibody.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What is complement and what does it do?</span></summary><div class="gqb">
+    <ul>
+      <li>A set of <b>plasma proteins (C1–C9)</b> that, once triggered, <b>activate each other in a cascade</b> → helps both innate and specific immunity destroy pathogens.</li>
+      <li>Part of <b>humoral</b> immunity (soluble), alongside antibodies.</li>
+      <li><b>Three functions:</b>
+        <ol><li><b>Opsonization</b> → coat pathogens so phagocytes recognize them</li>
+        <li><b>Inflammation</b> → recruit and activate immune cells</li>
+        <li><b>Direct killing</b> → attack and lyse pathogens</li></ol></li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Name the three complement functions with one word each.</span></summary><div class="a"><b>Opsonize, inflame, lyse.</b></div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> How is complement switched on?</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Pathway</th><th>Trigger</th><th>Needs antibody?</th><th>Arm</th></tr></thead>
+      <tbody>
+        <tr><th>Lectin</th><td><b>Directly by the pathogen</b> (lectin binds microbial sugars, e.g., mannose)</td><td><b>No</b></td><td>Innate, immediate</td></tr>
+        <tr><th>Alternative</th><td><b>Directly by the pathogen surface</b></td><td><b>No</b></td><td>Innate, immediate</td></tr>
+        <tr><th>Classical</th><td><b>Antibody–antigen complexes</b> made by the specific immune system</td><td><b>Yes</b></td><td>Adaptive → complement link</td></tr>
+      </tbody>
+    </table></div>
+    <figure class="wide"><svg viewBox="0 0 760 300" role="img" aria-label="Classical pathway triggered by antibody-antigen complexes, lectin pathway by mannose-binding lectin on microbial sugars, and alternative pathway by the microbe surface all converge on C3 cleavage into C3a and C3b, leading to opsonization by C3b, inflammation by C3a and C5a, and lysis by the membrane attack complex C5b to C9" style="max-width:800px"><defs><marker id="k-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <rect x="20" y="20" width="220" height="70" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+      <text x="130" y="43" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c1)">Classical</text>
+      <text x="130" y="62" font-size="11.5" text-anchor="middle" class="mut">antibody–antigen (IgM/IgG + C1)</text>
+      <text x="130" y="78" font-size="11.5" text-anchor="middle" class="mut">needs adaptive immunity</text>
+      <rect x="20" y="115" width="220" height="70" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+      <text x="130" y="138" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c3)">Lectin</text>
+      <text x="130" y="157" font-size="11.5" text-anchor="middle" class="mut">mannose-binding lectin</text>
+      <text x="130" y="173" font-size="11.5" text-anchor="middle" class="mut">on microbial sugars · direct</text>
+      <rect x="20" y="210" width="220" height="70" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+      <text x="130" y="233" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c3)">Alternative</text>
+      <text x="130" y="252" font-size="11.5" text-anchor="middle" class="mut">C3 binds microbe surface</text>
+      <text x="130" y="268" font-size="11.5" text-anchor="middle" class="mut">direct · no antibody</text>
+      <rect x="300" y="115" width="160" height="70" rx="10" class="box"/>
+      <text x="380" y="140" font-size="14" font-weight="800" text-anchor="middle">C3 cleaved</text>
+      <text x="380" y="160" font-size="11.5" text-anchor="middle" class="mut">→ C3a + C3b</text>
+      <text x="380" y="175" font-size="11.5" text-anchor="middle" class="mut">→ C5 cleaved</text>
+      <path d="M240,55 L298,130" class="ln" marker-end="url(#k-ar)"/>
+      <path d="M240,150 L298,150" class="ln" marker-end="url(#k-ar)"/>
+      <path d="M240,245 L298,170" class="ln" marker-end="url(#k-ar)"/>
+      <rect x="520" y="20" width="220" height="70" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="630" y="45" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c6)">1 · Opsonization</text>
+      <text x="630" y="66" font-size="11.5" text-anchor="middle" class="mut">C3b coats the microbe</text>
+      <rect x="520" y="115" width="220" height="70" rx="10" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <text x="630" y="140" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c4)">2 · Inflammation</text>
+      <text x="630" y="161" font-size="11.5" text-anchor="middle" class="mut">C3a, C5a (C5a recruits PMNs)</text>
+      <rect x="520" y="210" width="220" height="70" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+      <text x="630" y="235" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c5)">3 · Lysis</text>
+      <text x="630" y="256" font-size="11.5" text-anchor="middle" class="mut">MAC = C5b–C9 punches pores</text>
+      <path d="M460,130 L518,58" class="ln" marker-end="url(#k-ar)"/>
+      <path d="M460,150 L518,150" class="ln" marker-end="url(#k-ar)"/>
+      <path d="M460,170 L518,242" class="ln" marker-end="url(#k-ar)"/>
+    </svg><figcaption>All three triggers converge on C3; the products carry out the three jobs.</figcaption></figure>
+    <ul>
+      <li>Early in a <b>first-ever</b> infection → only <b>lectin and alternative</b> work (no specific antibody yet).</li>
+      <li>Once plasma cells make antibody → <b>classical</b> pathway adds on.
+        <ul><li>Exception worth knowing: <b>natural IgM</b>, made before any exposure, binds many microbes → allows quick C1q binding and early classical activation.</li></ul></li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which pathway is the bridge from adaptive immunity to complement?</span></summary><div class="a">The <b>classical</b> pathway (antibody–antigen complexes bind C1).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>C3b</b> = opsonin; <b>C3a, C5a</b> = anaphylatoxins (C5a also neutrophil chemotaxis); <b>C5b–C9</b> = membrane attack complex.</li><li>Classical: <b>C1 binds IgM or IgG</b>. Lectin: <b>mannose-binding lectin</b>. CRP can also activate the classical pathway.</li><li>Terminal (C5–C9) deficiency → recurrent <b><i>Neisseria</i></b> infections. <b>Factor H</b> is a key regulator that inactivates C3b.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>"Classical" sounds like "oldest/first," but evolutionarily and in timing it is the one that <b>needs antibody</b>, so it comes <b>later</b> in a first infection. Lectin and alternative fire <b>first</b>.</p></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><ul><li><b>"GM makes classic cars"</b> → Ig<b>G</b> and Ig<b>M</b> trigger the <b>classical</b> pathway.</li><li>Functions: <b>"O-I-L"</b> → <b>O</b>psonize, <b>I</b>nflame, <b>L</b>yse.</li></ul></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 3 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">In the first few hours of a never-before-seen infection, which complement pathways can be activated, and why not the third?</span></summary><div class="a"><b>Lectin and alternative.</b> The classical pathway needs antibody–antigen complexes, which the specific immune system has not yet made.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A bacterium is coated in C3b but not lysed. Which complement function is still working, and what does it accomplish?</span></summary><div class="a"><b>Opsonization</b> → macrophages/neutrophils recognize C3b and phagocytose the bacterium more efficiently.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">Predict: a patient lacks mannose-binding lectin but has normal antibodies. Which pathway is lost, and which two remain?</span></summary><div class="a"><b>Lectin lost.</b> Alternative (direct) and classical (antibody) remain; early innate complement activation is reduced.</div></details>
+</section>
+
+<!-- ===================== LO 4 ===================== -->
+<section class="lo" id="lo4">
+  <h2><span class="num">LO 4</span><span>Dendritic cells, T cells, B cells and antibodies</span><span class="sub">How the specific response is started and what each player does</span></h2>
+  <div class="goal"><b>By the end:</b> you can explain where lymphocytes wait and why each is "specific," trace a dendritic cell to a CD4+ T cell, list the three jobs of helper T cells, the two killing mechanisms of CTLs, and the functions of antibodies.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> Where do T and B cells wait, and what makes each one "specific"?</span></summary><div class="gqb">
+    <ul>
+      <li>T and B cells are <b>lymphocytes</b> → can travel in lymph and blood but spend most time in <b>lymph nodes</b> and <b>mucosa-associated lymphoid tissue (MALT)</b>.
+        <ul><li>Analogy: lymphoid tissue = <b>army barracks</b> full of soldiers, each trained for one specific enemy, waiting for word.</li></ul></li>
+      <li><b>Antigen</b> = a molecule (often from a pathogen) that a receptor recognizes.</li>
+      <li>Each <b>T cell</b> has <b>TCRs</b>, and each <b>B cell</b> has <b>surface antibody (BCR)</b>, specific for <b>one single antigen</b> → the body holds <b>millions</b> of different T and B cells.</li>
+      <li>Only the few cells whose receptor fits a given antigen are activated → <b>clonal expansion</b>.</li>
+      <li><b>T cells</b> see only <b>peptide on MHC</b>; <b>B cells</b> bind <b>native antigen directly</b> (no MHC needed).</li>
+    </ul>
+    <h4>Surface markers</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Cell</th><th>Markers</th></tr></thead>
+      <tbody>
+        <tr><th>All T cells</th><td><b>CD3</b> (signaling part of the TCR complex)</td></tr>
+        <tr><th>Helper T</th><td><b>CD3+ CD4+</b></td></tr>
+        <tr><th>Cytotoxic T</th><td><b>CD3+ CD8+</b></td></tr>
+        <tr><th>B cells</th><td>CD19, CD20, CD21</td></tr>
+        <tr><th>NK cells</th><td>CD16, CD56</td></tr>
+      </tbody>
+    </table></div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Flow cytometry shows a cell that is CD3+ and CD8+. What is it?</span></summary><div class="a">A <b>cytotoxic T cell</b>.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> How do dendritic cells start the specific response?</span></summary><div class="gqb">
+    <div class="flow">
+      <div class="st" style="--cc:var(--c5)"><b>Pick up</b>antigen at the infection site</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c5)"><b>Display</b>on MHC (HLA) class II</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c5)"><b>Travel</b>via lymphatics to lymph node</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c1)"><b>CD4+ T cell</b>specific one binds → primed → T helper</div>
+    </div>
+    <ul>
+      <li>Dendritic cells are <b>antigen-presenting cells (APCs)</b> and the main cells that prime <b>naive</b> T cells.</li>
+      <li><b>Dendritic cells activating CD4+ T cells = the key link between innate and adaptive immunity.</b></li>
+      <li>Macrophages and B cells can also present antigen on MHC II.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which MHC class does a dendritic cell use to show antigen to a CD4+ T cell?</span></summary><div class="a"><b>MHC (HLA) class II.</b></div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>Dendritic cell subsets: <b>cDC1</b> → activate CD8+ T cells; <b>cDC2</b> → activate CD4+ T cells; <b>plasmacytoid DCs</b> → make large amounts of <b>type I interferon</b> in viral infection.</li><li><b>MHC I</b> is on all nucleated cells; <b>MHC II</b> on professional APCs (DCs, macrophages, B cells).</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Rule of 8</b>: CD<b>4</b> × MHC <b>II</b> = 8; CD<b>8</b> × MHC <b>I</b> = 8.</p><p>Dendritic cell = the <b>messenger</b> who rides from the battlefield to the barracks with the enemy's picture.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> What do helper T cells do once activated?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 900 330" role="img" aria-label="Dendritic cell presents peptide on MHC class II to a naive CD4 T cell, which becomes a T helper cell; the helper releases cytokines that help CD8 T cells become cytotoxic T cells, help B cells become plasma cells and memory B cells, and recruit monocytes and macrophages to the infection site"><defs><marker id="h-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <rect x="20" y="120" width="170" height="90" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+      <text x="105" y="146" font-size="14" font-weight="700" text-anchor="middle">Dendritic cell</text>
+      <text x="105" y="167" font-size="11.5" text-anchor="middle" class="mut">peptide on MHC II</text>
+      <text x="105" y="184" font-size="11.5" text-anchor="middle" class="mut">in the lymph node</text>
+      <path d="M190,165 L258,165" class="ln" marker-end="url(#h-ar)"/>
+      <rect x="260" y="120" width="170" height="90" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+      <text x="345" y="146" font-size="14" font-weight="700" text-anchor="middle">CD4+ T helper</text>
+      <text x="345" y="167" font-size="11.5" text-anchor="middle" class="mut">proliferates</text>
+      <text x="345" y="184" font-size="11.5" text-anchor="middle" class="mut">secretes cytokines</text>
+      <rect x="510" y="20" width="180" height="70" rx="10" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <text x="600" y="44" font-size="14" font-weight="700" text-anchor="middle">CD8+ → CTL</text>
+      <text x="600" y="64" font-size="11.5" text-anchor="middle" class="mut">sees antigen on MHC I</text>
+      <text x="600" y="79" font-size="11.5" text-anchor="middle" class="mut">kills infected cells</text>
+      <rect x="510" y="130" width="180" height="70" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="600" y="157" font-size="14" font-weight="700" text-anchor="middle">B cell</text>
+      <text x="600" y="177" font-size="11.5" text-anchor="middle" class="mut">proliferates + differentiates</text>
+      <rect x="730" y="115" width="150" height="44" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="805" y="142" font-size="12.5" font-weight="700" text-anchor="middle">Plasma cell → Ab</text>
+      <rect x="730" y="170" width="150" height="44" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="805" y="197" font-size="12.5" font-weight="700" text-anchor="middle">Memory B cell</text>
+      <rect x="510" y="240" width="180" height="70" rx="10" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+      <text x="600" y="264" font-size="14" font-weight="700" text-anchor="middle">Infection site</text>
+      <text x="600" y="284" font-size="11.5" text-anchor="middle" class="mut">recruit monocytes/macrophages</text>
+      <text x="600" y="299" font-size="11.5" text-anchor="middle" class="mut">↑ inflammation + phagocytosis</text>
+      <path d="M430,140 L508,60" class="ln" marker-end="url(#h-ar)"/>
+      <path d="M430,165 L508,165" class="ln" marker-end="url(#h-ar)"/>
+      <path d="M430,190 L508,272" class="ln" marker-end="url(#h-ar)"/>
+      <path d="M690,158 L728,140" class="ln" marker-end="url(#h-ar)"/>
+      <path d="M690,175 L728,190" class="ln" marker-end="url(#h-ar)"/>
+      <text x="440" y="92" font-size="11.5" class="mut">cytokines</text>
+      <text x="455" y="157" font-size="11.5" class="mut">help</text>
+      <text x="440" y="250" font-size="11.5" class="mut">travels</text>
+    </svg><figcaption>One helper T cell, three targets. CD8+ cells read antigen on MHC I themselves; the helper supplies cytokines, not antigen.</figcaption></figure>
+    <div class="scroll"><table>
+      <thead><tr><th>Target</th><th>What the Th cell does</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><th>CD8+ T cells</th><td>Releases <b>cytokines</b> that help them proliferate</td><td><b>Cytotoxic T cells</b></td></tr>
+        <tr><th>B cells</th><td>Stimulates proliferation + differentiation</td><td><b>Plasma cells</b> (lots of antibody) + <b>memory B cells</b></td></tr>
+        <tr><th>Infection site</th><td>Travels there; releases cytokines that <b>recruit monocytes/macrophages</b></td><td>↑ Inflammation and phagocytosis</td></tr>
+      </tbody>
+    </table></div>
+    <div class="scroll"><table>
+      <thead><tr><th>T cell</th><th>Recognizes antigen on</th><th>Becomes / function</th></tr></thead>
+      <tbody>
+        <tr><th>CD4+</th><td><b>MHC class II</b> (on APCs)</td><td><b>T helper</b> → cytokines that coordinate the response</td></tr>
+        <tr><th>CD8+</th><td><b>MHC class I</b></td><td><b>Cytotoxic T</b> → kills target cells (e.g., virus-infected) showing that antigen</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>B-cell help</b>: the B cell binds native antigen with its BCR → internalizes it → presents peptide on MHC II → the matching Th cell provides help → plasma cell.</li>
+      <li>Plasma cells make antibody with the <b>same specificity</b> as the original B cell; memory B cells respond quickly to future infection with the same pathogen.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why does losing CD4+ cells cripple antibody responses even though B cells are normal?</span></summary><div class="a">B cells need <b>T-cell help</b> to proliferate and differentiate into antibody-secreting <b>plasma cells</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>HIV</b> binds <b>CD4</b> (co-receptors <b>CCR5</b>/<b>CXCR4</b>) → loss of Th cells → CTL, B-cell and macrophage help all fail.</li><li><b>AIDS</b> = CD4 &lt;200/mm<sup>3</sup> or an AIDS-defining illness.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>Helper T cells do <b>not</b> present antigen to CD8+ cells on MHC I. The CD8+ cell recognizes peptide on <b>MHC I of the APC or infected cell</b>; the Th cell only supplies <b>cytokine help</b> (e.g., IL-2).</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> How do cytotoxic T cells kill?</span></summary><div class="gqb">
+    <ul><li>The CTL binds antigen displayed on the infected cell's <b>MHC (HLA) class I</b>, then kills by one of two routes:</li></ul>
+    <div class="two">
+      <div class="card" style="--cc:var(--c4)"><h4>Granule exocytosis</h4><ul><li>Sprays enzymes onto the target → <b>cell lysis</b>/death.</li><li>Granules hold <b>perforin</b> (pores) + <b>granzymes</b> (activate caspases).</li></ul></div>
+      <div class="card" style="--cc:var(--c1)"><h4>Fas activation</h4><ul><li>CTL's <b>FasL</b> engages <b>Fas</b> on the target → <b>apoptosis</b>.</li><li>Works even without granules.</li></ul></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">CTLs lacking cytotoxic granules still make their virus-infected targets undergo apoptosis. Which pathway is left?</span></summary><div class="a">The <b>Fas pathway</b> (FasL on the CTL → Fas on the target).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>NK cells</b> use the same <b>perforin/granzyme</b> machinery (innate; activated by IL-12).</li><li>Fas–FasL also deletes self-reactive lymphocytes; <b>Fas mutation → autoimmune lymphoproliferative syndrome (ALPS)</b>.</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"Perforin and granzyme"</b> → CTL or NK killing</span><span><b>"Fas ligand"</b> → extrinsic apoptosis</span><span><b>"CD3+"</b> → T cell</span><span><b>"Innate–adaptive link"</b> → dendritic cell → CD4+</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q5.</b> How do antibodies protect?</span></summary><div class="gqb">
+    <ul>
+      <li>Antibodies = <b>Y-shaped proteins</b> made by plasma cells; they float in the blood and bind matching antigen.
+        <ul><li><b>Variable region</b> (tips of the Y, Fab) → binds one specific antigen.</li>
+        <li><b>Constant ("fixed") region</b> (stem, Fc) → recognized by immune cells (and C1).</li></ul></li>
+    </ul>
+    <figure><svg viewBox="0 0 640 290" role="img" aria-label="Y-shaped antibody: two variable antigen-binding tips and a constant Fc stem; surrounding boxes list neutralization of toxins, blocking microbial attachment, agglutination, opsonization, and complement activation" style="max-width:680px">
+      <path d="M320,270 L320,165" style="stroke:var(--c1);stroke-width:14;stroke-linecap:round;fill:none"/>
+      <path d="M320,165 L260,80" style="stroke:var(--c1);stroke-width:14;stroke-linecap:round;fill:none"/>
+      <path d="M320,165 L380,80" style="stroke:var(--c1);stroke-width:14;stroke-linecap:round;fill:none"/>
+      <path d="M260,80 L245,58" style="stroke:var(--c4);stroke-width:14;stroke-linecap:round;fill:none"/>
+      <path d="M380,80 L395,58" style="stroke:var(--c4);stroke-width:14;stroke-linecap:round;fill:none"/>
+      <text x="320" y="30" font-size="12.5" font-weight="800" text-anchor="middle" style="fill:var(--c4)">Variable tips: bind antigen</text>
+      <text x="335" y="230" font-size="12.5" font-weight="800" style="fill:var(--c1)">Constant (Fc)</text>
+      <text x="335" y="247" font-size="11.5" class="mut">read by phagocytes, C1</text>
+      <rect x="20" y="55" width="190" height="56" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+      <text x="115" y="78" font-size="13" font-weight="800" text-anchor="middle">1 · Neutralization</text>
+      <text x="115" y="97" font-size="11.5" text-anchor="middle" class="mut">bind + inactivate toxins</text>
+      <rect x="20" y="140" width="190" height="56" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+      <text x="115" y="163" font-size="13" font-weight="800" text-anchor="middle">2 · Block attachment</text>
+      <text x="115" y="182" font-size="11.5" text-anchor="middle" class="mut">cover microbial receptors</text>
+      <rect x="430" y="55" width="190" height="56" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="525" y="78" font-size="13" font-weight="800" text-anchor="middle">3 · Agglutination</text>
+      <text x="525" y="97" font-size="11.5" text-anchor="middle" class="mut">clump + slow microbes</text>
+      <rect x="430" y="140" width="190" height="56" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/>
+      <text x="525" y="163" font-size="13" font-weight="800" text-anchor="middle">4 · Opsonization</text>
+      <text x="525" y="182" font-size="11.5" text-anchor="middle" class="mut">tag for phagocytes</text>
+      <rect x="20" y="225" width="190" height="50" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+      <text x="115" y="246" font-size="13" font-weight="800" text-anchor="middle">+ Complement</text>
+      <text x="115" y="264" font-size="11.5" text-anchor="middle" class="mut">classical pathway</text>
+    </svg><figcaption>Two binding arms let one antibody bridge two microbes → agglutination.</figcaption></figure>
+    <ul>
+      <li><b>Antibody functions</b> to know cold: <b>neutralization</b> (toxins and attachment), <b>opsonization</b>, <b>agglutination</b>, <b>complement activation</b>.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Antibodies link several bacteria into large slow-moving clumps. Which function is this, and what structural feature allows it?</span></summary><div class="a"><b>Agglutination</b>; each antibody has <b>two antigen-binding arms</b>, so it can bridge two microbes.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>Neutralizing antibody is how <b>toxoid vaccines</b> (tetanus, diphtheria) protect.</li><li><b>IgG</b> = best opsonin (Fc read by phagocyte Fc receptors); <b>IgM</b> (pentamer) = best agglutinator and complement activator.</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>"NOAC"</b> → <b>N</b>eutralize, <b>O</b>psonize, <b>A</b>gglutinate, <b>C</b>omplement.</p></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 4 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A patient with untreated HIV has a very low CD4+ count. Which arms of immunity are impaired?</span></summary><div class="a"><b>Everything needing T help:</b> CD8+ cytotoxic responses, B-cell differentiation into plasma cells, and helper-driven macrophage recruitment. CD4+ Th cells are the coordinators.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">Predict: dendritic cells cannot migrate out of infected tissue. What happens to the first-ever adaptive response?</span></summary><div class="a"><b>It fails to start (or is badly delayed).</b> Antigen never reaches naive CD4+ T cells waiting in the lymph node; innate defenses still work.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">An antibody binds diphtheria toxin so it can no longer attach to host cells. Which function?</span></summary><div class="a"><b>Neutralization.</b></div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">Does a B cell need its antigen presented on MHC to recognize it?</span></summary><div class="a"><b>No.</b> The BCR binds native antigen directly; the B cell then presents peptide on MHC II to get help from a matching Th cell.</div></details>
+</section>
+
+<!-- ===================== MCQ ===================== -->
+<section class="lo" id="mcq">
+  <h2><span class="num">MCQ</span><span>Practice questions</span><span class="sub">Click an answer to see the explanation.</span></h2>
+  <div class="tools"><span class="score" id="score">Score: 0 / 0</span><button type="button" id="resetq">Reset</button></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">1</span>A 67-year-old man has taken omeprazole daily for 4 years for reflux. He develops fever and watery diarrhea, and stool testing confirms <i>Salmonella</i> enteritis. His white cell count and immunoglobulin levels are normal. Loss of which defense most likely predisposed him?</p>
+    <div class="opts"><button data-k="A">A. Gastric hydrochloric acid</button><button data-k="B">B. Intestinal lysozyme</button><button data-k="C">C. Mucociliary clearance</button><button data-k="D">D. Classical complement activation</button><button data-k="E">E. CD4+ T-cell help</button></div>
+    <div class="exp" hidden><b>A. Gastric HCl.</b> PPIs raise gastric pH, so swallowed bacteria survive into the intestine — a chemical-barrier failure. Lysozyme (B) is in tears/sweat and targets peptidoglycan; cilia (C) protect the airways; complement (D) and T cells (E) are intact given normal labs.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">2</span>An enzyme present in tears and sweat kills <i>Staphylococcus epidermidis</i> far more effectively than <i>Escherichia coli</i>. Which bacterial structure does this enzyme attack?</p>
+    <div class="opts"><button data-k="A">A. Lipopolysaccharide</button><button data-k="B">B. Peptidoglycan</button><button data-k="C">C. Flagellin</button><button data-k="D">D. Outer membrane porins</button><button data-k="E">E. Polysaccharide capsule</button></div>
+    <div class="exp" hidden><b>B. Peptidoglycan.</b> Lysozyme cleaves peptidoglycan; gram-positives have a thick, exposed layer, while gram-negatives shield theirs under an outer membrane. LPS (A) and porins (D) are gram-negative outer-membrane features; flagellin (C) is a TLR5 ligand; capsules (E) resist phagocytosis.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">3</span>A 34-year-old woman with lobar pneumonia has a temperature of 39.4 °C, profound fatigue and no appetite. Alveolar macrophages have released a cytokine that acts on the hypothalamus to produce these symptoms. Which cytokine is most responsible?</p>
+    <div class="opts"><button data-k="A">A. IL-2</button><button data-k="B">B. IL-8</button><button data-k="C">C. IL-1</button><button data-k="D">D. IL-12</button><button data-k="E">E. IL-4</button></div>
+    <div class="exp" hidden><b>C. IL-1</b> (with TNF-α) is the endogenous pyrogen → fever, lethargy, ↓ appetite. IL-2 (A) drives T-cell growth; IL-8 (B) recruits neutrophils; IL-12 (D) activates NK cells and Th1; IL-4 (E) drives IgE class switching.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">4</span>A man with a dental abscess has a serum C-reactive protein that is 20 times normal. Which cytokine acting on which cell type most directly caused this rise?</p>
+    <div class="opts"><button data-k="A">A. IL-1 acting on hypothalamic neurons</button><button data-k="B">B. IL-8 acting on neutrophils</button><button data-k="C">C. IL-12 acting on NK cells</button><button data-k="D">D. IL-6 acting on hepatocytes</button><button data-k="E">E. IL-2 acting on plasma cells</button></div>
+    <div class="exp" hidden><b>D. IL-6 → hepatocytes.</b> CRP is an acute phase protein made by the liver in response to IL-6; it acts as an opsonin and tracks inflammation severity. The other pairs are real cytokine actions (A, B, C) but do not make CRP; plasma cells (E) make antibodies, not CRP.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">5</span>In a mouse model, tissue macrophages are engineered so they cannot secrete one chemokine. After bacterial skin inoculation, the lesion contains abundant macrophages but very few neutrophils. Which mediator is missing?</p>
+    <div class="opts"><button data-k="A">A. IL-1</button><button data-k="B">B. IL-6</button><button data-k="C">C. IL-12</button><button data-k="D">D. C-reactive protein</button><button data-k="E">E. IL-8</button></div>
+    <div class="exp" hidden><b>E. IL-8 (CXCL8)</b> recruits and activates neutrophils. IL-1 (A) causes fever; IL-6 (B) drives acute phase proteins; IL-12 (C) activates NK cells; CRP (D) is an opsonin, not a chemokine.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">6</span>Two hours after a child is first exposed to a bacterium she has never encountered, complement fragments are already coating the organism. She has no antibodies against it. Which pathways could account for this?</p>
+    <div class="opts"><button data-k="A">A. Lectin and alternative pathways</button><button data-k="B">B. Classical pathway only</button><button data-k="C">C. Classical and lectin pathways</button><button data-k="D">D. Alternative pathway only, via IgG</button><button data-k="E">E. None — complement requires prior sensitization</button></div>
+    <div class="exp" hidden><b>A.</b> Lectin (mannose-binding lectin on microbial sugars) and alternative (direct surface activation) are triggered by the pathogen itself. The classical pathway (B, C) needs antibody–antigen complexes; the alternative pathway does not use IgG (D); complement is innate and needs no sensitization (E).</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">7</span>A researcher blocks one complement fragment in serum. Bacteria in the treated serum are still lysed normally, but neutrophils engulf them far less efficiently. Which fragment was blocked?</p>
+    <div class="opts"><button data-k="A">A. C5a</button><button data-k="B">B. C3b</button><button data-k="C">C. C3a</button><button data-k="D">D. C5b–C9</button><button data-k="E">E. C1q</button></div>
+    <div class="exp" hidden><b>B. C3b</b> is the main complement opsonin. C3a/C5a (A, C) are anaphylatoxins (inflammation); C5b–C9 (D) forms the MAC — lysis is intact, so it is not blocked; C1q (E) starts the classical pathway, and blocking it would also reduce lysis.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">8</span>A 29-year-old man with untreated HIV infection has a CD4+ count of 90/mm³. After a pneumococcal vaccine, he makes almost no new class-switched antibody, although his B-cell count is normal. Which step is most directly impaired?</p>
+    <div class="opts"><button data-k="A">A. Recognition of PAMPs by Toll-like receptors</button><button data-k="B">B. Complement activation by the lectin pathway</button><button data-k="C">C. Helper T-cell stimulation of B-cell differentiation into plasma cells</button><button data-k="D">D. Display of peptide on MHC class I by infected cells</button><button data-k="E">E. Neutrophil phagocytosis</button></div>
+    <div class="exp" hidden><b>C.</b> B cells need cytokine help from CD4+ Th cells to proliferate and become antibody-secreting plasma cells. TLR recognition (A), lectin complement (B) and neutrophils (E) are innate and CD4-independent; MHC I display (D) is used by CD8+ cells and is not CD4-dependent.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">9</span>Cytotoxic T cells from a knockout mouse lack perforin. When mixed with virus-infected target cells, the targets still show caspase activation, DNA fragmentation and apoptotic bodies. Which interaction explains the remaining killing?</p>
+    <div class="opts"><button data-k="A">A. IgG binding Fc receptors on the target</button><button data-k="B">B. C5b–C9 insertion into the target membrane</button><button data-k="C">C. CD4 binding MHC class II on the target</button><button data-k="D">D. Fas ligand on the CTL engaging Fas on the target</button><button data-k="E">E. IL-8 binding receptors on the target</button></div>
+    <div class="exp" hidden><b>D. Fas–FasL</b> triggers apoptosis independently of granules. Fc binding (A) is how phagocytes/NK cells read antibody; the MAC (B) is complement; CTLs are CD8+ and use MHC I, not CD4/MHC II (C); IL-8 (E) is a neutrophil chemokine.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">10</span>A nurse receives a hepatitis B booster. Within days her anti-HBs titer rises far higher and faster than after her first dose years earlier. Which cells are mainly responsible for the difference?</p>
+    <div class="opts"><button data-k="A">A. Tissue macrophages</button><button data-k="B">B. Neutrophils</button><button data-k="C">C. Natural killer cells</button><button data-k="D">D. Dendritic cells</button><button data-k="E">E. Memory B cells</button></div>
+    <div class="exp" hidden><b>E. Memory B cells</b> persist after the first response and rapidly expand on re-exposure → faster, larger antibody response. Macrophages, neutrophils, NK cells and dendritic cells (A–D) are innate and have no antigen-specific memory.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">11</span>An unvaccinated child with diphtheria is given antitoxin, a preparation of antibodies that bind the circulating toxin and stop it from entering cells. This therapy works mainly through which antibody function?</p>
+    <div class="opts"><button data-k="A">A. Neutralization</button><button data-k="B">B. Agglutination</button><button data-k="C">C. Opsonization</button><button data-k="D">D. Complement-mediated lysis</button><button data-k="E">E. Antibody-dependent activation of CTLs</button></div>
+    <div class="exp" hidden><b>A. Neutralization</b> — antibody coats the toxin and blocks its binding to host cells. Agglutination (B) clumps whole microbes; opsonization (C) and complement lysis (D) act on organisms, not a soluble toxin; CTLs (E) are not activated by antibody.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">12</span>During a first influenza infection, a cell in the lung epithelium takes up viral protein, migrates through lymphatic vessels to a mediastinal lymph node and displays viral peptide on MHC class II to naive CD4+ T cells. Which cell is this?</p>
+    <div class="opts"><button data-k="A">A. Neutrophil</button><button data-k="B">B. Dendritic cell</button><button data-k="C">C. Plasma cell</button><button data-k="D">D. Natural killer cell</button><button data-k="E">E. Mast cell</button></div>
+    <div class="exp" hidden><b>B. Dendritic cell</b> — the antigen carrier that primes naive T cells and links innate to adaptive immunity. Neutrophils (A) phagocytose and die locally; plasma cells (C) secrete antibody; NK cells (D) kill; mast cells (E) degranulate in tissue.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">13</span>Flow cytometry of a lymph node identifies a cell population that is CD3+ and CD8+. When activated, what is the main function of these cells?</p>
+    <div class="opts"><button data-k="A">A. Secrete antibody against extracellular bacteria</button><button data-k="B">B. Present peptide on MHC class II to helper T cells</button><button data-k="C">C. Kill virus-infected cells displaying antigen on MHC class I</button><button data-k="D">D. Phagocytose opsonized bacteria</button><button data-k="E">E. Produce IL-6 to induce acute phase proteins</button></div>
+    <div class="exp" hidden><b>C.</b> CD3 = T cell; CD8 = cytotoxic T cell, which recognizes antigen on MHC I and kills via granules or Fas. Antibody (A) comes from plasma cells; MHC II presentation (B) is by APCs; phagocytosis (D) by macrophages/neutrophils; IL-6 (E) mainly from macrophages.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">14</span>A boy has a cut on his forearm that becomes red, warm and swollen within an hour, before any neutrophils have arrived. Which process best explains the swelling?</p>
+    <div class="opts"><button data-k="A">A. Clonal expansion of B cells</button><button data-k="B">B. Acute phase protein synthesis by the liver</button><button data-k="C">C. Membrane attack complex formation</button><button data-k="D">D. Increased vascular permeability driven by macrophage cytokines and mast-cell degranulation</button><button data-k="E">E. CTL killing of infected keratinocytes</button></div>
+    <div class="exp" hidden><b>D.</b> Local inflammation → vasodilation (red, warm) + ↑ vascular permeability (swelling). Clonal expansion (A) and CTL killing (E) take days; acute phase proteins (B) are systemic; the MAC (C) lyses microbes but does not cause edema.</div></div>
+</section>
+
+<!-- ===================== REVIEW ===================== -->
+<section class="lo" id="review">
+  <h2><span class="num">✓</span><span>Rapid review</span></h2>
+  <ul class="check">
+    <li><input id="r1" type="checkbox"><label for="r1">3 systems: <b>innate</b> (fast, generic, no memory), <b>specific/adaptive</b> (slow, specific, memory), <b>complement</b> (C1–C9 cascade, helps both).</label></li>
+    <li><input id="r2" type="checkbox"><label for="r2">Innate cells: <b>many receptor types</b> per cell, <b>no clonality</b>. Adaptive cells: <b>one receptor type</b> per cell, <b>clonal</b>.</label></li>
+    <li><input id="r3" type="checkbox"><label for="r3">Humoral = <b>antibodies + complement</b>; cellular = <b>the cells</b>.</label></li>
+    <li><input id="r4" type="checkbox"><label for="r4">Small pathogens → <b>macrophages, neutrophils</b>; huge pathogens → <b>eosinophils, basophils</b>.</label></li>
+    <li><input id="r5" type="checkbox"><label for="r5">Physical barriers: <b>skin, mucosa</b> (resp/GI/urinary), <b>cilia</b>. Chemical: <b>HCl</b> (stomach), <b>lysozyme</b> (sweat/tears, peptidoglycan → gram+), <b>lactic acid</b> (vagina).</label></li>
+    <li><input id="r6" type="checkbox"><label for="r6">Barrier breached → macrophages recognize · DCs carry antigen to T/B · complement triggered directly.</label></li>
+    <li><input id="r7" type="checkbox"><label for="r7"><b>TLRs bind PAMPs</b> (= MAMPs, on microbes); <b>DAMPs</b> come from damaged host cells.</label></li>
+    <li><input id="r8" type="checkbox"><label for="r8">Innate immediate: macrophages, DCs, inflammation. Innate induced: neutrophils, other granulocytes, NK cells.</label></li>
+    <li><input id="r9" type="checkbox"><label for="r9">Phagocytosis: engulf → phagosome → fuse with lysosome → enzymes digest.</label></li>
+    <li><input id="r10" type="checkbox"><label for="r10">Monocyte (blood) → macrophage (tissue). Neutrophils circulate, enter tissue when recruited.</label></li>
+    <li><input id="r11" type="checkbox"><label for="r11">Inflammation: recruit cells, <b>vasodilation, ↑ permeability</b>, mast-cell degranulation, clotting + kinin systems.</label></li>
+    <li><input id="r12" type="checkbox"><label for="r12"><b>IL-1</b> brain (fever) · <b>IL-6</b> liver (CRP) · <b>IL-8</b> neutrophils · <b>IL-12 (+IL-2)</b> NK cells · <b>TNF-α</b> all.</label></li>
+    <li><input id="r13" type="checkbox"><label for="r13"><b>CRP</b>: liver, induced by IL-6, opsonin, lab marker of inflammation severity.</label></li>
+    <li><input id="r14" type="checkbox"><label for="r14">Complement: <b>opsonize (C3b), inflame (C3a/C5a), lyse (MAC C5b–C9)</b>. Lectin + alternative = direct; classical = antibody–antigen.</label></li>
+    <li><input id="r15" type="checkbox"><label for="r15"><b>Dendritic cell → MHC II → CD4+ T</b> = innate–adaptive link; DCs travel via lymphatics to lymph nodes.</label></li>
+    <li><input id="r16" type="checkbox"><label for="r16">Th cells: cytokine help → CD8 (CTL), B cells (plasma + memory), recruit macrophages to site. CD3 = all T cells.</label></li>
+    <li><input id="r17" type="checkbox"><label for="r17">CTLs see antigen on <b>MHC I</b>; kill by <b>granule exocytosis</b> (perforin/granzyme → lysis) or <b>Fas</b> (apoptosis).</label></li>
+    <li><input id="r18" type="checkbox"><label for="r18">Antibodies: <b>neutralization, opsonization, agglutination, complement activation</b>; variable tips bind antigen, constant Fc read by cells.</label></li>
+  </ul>
+</section>
+
+<footer class="foot">
+  <div class="rev">HoyaDocs &middot; Block 2 &middot; Immunology &middot; IRD01</div>
+  <div class="rev">Rev 1.0 &middot; Updated Oct 22, 2026</div>
+</footer>
+</div>
+<script>
+(function(){
+  var KEY='ird01';
+  var answered=0, right=0, score=document.getElementById('score');
+  function upd(){ if(score) score.textContent='Score: '+right+' / '+answered; }
+  document.querySelectorAll('.mcq').forEach(function(q){
+    var ans=q.getAttribute('data-ans');
+    q.querySelectorAll('.opts button').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(q.dataset.done) return;
+        q.dataset.done='1'; answered++;
+        var k=b.getAttribute('data-k');
+        if(k===ans){ b.classList.add('ok'); right++; }
+        else { b.classList.add('no'); q.querySelector('[data-k="'+ans+'"]').classList.add('ok'); }
+        q.querySelector('.exp').hidden=false; upd();
+      });
+    });
+  });
+  var rs=document.getElementById('resetq');
+  if(rs) rs.addEventListener('click',function(){
+    answered=0; right=0; upd();
+    document.querySelectorAll('.mcq').forEach(function(q){
+      delete q.dataset.done; q.querySelector('.exp').hidden=true;
+      q.querySelectorAll('button').forEach(function(b){ b.classList.remove('ok','no'); });
+    });
+  });
+  document.querySelectorAll('.check input').forEach(function(c){
+    try{ if(localStorage.getItem(KEY+'-'+c.id)==='1') c.checked=true; }catch(e){}
+    c.addEventListener('change',function(){ try{ localStorage.setItem(KEY+'-'+c.id, c.checked?'1':'0'); }catch(e){} });
+  });
+})();
+</script>
+<script>
+(function(){function op(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(h);if(!t)return;var d=t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}setTimeout(function(){t.scrollIntoView();},30);}window.addEventListener('hashchange',op);op();})();
+</script>
+</body>
+</html>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IRD07 Immunoglobulins Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Graduate&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: HoyaDocs Immunology hub shell (wordmark bar, section nav, navy varsity hero) around one reading column (max 1000px) of LO "sheets". Block 2 palette: navy + green + silver. */
+:root{
+  --bg:#EEF0F3; --panel:#FFFFFF; --sunk:#F5F7FA; --ink:#1A3363; --muted:#5B6274; --line:#D3D8E0;
+  --navy:#0F2244; --navy2:#1A3363; --tint:#E6E9EE; --bd:#C5CBD6; --onnavy:#F4F1EA; --onnavy-mut:#A9B3C7;
+  --silver:#6E7787; --silver-hi:#C5CBD6;
+  --tan:#4CB36A; --tan-ink:#1E7A3C;
+  /* callouts */
+  --s1-bg:#FFF4C2; --s1-bd:#D4A300; --s1-ink:#5E4700;      /* Step 1 HY: yellow bg, darker yellow border */
+  --ex-bg:#E3F0FB; --ex-bd:#1D6FA8; --ex-ink:#0F3F66;      /* In-house exam */
+  --trap-bg:#FFEDE3; --trap-bd:#D2621B; --trap-ink:#86380A; /* Step 1 trap */
+  --mem-bg:#EFEBFB; --mem-bd:#5B4BC4; --mem-ink:#3F2F9E;   /* Memory tool */
+  --bz-bg:#DCF1EE; --bz-bd:#1F7F78; --bz-ink:#0F5F59;      /* Buzzwords */
+  /* discipline + diagram colors */
+  --imm:#5B4BC4; --pat:#1F7F78; --pha:#2368A8; --mic:#4D7C2A;
+  --c1:#2368A8; --c2:#C4631B; --c3:#1F7F78; --c4:#B8324A; --c5:#5B4BC4; --c6:#8C6D0A;
+  --c1-soft:#E0ECF8; --c2-soft:#FBE9DA; --c3-soft:#DCF1EE; --c4-soft:#F8DDE3; --c5-soft:#ECE9FA; --c6-soft:#F6EED2;
+  --good:#1C7A4A; --bad:#B42318;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --varsity:"Graduate","Rockwell","Georgia",serif;
+  --cond:"Barlow Condensed","Arial Narrow",sans-serif;
+  --mono-f:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.58}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+a{color:var(--tan-ink)}
+:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+h1,h2,h3,h4{text-wrap:balance}
+b,strong{color:inherit;font-weight:700}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:22px} li{margin:4px 0}
+ul ul{margin:3px 0}
+img{max-width:100%}
+
+/* hub shell */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0 12px}
+.word{font-family:var(--varsity);font-size:24px;letter-spacing:.04em;text-decoration:none;color:var(--ink);line-height:1}
+.word span{color:var(--silver)}
+.rev{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.topr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.themebtn{background:transparent;border:1.5px solid var(--line);border-radius:999px;font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:5px 14px;cursor:pointer}
+.themebtn:hover{color:var(--ink);border-color:var(--ink)}
+.hubnav{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;border-top:3px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:22px}
+.hubnav::-webkit-scrollbar{display:none}
+.hubnav a{flex:none;text-decoration:none;font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:11px 12px 9px;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:7px}
+.hubnav a:hover{color:var(--ink)}
+.hubnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tan)}
+.hubnav a i{width:9px;height:9px;border-radius:2px;flex:none}
+.hubnav .sep{flex:none;width:1px;background:var(--line);margin:9px 6px}
+/* hero */
+header.hero{background:var(--navy);color:var(--onnavy);border-radius:14px;padding:clamp(20px,3.5vw,36px) clamp(20px,4vw,40px);margin-bottom:20px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(255,255,255,.045) calc(10% - 1px) 10%),
+  radial-gradient(ellipse at 88% 115%, rgba(76,179,106,.34), transparent 58%)}
+header.hero > *{position:relative}
+.hero .k{font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#8FD9A4}
+.hero h1{font-family:var(--varsity);font-weight:400;font-size:clamp(28px,5.4vw,52px);line-height:1.02;letter-spacing:.02em;margin:10px 0 4px;color:#F4F1EA;text-shadow:2px 2px 0 #1A3363,4px 4px 0 #4CB36A}
+.hero .lede{color:#C5CBD6;max-width:62ch;margin:10px 0 0;font-size:15px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chip{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid rgba(238,233,222,.45);border-radius:6px;padding:4px 11px;color:#F4F1EA}
+
+/* panels */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 0 18px}
+.panel > h2{margin:0 0 10px;font-family:var(--cond);font-size:15px;text-transform:uppercase;letter-spacing:.14em;color:var(--tan-ink)}
+.lo-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.lo-list li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;margin:0}
+.lo-list .n{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-weight:800;font-size:13px;border-radius:7px;padding:3px 8px;margin-top:2px;white-space:nowrap}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:6px}
+nav.toc a{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+nav.toc a:hover{background:var(--navy);color:#F4F1EA;border-color:var(--navy)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.legend span{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 9px;border:1.5px solid}
+.lg-s1{background:var(--s1-bg);border-color:var(--s1-bd)!important;color:var(--s1-ink)}
+.lg-ex{background:var(--ex-bg);border-color:var(--ex-bd)!important;color:var(--ex-ink)}
+.lg-trap{background:var(--trap-bg);border-color:var(--trap-bd)!important;color:var(--trap-ink)}
+.lg-mem{background:var(--mem-bg);border-color:var(--mem-bd)!important;color:var(--mem-ink)}
+.lg-bz{background:var(--bz-bg);border-color:var(--bz-bd)!important;color:var(--bz-ink)}
+
+/* LO sections */
+section.lo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px clamp(16px,3vw,28px) 22px;margin:0 0 24px;scroll-margin-top:12px}
+section.lo > h2{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:start;font-family:var(--varsity);font-weight:400;font-size:clamp(20px,2.6vw,25px);letter-spacing:.03em;color:var(--ink);border-bottom:2px dashed var(--line);padding:18px 0 12px;margin:0 0 12px;line-height:1.25}
+section.lo > h2 .num{grid-row:1 / span 2;font-family:var(--cond);font-size:14px;font-weight:800;letter-spacing:.06em;background:var(--tan);color:#0F2244;min-width:46px;height:30px;padding:0 9px;border-radius:6px;box-shadow:0 3px 0 var(--tan-ink);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+section.lo > h2 .sub{grid-column:2;display:block;font-family:var(--body);font-weight:500;color:var(--muted);font-size:14px;letter-spacing:0;margin-top:4px}
+h3{font-family:var(--cond);font-weight:800;font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin:22px 0 6px;display:flex;align-items:center;gap:8px}
+h3 .step{font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+h4{font-family:var(--cond);font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:14px 0 4px}
+.goal{background:var(--sunk);border:1px dashed var(--bd);border-radius:10px;padding:10px 14px;font-size:14px;margin:6px 0 12px}
+.goal b{color:var(--tan-ink)}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--panel)}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+thead th{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+tbody th{background:var(--tint);color:var(--ink);font-weight:700}
+tbody tr:nth-child(even) td{background:var(--sunk)}
+
+/* callouts (collapsible) */
+.co{border-radius:10px;font-size:14px;border:1.5px solid;border-left-width:6px}
+.co .t{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px}
+.co p{margin:4px 0} .co ul{margin:4px 0}
+.s1{background:var(--s1-bg);border-color:var(--s1-bd);color:var(--s1-ink)}
+.ex{background:var(--ex-bg);border-color:var(--ex-bd);color:var(--ex-ink)}
+.trap{background:var(--trap-bg);border-color:var(--trap-bd);color:var(--trap-ink)}
+.mem{background:var(--mem-bg);border-color:var(--mem-bd);color:var(--mem-ink)}
+.bz{background:var(--bz-bg);border-color:var(--bz-bd);color:var(--bz-ink)}
+.s1 .t::before{content:"★ "} .ex .t::before{content:"◆ "} .trap .t::before{content:"⚠ "} .mem .t::before{content:"✎ "} .bz .t::before{content:"\201C "}
+.coset{display:grid;gap:6px;margin:0 0 14px 16px}
+details.co{padding:0 14px;margin:8px 0}
+.coset details.co{margin:0}
+details.co > summary{cursor:pointer;list-style:none;padding:8px 0;margin:0;display:flex;align-items:center;gap:8px}
+details.co > summary::-webkit-details-marker{display:none}
+details.co > summary::after{content:"+";margin-left:auto;font-size:16px;font-weight:800}
+details.co[open] > summary::after{content:"\2212"}
+details.co .cb{padding:0 0 10px}
+.bzlist{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.bzlist span{background:var(--panel);border:1px solid var(--bz-bd);border-radius:999px;padding:2px 10px;font-size:13px}
+.bzlist span b{color:var(--bz-ink)}
+
+/* guide questions (teaching blocks) */
+details.gq{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:12px 0 6px;padding:0 14px}
+details.gq > summary{cursor:pointer;list-style:none;padding:11px 0;font-weight:400;font-size:15.5px;display:flex;gap:10px;align-items:flex-start}
+details.gq > summary::-webkit-details-marker{display:none}
+details.gq > summary .qt{flex:1;min-width:0}
+details.gq > summary .qt b{font-weight:700}
+details.gq > summary::after{content:"+";flex:none;font-weight:800;font-size:18px;line-height:1;color:var(--tan-ink)}
+details.gq[open] > summary::after{content:"\2212"}
+.gqb{border-top:1px dashed var(--bd);padding:6px 0 12px;min-width:0}
+
+/* check-yourself + application questions */
+details.ask{border:1px solid var(--line);border-radius:10px;background:var(--sunk);margin:10px 0;padding:0 14px}
+details.ask > summary{cursor:pointer;list-style:none;padding:10px 0;font-weight:650;display:flex;gap:10px;align-items:flex-start}
+details.ask > summary .qt{flex:1;min-width:0;overflow-wrap:anywhere}
+details.ask > summary::-webkit-details-marker{display:none}
+details.ask > summary .q{flex:none;font-family:var(--cond);font-size:12px;font-weight:800;color:#FFFFFF;background:var(--tan-ink);border-radius:6px;padding:2px 7px;margin-top:2px}
+details.ask > summary::after{content:"reveal";margin-left:auto;flex:none;font-family:var(--cond);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--tan-ink);margin-top:3px}
+details.ask[open] > summary::after{content:"hide"}
+details.ask .a{border-top:1px dashed var(--bd);padding:8px 0 12px;font-size:14.5px}
+
+/* cards + grids */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-top:4px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.card h4{margin-top:0;color:var(--cc,var(--ink))}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:10px 0}
+.dcard{border:1px solid var(--line);border-left:5px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.dcard h4{margin:0 0 4px;font-family:var(--body);font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink)}
+.dcard p{margin:4px 0;font-size:13.5px}
+.tag{display:inline-block;font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:5px;color:#FFFFFF;background:var(--cc,var(--tan-ink));vertical-align:1px}
+
+/* flow chains (arrows) */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:12px 0}
+.flow .st{flex:1 1 120px;min-width:0;background:var(--sunk);border:1.5px solid var(--cc,var(--bd));border-radius:9px;padding:8px 10px;font-size:13.5px}
+.flow .st b{display:block;font-family:var(--cond);font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--cc,var(--ink))}
+.flow .ar{flex:none;align-self:center;font-weight:900;color:var(--muted);font-size:18px}
+@media (max-width:620px){.flow{flex-direction:column}.flow .ar{transform:rotate(90deg)}}
+
+/* figures */
+figure{margin:14px 0;background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure img{display:block;margin:0 auto;border-radius:8px;max-height:460px;object-fit:contain}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
+svg{max-width:100%;height:auto;display:block;margin:0 auto}
+svg text{font-family:var(--body);fill:var(--ink)}
+svg .mut{fill:var(--muted)}
+svg .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
+svg .box{fill:var(--tint);stroke:var(--navy2);stroke-width:1.5}
+
+/* image ID drill */
+.ntc{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:12px 0}
+.ntc details{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.ntc img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.ntc summary{cursor:pointer;list-style:none;font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.04em;padding:7px 9px;color:var(--tan-ink)}
+.ntc summary::-webkit-details-marker{display:none}
+.ntc .ans{padding:0 9px 9px;font-size:13px}
+
+/* mcq */
+.mcq{border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:10px;padding:12px 16px;margin:14px 0;background:var(--panel)}
+.mcq .stem{font-weight:600;margin:0 0 8px}
+.mcq .stem .qn{display:inline-block;font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13px;font-weight:800;border-radius:6px;padding:1px 7px;margin-right:6px}
+.opts{display:grid;gap:6px}
+.opts button{all:unset;cursor:pointer;display:block;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;background:var(--sunk);color:var(--ink)}
+.opts button:hover{border-color:var(--bd)}
+.opts button:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+.opts button.ok{border-color:var(--good);background:var(--bz-bg);color:var(--bz-ink);font-weight:700}
+.opts button.no{border-color:var(--bad);background:var(--trap-bg);color:var(--trap-ink);text-decoration:line-through}
+.mcq .exp{margin-top:10px;border-top:1px dashed var(--bd);padding-top:8px;font-size:14px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.tools button{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 12px;cursor:pointer}
+.score{font-family:var(--cond);font-weight:800;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* rapid review checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:9px;align-items:flex-start}
+.check input{margin-top:5px;accent-color:var(--tan-ink)}
+.kbd{font-family:var(--mono-f);font-size:12.5px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+.foot{margin-top:40px;padding-top:14px;border-top:3px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media print{details > *:not(summary){display:block!important} .themebtn,.tools{display:none}}
+
+/* shared fixes */
+.coset{grid-template-columns:minmax(0,1fr)}
+.two>*,.three>*{min-width:0}
+.co .scroll,.cb{max-width:100%;overflow-x:auto}
+.ntc summary img{margin:-7px -9px 7px;width:calc(100% + 18px)}
+
+/* jump-to groups + big-picture bullets */
+nav.toc .links{align-items:center}
+nav.toc a.xt{background:var(--navy);color:#F4F1EA;border-color:var(--navy);display:inline-flex;align-items:center;gap:6px}
+nav.toc a.xt::before{font-size:12px;opacity:.85}
+nav.toc a.xt[href="#map"]::before{content:"◎"}
+nav.toc a.xt[href="#mcq"]::before{content:"?"}
+nav.toc a.xt[href="#review"]::before{content:"✓"}
+nav.toc a.xt[href="#ntc"]::before,nav.toc a.xt[href="#imgid"]::before{content:"▣"}
+nav.toc a.xt:hover{background:var(--tan);border-color:var(--tan);color:#0F2244}
+nav.toc a.lo-l{border-left:4px solid var(--tan)}
+nav.toc .tsep{flex:none;width:1px;align-self:stretch;background:var(--line);margin:0 4px}
+ul.bigp{list-style:none;padding:0;margin:12px 0 4px;display:grid;gap:8px}
+ul.bigp > li{position:relative;margin:0;padding:8px 12px 8px 34px;background:var(--sunk);border:1px solid var(--line);border-left:4px solid var(--tan);border-radius:8px}
+ul.bigp > li::before{content:"➜";position:absolute;left:11px;top:8px;color:var(--tan-ink);font-weight:800}
+ul.bigp ul{margin:5px 0 0;padding-left:18px}
+ul.bigp ul li{margin:2px 0;list-style:"→  "}
+
+/* layout v3: light only, wider page, 3-up callouts */
+:root{color-scheme:light}
+.wrap{max-width:1320px}
+.coset{grid-template-columns:repeat(auto-fill,minmax(max(260px,calc((100% - 12px)/3)),1fr));align-items:start;gap:6px}
+
+/* final pass: wide diagrams scroll on phones */
+@media (max-width:700px){figure.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}figure.wide > svg{min-width:640px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="word" href="../index.html">HOYA<span>DOCS</span></a>
+  <div class="topr">
+    <div class="rev">Block 2 &middot; Immunology &middot; IRD07 &middot; Rev 1.0 &middot; Updated Oct 22, 2026</div>
+  </div>
+</header>
+<nav class="hubnav" aria-label="Immunology sections">
+  <a href="../index.html">Home</a>
+  <span class="sep"></span>
+  <a href="../IRD-Games/index.html"><i style="background:#5B4BC4"></i>Immuno Games</a>
+  <a href="index.html" aria-current="page"><i style="background:#C4631B"></i>Study Guides</a>
+  <a href="../Pathology-Database/HoyaDocs_IRD_Pathology_Database.html"><i style="background:#1F7F78"></i>Path Database</a>
+  <a href="../Pharmacology-Database/HoyaDocs_IRD_Pharm_Database.html"><i style="background:#1F7F78"></i>Pharm Database</a>
+</nav>
+
+<header class="hero">
+  <div class="k">IRD07 &middot; Immunology &middot; Study Guide</div>
+  <h1>Immunoglobulins</h1>
+</header>
+
+<div class="panel">
+  <h2>Learning objectives</h2>
+  <ol class="lo-list">
+    <li><span class="n">LO 1</span><span>Explain how immunity you build yourself (active) differs from immunity you borrow as ready-made antibody (passive): where the antibody comes from, how fast it works, how long it lasts, and real examples of each.</span></li>
+    <li><span class="n">LO 2</span><span>Sketch a basic two-armed antibody and label its chains and domains, point out which parts grab antigen and which parts talk to immune cells and complement, and explain when an antibody can itself be treated as a foreign antigen.</span></li>
+    <li><span class="n">LO 3</span><span>Use the vocabulary of antibody variation and binding correctly: isotype, allotype, idiotype, epitope, paratope, valency, affinity and avidity.</span></li>
+    <li><span class="n">LO 4</span><span>Compare IgM, IgD, IgG, IgE and IgA by shape, job, place in the immune response, and how much of each is found in blood and in secretions.</span></li>
+  </ol>
+  <div class="legend" aria-label="Callout key">
+    <span class="lg-s1">★ Step 1 HY</span>
+    <span class="lg-trap">⚠ Step 1 trap</span>
+    <span class="lg-mem">✎ Memory tool</span>
+    <span class="lg-bz">“ Buzzwords</span>
+  </div>
+</div>
+
+<nav class="panel toc" aria-label="Jump to">
+  <h2>Jump to</h2>
+  <div class="links">
+    <a class="xt" href="#map">Big picture</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="lo-l" href="#lo1">LO 1 · Active vs passive</a>
+    <a class="lo-l" href="#lo2">LO 2 · Antibody structure</a>
+    <a class="lo-l" href="#lo3">LO 3 · Key vocabulary</a>
+    <a class="lo-l" href="#lo4">LO 4 · Five classes</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="xt" href="#mcq">Practice MCQs</a>
+    <a class="xt" href="#review">Rapid review</a>
+  </div>
+</nav>
+
+<!-- ===================== MAP ===================== -->
+<section class="lo" id="map">
+  <h2><span class="num">MAP</span><span>Big picture</span></h2>
+  <figure><div class="scroll" style="margin:0"><svg viewBox="0 0 900 300" role="img" aria-label="Concept map: active versus passive source of antibody; B cell to plasma cell; antibody Y structure with Fab tip binding epitope (idiotype, affinity, avidity) and Fc determining isotype and effector function across the five classes; antibody acting as an antigen; clinical tie-ins" style="min-width:600px"><defs><marker id="map-ar-c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c1)"/></marker><marker id="map-ar-c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c2)"/></marker><marker id="map-ar-c3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c3)"/></marker><marker id="map-ar-c4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c4)"/></marker><marker id="map-ar-c5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c5)"/></marker><marker id="map-ar-c6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c6)"/></marker><marker id="map-ar-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs><rect x="20" y="40" width="170" height="78" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/><text x="105.0" y="64.0" font-size="14" text-anchor="middle" font-weight="700">Who made it?</text><text x="105.0" y="83.0" font-size="11.5" text-anchor="middle" class="mut">Active: your B cells</text><text x="105.0" y="99.0" font-size="11.5" text-anchor="middle" class="mut">Passive: borrowed Ab</text><rect x="152" y="30" width="44" height="18" rx="5" style="fill:var(--c3)"/><text x="174.0" y="43.0" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO1</text><rect x="230" y="40" width="160" height="78" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/><text x="310.0" y="64.0" font-size="14" text-anchor="middle" font-weight="700">B cell → plasma cell</text><text x="310.0" y="83.0" font-size="11.5" text-anchor="middle" class="mut">V(D)J → unique BCR</text><text x="310.0" y="99.0" font-size="11.5" text-anchor="middle" class="mut">BCR secreted as Ab</text><rect x="430" y="30" width="200" height="98" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/><text x="530.0" y="56.0" font-size="14" text-anchor="middle" font-weight="700">Antibody (Y)</text><text x="530.0" y="75.0" font-size="11.5" text-anchor="middle" class="mut">2 heavy + 2 light chains</text><text x="530.0" y="91.0" font-size="11.5" text-anchor="middle" class="mut">Fab arms · hinge · Fc stem</text><text x="530.0" y="107.0" font-size="11.5" text-anchor="middle" class="mut">bivalent prototype (IgG)</text><rect x="592" y="20" width="44" height="18" rx="5" style="fill:var(--c1)"/><text x="614.0" y="33.0" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO2</text><rect x="670" y="40" width="210" height="78" rx="10" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/><text x="775.0" y="64.0" font-size="14" text-anchor="middle" font-weight="700">Antibody as antigen</text><text x="775.0" y="83.0" font-size="11.5" text-anchor="middle" class="mut">anti-isotypic · anti-allotypic</text><text x="775.0" y="99.0" font-size="11.5" text-anchor="middle" class="mut">anti-idiotypic (ADA)</text><rect x="842" y="30" width="44" height="18" rx="5" style="fill:var(--c2)"/><text x="864.0" y="43.0" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO2</text><path d="M190.0,79.0 L228.0,79.0" style="fill:none;stroke:var(--muted);stroke-width:1.6" marker-end="url(#map-ar-muted)"/><path d="M390.0,79.0 L428.0,79.0" style="fill:none;stroke:var(--muted);stroke-width:1.6" marker-end="url(#map-ar-muted)"/><path d="M630.0,79.0 L668.0,79.0" style="fill:none;stroke:var(--muted);stroke-width:1.6" marker-end="url(#map-ar-muted)"/><rect x="300" y="190" width="230" height="96" rx="10" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/><text x="415.0" y="214.0" font-size="14" text-anchor="middle" font-weight="700">Fab tip = paratope</text><text x="415.0" y="233.0" font-size="11.5" text-anchor="middle" class="mut">binds epitope · idiotype</text><text x="415.0" y="249.0" font-size="11.5" text-anchor="middle" class="mut">affinity (1 site)</text><text x="415.0" y="265.0" font-size="11.5" text-anchor="middle" class="mut">avidity (all sites, valency)</text><rect x="492" y="180" width="44" height="18" rx="5" style="fill:var(--c4)"/><text x="514.0" y="193.0" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO3</text><rect x="570" y="190" width="310" height="96" rx="10" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.6"/><text x="725.0" y="214.0" font-size="14" text-anchor="middle" font-weight="700">Fc = isotype → effector job</text><text x="725.0" y="233.0" font-size="11.5" text-anchor="middle" class="mut">IgM pentamer · IgD on naïve B · IgG placenta</text><text x="725.0" y="249.0" font-size="11.5" text-anchor="middle" class="mut">IgE mast cells · IgA dimer in secretions</text><text x="725.0" y="265.0" font-size="11.5" text-anchor="middle" class="mut">C1q · Fc receptors · ADCC</text><rect x="842" y="180" width="44" height="18" rx="5" style="fill:var(--c6)"/><text x="864.0" y="193.0" font-size="11" text-anchor="middle" font-weight="800" style="fill:var(--panel)">LO4</text><path d="M500.0,128.0 L440.0,188.0" style="fill:none;stroke:var(--c4);stroke-width:1.6" marker-end="url(#map-ar-c4)"/><path d="M570.0,128.0 L640.0,188.0" style="fill:none;stroke:var(--c6);stroke-width:1.6" marker-end="url(#map-ar-c6)"/><rect x="20" y="190" width="240" height="96" rx="10" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6;stroke-dasharray:5 4"/><text x="140.0" y="214.0" font-size="14" text-anchor="middle" font-weight="700">Clinical tie-ins</text><text x="140.0" y="233.0" font-size="11.5" text-anchor="middle" class="mut">IVIG · antivenom · serum sickness</text><text x="140.0" y="249.0" font-size="11.5" text-anchor="middle" class="mut">IgA deficiency · Wiskott-Aldrich</text><text x="140.0" y="265.0" font-size="11.5" text-anchor="middle" class="mut">therapeutic mAbs · Fab drugs</text></svg></div></figure>
+  <ul class="bigp">
+    <li><b>Antibody</b> = glycoprotein made by <b>plasma cells</b> → main weapon of <b>humoral</b> (B cell) immunity
+      <ul><li>membrane-bound = <b>BCR</b> · secreted = soluble antibody · same specificity</li></ul></li>
+    <li>Get it two ways → <b>active</b> (make it: slow, lasting, memory) · <b>passive</b> (borrow it: instant, weeks, no memory)</li>
+    <li><b>Y shape</b> → 2 heavy + 2 light chains · S–S bonds
+      <ul><li><b>Fab</b> tips (CDRs) → bind antigen · <b>Fc</b> stem → C1q + Fc receptors</li><li>Foreign Ig can itself be an antigen → anti-<b>iso</b> / <b>allo</b> / <b>idio</b>typic responses</li></ul></li>
+    <li>Variation → <b>isotype</b> (class, Fc) · <b>allotype</b> (person) · <b>idiotype</b> (clone, V region)</li>
+    <li>Binding → <b>affinity</b> (one site) · <b>valency</b> (number of sites) · <b>avidity</b> (all sites together)</li>
+    <li>Five classes → serum <b>G &gt; A &gt; M &gt; D &gt; E</b>
+      <ul><li><b>M</b> first + complement · <b>G</b> memory + placenta · <b>A</b> mucosa · <b>E</b> allergy + worms · <b>D</b> naïve B cell</li></ul></li>
+  </ul>
+</section>
+
+<!-- ===================== LO 1 ===================== -->
+<section class="lo" id="lo1">
+  <h2><span class="num">LO 1</span><span>Active vs passive immunity</span><span class="sub">Make your own antibody, or borrow someone else's</span></h2>
+  <div class="goal"><b>By the end:</b> you can classify any exposure, vaccine or antibody product as natural/artificial and active/passive, predict how fast it protects and how long, and explain why we often give both together.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> First: what is an antibody, and who makes it?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Antibodies = immunoglobulins (Ig)</b>: <b>glycoproteins</b> that specifically recognize and bind foreign substances (<b>antigens</b>).</li>
+      <li>Made by <b>plasma cells</b> = fully differentiated, antibody-secreting <b>B cells</b>.</li>
+      <li>Exist in <b>two forms</b> with the <b>same specificity</b>:
+        <ul><li><b>Membrane-bound</b> on the B cell surface = the <b>B cell receptor (BCR)</b></li>
+        <li><b>Secreted</b>, soluble antibody in blood and secretions</li></ul></li>
+      <li>Job: neutralize and eliminate foreign antigen → antibodies are the main mediators of <b>humoral immunity</b> (the B cell + antibody arm of <b>adaptive</b> immunity).</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A B cell's surface receptor and the antibody its plasma-cell descendants secrete: same or different antigen specificity?</span></summary><div class="a"><b>Same.</b> The secreted antibody is the soluble version of that clone's BCR.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> What separates active from passive immunity?</span></summary><div class="gqb">
+    <p>The one question to ask: <b>whose B cells made the antibody?</b></p>
+    <div class="scroll"><table>
+      <thead><tr><th>Feature</th><th>Active immunity</th><th>Passive immunity</th></tr></thead>
+      <tbody>
+        <tr><th>Source of antibody</th><td><b>You make your own</b> after exposure to antigen</td><td><b>Preformed antibody</b> from another person or animal</td></tr>
+        <tr><th>Onset</th><td><b>Slow</b> (several weeks)</td><td><b>Immediate</b></td></tr>
+        <tr><th>Duration</th><td><b>Long-lasting</b> (sometimes lifelong)</td><td><b>Weeks to months</b> only</td></tr>
+        <tr><th>Memory?</th><td><b>Yes</b> (memory B and T cells)</td><td><b>No</b>: your own B cells were never activated</td></tr>
+        <tr><th>Natural example</th><td><b>Infection</b> with the real organism</td><td>Maternal <b>IgG across the placenta</b>; <b>IgA in breast milk</b></td></tr>
+        <tr><th>Artificial example</th><td><b>Vaccination</b> (killed, weakened/attenuated or component organism)</td><td><b>IVIG</b>, <b>antisera / antitoxin / antivenom</b>, therapeutic <b>monoclonal antibody</b></td></tr>
+      </tbody>
+    </table></div>
+    <figure><div class="scroll" style="margin:0"><svg viewBox="0 0 720 260" role="img" aria-label="Graph of protective antibody over time: passive antibody is high immediately and decays over weeks with no memory; active immunity starts after a lag of weeks then rises and stays up because of memory" style="min-width:600px;max-width:720px"><defs><marker id="tl-ar-c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c1)"/></marker><marker id="tl-ar-c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c2)"/></marker><marker id="tl-ar-c3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c3)"/></marker><marker id="tl-ar-c4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c4)"/></marker><marker id="tl-ar-c5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c5)"/></marker><marker id="tl-ar-c6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c6)"/></marker><marker id="tl-ar-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs><path d="M70.0,230.0 L690.0,230.0" style="fill:none;stroke:var(--muted);stroke-width:1.6" marker-end="url(#tl-ar-muted)"/><path d="M70.0,230.0 L70.0,30.0" style="fill:none;stroke:var(--muted);stroke-width:1.6" marker-end="url(#tl-ar-muted)"/><text x="686.0" y="252.0" font-size="12" text-anchor="end" class="mut">time (weeks →)</text><text x="0" y="0" font-size="12" text-anchor="middle" class="mut" transform="translate(34,130) rotate(-90)">protective antibody</text><path d="M80.0,230.0 L80.0,40.0" style="fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4"/><text x="84.0" y="36.0" font-size="11.5" text-anchor="start" class="mut">dose / exposure</text><polyline points="82.0,70.0 92.0,78.3 102.0,86.2 112.0,93.7 122.0,100.7 132.0,107.5 142.0,113.8 152.0,119.9 162.0,125.6 172.0,131.0 182.0,136.1 192.0,141.0 202.0,145.6 212.0,150.0 222.0,154.2 232.0,158.1 242.0,161.8 252.0,165.4 262.0,168.7 272.0,171.9 282.0,174.9 292.0,177.8 302.0,180.5 312.0,183.1 322.0,185.5 332.0,187.8 342.0,190.0 352.0,192.1 362.0,194.1 372.0,195.9 382.0,197.7 392.0,199.4 402.0,201.0 412.0,202.5 422.0,203.9 432.0,205.3 442.0,206.5 452.0,207.8 462.0,208.9 472.0,210.0 482.0,211.0 492.0,212.0 502.0,213.0 512.0,213.9 522.0,214.7 532.0,215.5 542.0,216.2 552.0,217.0 562.0,217.6 572.0,218.3 582.0,218.9 592.0,219.5 602.0,220.0 612.0,220.5 622.0,221.0 632.0,221.5 642.0,221.9 652.0,222.3 662.0,222.7 672.0,223.1 682.0,223.5" style="fill:none;stroke:var(--c2);stroke-width:3"/><polyline points="82.0,228.0 92.0,228.0 102.0,228.0 112.0,228.0 122.0,228.0 132.0,228.0 142.0,228.0 152.0,228.0 162.0,211.1 172.0,192.8 182.0,177.2 192.0,163.9 202.0,152.5 212.0,142.9 222.0,134.8 232.0,127.9 242.0,122.0 252.0,117.1 262.0,113.0 272.0,109.5 282.0,106.6 292.0,104.3 302.0,102.3 312.0,100.7 322.0,99.4 332.0,98.4 342.0,97.6 352.0,97.0 362.0,96.5 372.0,96.2 382.0,96.1 392.0,96.0 402.0,96.0 412.0,96.1 422.0,96.3 432.0,96.5 442.0,96.7 452.0,97.0 462.0,97.4 472.0,97.7 482.0,98.1 492.0,98.5 502.0,98.9 512.0,99.4 522.0,99.8 532.0,100.3 542.0,100.8 552.0,101.2 562.0,101.7 572.0,102.2 582.0,102.7 592.0,103.2 602.0,103.7 612.0,104.2 622.0,104.7 632.0,105.2 642.0,105.7 652.0,106.2 662.0,106.7 672.0,107.2 682.0,107.7" style="fill:none;stroke:var(--c1);stroke-width:3"/><text x="150.0" y="62.0" font-size="13" text-anchor="start" font-weight="700" style="fill:var(--c2)">Passive: instant, then wanes</text><text x="150.0" y="78.0" font-size="11.5" text-anchor="start" class="mut">(IgG t½ ≈ 3 wk · no memory)</text><text x="470.0" y="140.0" font-size="13" text-anchor="start" font-weight="700" style="fill:var(--c1)">Active: lag of weeks, then lasting</text><text x="470.0" y="156.0" font-size="11.5" text-anchor="start" class="mut">(memory B + T cells)</text><text x="118.0" y="222.0" font-size="11.5" text-anchor="middle" class="mut">lag</text></svg></div></figure>
+    <ul>
+      <li><b>Two forms of active immunity</b>: <b>natural</b> (infection) and <b>vaccine-induced</b>. Both need the host's own B (and T) cells → slow but durable.</li>
+      <li>Transferred IgG has a <b>half-life of ~3 weeks</b> → passive protection fades over weeks to a few months.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Classify: (a) measles infection, (b) MMR vaccine, (c) colostrum, (d) antivenom.</span></summary><div class="a">(a) <b>natural active</b>, (b) <b>artificial active</b>, (c) <b>natural passive</b> (secretory IgA), (d) <b>artificial passive</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Active = you went to the gym</b>: slow to build, but the muscle (memory) stays. <b>Passive = you borrowed a friend's muscles</b>: instant strength, gone when they leave.</p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>"Natural" ≠ "active." <b>Maternal antibody</b> (placental IgG, breast-milk IgA) is <b>natural <u>passive</u></b>. And a <b>vaccine</b> is <b>artificial <u>active</u></b>, not passive, even though a clinician gave it.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> Why would we ever give both at once?</span></summary><div class="gqb">
+    <div class="flow">
+      <div class="st" style="--cc:var(--c4)"><b>High-risk exposure</b>rabid bat bite, dirty wound</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c2)"><b>Immune globulin</b>passive · protects now</div><span class="ar">+</span>
+      <div class="st" style="--cc:var(--c1)"><b>Vaccine</b>active · different site · memory in weeks</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>No gap</b>passive bridges the lag until your own antibody arrives</div>
+    </div>
+    <ul>
+      <li>Passive antibody <b>covers the window</b> before the patient's own response develops.</li>
+      <li>Give the vaccine at a <b>different site</b> so the injected antibody does not neutralize the vaccine antigen locally.</li>
+      <li>Newborns: protected by <b>maternal IgG</b> for the first months → it <b>wanes</b> (no memory) → they still need their own vaccines.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A 2-month-old has protective tetanus antibody before any vaccine. Source, type, and how long will it last?</span></summary><div class="a"><b>Maternal IgG across the placenta = natural passive.</b> It wanes over the first months of life, so the infant still needs active vaccination.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>Passive + active together</b> after exposure to <b>rabies, tetanus, hepatitis B</b> (and botulism/diphtheria antitoxin as passive). Mnemonic: "<b>To Be Healed Rapidly</b>" = Tetanus, Botulinum, HBV, Rabies.</li><li>Vaccinating pregnant women (e.g., <b>Tdap</b> in the third trimester) boosts transplacental IgG to protect newborns from pertussis.</li><li>IgG crosses the placenta via the <b>neonatal Fc receptor (FcRn)</b>.</li></ul></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"immediate but short-lived"</b> → passive</span><span><b>"memory, lifelong"</b> → active</span><span><b>"immune globulin + vaccine at different sites"</b> → post-exposure prophylaxis</span><span><b>"antivenom / antitoxin / IVIG"</b> → artificial passive</span></div></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 1 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A man bitten by a rabid bat gets rabies immune globulin into the wound plus a rabies vaccine series. Which part protects him today and which protects him next year?</span></summary><div class="a"><b>Immune globulin = passive, immediate, short-lived; vaccine = active, slower (weeks), with memory.</b> The borrowed antibody covers the lag before his own response arrives.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A child with antibody deficiency receives monthly IVIG. Why monthly, and will she develop memory to the pathogens covered?</span></summary><div class="a"><b>Monthly because IgG has a half-life of ~3 weeks; no memory</b>, because her own B cells were never activated. Passive protection lasts only as long as the donor antibody.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">Predict: a vaccine is given at the same injection site as a large dose of immune globulin against the same pathogen. What might go wrong?</span></summary><div class="a"><b>The injected antibody can bind and neutralize the vaccine antigen locally → weaker active response.</b> That is why the two are given at different sites.</div></details>
+</section>
+
+<!-- ===================== LO 2 ===================== -->
+<section class="lo" id="lo2">
+  <h2><span class="num">LO 2</span><span>Antibody structure</span><span class="sub">The Y: which end grabs antigen, which end calls for help, and when the Y itself is the target</span></h2>
+  <div class="goal"><b>By the end:</b> you can draw and label an IgG from memory (chains, domains, disulfides, CDRs, Fab, hinge, Fc), say where C1q and Fc receptors bind, predict the products of papain vs pepsin, and name the anti-isotypic, anti-allotypic and anti-idiotypic responses with their triggers.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> Where does each B cell's unique antibody come from?</span></summary><div class="gqb">
+    <div class="flow">
+      <div class="st" style="--cc:var(--c5)"><b>Bone marrow</b>B cells develop here</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>V(D)J recombination</b>gene segments rearranged → unique BCR</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c1)"><b>Mature B cell</b>BCR on surface (IgM + IgD)</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>Activated by antigen</b>differentiates</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c2)"><b>Plasma cell</b>secretes the BCR as soluble antibody</div>
+    </div>
+    <ul>
+      <li>V(D)J recombination creates <b>diversity across the B cell population</b>: each clone has its own receptor.</li>
+      <li><b>Membrane vs secreted</b> forms come from <b>alternative RNA processing</b> of the heavy-chain mRNA (transmembrane tail vs secretory tail).
+        <ul><li>Membrane IgM = <b>monomer</b>; secreted IgM = <b>pentamer</b>.</li></ul></li>
+    </ul>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> What does the basic antibody (IgG) look like?</span></summary><div class="gqb">
+    <figure><div class="scroll" style="margin:0"><svg viewBox="0 110 900 330" role="img" aria-label="Labeled IgG: two heavy chains (VH, CH1, hinge, CH2, CH3) and two light chains (VL, CL) joined by disulfide bonds; CDR loops at the Fab tips form the paratope that binds an antigen epitope; Fab arms bind antigen; hinge is flexible; Fc stem binds C1q at CH2 and Fc receptors at the C-terminal CH2-CH3" style="min-width:600px;max-width:860px"><defs><marker id="ab-ar-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs><rect x="398" y="292" width="38" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="417.0" y="321.5" font-size="12.5" text-anchor="middle" font-weight="700">C<tspan font-size="11" dy="3">H</tspan><tspan font-size="11" dy="-3">2</tspan></text><rect x="398" y="347" width="38" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="417.0" y="376.5" font-size="12.5" text-anchor="middle" font-weight="700">C<tspan font-size="11" dy="3">H</tspan><tspan font-size="11" dy="-3">3</tspan></text><rect x="444" y="292" width="38" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="463.0" y="321.5" font-size="12.5" text-anchor="middle" font-weight="700">C<tspan font-size="11" dy="3">H</tspan><tspan font-size="11" dy="-3">2</tspan></text><rect x="444" y="347" width="38" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="463.0" y="376.5" font-size="12.5" text-anchor="middle" font-weight="700">C<tspan font-size="11" dy="3">H</tspan><tspan font-size="11" dy="-3">3</tspan></text><g transform="translate(417,285) rotate(-35)"><rect x="-40" y="-95" width="40" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(-20.0,-70.0) rotate(35) translate(0,4.5)">C<tspan font-size="11" dy="3">H</tspan><tspan font-size="11" dy="-3">1</tspan></text><rect x="-40" y="-150" width="40" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(-20.0,-125.0) rotate(35) translate(0,4.5)">V<tspan font-size="11" dy="3">H</tspan></text><rect x="-88" y="-95" width="40" height="50" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(-68.0,-70.0) rotate(35) translate(0,4.5)">C<tspan font-size="11" dy="3">L</tspan></text><rect x="-88" y="-150" width="40" height="50" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(-68.0,-125.0) rotate(35) translate(0,4.5)">V<tspan font-size="11" dy="3">L</tspan></text><circle cx="-32" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="-20" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="-8" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="-80" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="-68" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="-56" cy="-150" r="3.6" style="fill:var(--c4)"/><path d="M-48,-60 L-40,-60" style="stroke:var(--c4);stroke-width:3"/><path d="M-20,-45 L0,-4" style="fill:none;stroke:var(--c1);stroke-width:3.5"/><circle cx="-44" cy="-176" r="14" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.8"/><text x="0" y="0" font-size="11" text-anchor="middle" font-weight="700" transform="translate(-44,-176) rotate(35) translate(0,4)">Ag</text></g><g transform="translate(463,285) rotate(35)"><rect x="0" y="-95" width="40" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(20.0,-70.0) rotate(-35) translate(0,4.5)">C<tspan font-size="11" dy="3">H</tspan><tspan font-size="11" dy="-3">1</tspan></text><rect x="0" y="-150" width="40" height="50" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(20.0,-125.0) rotate(-35) translate(0,4.5)">V<tspan font-size="11" dy="3">H</tspan></text><rect x="48" y="-95" width="40" height="50" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(68.0,-70.0) rotate(-35) translate(0,4.5)">C<tspan font-size="11" dy="3">L</tspan></text><rect x="48" y="-150" width="40" height="50" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.8"/><text x="0" y="0" font-size="12.5" text-anchor="middle" font-weight="700" transform="translate(68.0,-125.0) rotate(-35) translate(0,4.5)">V<tspan font-size="11" dy="3">L</tspan></text><circle cx="8" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="20" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="32" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="56" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="68" cy="-150" r="3.6" style="fill:var(--c4)"/><circle cx="80" cy="-150" r="3.6" style="fill:var(--c4)"/><path d="M40,-60 L48,-60" style="stroke:var(--c4);stroke-width:3"/><path d="M20,-45 L0,-4" style="fill:none;stroke:var(--c1);stroke-width:3.5"/><rect x="-8" y="-162" width="104" height="124" rx="12" style="fill:none;stroke:var(--c2);stroke-width:1.5;stroke-dasharray:6 4"/></g><path d="M417.0,280.0 L463.0,280.0" style="fill:none;stroke:var(--c4);stroke-width:3"/><path d="M417.0,287.0 L463.0,287.0" style="fill:none;stroke:var(--c4);stroke-width:3"/><rect x="390" y="286" width="100" height="118" rx="12" style="fill:none;stroke:var(--c3);stroke-width:1.5;stroke-dasharray:6 4"/><text x="440.0" y="422.0" font-size="11.5" text-anchor="middle" class="mut">C-terminus (COOH)</text><text x="255.0" y="132.0" font-size="12.5" text-anchor="end" font-weight="700">Antigen (its epitope)</text><path d="M258.0,136.0 L268.0,152.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="240.0" y="196.0" font-size="12.5" text-anchor="end" font-weight="700">CDRs = hypervariable</text><text x="240.0" y="211.0" font-size="11.5" text-anchor="end" class="mut">loops → paratope (N-term)</text><path d="M244.0,200.0 L268.0,205.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="240.0" y="268.0" font-size="12.5" text-anchor="end" font-weight="700" style="fill:var(--c2)">Light chain (κ or λ)</text><text x="240.0" y="283.0" font-size="11.5" text-anchor="end" class="mut">V<tspan font-size="10.5" dy="2">L</tspan><tspan dy="-2"> + C</tspan><tspan font-size="10.5" dy="2">L</tspan></text><path d="M244.0,270.0 L300.0,262.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="240.0" y="380.0" font-size="12.5" text-anchor="end" font-weight="700" style="fill:var(--c1)">Heavy chain</text><text x="240.0" y="395.0" font-size="11.5" text-anchor="end" class="mut">V, C1 · hinge · C2, C3</text><path d="M244.0,383.0 L396.0,372.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="240.0" y="325.0" font-size="12.5" text-anchor="end" font-weight="700" style="fill:var(--c4)">S–S bonds (red)</text><text x="240.0" y="340.0" font-size="11.5" text-anchor="end" class="mut">H–H at hinge · H–L in arm</text><path d="M244.0,321.0 L415.0,284.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="655.0" y="150.0" font-size="12.5" text-anchor="start" font-weight="700" style="fill:var(--c2)">Fab (dashed)</text><text x="655.0" y="165.0" font-size="11.5" text-anchor="start" class="mut">V + C1 of heavy + whole light</text><text x="655.0" y="180.0" font-size="11.5" text-anchor="start" class="mut">→ binds antigen</text><path d="M652.0,160.0 L572.0,180.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="655.0" y="255.0" font-size="12.5" text-anchor="start" font-weight="700">Hinge (Pro-rich, flexible)</text><text x="655.0" y="270.0" font-size="11.5" text-anchor="start" class="mut">absent in IgM and IgE</text><path d="M652.0,259.0 L476.0,279.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="655.0" y="314.0" font-size="12.5" text-anchor="start" font-weight="700">C1q binds C<tspan font-size="10.5" dy="3">H</tspan><tspan dy="-3">2</tspan></text><text x="655.0" y="329.0" font-size="11.5" text-anchor="start" class="mut">near hinge → complement</text><path d="M652.0,318.0 L484.0,316.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="655.0" y="368.0" font-size="12.5" text-anchor="start" font-weight="700">Fc receptors bind C-terminal</text><text x="655.0" y="383.0" font-size="11.5" text-anchor="start" class="mut">C2–C3 → phagocytes, NK cells</text><path d="M652.0,372.0 L484.0,372.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/><text x="655.0" y="410.0" font-size="12.5" text-anchor="start" font-weight="700" style="fill:var(--c3)">Fc (dashed) = effector end</text><path d="M652.0,406.0 L492.0,398.0" style="fill:none;stroke:var(--muted);stroke-width:1.2" marker-end="url(#ab-ar-muted)"/></svg></div></figure>
+    <ul>
+      <li><b>4 chains</b>: <b>2 identical heavy (H)</b> + <b>2 identical light (L)</b> → Y shape.</li>
+      <li><b>Disulfide bonds</b> link <b>H–H</b> (at the hinge) and each <b>H–L</b> pair.</li>
+      <li>Each chain = an N-terminal <b>variable (V)</b> domain + one or more <b>constant (C)</b> domains.
+        <ul><li><b>Light chain</b>: V<sub>L</sub> + C<sub>L</sub> (light chains come as <b>κ or λ</b>).</li>
+        <li><b>Heavy chain</b> (IgG): V<sub>H</sub> + C<sub>H</sub>1 → <b>hinge</b> → C<sub>H</sub>2 → C<sub>H</sub>3.</li>
+        <li>V domains = <b>highly variable</b> → antigen-binding sites. C domains = <b>conserved</b>.</li></ul></li>
+      <li>Two identical antigen-binding sites → <b>bivalent</b>.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which chain contributes to both the Fab and the Fc, and which contributes only to the Fab?</span></summary><div class="a"><b>Heavy chain → both</b> (V<sub>H</sub>+C<sub>H</sub>1 in Fab; C<sub>H</sub>2+C<sub>H</sub>3 in Fc). <b>Light chain → Fab only.</b></div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> Fab, hinge, Fc: which part talks to whom?</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Region</th><th>Made of</th><th>Interacts with</th><th>Determines</th></tr></thead>
+      <tbody>
+        <tr><th>Fab ("arms")</th><td>V<sub>H</sub> + C<sub>H</sub>1 + whole light chain (V<sub>L</sub>, C<sub>L</sub>)</td><td><b>Antigen</b> (epitope) via the <b>paratope</b></td><td><b>Specificity</b> → <b>idiotype</b></td></tr>
+        <tr><th>Hinge</th><td>Heavy chain between C<sub>H</sub>1 and C<sub>H</sub>2; <b>proline-rich</b>; holds H–H disulfides</td><td>(none directly)</td><td><b>Flexibility</b> → both arms can grab epitopes at different spacings</td></tr>
+        <tr><th>Fc ("stem")</th><td>Heavy-chain constant domains only (C<sub>H</sub>2, C<sub>H</sub>3); carries <b>oligosaccharide</b> side chains</td><td><b>Fc receptors</b> (macrophages, neutrophils, NK cells, mast cells…) and <b>complement C1q</b> (esp. IgG, IgM)</td><td><b>Isotype</b> → <b>effector function</b> (opsonization, complement, cell lysis)</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>The paratope = <b>hypervariable loops = complementarity-determining regions (CDRs)</b>: <b>3 per chain → 6 per binding site</b>, at the tip of each Fab.
+        <ul><li><b>Framework regions</b> of the V domain = the scaffold holding the CDRs.</li></ul></li>
+      <li><b>C1q binds C<sub>H</sub>2</b> near the hinge; <b>Fc receptors</b> bind the C-terminal Fc (C<sub>H</sub>2–C<sub>H</sub>3).</li>
+      <li>The <b>heavy-chain constant region determines class</b> → class switching swaps it → <b>new effector function, same antigen binding</b>.</li>
+      <li><b>IgM and IgE have no hinge</b>: an extra domain (<b>C<sub>H</sub>4</b>) instead. IgG, IgA and IgD have a hinge.</li>
+      <li>"<b>Trifunctional</b>" antibody: ① antigen binding (Fab tips) ② Fc-receptor binding ③ complement (C1q) activation.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A mutation in C<sub>H</sub>2 of a patient's IgG abolishes C1q binding. What is lost, what is kept?</span></summary><div class="a"><b>Lost: classical complement activation by that IgG. Kept: antigen binding and neutralization</b> (Fab untouched). Fc-receptor binding may or may not suffer depending on the exact site.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Fab = "fragment, antigen binding"</b> → it <b>fabricates the fit</b>.<br><b>Fc = the 5 C's</b>: <b>C</b>onstant, <b>C</b>arboxy-terminal, <b>C</b>omplement-binding, <b>C</b>arbohydrate side chains, <b>C</b>onfers isotype.</p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>Changing class (IgM → IgG) changes the <b>Fc</b>, <b>not the antigen specificity</b>. If a stem asks what a switched antibody keeps, the answer is the <b>V region / idiotype</b>. Also: antibodies do <b>not</b> bind pathogen lectins; their Fc functions are <b>complement and Fc receptors</b>.</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"hypervariable regions"</b> → CDRs, paratope</span><span><b>"proline-rich, flexible"</b> → hinge</span><span><b>"C<sub>H</sub>2"</b> → C1q binding</span><span><b>"crystallizable fragment"</b> → Fc</span><span><b>"extra C<sub>H</sub>4, no hinge"</b> → IgM, IgE</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> What do papain and pepsin do to IgG, and why does it matter?</span></summary><div class="gqb">
+    <figure><div class="scroll" style="margin:0"><svg viewBox="0 0 720 300" role="img" aria-label="Intact IgG with the papain cut above the heavy-heavy disulfide and the pepsin cut below it; papain yields two monovalent Fab plus one Fc; pepsin yields one bivalent F(ab prime)2 plus small pFc prime fragments" style="min-width:600px;max-width:720px"><defs><marker id="pp-ar-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker><marker id="pp-ar-c4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c4)"/></marker></defs><text x="130.0" y="24.0" font-size="14" text-anchor="middle" font-weight="700">Intact IgG</text><path d="M120.0,120.0 L72.0,52.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M98.7,110.6 L62.2,58.9" style="fill:none;stroke:var(--c2);stroke-width:5;stroke-linecap:round"/><path d="M103.8,97.1 L94.0,104.0" style="fill:none;stroke:var(--c4);stroke-width:2.5;stroke-linecap:round"/><path d="M140.0,120.0 L188.0,52.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M161.3,110.6 L197.8,58.9" style="fill:none;stroke:var(--c2);stroke-width:5;stroke-linecap:round"/><path d="M156.2,97.1 L166.0,104.0" style="fill:none;stroke:var(--c4);stroke-width:2.5;stroke-linecap:round"/><path d="M120.0,120.0 L120.0,212.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M140.0,120.0 L140.0,212.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M120.0,134.0 L140.0,134.0" style="fill:none;stroke:var(--c4);stroke-width:3;stroke-linecap:round"/><path d="M96.0,129.0 L164.0,129.0" style="fill:none;stroke:var(--c4);stroke-width:1.6;stroke-dasharray:4 3"/><text x="92.0" y="133.0" font-size="12" text-anchor="end" font-weight="700" style="fill:var(--c4)">papain ✂</text><path d="M96.0,148.0 L164.0,148.0" style="fill:none;stroke:var(--c5);stroke-width:1.6;stroke-dasharray:4 3"/><text x="168.0" y="152.0" font-size="12" text-anchor="start" font-weight="700" style="fill:var(--c5)">✂ pepsin</text><text x="130.0" y="238.0" font-size="11.5" text-anchor="middle" class="mut">S–S between heavy chains</text><text x="130.0" y="253.0" font-size="11.5" text-anchor="middle" class="mut">sits between the two cuts</text><path d="M250.0,130.0 L300.0,90.0" style="fill:none;stroke:var(--c4);stroke-width:1.8" marker-end="url(#pp-ar-c4)"/><path d="M250.0,150.0 L300.0,190.0" style="fill:none;stroke:var(--muted);stroke-width:1.8" marker-end="url(#pp-ar-muted)"/><text x="330.0" y="24.0" font-size="14" text-anchor="start" font-weight="700" style="fill:var(--c4)">Papain</text><path d="M340.0,110.0 L292.0,42.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M318.7,100.6 L282.2,48.9" style="fill:none;stroke:var(--c2);stroke-width:5;stroke-linecap:round"/><path d="M323.8,87.1 L314.0,94.0" style="fill:none;stroke:var(--c4);stroke-width:2.5;stroke-linecap:round"/><path d="M400.0,110.0 L448.0,42.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M421.3,100.6 L457.8,48.9" style="fill:none;stroke:var(--c2);stroke-width:5;stroke-linecap:round"/><path d="M416.2,87.1 L426.0,94.0" style="fill:none;stroke:var(--c4);stroke-width:2.5;stroke-linecap:round"/><text x="370.0" y="130.0" font-size="12.5" text-anchor="middle" font-weight="700">2 × Fab</text><text x="370.0" y="145.0" font-size="11.5" text-anchor="middle" class="mut">monovalent</text><path d="M490.0,26.0 L490.0,118.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M510.0,26.0 L510.0,118.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M490.0,40.0 L510.0,40.0" style="fill:none;stroke:var(--c4);stroke-width:3;stroke-linecap:round"/><text x="540.0" y="74.0" font-size="12.5" text-anchor="start" font-weight="700">Fc</text><text x="540.0" y="89.0" font-size="11.5" text-anchor="start" class="mut">crystallizes;</text><text x="540.0" y="104.0" font-size="11.5" text-anchor="start" class="mut">C1q + FcR sites</text><text x="330.0" y="168.0" font-size="14" text-anchor="start" font-weight="700" style="fill:var(--c5)">Pepsin</text><path d="M410.0,252.0 L362.0,184.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M388.7,242.6 L352.2,190.9" style="fill:none;stroke:var(--c2);stroke-width:5;stroke-linecap:round"/><path d="M393.8,229.1 L384.0,236.0" style="fill:none;stroke:var(--c4);stroke-width:2.5;stroke-linecap:round"/><path d="M430.0,252.0 L478.0,184.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M451.3,242.6 L487.8,190.9" style="fill:none;stroke:var(--c2);stroke-width:5;stroke-linecap:round"/><path d="M446.2,229.1 L456.0,236.0" style="fill:none;stroke:var(--c4);stroke-width:2.5;stroke-linecap:round"/><path d="M410.0,252.0 L410.0,268.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M430.0,252.0 L430.0,268.0" style="fill:none;stroke:var(--c1);stroke-width:7;stroke-linecap:round"/><path d="M410.0,262.0 L430.0,262.0" style="fill:none;stroke:var(--c4);stroke-width:3;stroke-linecap:round"/><text x="500.0" y="214.0" font-size="12.5" text-anchor="start" font-weight="700">F(ab')<tspan dy="3" font-size="10.5">2</tspan></text><text x="500.0" y="229.0" font-size="11.5" text-anchor="start" class="mut">bivalent → still cross-links</text><rect x="560" y="254" width="10" height="7" rx="2" style="fill:var(--c1-soft);stroke:var(--c1)"/><rect x="576" y="262" width="10" height="7" rx="2" style="fill:var(--c1-soft);stroke:var(--c1)"/><rect x="590" y="250" width="10" height="7" rx="2" style="fill:var(--c1-soft);stroke:var(--c1)"/><rect x="604" y="260" width="10" height="7" rx="2" style="fill:var(--c1-soft);stroke:var(--c1)"/><rect x="620" y="254" width="10" height="7" rx="2" style="fill:var(--c1-soft);stroke:var(--c1)"/><text x="500.0" y="288.0" font-size="11.5" text-anchor="start" class="mut">pFc' = Fc digested to bits</text></svg></div></figure>
+    <div class="scroll"><table>
+      <thead><tr><th>Enzyme</th><th>Cuts</th><th>Products</th><th>Antigen-binding valency</th></tr></thead>
+      <tbody>
+        <tr><th>Papain</th><td>Peptide bonds in the hinge <b>above</b> (N-terminal to) the inter-heavy-chain disulfides</td><td><b>2 Fab + 1 Fc</b></td><td><b>Monovalent</b> (each Fab binds one epitope)</td></tr>
+        <tr><th>Pepsin</th><td><b>Below</b> the hinge disulfides; digests the Fc into small pieces</td><td><b>1 F(ab′)<sub>2</sub></b> + fragmented Fc (pFc′)</td><td><b>Bivalent</b></td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Papain leaves the H–H disulfides on the <b>Fc side</b> → arms fall apart. Pepsin leaves them on the <b>Fab side</b> → arms stay joined.</li>
+      <li>Fab / F(ab′)<sub>2</sub> have <b>no Fc</b> → <b>no Fc-receptor binding, no complement</b>, but they still <b>neutralize</b>. F(ab′)<sub>2</sub> can still <b>cross-link</b> (agglutinate) particles; a single Fab cannot.</li>
+      <li><b>Fd</b> = the heavy-chain part of a Fab (V<sub>H</sub> + C<sub>H</sub>1).</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which fragment would you use if you wanted to neutralize a toxin without triggering complement or phagocytosis?</span></summary><div class="a"><b>Fab (or F(ab′)<sub>2</sub>).</b> No Fc → no C1q or Fc-receptor engagement, but antigen binding is intact.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>Therapeutic <b>Fab fragments</b>: <b>digoxin immune Fab</b> (digoxin toxicity) and <b>crotalid Fab antivenom</b> (rattlesnake bite) → small, renally cleared, less immunogenic.</li><li>Myeloma: <b>Bence Jones protein</b> = free monoclonal <b>light chains in urine</b> (missed by dipstick); <b>M spike</b> (often IgG or IgA); <b>CRAB</b> = hyperCalcemia, Renal failure, Anemia, lytic Bone lesions; light chains → <b>AL amyloidosis</b>.</li></ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>PaPain = Pieces</b> (3 separate pieces: Fab, Fab, Fc). <b>PePsin = Pair Stays</b> (arms stay paired as F(ab′)<sub>2</sub>; Fc is chewed up, like pepsin digesting food).</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q5.</b> How did urinary light chains reveal where antibody variability lives?</span></summary><div class="gqb">
+    <ul>
+      <li>Plasma cells make <b>light chains in excess</b> of heavy chains → free light chains spill into urine.</li>
+      <li>In <b>multiple myeloma</b>, one malignant plasma-cell clone pours out a <b>single monoclonal κ or λ chain</b> (the <b>Bence Jones protein</b>).</li>
+      <li>Each patient's protein is a pure sample of one antibody → comparing sequences showed variability is <b>concentrated in 3 hypervariable regions (CDRs)</b> separated by <b>framework regions</b>.</li>
+    </ul>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q6.</b> Monoclonal vs polyclonal: what is the difference?</span></summary><div class="gqb">
+    <div class="two">
+      <div class="card" style="--cc:var(--c1)"><h4>Monoclonal</h4><ul><li>From a <b>single plasma-cell clone</b></li><li><b>One specificity</b> → recognizes <b>one epitope</b></li><li>Most therapeutic antibodies (-mab drugs); myeloma M protein</li></ul></div>
+      <div class="card" style="--cc:var(--c2)"><h4>Polyclonal</h4><ul><li>From <b>many different B cell clones</b></li><li>Recognize <b>multiple epitopes</b> on the antigen</li><li>Normal product of infection / vaccination; immune sera (e.g., rabies immune globulin), IVIG, convalescent plasma</li></ul></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">One B cell clone class-switches and now makes IgM, IgG and IgA, all with the same V region. Monoclonal or polyclonal?</span></summary><div class="a"><b>Still monoclonal (one clone, one specificity).</b> Polyclonal means many clones, not many isotypes.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>"<b>One B cell making several isotypes = polyclonal</b>" is <b>wrong</b>. Polyclonal = antibodies from <b>many different clones</b>. A clone that class-switches keeps one idiotype → monoclonal in specificity.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q7.</b> When can an antibody itself act as an antigen?</span></summary><div class="gqb">
+    <p>When the <b>recipient's immune system sees part of a transferred antibody as foreign</b>. Which part depends on how "foreign" the antibody is:</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Response</th><th>Target on the antibody</th><th>Typical trigger</th></tr></thead>
+      <tbody>
+        <tr><th>Anti-<b>isotypic</b></th><td><b>Constant region</b> of another <b>species</b> (class-specific)</td><td><b>Horse antivenom / antitoxin</b>, <b>mouse</b> monoclonal; or an isotype the host <b>lacks</b> (anti-IgA in IgA deficiency)</td></tr>
+        <tr><th>Anti-<b>allotypic</b></th><td><b>Allelic</b> constant-region variants of <b>another person</b></td><td>Human antibody from another individual: <b>pooled plasma, IVIG, convalescent serum</b> (polyclonal)</td></tr>
+        <tr><th>Anti-<b>idiotypic</b></th><td>The unique <b>variable region / paratope</b></td><td>A <b>monoclonal</b> drug: one idiotype at <b>high concentration</b> → <b>anti-drug antibodies (ADA)</b></td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>Isotypes are shared by all healthy members of a species</b> but <b>not between species</b> → even humans react to mouse IgG.</li>
+      <li>All humans share isotypes but <b>differ in allotypes</b> → another person's antibody can be anti-allotypic.</li>
+      <li><b>Polyclonal</b> preps rarely provoke anti-idiotypic responses: each idiotype is <b>too dilute</b>. A <b>monoclonal</b> presents <b>one idiotype in abundance</b>, and engineered paratopes may not occur naturally → can break tolerance even with a <b>fully human</b> constant region.</li>
+      <li>ADAs can <b>neutralize</b> the drug or <b>speed its clearance</b> → loss of response.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A snakebite victim gets horse antivenom. Ten days later: fever, rash, arthralgia. Which part of the antivenom did he respond to?</span></summary><div class="a"><b>The horse constant regions → anti-isotypic response.</b> The resulting immune complexes cause <b>serum sickness</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>Serum sickness</b> = <b>type III</b> hypersensitivity (immune complexes) <b>~1–2 weeks</b> after foreign protein (antivenom, chimeric mAbs): fever, urticaria, arthralgia, proteinuria, <b>↓ C3</b>.</li><li>Immunogenicity of mAbs: <b>murine (-omab) &gt; chimeric (-ximab) &gt; humanized (-zumab) &gt; human (-umab)</b>.</li><li><b>Selective IgA deficiency</b>: <b>anaphylaxis</b> to IgA-containing blood products (anti-IgA antibodies) → give IgA-depleted / washed products or IgA-deficient donors.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>A patient <b>missing</b> a class (IgA deficiency) who reacts to donor IgA is making an <b>anti-isotypic</b> response (to a whole class they never learned to tolerate), <b>not anti-idiotypic</b>. Anti-idiotypic = against the <b>V region</b>, classically from a high-dose monoclonal.</p></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p>How foreign is the antibody?<br><b>Other species → ISO</b> (whole class looks alien)<br><b>Other person → ALLO</b> (allele differences)<br><b>One clone, high dose → IDIO</b> (its individual tip)</p></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 2 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">Convalescent (polyclonal) plasma is given to a patient with active infection. If she reacts to the transferred antibodies, which response is most likely, and why not anti-idiotypic?</span></summary><div class="a"><b>Anti-allotypic.</b> People differ by allelic constant-region variants; each idiotype in a polyclonal pool is at low concentration, so an anti-idiotypic response is unlikely. (Transfer of antibody = passive immunity.)</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A patient on a fully human therapeutic monoclonal antibody loses response; his serum has antibodies that block the drug's antigen-binding site. What are they?</span></summary><div class="a"><b>Anti-idiotypic antibodies (ADA)</b> against the drug's unique paratope; a human Fc does not prevent this.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A man with undetectable IgA has anaphylaxis minutes into a blood transfusion. Explain.</span></summary><div class="a"><b>He never made IgA, so he is not tolerant to it → he formed anti-IgA (anti-isotypic) antibodies</b>; donor IgA triggered anaphylaxis. Use IgA-depleted/washed products next time.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">You digest IgG with papain and test each fragment on a bacterial suspension. Which fragment binds the bacteria but cannot clump them, and which activates complement?</span></summary><div class="a"><b>Fab binds but cannot agglutinate (monovalent); Fc carries the C1q site</b> but no longer binds antigen, so on its own it cannot trigger complement on the bacterium.</div></details>
+</section>
+
+<!-- ===================== LO 3 ===================== -->
+<section class="lo" id="lo3">
+  <h2><span class="num">LO 3</span><span>Key vocabulary</span><span class="sub">Isotype, allotype, idiotype · epitope, paratope · valency, affinity, avidity</span></h2>
+  <div class="goal"><b>By the end:</b> you can say where on the antibody each type of variation lives and between whom it varies, list the 9 human isotypes, and explain why low-affinity IgM still binds bacteria so well.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> Isotype, allotype, idiotype: where is the difference, and between whom?</span></summary><div class="gqb">
+    <figure><div class="scroll" style="margin:0"><svg viewBox="0 0 900 280" role="img" aria-label="Three panels: isotype varies the heavy-chain constant region between classes and is shared by all humans; allotype is a small allelic difference in the constant region between people; idiotype is a difference in the variable region tips between B cell clones" style="min-width:600px;max-width:880px"><rect x="15" y="14" width="270" height="236" rx="12" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.2"/><text x="150.0" y="40.0" font-size="15" text-anchor="middle" font-weight="700">Isotype</text><g transform="translate(95.0,175.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/></g><g transform="translate(205.0,175.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c4);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/></g><text x="95.0" y="196.0" font-size="12" text-anchor="middle" font-weight="700">IgG</text><text x="205.0" y="196.0" font-size="12" text-anchor="middle" font-weight="700">IgA</text><text x="150.0" y="222.0" font-size="12" text-anchor="middle">different heavy-chain</text><text x="150.0" y="238.0" font-size="12" text-anchor="middle" class="mut">constant region (class)</text><rect x="315" y="14" width="270" height="236" rx="12" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.2"/><text x="450.0" y="40.0" font-size="15" text-anchor="middle" font-weight="700">Allotype</text><g transform="translate(395.0,175.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/></g><g transform="translate(505.0,175.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/></g><circle cx="395" cy="160" r="5" style="fill:var(--c6)"/><circle cx="505" cy="145" r="5" style="fill:var(--c4)"/><text x="395.0" y="196.0" font-size="12" text-anchor="middle" font-weight="700">person A</text><text x="505.0" y="196.0" font-size="12" text-anchor="middle" font-weight="700">person B</text><text x="450.0" y="222.0" font-size="12" text-anchor="middle">same class, allelic dots</text><text x="450.0" y="238.0" font-size="12" text-anchor="middle" class="mut">in constant region</text><rect x="615" y="14" width="270" height="236" rx="12" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.2"/><text x="750.0" y="40.0" font-size="15" text-anchor="middle" font-weight="700">Idiotype</text><g transform="translate(695.0,175.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M-23.0,-78.0 L-32.0,-89.6" style="fill:none;stroke:var(--c4);stroke-width:10.6;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M23.0,-78.0 L32.0,-89.6" style="fill:none;stroke:var(--c4);stroke-width:10.6;stroke-linecap:round"/></g><g transform="translate(805.0,175.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M-23.0,-78.0 L-32.0,-89.6" style="fill:none;stroke:var(--c3);stroke-width:10.6;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M23.0,-78.0 L32.0,-89.6" style="fill:none;stroke:var(--c3);stroke-width:10.6;stroke-linecap:round"/></g><text x="695.0" y="196.0" font-size="12" text-anchor="middle" font-weight="700">clone 1</text><text x="805.0" y="196.0" font-size="12" text-anchor="middle" font-weight="700">clone 2</text><text x="750.0" y="222.0" font-size="12" text-anchor="middle">different V region tips</text><text x="750.0" y="238.0" font-size="12" text-anchor="middle" class="mut">(paratope / CDRs)</text><text x="150.0" y="268.0" font-size="12" text-anchor="middle" font-weight="700" style="fill:var(--c3)">same in every healthy human</text><text x="450.0" y="268.0" font-size="12" text-anchor="middle" font-weight="700" style="fill:var(--c6)">differs person to person</text><text x="750.0" y="268.0" font-size="12" text-anchor="middle" font-weight="700" style="fill:var(--c5)">differs clone to clone (most)</text></svg></div></figure>
+    <div class="scroll"><table>
+      <thead><tr><th>Term</th><th>Location of variation</th><th>Varies between</th><th>Controls</th></tr></thead>
+      <tbody>
+        <tr><th>Isotype</th><td><b>Heavy-chain constant region</b> (also κ vs λ light chains)</td><td><b>Classes / subclasses</b>; the same set in every healthy member of a species</td><td><b>Effector function</b></td></tr>
+        <tr><th>Allotype</th><td><b>Allelic point variants</b> in constant regions (mainly <b>IgG, IgA, κ</b>)</td><td><b>Individuals</b> of the same species</td><td>Nothing functional; explains anti-allotypic responses</td></tr>
+        <tr><th>Idiotype</th><td><b>Variable region</b> (paratope / CDRs)</td><td><b>Clones</b>: <b>highest variability</b> (millions)</td><td><b>Antigen specificity</b></td></tr>
+      </tbody>
+    </table></div>
+    <h4>Isotype</h4>
+    <ul>
+      <li><b>9 human isotypes</b>: <b>IgM, IgD, IgE, IgG1, IgG2, IgG3, IgG4, IgA1, IgA2</b>.
+        <ul><li>Set by the heavy chain: <b>μ, δ, ε, γ1–4, α1–2</b>.</li><li>Light chains have their own 2 isotypes: <b>κ and λ</b> (an antibody uses one or the other).</li><li>Classes differ mainly in their heavy-chain constant domains (C<sub>H</sub>2/C<sub>H</sub>3 = Fc; IgM and IgE add C<sub>H</sub>4); smaller differences split IgG into 4 and IgA into 2 subclasses.</li></ul></li>
+      <li><b>Not conserved across species</b> → <b>anti-isotypic</b> response to animal antibody.</li>
+    </ul>
+    <h4>Allotype</h4>
+    <ul>
+      <li><b>Allo = allelic</b>: inherited (often single amino-acid) differences in Ig constant regions between people.</li>
+      <li><b>Not a separate class</b>, just person-to-person variation inside an isotype. Example: IgG "<b>Gm</b>" allotypes (~25 in humans); IgA2 has two allotypes.</li>
+    </ul>
+    <h4>Idiotype</h4>
+    <ul>
+      <li>The unique antigenic features of the <b>V region</b> = what makes this antibody bind <i>this</i> antigen.</li>
+      <li>Generated by <b>V(D)J recombination</b> (+ junctional diversity + H/L chain pairing) and refined by <b>somatic hypermutation</b>.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">One person's IgM and IgG1 carry identical V regions. Which of isotype, allotype, idiotype do they share?</span></summary><div class="a"><b>Same idiotype and same allotypes (same person); different isotypes</b> (μ vs γ1). This is exactly what class switching produces.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>ISO = the same</b> in all of us (Greek <i>isos</i>, equal). <b>ALLO = alleles</b> differ between people. <b>IDIO = individual</b> clone (like an idiosyncrasy).<br>Variability: <b>idio &gt;&gt; allo &gt; iso</b>.</p></div></details>
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><p><b>Fab determines idiotype; Fc determines isotype.</b> Class switching (driven by T<sub>FH</sub> cytokines + CD40L) changes the isotype only; somatic hypermutation tunes the idiotype → affinity maturation.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> Epitope vs paratope?</span></summary><div class="gqb">
+    <div class="two">
+      <div class="card" style="--cc:var(--c6)"><h4>Epitope (on the antigen)</h4><ul><li>= <b>antigenic determinant</b>: the part of the antigen an antibody binds</li><li>One antigen / pathogen has <b>many epitopes</b> → bound by many different antibodies</li><li>Antibodies bind <b>linear or conformational</b> epitopes; T cells see only <b>linear peptides on MHC</b></li></ul></div>
+      <div class="card" style="--cc:var(--c4)"><h4>Paratope (on the antibody)</h4><ul><li>The part of the antibody that binds the epitope</li><li>Formed by the <b>CDRs</b> of V<sub>H</sub> + V<sub>L</sub> at the Fab tip</li><li>CDR differences between clones = <b>idiotypes</b></li></ul></div>
+    </div>
+    <ul><li><b>Hapten</b> = small chemical that binds preformed antibody but cannot induce a response alone (needs a carrier protein).</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why does a whole bacterium trigger a polyclonal response?</span></summary><div class="a">It carries <b>many different epitopes</b>; each is recognized by a different B cell clone.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>EPItope sits on the antigen's skin</b> (epi = upon). <b>PARAtope is the antibody's "parachute" landing pad</b> that lands on it. Lock (epitope) and key (paratope).</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> Valency, affinity, avidity: how strongly does an antibody hold on?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Valency</b> = number of antigen-binding sites.
+        <ul><li><b>Monomers = 2</b> (IgG, IgD, IgE, serum IgA, membrane IgM) → prototype is <b>bivalent</b></li><li><b>Secretory IgA dimer = 4</b> · <b>secreted IgM pentamer = 10</b> (multimers joined by the <b>J chain</b>)</li></ul></li>
+      <li><b>Affinity</b> = strength of a <b>single</b> paratope–epitope interaction.</li>
+      <li><b>Avidity</b> = <b>overall</b> binding strength across <b>all</b> paratope–epitope interactions of a multivalent antibody.
+        <ul><li>Depends on <b>affinity and valency</b>: more sites engaged → stronger avidity.</li><li><b>More than additive</b>: if one site lets go, the others hold the antibody in place until it rebinds.</li><li><b>Hinge flexibility</b> helps several sites engage at once.</li></ul></li>
+    </ul>
+    <figure><div class="scroll" style="margin:0"><svg viewBox="0 0 900 235" role="img" aria-label="Affinity is the strength of one paratope binding one epitope, shown as a single Fab; avidity is total binding strength across all sites, shown as IgG binding two repeated epitopes and pentameric IgM binding many epitopes on an antigen surface" style="min-width:600px;max-width:880px"><rect x="10" y="200" width="240" height="22" rx="6" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.4"/><path d="M23,200 L30,190 L37,200 z" style="fill:var(--c6)"/><path d="M63,200 L70,190 L77,200 z" style="fill:var(--c6)"/><path d="M103,200 L110,190 L117,200 z" style="fill:var(--c6)"/><path d="M143,200 L150,190 L157,200 z" style="fill:var(--c6)"/><path d="M183,200 L190,190 L197,200 z" style="fill:var(--c6)"/><path d="M223,200 L230,190 L237,200 z" style="fill:var(--c6)"/><text x="130.0" y="30.0" font-size="15" text-anchor="middle" font-weight="700">Affinity</text><text x="130.0" y="48.0" font-size="12" text-anchor="middle" class="mut">1 paratope ↔ 1 epitope</text><text x="130.0" y="216.0" font-size="11" text-anchor="middle" class="mut">antigen surface · repeated epitopes</text><rect x="310" y="200" width="240" height="22" rx="6" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.4"/><path d="M323,200 L330,190 L337,200 z" style="fill:var(--c6)"/><path d="M363,200 L370,190 L377,200 z" style="fill:var(--c6)"/><path d="M403,200 L410,190 L417,200 z" style="fill:var(--c6)"/><path d="M443,200 L450,190 L457,200 z" style="fill:var(--c6)"/><path d="M483,200 L490,190 L497,200 z" style="fill:var(--c6)"/><path d="M523,200 L530,190 L537,200 z" style="fill:var(--c6)"/><text x="430.0" y="30.0" font-size="15" text-anchor="middle" font-weight="700">Avidity: IgG</text><text x="430.0" y="48.0" font-size="12" text-anchor="middle" class="mut">2 sites engaged</text><text x="430.0" y="216.0" font-size="11" text-anchor="middle" class="mut">antigen surface · repeated epitopes</text><rect x="630" y="200" width="240" height="22" rx="6" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.4"/><path d="M643,200 L650,190 L657,200 z" style="fill:var(--c6)"/><path d="M683,200 L690,190 L697,200 z" style="fill:var(--c6)"/><path d="M723,200 L730,190 L737,200 z" style="fill:var(--c6)"/><path d="M763,200 L770,190 L777,200 z" style="fill:var(--c6)"/><path d="M803,200 L810,190 L817,200 z" style="fill:var(--c6)"/><path d="M843,200 L850,190 L857,200 z" style="fill:var(--c6)"/><text x="750.0" y="30.0" font-size="15" text-anchor="middle" font-weight="700">Avidity: IgM</text><text x="750.0" y="48.0" font-size="12" text-anchor="middle" class="mut">up to 10 sites</text><text x="750.0" y="216.0" font-size="11" text-anchor="middle" class="mut">antigen surface · repeated epitopes</text><g transform="translate(150,128) rotate(180)"><path d="M0,0 L0,-62" style="fill:none;stroke:var(--c1);stroke-width:9;stroke-linecap:round"/><path d="M-11,-8 L-11,-56" style="fill:none;stroke:var(--c2);stroke-width:6;stroke-linecap:round"/></g><text x="190.0" y="145.0" font-size="12" text-anchor="start" font-weight="700">Fab alone</text><text x="190.0" y="160.0" font-size="11.5" text-anchor="start" class="mut">(monovalent)</text><g transform="translate(430.0,92.0) rotate(180)"><path d="M0,0 L0,-55.5" style="fill:none;stroke:var(--c1);stroke-width:11.1;stroke-linecap:round"/><path d="M0,-55.5 L-37.0,-103.6" style="fill:none;stroke:var(--c1);stroke-width:11.1;stroke-linecap:round"/><path d="M-22.5,-65.0 L-46.5,-96.3" style="fill:none;stroke:var(--c2);stroke-width:6.7;stroke-linecap:round"/><path d="M0,-55.5 L37.0,-103.6" style="fill:none;stroke:var(--c1);stroke-width:11.1;stroke-linecap:round"/><path d="M22.5,-65.0 L46.5,-96.3" style="fill:none;stroke:var(--c2);stroke-width:6.7;stroke-linecap:round"/></g><text x="472.0" y="110.0" font-size="11.5" text-anchor="start" class="mut">one arm lets go →</text><text x="472.0" y="125.0" font-size="11.5" text-anchor="start" class="mut">the other holds on</text><g transform="translate(670.0,140.0) rotate(180)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(710.0,140.0) rotate(180)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(750.0,140.0) rotate(180)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(790.0,140.0) rotate(180)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(830.0,140.0) rotate(180)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c1);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><path d="M670,140 Q750,110 830,140" style="fill:none;stroke:var(--c1);stroke-width:5"/><circle cx="750" cy="123" r="6" style="fill:var(--c5)"/><text x="760.0" y="113.0" font-size="11.5" text-anchor="start" class="mut">J chain</text><text x="750.0" y="70.0" font-size="12" text-anchor="middle" font-weight="700">low affinity per site</text><text x="750.0" y="86.0" font-size="12" text-anchor="middle" font-weight="700" style="fill:var(--c4)">but very high avidity</text></svg></div></figure>
+    <ul>
+      <li><b>IgM: low affinity, high avidity</b> (10 binding sites), especially on repetitive surface epitopes (bacterial capsules).</li>
+      <li>Later <b>IgG</b> gains <b>high affinity</b> via somatic hypermutation but has only 2 sites.</li>
+      <li>Older terms: <b>intrinsic affinity</b> = one paratope–epitope pair; <b>functional affinity</b> = a bi-/polyvalent antibody on repeated epitopes (a bivalent antibody can bind ~10<sup>4</sup>× more strongly than its monovalent Fab). Some texts use "avidity" for the <i>average</i> binding strength of a whole antibody population.</li>
+      <li>For a <b>neutralizing</b> antibody (blocking a toxin or virus), the key property is <b>high affinity</b>; IgG is the main neutralizer.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Intact IgG and its Fab have identical binding sites. Which holds a bacterium with repeated epitopes more strongly?</span></summary><div class="a"><b>Intact IgG</b>: same affinity per site, but 2 sites bind at once → greater <b>avidity</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Avidity ≈ affinity × valency</b> (a handy simplification, not a literal product).<br><b>Affinity = one hand's grip; avidity = how hard it is to pull away someone holding on with all ten fingers.</b></p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>Do not call IgM "high affinity." Early IgM is <b>low affinity</b>; it wins on <b>avidity</b>. Affinity maturation makes later <b>IgG</b> the high-affinity antibody.</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"single binding site strength"</b> → affinity</span><span><b>"total / functional binding strength"</b> → avidity</span><span><b>"number of antigen-binding sites"</b> → valency</span><span><b>"antigenic determinant"</b> → epitope</span><span><b>"allo = allelic"</b> → allotype</span></div></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 3 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">IgM made early in a primary response has low affinity, yet it binds bacterial capsules very effectively. Explain.</span></summary><div class="a"><b>Pentameric IgM has 10 binding sites → high avidity despite low affinity per site</b>, especially on repetitive surface epitopes.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">Two healthy siblings both make IgG1 against the same tetanus epitope. Which of isotype, allotype, idiotype could differ between their antibodies?</span></summary><div class="a"><b>Allotype (different alleles) and idiotype (different clones/CDRs) can differ; isotype (IgG1) is the same.</b></div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A lab compares a monovalent Fab with the parent IgG on a virus coated with repeated spike proteins. Predict their affinity and avidity.</span></summary><div class="a"><b>Same affinity (identical paratope); IgG has far greater avidity</b> because both arms engage at once.</div></details>
+</section>
+
+<!-- ===================== LO 4 ===================== -->
+<section class="lo" id="lo4">
+  <h2><span class="num">LO 4</span><span>The five classes</span><span class="sub">IgM, IgD, IgG, IgE, IgA: shape, job, timing, where they live</span></h2>
+  <div class="goal"><b>By the end:</b> you can fill in the class comparison table from memory (form, valency, % of serum, key roles), rank serum levels, sort effector functions by class, and predict Ig patterns in selective IgA deficiency and Wiskott-Aldrich syndrome.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What does each class look like, and how much is in serum?</span></summary><div class="gqb">
+    <figure><div class="scroll" style="margin:0"><svg viewBox="0 0 900 320" role="img" aria-label="Shapes of the five antibody classes: IgM secreted pentamer joined by J chain, valency 10; IgD monomer on naive B cells; IgG monomer, most abundant, crosses placenta; IgE monomer with extra constant domain bound to Fc epsilon receptor; secretory IgA dimer with J chain and secretory component, valency 4" style="min-width:600px;max-width:900px"><rect x="8" y="10" width="164" height="300" rx="12" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.2"/><text x="90.0" y="36.0" font-size="17" text-anchor="middle" font-weight="700" style="fill:var(--c4)">IgM</text><rect x="188" y="10" width="164" height="300" rx="12" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.2"/><text x="270.0" y="36.0" font-size="17" text-anchor="middle" font-weight="700" style="fill:var(--c6)">IgD</text><rect x="368" y="10" width="164" height="300" rx="12" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.2"/><text x="450.0" y="36.0" font-size="17" text-anchor="middle" font-weight="700" style="fill:var(--c1)">IgG</text><rect x="548" y="10" width="164" height="300" rx="12" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.2"/><text x="630.0" y="36.0" font-size="17" text-anchor="middle" font-weight="700" style="fill:var(--c2)">IgE</text><rect x="728" y="10" width="164" height="300" rx="12" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.2"/><text x="810.0" y="36.0" font-size="17" text-anchor="middle" font-weight="700" style="fill:var(--c3)">IgA</text><g transform="translate(90.0,150.0) rotate(180) translate(0,-14)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(90.0,150.0) rotate(252) translate(0,-14)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(90.0,150.0) rotate(324) translate(0,-14)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(90.0,150.0) rotate(396) translate(0,-14)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><g transform="translate(90.0,150.0) rotate(468) translate(0,-14)"><path d="M0,0 L0,-28.5" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M0,-28.5 L-19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M-11.5,-33.4 L-23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/><path d="M0,-28.5 L19.0,-53.2" style="fill:none;stroke:var(--c4);stroke-width:5.7;stroke-linecap:round"/><path d="M11.5,-33.4 L23.9,-49.4" style="fill:none;stroke:var(--c2);stroke-width:3.4;stroke-linecap:round"/></g><circle cx="90" cy="150" r="10" style="fill:var(--panel);stroke:var(--c4);stroke-width:2"/><circle cx="94" cy="164" r="5" style="fill:var(--c5)"/><text x="90.0" y="238.0" font-size="12" text-anchor="middle" font-weight="700">pentamer + J chain</text><text x="90.0" y="254.0" font-size="12" text-anchor="middle">valency 10</text><text x="90.0" y="270.0" font-size="12" text-anchor="middle" class="mut">~10% serum</text><text x="90.0" y="286.0" font-size="11.5" text-anchor="middle" class="mut">(monomer on B cell)</text><g transform="translate(270.0,190.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c6);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c6);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c6);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/></g><text x="270.0" y="238.0" font-size="12" text-anchor="middle" font-weight="700">monomer</text><text x="270.0" y="254.0" font-size="12" text-anchor="middle">valency 2</text><text x="270.0" y="270.0" font-size="12" text-anchor="middle" class="mut">≤1% serum</text><text x="270.0" y="286.0" font-size="11.5" text-anchor="middle" class="mut">on naïve B cells</text><g transform="translate(450.0,190.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c1);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c2);stroke-width:5.8;stroke-linecap:round"/></g><text x="450.0" y="238.0" font-size="12" text-anchor="middle" font-weight="700">monomer · 4 subclasses</text><text x="450.0" y="254.0" font-size="12" text-anchor="middle">valency 2</text><text x="450.0" y="270.0" font-size="12" text-anchor="middle" class="mut">~70–75% serum</text><text x="450.0" y="286.0" font-size="11.5" text-anchor="middle" class="mut">crosses placenta</text><g transform="translate(630.0,200.0) rotate(0)"><path d="M0,0 L0,-48.0" style="fill:none;stroke:var(--c2);stroke-width:9.6;stroke-linecap:round"/><path d="M0,-48.0 L-32.0,-89.6" style="fill:none;stroke:var(--c2);stroke-width:9.6;stroke-linecap:round"/><path d="M-19.4,-56.2 L-40.2,-83.3" style="fill:none;stroke:var(--c1);stroke-width:5.8;stroke-linecap:round"/><path d="M0,-48.0 L32.0,-89.6" style="fill:none;stroke:var(--c2);stroke-width:9.6;stroke-linecap:round"/><path d="M19.4,-56.2 L40.2,-83.3" style="fill:none;stroke:var(--c1);stroke-width:5.8;stroke-linecap:round"/></g><rect x="618" y="198" width="24" height="10" rx="3" style="fill:var(--c5)"/><text x="630.0" y="238.0" font-size="12" text-anchor="middle" font-weight="700">monomer · no hinge</text><text x="630.0" y="254.0" font-size="12" text-anchor="middle">valency 2</text><text x="630.0" y="270.0" font-size="12" text-anchor="middle" class="mut"><0.01% serum</text><text x="630.0" y="286.0" font-size="11.5" text-anchor="middle" class="mut">sits on FcεRI</text><g transform="translate(800.0,140.0) rotate(-90)"><path d="M0,0 L0,-33.0" style="fill:none;stroke:var(--c3);stroke-width:6.6;stroke-linecap:round"/><path d="M0,-33.0 L-22.0,-61.6" style="fill:none;stroke:var(--c3);stroke-width:6.6;stroke-linecap:round"/><path d="M-13.4,-38.7 L-27.7,-57.2" style="fill:none;stroke:var(--c2);stroke-width:4.0;stroke-linecap:round"/><path d="M0,-33.0 L22.0,-61.6" style="fill:none;stroke:var(--c3);stroke-width:6.6;stroke-linecap:round"/><path d="M13.4,-38.7 L27.7,-57.2" style="fill:none;stroke:var(--c2);stroke-width:4.0;stroke-linecap:round"/></g><g transform="translate(820.0,140.0) rotate(90)"><path d="M0,0 L0,-33.0" style="fill:none;stroke:var(--c3);stroke-width:6.6;stroke-linecap:round"/><path d="M0,-33.0 L-22.0,-61.6" style="fill:none;stroke:var(--c3);stroke-width:6.6;stroke-linecap:round"/><path d="M-13.4,-38.7 L-27.7,-57.2" style="fill:none;stroke:var(--c2);stroke-width:4.0;stroke-linecap:round"/><path d="M0,-33.0 L22.0,-61.6" style="fill:none;stroke:var(--c3);stroke-width:6.6;stroke-linecap:round"/><path d="M13.4,-38.7 L27.7,-57.2" style="fill:none;stroke:var(--c2);stroke-width:4.0;stroke-linecap:round"/></g><circle cx="810" cy="140" r="5.5" style="fill:var(--c5)"/><path d="M772,128 Q810,104 848,128" style="fill:none;stroke:var(--c6);stroke-width:4;stroke-linecap:round"/><text x="810.0" y="98.0" font-size="11.5" text-anchor="middle" class="mut">secretory</text><text x="810.0" y="112.0" font-size="11.5" text-anchor="middle" class="mut">component</text><text x="810.0" y="238.0" font-size="12" text-anchor="middle" font-weight="700">dimer + J + SC (mucosa)</text><text x="810.0" y="254.0" font-size="12" text-anchor="middle">valency 4</text><text x="810.0" y="270.0" font-size="12" text-anchor="middle" class="mut">~15–20% serum</text><text x="810.0" y="286.0" font-size="11.5" text-anchor="middle" class="mut">serum IgA = monomer</text></svg></div></figure>
+    <div class="scroll"><table>
+      <thead><tr><th>Class</th><th>Secreted form (valency)</th><th>% serum Ig</th><th>Key roles</th></tr></thead>
+      <tbody>
+        <tr><th>IgM</th><td><b>Pentamer + J chain (10)</b>; monomer on B cell (BCR)</td><td>~10%</td><td><b>First</b> antibody of the <b>primary</b> response; can be made <b>without T cell help</b>; <b>best classical complement activator</b>; opsonin; immune complexes; partial mucosal back-up</td></tr>
+        <tr><th>IgD</th><td>Monomer (2)</td><td><b>≤1%</b> (tiny)</td><td>Co-expressed with IgM on <b>mature naïve B cells</b> leaving the marrow</td></tr>
+        <tr><th>IgG</th><td>Monomer (2); <b>4 subclasses</b> (IgG1–4)</td><td><b>~70–75% (most abundant)</b></td><td>Main antibody of the <b>secondary (memory)</b> response; <b>only Ig that crosses the placenta</b>; opsonin; <b>ADCC</b>; complement; neutralizes toxins/viruses</td></tr>
+        <tr><th>IgE</th><td>Monomer (2)</td><td><b>&lt;0.01% (lowest)</b></td><td>Binds <b>FcεRI</b> on <b>mast cells / basophils</b> → <b>allergy</b>; fights <b>helminths</b> via <b>eosinophils</b></td></tr>
+        <tr><th>IgA</th><td>Serum: <b>monomer</b> (mostly IgA1). Secretions: <b>dimer + J chain + secretory component (4)</b></td><td>~15–20%</td><td><b>Mucosal neutralization</b> (MALT); <b>breast milk / colostrum</b>; protease-resistant; <b>no complement</b></td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Serum order: <b>IgG &gt; IgA &gt; IgM &gt; IgD &gt; IgE</b>.</li>
+      <li><b>IgA is the most-produced antibody overall</b> (most goes into secretions), even though IgG dominates serum.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Name the class: (a) valency 10, (b) valency 4, (c) lowest serum level, (d) most abundant in serum.</span></summary><div class="a">(a) <b>secreted IgM</b>, (b) <b>secretory IgA</b>, (c) <b>IgE</b>, (d) <b>IgG</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p>Serum ranking: <b>"GAMDE"</b> (G &gt; A &gt; M &gt; D &gt; E).<br>"<b>IgMom and IgDad</b> mature to plasma cells as they <b>AGE</b>" (switch to Ig<b>A</b>, Ig<b>G</b>, Ig<b>E</b>).<br>"<b>IgG Greets the Growing fetus.</b>"</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"pentamer, J chain"</b> → IgM</span><span><b>"crosses the placenta"</b> → IgG</span><span><b>"secretory component, colostrum"</b> → IgA</span><span><b>"FcεRI, mast cell, worms"</b> → IgE</span><span><b>"naïve B cell co-receptor"</b> → IgD</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> Which class does which job? (effector-function grid)</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Function</th><th>IgM</th><th>IgG</th><th>IgA</th><th>IgE</th></tr></thead>
+      <tbody>
+        <tr><th>Activates classical complement</th><td><b>Yes (best)</b></td><td>Yes</td><td>No</td><td>No</td></tr>
+        <tr><th>Crosses placenta</th><td>No</td><td><b>Yes (only one)</b></td><td>No</td><td>No</td></tr>
+        <tr><th>Opsonin</th><td>Yes</td><td>Yes (FcγR)</td><td>Yes, serum IgA (FcαRI)</td><td>No</td></tr>
+        <tr><th>ADCC by NK cells</th><td>No</td><td><b>Yes (CD16)</b></td><td>No</td><td>No</td></tr>
+        <tr><th>Mast cell / basophil sensitization</th><td>No</td><td>No</td><td>No</td><td><b>Yes (FcεRI)</b></td></tr>
+        <tr><th>In breast milk / mucosal secretions</th><td>Minor</td><td>Minor</td><td><b>Yes (main)</b></td><td>No</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>IgM and IgG both form <b>immune complexes</b>.</li>
+      <li><b>ADCC</b>: IgG coats a virus-infected cell → its Fc binds <b>CD16 (FcγRIII) on NK cells</b> → <b>perforin + granzyme</b> kill the target.</li>
+    </ul>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> IgM and IgD: the naïve B cell's antibodies</span></summary><div class="gqb">
+    <div class="two">
+      <div class="card" style="--cc:var(--c4)"><h4>IgM</h4><ul>
+        <li><b>Monomer</b> as BCR; secreted as a <b>pentamer with J chain</b> (J chain links cysteine residues) → <b>valency 10</b></li>
+        <li><b>First antibody</b> of the primary response; can be made <b>T-independently</b></li>
+        <li><b>Most effective activator of the classical pathway</b>: one bound pentamer can engage C1q → key against <b>bacteria</b></li>
+        <li>Opsonin; forms immune complexes</li>
+        <li><b>Low affinity, high avidity</b></li>
+        <li>"Natural" IgM exists <b>before</b> exposure → rapid C1q binding to microbes</li>
+        <li>Can be transported into secretions → <b>partial mucosal back-up</b> when IgA is missing</li></ul></div>
+      <div class="card" style="--cc:var(--c6)"><h4>IgD</h4><ul>
+        <li><b>Monomer (valency 2)</b></li>
+        <li><b>Co-expressed with IgM</b> on <b>mature, naïve B cells</b> ready to leave the bone marrow (B cells show IgM first, then IgM + IgD)</li>
+        <li>Very low in serum (≤1%)</li>
+        <li>IgM and IgD on the same cell share the <b>same V region</b>: made by <b>alternative splicing</b> of one heavy-chain RNA, <b>not class switching</b></li></ul></div>
+    </div>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>IgM in fetal / cord blood</b> against a pathogen → <b>congenital infection</b> (IgM does not cross the placenta, so the fetus made it).</li><li><b>IgM</b> → <b>cold</b> autoimmune hemolytic anemia; <b>IgG</b> → <b>warm</b> AIHA.</li><li>Acute infection serology: <b>IgM = recent</b>, IgG = past or later phase.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>IgD appearing next to IgM is <b>not</b> class switching (which needs AID and deletes DNA). It is alternative RNA splicing; both share one V region.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> IgG: the workhorse of the secondary response</span></summary><div class="gqb">
+    <figure><div class="scroll" style="margin:0"><svg viewBox="0 0 880 260" role="img" aria-label="Primary response after first exposure has a lag of 7 to 10 days with IgM peaking first then a smaller IgG rise; secondary response after re-exposure is faster and much larger and is dominated by high-affinity IgG with only a small IgM blip" style="min-width:600px;max-width:860px"><defs><marker id="rs-ar-c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c1)"/></marker><marker id="rs-ar-c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c2)"/></marker><marker id="rs-ar-c3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c3)"/></marker><marker id="rs-ar-c4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c4)"/></marker><marker id="rs-ar-c5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c5)"/></marker><marker id="rs-ar-c6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--c6)"/></marker><marker id="rs-ar-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs><path d="M70.0,230.0 L860.0,230.0" style="fill:none;stroke:var(--muted);stroke-width:1.6" marker-end="url(#rs-ar-muted)"/><path d="M70.0,230.0 L70.0,30.0" style="fill:none;stroke:var(--muted);stroke-width:1.6" marker-end="url(#rs-ar-muted)"/><text x="0" y="0" font-size="12" text-anchor="middle" class="mut" transform="translate(34,130) rotate(-90)">serum antibody (log)</text><text x="856.0" y="252.0" font-size="12" text-anchor="end" class="mut">days →</text><path d="M90.0,230.0 L90.0,52.0" style="fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4"/><text x="94.0" y="44.0" font-size="11.5" text-anchor="start" class="mut">1st exposure</text><path d="M470.0,230.0 L470.0,52.0" style="fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4"/><text x="474.0" y="44.0" font-size="11.5" text-anchor="start" class="mut">2nd exposure</text><polyline points="90.0,230.0 94.5,230.0 99.0,230.0 103.5,230.0 108.0,230.0 112.5,230.0 117.0,230.0 121.5,230.0 126.0,227.4 130.5,221.0 135.0,212.6 139.5,203.5 144.0,194.5 148.5,186.2 153.0,178.9 157.5,172.8 162.0,167.9 166.5,164.3 171.0,161.8 175.5,160.4 180.0,160.0 184.5,168.1 189.0,175.3 193.5,181.6 198.0,187.2 202.5,192.2 207.0,196.6 211.5,200.4 216.0,203.8 220.5,206.9 225.0,209.6 229.5,211.9 234.0,214.0 238.5,215.9 243.0,217.5 247.5,219.0 252.0,220.2 256.5,221.4 261.0,222.4 265.5,223.2 270.0,224.0 274.5,224.7 279.0,225.3 283.5,225.9 288.0,226.4 292.5,226.8 297.0,227.1 301.5,227.5 306.0,227.8 310.5,228.0 315.0,228.3 319.5,228.5 324.0,228.6 328.5,228.8 333.0,228.9 337.5,229.1 342.0,229.2 346.5,229.3 351.0,229.3 355.5,229.4 360.0,229.5 364.5,229.5 369.0,229.6 373.5,229.6 378.0,229.7 382.5,229.7 387.0,229.8 391.5,229.8 396.0,229.8 400.5,229.8 405.0,229.9 409.5,229.9 414.0,229.9 418.5,229.9 423.0,229.9 427.5,229.9 432.0,229.9 436.5,229.9 441.0,229.9 445.5,230.0 450.0,230.0" style="fill:none;stroke:var(--c4);stroke-width:3"/><polyline points="110.0,230.0 114.5,230.0 119.0,230.0 123.5,230.0 128.0,230.0 132.5,230.0 137.0,230.0 141.5,230.0 146.0,230.0 150.5,230.0 155.0,230.0 159.5,229.2 164.0,226.6 168.5,222.9 173.0,218.5 177.5,213.6 182.0,208.7 186.5,203.7 191.0,199.0 195.5,194.7 200.0,190.7 204.5,187.1 209.0,184.1 213.5,181.5 218.0,179.4 222.5,177.7 227.0,176.4 231.5,175.6 236.0,175.1 240.5,175.2 245.0,176.9 249.5,178.6 254.0,180.2 258.5,181.8 263.0,183.3 267.5,184.8 272.0,186.2 276.5,187.6 281.0,188.9 285.5,190.2 290.0,191.4 294.5,192.6 299.0,193.8 303.5,195.0 308.0,196.1 312.5,197.1 317.0,198.2 321.5,199.2 326.0,200.1 330.5,201.1 335.0,202.0 339.5,202.9 344.0,203.7 348.5,204.5 353.0,205.3 357.5,206.1 362.0,206.9 366.5,207.6 371.0,208.3 375.5,209.0 380.0,209.6 384.5,210.3 389.0,210.9 393.5,211.5 398.0,212.1 402.5,212.7 407.0,213.2 411.5,213.7 416.0,214.2 420.5,214.7 425.0,215.2 429.5,215.7 434.0,216.1 438.5,216.6 443.0,217.0 447.5,217.4 452.0,217.8 456.5,218.2 461.0,218.5 465.5,218.9 470.0,219.3" style="fill:none;stroke:var(--c1);stroke-width:3"/><polyline points="470.0,230.0 474.8,230.0 479.5,230.0 484.2,230.0 489.0,229.1 493.8,218.8 498.5,204.2 503.2,190.5 508.0,180.0 512.8,173.4 517.5,170.4 522.2,177.8 527.0,191.0 531.8,200.9 536.5,208.3 541.2,213.8 546.0,217.9 550.8,221.0 555.5,223.2 560.2,225.0 565.0,226.2 569.8,227.2 574.5,227.9 579.2,228.4 584.0,228.8 588.8,229.1 593.5,229.3 598.2,229.5 603.0,229.6 607.8,229.7 612.5,229.8 617.2,229.8 622.0,229.9 626.8,229.9 631.5,229.9 636.2,230.0 641.0,230.0 645.8,230.0 650.5,230.0 655.2,230.0 660.0,230.0 664.8,230.0 669.5,230.0 674.2,230.0 679.0,230.0 683.8,230.0 688.5,230.0 693.2,230.0 698.0,230.0 702.8,230.0 707.5,230.0 712.2,230.0 717.0,230.0 721.8,230.0 726.5,230.0 731.2,230.0 736.0,230.0 740.8,230.0 745.5,230.0 750.2,230.0 755.0,230.0 759.8,230.0 764.5,230.0 769.2,230.0 774.0,230.0 778.8,230.0 783.5,230.0 788.2,230.0 793.0,230.0 797.8,230.0 802.5,230.0 807.2,230.0 812.0,230.0 816.8,230.0 821.5,230.0 826.2,230.0 831.0,230.0 835.8,230.0 840.5,230.0 845.2,230.0 850.0,230.0" style="fill:none;stroke:var(--c4);stroke-width:3"/><polyline points="470.0,230.0 474.8,230.0 479.5,230.0 484.2,230.0 489.0,230.0 493.8,224.4 498.5,197.4 503.2,161.9 508.0,127.3 512.8,98.2 517.5,76.6 522.2,62.8 527.0,56.1 531.8,57.0 536.5,62.1 541.2,67.2 546.0,72.1 550.8,76.8 555.5,81.4 560.2,85.8 565.0,90.2 569.8,94.4 574.5,98.4 579.2,102.4 584.0,106.2 588.8,109.9 593.5,113.5 598.2,117.0 603.0,120.4 607.8,123.7 612.5,126.9 617.2,130.0 622.0,133.0 626.8,135.9 631.5,138.7 636.2,141.4 641.0,144.1 645.8,146.7 650.5,149.2 655.2,151.6 660.0,153.9 664.8,156.2 669.5,158.4 674.2,160.6 679.0,162.7 683.8,164.7 688.5,166.6 693.2,168.5 698.0,170.4 702.8,172.2 707.5,173.9 712.2,175.6 717.0,177.2 721.8,178.8 726.5,180.3 731.2,181.8 736.0,183.3 740.8,184.7 745.5,186.0 750.2,187.4 755.0,188.6 759.8,189.9 764.5,191.1 769.2,192.2 774.0,193.4 778.8,194.5 783.5,195.5 788.2,196.6 793.0,197.6 797.8,198.5 802.5,199.5 807.2,200.4 812.0,201.3 816.8,202.2 821.5,203.0 826.2,203.8 831.0,204.6 835.8,205.3 840.5,206.1 845.2,206.8 850.0,207.5" style="fill:none;stroke:var(--c1);stroke-width:3"/><text x="150.0" y="140.0" font-size="12.5" text-anchor="start" font-weight="700">Primary: lag 7–10 d</text><text x="150.0" y="156.0" font-size="11.5" text-anchor="start" class="mut">IgM first, then some IgG</text><text x="640.0" y="50.0" font-size="12.5" text-anchor="start" font-weight="700">Secondary (memory): fast, big,</text><text x="640.0" y="66.0" font-size="11.5" text-anchor="start" font-weight="700" style="fill:var(--c1)">high-affinity, mostly IgG</text><rect x="700" y="160" width="14" height="4" style="fill:var(--c4)"/><text x="720.0" y="166.0" font-size="12" text-anchor="start" font-weight="700">IgM</text><rect x="770" y="160" width="14" height="4" style="fill:var(--c1)"/><text x="790.0" y="166.0" font-size="12" text-anchor="start" font-weight="700">IgG</text></svg></div></figure>
+    <ul>
+      <li><b>Primary response</b>: first exposure, <b>naïve</b> B cells → slow; <b>IgM first</b>, then switched antibody.</li>
+      <li><b>Secondary response</b>: re-exposure, <b>memory cells</b> → <b>faster, larger, higher-affinity</b>, mainly <b>IgG</b>. Each re-exposure can raise affinity further (somatic hypermutation).</li>
+      <li>IgG = <b>most abundant serum Ig (~70–75%)</b>; <b>monomer</b>, <b>4 subclasses</b> (slightly different structure and function; e.g., <b>IgG2</b> against T-independent polysaccharide antigens).</li>
+      <li>Functions: <b>classical complement</b>, <b>opsonization</b>, <b>ADCC</b> (NK, CD16), <b>neutralization</b> (diffuses well through tissue, high affinity), <b>only Ig across the placenta</b> → passive immunity to the fetus.</li>
+      <li>Placental transfer and long half-life (~3 weeks) depend on <b>FcRn</b>.</li>
+      <li>Which class a B cell switches to depends on the <b>T<sub>FH</sub> cytokines</b> it receives (e.g., <b>IL-4 → IgE and IgG1</b>).</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A newborn's serum contains IgG against rubella but no IgM against it. Interpretation?</span></summary><div class="a"><b>Maternal IgG transferred across the placenta (passive), not fetal infection.</b> Fetal IgM would signal congenital infection.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist"><span><b>"secondary / anamnestic response"</b> → IgG</span><span><b>"FcRn"</b> → placental transfer, long IgG half-life</span><span><b>"CD16 on NK cells"</b> → ADCC by IgG</span><span><b>"first antibody made"</b> → IgM</span></div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q5.</b> IgA: guarding the mucosa without inflammation</span></summary><div class="gqb">
+    <div class="two">
+      <div class="card" style="--cc:var(--c1)"><h4>Serum IgA</h4><ul><li>Mostly <b>monomeric IgA1</b></li><li>Acts as an <b>opsonin</b> via <b>FcαRI</b> on neutrophils, macrophages, eosinophils</li></ul></div>
+      <div class="card" style="--cc:var(--c3)"><h4>Secretory IgA</h4><ul><li><b>Dimer + J chain + secretory component</b> (valency 4); contains both subclasses, relatively <b>enriched in IgA2</b></li><li>In <b>saliva, tears, mucus, semen, colostrum / breast milk</b></li><li><b>Neutralizes</b> and <b>blocks attachment</b> of bacteria/viruses</li><li><b>Protease-resistant</b></li><li><b>Does NOT activate complement</b> (or opsonize at the mucosa) → no inflammation at mucosal surfaces</li></ul></div>
+    </div>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c5)"><b>Plasma cell</b>lamina propria makes dimeric IgA + J chain</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>Poly-Ig receptor</b>on basolateral epithelium binds it</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c3)"><b>Transcytosis</b>carried across the cell</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c6)"><b>Cleaved at lumen</b>receptor piece stays on = secretory component</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c1)"><b>In mucus</b>shielded from proteases; neutralizes</div>
+    </div>
+    <ul><li><b>IgA2</b> is more resistant to bacterial <b>IgA proteases</b> → relatively more of it in secretions.</li><li>Breast-milk IgA = <b>natural passive immunity</b> for the infant's gut.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why is it useful that secretory IgA does not activate complement?</span></summary><div class="a">Mucosal surfaces see microbes constantly; <b>complement activation there would cause chronic inflammation and tissue damage.</b> IgA neutralizes quietly.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>The <b>J chain</b> is made by the <b>plasma cell</b>; the <b>secretory component</b> comes from the <b>epithelial poly-Ig receptor</b>. A question asking what <b>protects IgA from luminal proteases</b> wants <b>secretory component</b>, not J chain.</p></div></details>
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li><b>Selective IgA deficiency</b> = <b>most common primary immunodeficiency</b>: ↓↓ IgA, normal IgG/IgM; mostly asymptomatic; sinopulmonary/GI infections; <b>autoimmunity (celiac)</b>, atopy; <b>anaphylaxis to IgA-containing blood products</b>; <b>false-negative IgA-based celiac serology</b>.</li><li>Bacteria with <b>IgA protease</b>: <i>S. pneumoniae</i>, <i>H. influenzae</i> type b, <i>Neisseria</i> (SHiN).</li></ul></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q6.</b> IgE: allergy and worms</span></summary><div class="gqb">
+    <div class="flow">
+      <div class="st" style="--cc:var(--c2)"><b>Sensitization</b>T<sub>H</sub>2 (IL-4, IL-13) → switch to IgE</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c5)"><b>IgE arms cells</b>binds FcεRI on mast cells/basophils (even without antigen)</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c4)"><b>Re-exposure</b>allergen cross-links adjacent IgE</div><span class="ar">→</span>
+      <div class="st" style="--cc:var(--c4)"><b>Degranulation</b>histamine → atopic dermatitis, asthma, hay fever</div>
+    </div>
+    <ul>
+      <li><b>Lowest serum level (&lt;0.01%)</b>; monomer; most IgE sits on cells, not in plasma.</li>
+      <li><b>Helminths</b>: too big to phagocytose → IgE coats the worm → <b>recruits/activates eosinophils</b> (and mast cells) to attack.</li>
+    </ul>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul><li>IgE-mediated mast cell degranulation = <b>type I hypersensitivity</b> (anaphylaxis, allergic asthma, urticaria).</li><li>Helminth infection → T<sub>H</sub>2 (<b>IL-4, IL-5, IL-13</b>) → <b>↑ IgE + eosinophilia</b>.</li></ul></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q7.</b> Two Ig-pattern diseases: selective IgA deficiency and Wiskott-Aldrich</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c3)"><h4>Selective IgA deficiency</h4>
+        <p><span class="tag">Ig pattern</span> <b>↓↓ IgA</b> (serum + mucosal), <b>normal IgG and IgM</b></p>
+        <p><span class="tag">Clinical</span> Most common primary immunodeficiency; <b>often asymptomatic</b>; recurrent sinopulmonary / GI infections in childhood</p>
+        <p><span class="tag">Twist</span> IgM partly compensates at mucosa; anaphylaxis to IgA in blood products</p></div>
+      <div class="dcard" style="--cc:var(--c4)"><h4>Wiskott-Aldrich syndrome (WAS)</h4>
+        <p><span class="tag">Genetics</span> <b>X-linked recessive</b>, <b><i>WAS</i> gene</b> → WASP protein</p>
+        <p><span class="tag">Mechanism</span> WASP works with <b>Arp2/3</b> to branch <b>actin</b> → needed for cell migration + TCR signaling → defective T cell activation, <b>↓ IL-2</b> → ↓ naïve T proliferation and ↓ Tregs → T<sub>H</sub>2 skew → <b>↑ IgE</b></p>
+        <p><span class="tag">Triad</span> <b>Thrombocytopenia (small platelets)</b> · <b>eczema</b> · <b>recurrent (pyogenic) infections</b>; ↑ risk of <b>autoimmunity + malignancy</b></p>
+        <p><span class="tag">Ig pattern</span> <b>↑ IgE, ↑ IgA; ↓ (to normal) IgM and IgG</b></p>
+        <p><span class="tag">Dx / Tx</span> Smear: small platelets; <b><i>WAS</i> gene sequencing</b> (definitive). <b>Hematopoietic stem cell transplant</b>; <b>IVIG</b> for infections</p></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why does IVIG help a WAS patient, and what type of immunity is it?</span></summary><div class="a"><b>It supplies preformed IgG against many pathogens = artificial passive immunity</b>, covering the weak antibody response (especially to encapsulated bacteria).</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>WATER</b>: <b>W</b>iskott-<b>A</b>ldrich, <b>T</b>hrombocytopenia, <b>E</b>czema, <b>R</b>ecurrent (pyogenic) infections.<br>WAS Ig pattern: the two "allergy/mucosa" letters go <b>up</b> (<b>E, A</b>); the "first/memory" letters go <b>down</b> (<b>M, G</b>).</p></div></details>
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><p>Boards phrase WAS as "<b>↑ IgE and IgA, ↓ to normal IgM and IgG</b>." <b>Small platelets</b> distinguish WAS from ITP (large platelets). Infections are often with <b>encapsulated organisms</b>.</p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>Eczema + recurrent infections + <b>high IgE</b> also fits <b>hyper-IgE (Job) syndrome</b>, but that has <b>normal platelets</b>, cold staph abscesses and retained primary teeth. <b>Thrombocytopenia with small platelets in a boy</b> → WAS.</p></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 4 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A breastfed infant is protected from enteric pathogens in the gut lumen. Which antibody, what type of immunity, and why no gut inflammation?</span></summary><div class="a"><b>Secretory IgA from milk = natural passive immunity.</b> It neutralizes and blocks attachment but does not activate complement; secretory component makes it protease-resistant.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A child with a heavy intestinal helminth burden: which Ig class is most elevated, and which cell does it recruit?</span></summary><div class="a"><b>IgE → eosinophils</b> (plus mast cells). T<sub>H</sub>2 cytokines drive both ↑ IgE and eosinophilia.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A 2-year-old boy has eczema, petechiae with small platelets on smear, and recurrent pyogenic infections. Predict his immunoglobulins.</span></summary><div class="a"><b>Wiskott-Aldrich: ↑ IgE and IgA, ↓ (to normal) IgM and IgG.</b> X-linked <i>WAS</i> mutation; cure = stem cell transplant.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">A patient with selective IgA deficiency has only mild sinus infections. Which antibody partly covers his mucosa?</span></summary><div class="a"><b>IgM</b>: pentameric IgM with J chain can also be transported into secretions.</div></details>
+  <details class="ask"><summary><span class="q">A5</span><span class="qt">Cord blood shows IgM against <i>Toxoplasma</i>. What does it mean?</span></summary><div class="a"><b>Congenital infection</b>: IgM cannot cross the placenta, so the fetus made it itself.</div></details>
+</section>
+
+<!-- ===================== MCQ ===================== -->
+<section class="lo" id="mcq">
+  <h2><span class="num">MCQ</span><span>Practice questions</span><span class="sub">Click an answer to see the explanation.</span></h2>
+  <div class="tools"><span class="score" id="score">Score: 0 / 0</span><button type="button" id="resetq">Reset</button></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">1</span>A 27-year-old woman receives Tdap vaccine at 30 weeks' gestation. Her son, born at term, is exposed to pertussis at 3 weeks of age but does not become ill. Which mechanism best explains his protection?</p>
+    <div class="opts"><button data-k="A">A. Active immunity from his own memory B cells</button><button data-k="B">B. Maternal IgM transferred across the placenta</button><button data-k="C">C. Maternal IgG transported across the placenta by FcRn</button><button data-k="D">D. Maternal IgE bound to his mast cells</button><button data-k="E">E. Maternal T cells crossing the placenta</button></div>
+    <div class="exp" hidden><b>C.</b> IgG is the only Ig that crosses the placenta (via FcRn) → natural passive immunity that wanes over months. A: he has never been vaccinated, so no memory. B: IgM is too large and does not cross. D: IgE does not cross and does not protect against pertussis. E: maternal T cells are not the mechanism of neonatal protection.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">2</span>A 45-year-old man is treated with horse-derived antivenom after a snakebite. Nine days later he develops fever, an urticarial rash, polyarthralgia and proteinuria. Serum C3 is low. Which mechanism best explains this reaction?</p>
+    <div class="opts"><button data-k="A">A. IgE cross-linking on mast cells by horse proteins</button><button data-k="B">B. Anti-idiotypic antibodies against the antivenom's paratopes</button><button data-k="C">C. Cytotoxic T cells attacking cells coated with antivenom</button><button data-k="D">D. Immune complexes of host antibody against horse immunoglobulin constant regions</button><button data-k="E">E. Anti-allotypic antibodies against human donor antibodies</button></div>
+    <div class="exp" hidden><b>D.</b> Isotypes differ between species → anti-isotypic response to horse Ig; immune complexes deposit (type III, serum sickness) and consume complement. A: type I would occur within minutes. B: the main target of a foreign-species antibody is its constant region. C: type IV is not complement- or complex-mediated. E: antivenom is not human.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">3</span>A 19-year-old man with a history of recurrent sinusitis and celiac disease receives packed red cells after a car crash. Within minutes he develops hypotension, wheezing and urticaria. His serum IgG and IgM are normal. What is the most likely explanation?</p>
+    <div class="opts"><button data-k="A">A. Recipient anti-IgA antibodies reacting with IgA in donor plasma</button><button data-k="B">B. ABO-incompatible red cells lysed by recipient IgM</button><button data-k="C">C. Donor anti-HLA antibodies activating recipient neutrophils</button><button data-k="D">D. Recipient anti-idiotypic antibodies against donor IgG</button><button data-k="E">E. Bacterial contamination of the unit</button></div>
+    <div class="exp" hidden><b>A.</b> Selective IgA deficiency (sinusitis, celiac) → never tolerant to IgA → anti-IgA (anti-isotypic) antibodies → anaphylaxis to IgA in blood products. B: acute hemolytic reaction gives fever, flank pain, hemoglobinuria rather than urticaria/wheeze. C: TRALI causes noncardiogenic pulmonary edema. D: polyclonal donor IgG has dilute idiotypes. E: sepsis gives fever and rigors.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">4</span>A researcher digests purified IgG and recovers a fragment that can still agglutinate (cross-link) bacteria but cannot bind C1q or Fc receptors. Which enzyme and fragment were used?</p>
+    <div class="opts"><button data-k="A">A. Papain; Fab</button><button data-k="B">B. Pepsin; F(ab′)<sub>2</sub></button><button data-k="C">C. Papain; Fc</button><button data-k="D">D. Pepsin; Fc</button><button data-k="E">E. Papain; F(ab′)<sub>2</sub></button></div>
+    <div class="exp" hidden><b>B.</b> Pepsin cuts below the hinge disulfides → one bivalent F(ab′)<sub>2</sub> (can cross-link) and digests the Fc. A: Fab is monovalent and cannot agglutinate. C/D: Fc has no antigen-binding site (and pepsin destroys it). E: papain yields Fab + Fc, not F(ab′)<sub>2</sub>.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">5</span>Five days into a first infection with an encapsulated bacterium, a patient's antibodies bind the capsule's repeating polysaccharide units strongly, even though each binding site has low affinity. Which property best explains this?</p>
+    <div class="opts"><button data-k="A">A. High affinity from somatic hypermutation</button><button data-k="B">B. High avidity from ten binding sites per molecule</button><button data-k="C">C. Secretory component stabilizing the antibody</button><button data-k="D">D. Binding of the Fc region to FcRn</button><button data-k="E">E. A long hinge region in each heavy chain</button></div>
+    <div class="exp" hidden><b>B.</b> Early antibody = pentameric IgM: low affinity per site but 10 sites on repetitive epitopes → high avidity. A: affinity maturation comes later (IgG). C: secretory component belongs to mucosal IgA. D: FcRn handles IgG transport/half-life. E: IgM has no hinge (it has C<sub>H</sub>4).</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">6</span>A 34-year-old woman with Crohn disease responds well to a fully human anti-TNF monoclonal antibody for a year, then loses response. Drug levels are low, and her serum contains antibodies that block the drug from binding TNF. These antibodies most likely recognize which part of the drug?</p>
+    <div class="opts"><button data-k="A">A. The IgG1 heavy-chain constant region shared by all humans</button><button data-k="B">B. Murine sequences in the framework regions</button><button data-k="C">C. Allelic variants in the κ constant domain</button><button data-k="D">D. The unique variable region (idiotype) of the drug</button><button data-k="E">E. The oligosaccharide side chains on C<sub>H</sub>2</button></div>
+    <div class="exp" hidden><b>D.</b> Anti-idiotypic anti-drug antibodies target the paratope → block antigen binding and speed clearance. A monoclonal presents one idiotype at high concentration. A: she tolerates human IgG1 isotype. B: a fully human drug has no murine sequence. C: allotype antibodies would not block the binding site. E: glycans are not the classic target and would not block TNF binding.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">7</span>A 7-year-old boy from a rural area has abdominal pain and a blood eosinophil count of 2,500/µL. Stool shows <i>Ascaris</i> eggs. Which immunoglobulin most directly targets eosinophils against this parasite?</p>
+    <div class="opts"><button data-k="A">A. IgA</button><button data-k="B">B. IgD</button><button data-k="C">C. IgG3</button><button data-k="D">D. IgM</button><button data-k="E">E. IgE</button></div>
+    <div class="exp" hidden><b>E.</b> Helminths → T<sub>H</sub>2 (IL-4, IL-5, IL-13) → ↑ IgE that coats the worm and recruits/activates eosinophils. A: IgA neutralizes at mucosa without recruiting inflammation. B: IgD is a naïve B cell receptor. C: IgG3 is a strong complement activator, not the anti-helminth class. D: IgM is the early anti-bacterial/complement antibody.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">8</span>An 18-month-old boy has had three episodes of otitis media and one pneumococcal pneumonia. He has eczema on his face and flexures and bloody diarrhea. Platelet count is 40,000/µL with small platelets on smear. Which immunoglobulin pattern is expected?</p>
+    <div class="opts"><button data-k="A">A. ↑ IgE, ↑ IgA, ↓ to normal IgM and IgG</button><button data-k="B">B. ↓ IgA only, normal IgG and IgM</button><button data-k="C">C. ↑ IgM, ↓ IgG, ↓ IgA, ↓ IgE</button><button data-k="D">D. All immunoglobulins absent</button><button data-k="E">E. ↑ IgE only, normal IgG, IgA and IgM</button></div>
+    <div class="exp" hidden><b>A.</b> Wiskott-Aldrich (WATER; small platelets) → T<sub>H</sub>2 skew → ↑ IgE and IgA, ↓/normal IgM and IgG. B: selective IgA deficiency (normal platelets). C: hyper-IgM syndrome (CD40L defect). D: X-linked agammaglobulinemia (Bruton). E: hyper-IgE syndrome has normal platelets.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">9</span>A newborn has hepatosplenomegaly, chorioretinitis and intracranial calcifications. Which laboratory finding in cord blood would best confirm that the fetus itself was infected?</p>
+    <div class="opts"><button data-k="A">A. Pathogen-specific IgG</button><button data-k="B">B. Total IgG equal to the mother's level</button><button data-k="C">C. Pathogen-specific IgA in maternal milk</button><button data-k="D">D. Elevated IgE</button><button data-k="E">E. Pathogen-specific IgM</button></div>
+    <div class="exp" hidden><b>E.</b> IgM does not cross the placenta → pathogen-specific IgM in the newborn was made by the fetus → congenital infection. A/B: IgG crosses the placenta, so it may be maternal. C: milk IgA reflects the mother's immunity. D: IgE is nonspecific here.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">10</span>A patient's IgG carries a point mutation in the C<sub>H</sub>2 domain near the hinge that abolishes C1q binding. Which function of this antibody is most likely preserved?</p>
+    <div class="opts"><button data-k="A">A. Classical complement activation on bacteria</button><button data-k="B">B. C3b deposition via the classical pathway</button><button data-k="C">C. Membrane attack complex formation on target cells</button><button data-k="D">D. Neutralization of a bacterial toxin</button><button data-k="E">E. Generation of C3a and C5a after antigen binding</button></div>
+    <div class="exp" hidden><b>D.</b> Neutralization depends only on the Fab (antigen binding), which is untouched. A, B, C and E all depend on C1q binding to the Fc to start the classical pathway, so they are lost for this antibody.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">11</span>A single B cell clone first secretes IgM against a viral protein and, after T cell help, switches to IgG1. Which feature is the same in the IgM and the IgG1?</p>
+    <div class="opts"><button data-k="A">A. Isotype</button><button data-k="B">B. Heavy-chain constant region</button><button data-k="C">C. Idiotype</button><button data-k="D">D. Valency of the secreted form</button><button data-k="E">E. Ability to cross the placenta</button></div>
+    <div class="exp" hidden><b>C.</b> Class switching swaps only the heavy-chain constant region; the V region (idiotype) stays the same. A/B: these are what changes. D: secreted IgM = 10, IgG = 2. E: only IgG crosses.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">12</span>A 4-month-old exclusively breastfed infant stays free of rotavirus diarrhea during a household outbreak. The protective antibody resists digestion in the infant's gut lumen. Which structure is most responsible for that resistance?</p>
+    <div class="opts"><button data-k="A">A. J chain</button><button data-k="B">B. Secretory component</button><button data-k="C">C. Hinge region</button><button data-k="D">D. Extra C<sub>H</sub>4 domain</button><button data-k="E">E. Neonatal Fc receptor</button></div>
+    <div class="exp" hidden><b>B.</b> Secretory component (left from the epithelial poly-Ig receptor after transcytosis) wraps dimeric IgA and protects it from proteases. A: the J chain links the dimer but does not confer protease resistance. C: the hinge is actually a protease target. D: C<sub>H</sub>4 is found in IgM/IgE. E: FcRn transports IgG.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">13</span>A 52-year-old woman with severe infection receives pooled plasma from many recovered donors. Two weeks later she has antibodies against the transferred human antibodies. These most likely recognize which feature?</p>
+    <div class="opts"><button data-k="A">A. Isotypic determinants of human IgG</button><button data-k="B">B. A single dominant idiotype</button><button data-k="C">C. The epitope on the virus</button><button data-k="D">D. The J chain</button><button data-k="E">E. Allotypic determinants in the constant regions</button></div>
+    <div class="exp" hidden><b>E.</b> Human-to-human transfer → anti-allotypic (allelic constant-region differences between people). A: she shares all human isotypes. B: a polyclonal pool has many idiotypes, each too dilute to provoke a response. C: the epitope is on the virus, not the antibody. D: J chain is identical among people and absent from IgG.</div></div>
+</section>
+
+<!-- ===================== REVIEW ===================== -->
+<section class="lo" id="review">
+  <h2><span class="num">✓</span><span>Rapid review</span></h2>
+  <ul class="check">
+    <li><input id="r1" type="checkbox"><label for="r1">Antibodies = glycoproteins from <b>plasma cells</b>; membrane form = <b>BCR</b>, secreted form = same specificity.</label></li>
+    <li><input id="r2" type="checkbox"><label for="r2"><b>Active</b> = you make it (slow, weeks, lasting, memory); <b>passive</b> = borrowed (immediate, weeks–months, no memory).</label></li>
+    <li><input id="r3" type="checkbox"><label for="r3">Natural passive = placental <b>IgG</b> + breast-milk <b>IgA</b>; artificial passive = IVIG, antivenom, antitoxin, mAbs.</label></li>
+    <li><input id="r4" type="checkbox"><label for="r4">Passive + active together for <b>rabies, tetanus, HBV</b>; vaccine at a different site.</label></li>
+    <li><input id="r5" type="checkbox"><label for="r5">IgG = <b>2 H + 2 L</b> chains, disulfides H–H (hinge) and H–L; V domains vary, C domains conserved; bivalent.</label></li>
+    <li><input id="r6" type="checkbox"><label for="r6"><b>Fab</b> (V<sub>H</sub>C<sub>H</sub>1 + light chain) binds antigen → idiotype; <b>Fc</b> (C<sub>H</sub>2–C<sub>H</sub>3) binds FcR + C1q → isotype.</label></li>
+    <li><input id="r7" type="checkbox"><label for="r7"><b>CDRs</b>: 3 per chain, 6 per site = paratope; <b>C1q binds C<sub>H</sub>2</b>; hinge is Pro-rich; IgM/IgE lack hinge (have C<sub>H</sub>4).</label></li>
+    <li><input id="r8" type="checkbox"><label for="r8"><b>Papain</b> → 2 Fab + Fc (monovalent); <b>pepsin</b> → F(ab′)<sub>2</sub> (bivalent) + pFc′.</label></li>
+    <li><input id="r9" type="checkbox"><label for="r9">Antibody as antigen: <b>other species → anti-isotypic</b> (serum sickness); <b>other person → anti-allotypic</b>; <b>monoclonal → anti-idiotypic</b> (ADA).</label></li>
+    <li><input id="r10" type="checkbox"><label for="r10">IgA-deficient patient + blood products → <b>anti-IgA anaphylaxis</b>.</label></li>
+    <li><input id="r11" type="checkbox"><label for="r11"><b>Polyclonal</b> = many clones, many epitopes; <b>monoclonal</b> = one clone, one epitope (class switching does not make it polyclonal).</label></li>
+    <li><input id="r12" type="checkbox"><label for="r12"><b>9 isotypes</b>: M, D, E, G1–4, A1–2; light-chain isotypes κ/λ; <b>allotype</b> = allelic (IgG, IgA, κ); <b>idiotype</b> = V region, most variable.</label></li>
+    <li><input id="r13" type="checkbox"><label for="r13"><b>Epitope</b> on antigen; <b>paratope</b> on antibody. <b>Valency</b> 2 / 4 (sIgA) / 10 (IgM).</label></li>
+    <li><input id="r14" type="checkbox"><label for="r14"><b>Affinity</b> = one site; <b>avidity</b> = all sites (affinity + valency); <b>IgM low affinity, high avidity</b>.</label></li>
+    <li><input id="r15" type="checkbox"><label for="r15">Serum: <b>IgG (~70–75%) &gt; IgA (15–20%) &gt; IgM (~10%) &gt; IgD (≤1%) &gt; IgE (&lt;0.01%)</b>; IgA most produced overall.</label></li>
+    <li><input id="r16" type="checkbox"><label for="r16"><b>IgM</b>: first, pentamer, T-independent possible, best complement. <b>IgD</b>: with IgM on naïve B cells.</label></li>
+    <li><input id="r17" type="checkbox"><label for="r17"><b>IgG</b>: secondary response, placenta (FcRn), opsonin, ADCC (CD16), complement, 4 subclasses.</label></li>
+    <li><input id="r18" type="checkbox"><label for="r18"><b>Secretory IgA</b>: dimer + J + secretory component, protease-resistant, no complement; <b>IgE</b>: FcεRI, allergy, helminths/eosinophils.</label></li>
+    <li><input id="r19" type="checkbox"><label for="r19"><b>WAS</b> (X-linked, WASP/Arp2/3): WATER, small platelets, <b>↑ IgE/IgA, ↓–normal IgM/IgG</b>; HSCT. <b>Selective IgA deficiency</b>: ↓ IgA, normal IgG/IgM.</label></li>
+  </ul>
+</section>
+
+<footer class="foot">
+  <div class="rev">HoyaDocs &middot; Block 2 &middot; Immunology &middot; IRD07</div>
+  <div class="rev">Rev 1.0 &middot; Updated Oct 22, 2026</div>
+</footer>
+</div>
+<script>
+(function(){
+  var KEY='ird07';
+  var answered=0, right=0, score=document.getElementById('score');
+  function upd(){ if(score) score.textContent='Score: '+right+' / '+answered; }
+  document.querySelectorAll('.mcq').forEach(function(q){
+    var ans=q.getAttribute('data-ans');
+    q.querySelectorAll('.opts button').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(q.dataset.done) return;
+        q.dataset.done='1'; answered++;
+        var k=b.getAttribute('data-k');
+        if(k===ans){ b.classList.add('ok'); right++; }
+        else { b.classList.add('no'); q.querySelector('[data-k="'+ans+'"]').classList.add('ok'); }
+        q.querySelector('.exp').hidden=false; upd();
+      });
+    });
+  });
+  var rs=document.getElementById('resetq');
+  if(rs) rs.addEventListener('click',function(){
+    answered=0; right=0; upd();
+    document.querySelectorAll('.mcq').forEach(function(q){
+      delete q.dataset.done; q.querySelector('.exp').hidden=true;
+      q.querySelectorAll('button').forEach(function(b){ b.classList.remove('ok','no'); });
+    });
+  });
+  document.querySelectorAll('.check input').forEach(function(c){
+    try{ if(localStorage.getItem(KEY+'-'+c.id)==='1') c.checked=true; }catch(e){}
+    c.addEventListener('change',function(){ try{ localStorage.setItem(KEY+'-'+c.id, c.checked?'1':'0'); }catch(e){} });
+  });
+})();
+</script>
+<script>
+(function(){function op(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(h);if(!t)return;var d=t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}setTimeout(function(){t.scrollIntoView();},30);}window.addEventListener('hashchange',op);op();})();
+</script>
+</body>
+</html>

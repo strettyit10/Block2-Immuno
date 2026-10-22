@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IRD11 Hypersensitivity Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Graduate&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: HoyaDocs Immunology hub shell (wordmark bar, section nav, navy varsity hero) around one reading column (max 1000px) of LO "sheets". Block 2 palette: navy + green + silver. */
+:root{
+  --bg:#EEF0F3; --panel:#FFFFFF; --sunk:#F5F7FA; --ink:#1A3363; --muted:#5B6274; --line:#D3D8E0;
+  --navy:#0F2244; --navy2:#1A3363; --tint:#E6E9EE; --bd:#C5CBD6; --onnavy:#F4F1EA; --onnavy-mut:#A9B3C7;
+  --silver:#6E7787; --silver-hi:#C5CBD6;
+  --tan:#4CB36A; --tan-ink:#1E7A3C;
+  /* callouts */
+  --s1-bg:#FFF4C2; --s1-bd:#D4A300; --s1-ink:#5E4700;      /* Step 1 HY: yellow bg, darker yellow border */
+  --ex-bg:#E3F0FB; --ex-bd:#1D6FA8; --ex-ink:#0F3F66;      /* In-house exam */
+  --trap-bg:#FFEDE3; --trap-bd:#D2621B; --trap-ink:#86380A; /* Step 1 trap */
+  --mem-bg:#EFEBFB; --mem-bd:#5B4BC4; --mem-ink:#3F2F9E;   /* Memory tool */
+  --bz-bg:#DCF1EE; --bz-bd:#1F7F78; --bz-ink:#0F5F59;      /* Buzzwords */
+  /* discipline + diagram colors */
+  --imm:#5B4BC4; --pat:#1F7F78; --pha:#2368A8; --mic:#4D7C2A;
+  --c1:#2368A8; --c2:#C4631B; --c3:#1F7F78; --c4:#B8324A; --c5:#5B4BC4; --c6:#8C6D0A;
+  --c1-soft:#E0ECF8; --c2-soft:#FBE9DA; --c3-soft:#DCF1EE; --c4-soft:#F8DDE3; --c5-soft:#ECE9FA; --c6-soft:#F6EED2;
+  --good:#1C7A4A; --bad:#B42318;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --varsity:"Graduate","Rockwell","Georgia",serif;
+  --cond:"Barlow Condensed","Arial Narrow",sans-serif;
+  --mono-f:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.58}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+a{color:var(--tan-ink)}
+:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+h1,h2,h3,h4{text-wrap:balance}
+b,strong{color:inherit;font-weight:700}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:22px} li{margin:4px 0}
+ul ul{margin:3px 0}
+img{max-width:100%}
+
+/* hub shell */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0 12px}
+.word{font-family:var(--varsity);font-size:24px;letter-spacing:.04em;text-decoration:none;color:var(--ink);line-height:1}
+.word span{color:var(--silver)}
+.rev{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.topr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.themebtn{background:transparent;border:1.5px solid var(--line);border-radius:999px;font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:5px 14px;cursor:pointer}
+.themebtn:hover{color:var(--ink);border-color:var(--ink)}
+.hubnav{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;border-top:3px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:22px}
+.hubnav::-webkit-scrollbar{display:none}
+.hubnav a{flex:none;text-decoration:none;font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:11px 12px 9px;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:7px}
+.hubnav a:hover{color:var(--ink)}
+.hubnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tan)}
+.hubnav a i{width:9px;height:9px;border-radius:2px;flex:none}
+.hubnav .sep{flex:none;width:1px;background:var(--line);margin:9px 6px}
+/* hero */
+header.hero{background:var(--navy);color:var(--onnavy);border-radius:14px;padding:clamp(20px,3.5vw,36px) clamp(20px,4vw,40px);margin-bottom:20px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(255,255,255,.045) calc(10% - 1px) 10%),
+  radial-gradient(ellipse at 88% 115%, rgba(76,179,106,.34), transparent 58%)}
+header.hero > *{position:relative}
+.hero .k{font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#8FD9A4}
+.hero h1{font-family:var(--varsity);font-weight:400;font-size:clamp(28px,5.4vw,52px);line-height:1.02;letter-spacing:.02em;margin:10px 0 4px;color:#F4F1EA;text-shadow:2px 2px 0 #1A3363,4px 4px 0 #4CB36A}
+.hero .lede{color:#C5CBD6;max-width:62ch;margin:10px 0 0;font-size:15px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chip{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid rgba(238,233,222,.45);border-radius:6px;padding:4px 11px;color:#F4F1EA}
+
+/* panels */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 0 18px}
+.panel > h2{margin:0 0 10px;font-family:var(--cond);font-size:15px;text-transform:uppercase;letter-spacing:.14em;color:var(--tan-ink)}
+.lo-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.lo-list li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;margin:0}
+.lo-list .n{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-weight:800;font-size:13px;border-radius:7px;padding:3px 8px;margin-top:2px;white-space:nowrap}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:6px}
+nav.toc a{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+nav.toc a:hover{background:var(--navy);color:#F4F1EA;border-color:var(--navy)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.legend span{font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 9px;border:1.5px solid}
+.lg-s1{background:var(--s1-bg);border-color:var(--s1-bd)!important;color:var(--s1-ink)}
+.lg-ex{background:var(--ex-bg);border-color:var(--ex-bd)!important;color:var(--ex-ink)}
+.lg-trap{background:var(--trap-bg);border-color:var(--trap-bd)!important;color:var(--trap-ink)}
+.lg-mem{background:var(--mem-bg);border-color:var(--mem-bd)!important;color:var(--mem-ink)}
+.lg-bz{background:var(--bz-bg);border-color:var(--bz-bd)!important;color:var(--bz-ink)}
+
+/* LO sections */
+section.lo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px clamp(16px,3vw,28px) 22px;margin:0 0 24px;scroll-margin-top:12px}
+section.lo > h2{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:start;font-family:var(--varsity);font-weight:400;font-size:clamp(20px,2.6vw,25px);letter-spacing:.03em;color:var(--ink);border-bottom:2px dashed var(--line);padding:18px 0 12px;margin:0 0 12px;line-height:1.25}
+section.lo > h2 .num{grid-row:1 / span 2;font-family:var(--cond);font-size:14px;font-weight:800;letter-spacing:.06em;background:var(--tan);color:#0F2244;min-width:46px;height:30px;padding:0 9px;border-radius:6px;box-shadow:0 3px 0 var(--tan-ink);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+section.lo > h2 .sub{grid-column:2;display:block;font-family:var(--body);font-weight:500;color:var(--muted);font-size:14px;letter-spacing:0;margin-top:4px}
+h3{font-family:var(--cond);font-weight:800;font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin:22px 0 6px;display:flex;align-items:center;gap:8px}
+h3 .step{font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+h4{font-family:var(--cond);font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:14px 0 4px}
+.goal{background:var(--sunk);border:1px dashed var(--bd);border-radius:10px;padding:10px 14px;font-size:14px;margin:6px 0 12px}
+.goal b{color:var(--tan-ink)}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--panel)}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+thead th{font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+tbody th{background:var(--tint);color:var(--ink);font-weight:700}
+tbody tr:nth-child(even) td{background:var(--sunk)}
+
+/* callouts (collapsible) */
+.co{border-radius:10px;font-size:14px;border:1.5px solid;border-left-width:6px}
+.co .t{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px}
+.co p{margin:4px 0} .co ul{margin:4px 0}
+.s1{background:var(--s1-bg);border-color:var(--s1-bd);color:var(--s1-ink)}
+.ex{background:var(--ex-bg);border-color:var(--ex-bd);color:var(--ex-ink)}
+.trap{background:var(--trap-bg);border-color:var(--trap-bd);color:var(--trap-ink)}
+.mem{background:var(--mem-bg);border-color:var(--mem-bd);color:var(--mem-ink)}
+.bz{background:var(--bz-bg);border-color:var(--bz-bd);color:var(--bz-ink)}
+.s1 .t::before{content:"★ "} .ex .t::before{content:"◆ "} .trap .t::before{content:"⚠ "} .mem .t::before{content:"✎ "} .bz .t::before{content:"\201C "}
+.coset{display:grid;gap:6px;margin:0 0 14px 16px}
+details.co{padding:0 14px;margin:8px 0}
+.coset details.co{margin:0}
+details.co > summary{cursor:pointer;list-style:none;padding:8px 0;margin:0;display:flex;align-items:center;gap:8px}
+details.co > summary::-webkit-details-marker{display:none}
+details.co > summary::after{content:"+";margin-left:auto;font-size:16px;font-weight:800}
+details.co[open] > summary::after{content:"\2212"}
+details.co .cb{padding:0 0 10px}
+.bzlist{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.bzlist span{background:var(--panel);border:1px solid var(--bz-bd);border-radius:999px;padding:2px 10px;font-size:13px}
+.bzlist span b{color:var(--bz-ink)}
+
+/* guide questions (teaching blocks) */
+details.gq{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:12px 0 6px;padding:0 14px}
+details.gq > summary{cursor:pointer;list-style:none;padding:11px 0;font-weight:400;font-size:15.5px;display:flex;gap:10px;align-items:flex-start}
+details.gq > summary::-webkit-details-marker{display:none}
+details.gq > summary .qt{flex:1;min-width:0}
+details.gq > summary .qt b{font-weight:700}
+details.gq > summary::after{content:"+";flex:none;font-weight:800;font-size:18px;line-height:1;color:var(--tan-ink)}
+details.gq[open] > summary::after{content:"\2212"}
+.gqb{border-top:1px dashed var(--bd);padding:6px 0 12px;min-width:0}
+
+/* check-yourself + application questions */
+details.ask{border:1px solid var(--line);border-radius:10px;background:var(--sunk);margin:10px 0;padding:0 14px}
+details.ask > summary{cursor:pointer;list-style:none;padding:10px 0;font-weight:650;display:flex;gap:10px;align-items:flex-start}
+details.ask > summary .qt{flex:1;min-width:0;overflow-wrap:anywhere}
+details.ask > summary::-webkit-details-marker{display:none}
+details.ask > summary .q{flex:none;font-family:var(--cond);font-size:12px;font-weight:800;color:#FFFFFF;background:var(--tan-ink);border-radius:6px;padding:2px 7px;margin-top:2px}
+details.ask > summary::after{content:"reveal";margin-left:auto;flex:none;font-family:var(--cond);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--tan-ink);margin-top:3px}
+details.ask[open] > summary::after{content:"hide"}
+details.ask .a{border-top:1px dashed var(--bd);padding:8px 0 12px;font-size:14.5px}
+
+/* cards + grids */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-top:4px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.card h4{margin-top:0;color:var(--cc,var(--ink))}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:10px 0}
+.dcard{border:1px solid var(--line);border-left:5px solid var(--cc,var(--tan));border-radius:10px;padding:11px 14px;background:var(--sunk);min-width:0}
+.dcard h4{margin:0 0 4px;font-family:var(--body);font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink)}
+.dcard p{margin:4px 0;font-size:13.5px}
+.tag{display:inline-block;font-family:var(--cond);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:5px;color:#FFFFFF;background:var(--cc,var(--tan-ink));vertical-align:1px}
+
+/* flow chains (arrows) */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:12px 0}
+.flow .st{flex:1 1 120px;min-width:0;background:var(--sunk);border:1.5px solid var(--cc,var(--bd));border-radius:9px;padding:8px 10px;font-size:13.5px}
+.flow .st b{display:block;font-family:var(--cond);font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--cc,var(--ink))}
+.flow .ar{flex:none;align-self:center;font-weight:900;color:var(--muted);font-size:18px}
+@media (max-width:620px){.flow{flex-direction:column}.flow .ar{transform:rotate(90deg)}}
+
+/* figures */
+figure{margin:14px 0;background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure img{display:block;margin:0 auto;border-radius:8px;max-height:460px;object-fit:contain}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
+svg{max-width:100%;height:auto;display:block;margin:0 auto}
+svg text{font-family:var(--body);fill:var(--ink)}
+svg .mut{fill:var(--muted)}
+svg .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
+svg .box{fill:var(--tint);stroke:var(--navy2);stroke-width:1.5}
+
+/* image ID drill */
+.ntc{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:12px 0}
+.ntc details{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.ntc img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.ntc summary{cursor:pointer;list-style:none;font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.04em;padding:7px 9px;color:var(--tan-ink)}
+.ntc summary::-webkit-details-marker{display:none}
+.ntc .ans{padding:0 9px 9px;font-size:13px}
+
+/* mcq */
+.mcq{border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:10px;padding:12px 16px;margin:14px 0;background:var(--panel)}
+.mcq .stem{font-weight:600;margin:0 0 8px}
+.mcq .stem .qn{display:inline-block;font-family:var(--cond);background:var(--navy);color:#F4F1EA;font-size:13px;font-weight:800;border-radius:6px;padding:1px 7px;margin-right:6px}
+.opts{display:grid;gap:6px}
+.opts button{all:unset;cursor:pointer;display:block;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;background:var(--sunk);color:var(--ink)}
+.opts button:hover{border-color:var(--bd)}
+.opts button:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+.opts button.ok{border-color:var(--good);background:var(--bz-bg);color:var(--bz-ink);font-weight:700}
+.opts button.no{border-color:var(--bad);background:var(--trap-bg);color:var(--trap-ink);text-decoration:line-through}
+.mcq .exp{margin-top:10px;border-top:1px dashed var(--bd);padding-top:8px;font-size:14px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.tools button{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 12px;cursor:pointer}
+.score{font-family:var(--cond);font-weight:800;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* rapid review checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:9px;align-items:flex-start}
+.check input{margin-top:5px;accent-color:var(--tan-ink)}
+.kbd{font-family:var(--mono-f);font-size:12.5px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+.foot{margin-top:40px;padding-top:14px;border-top:3px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media print{details > *:not(summary){display:block!important} .themebtn,.tools{display:none}}
+
+/* shared fixes */
+.coset{grid-template-columns:minmax(0,1fr)}
+.two>*,.three>*{min-width:0}
+.co .scroll,.cb{max-width:100%;overflow-x:auto}
+.ntc summary img{margin:-7px -9px 7px;width:calc(100% + 18px)}
+
+/* jump-to groups + big-picture bullets */
+nav.toc .links{align-items:center}
+nav.toc a.xt{background:var(--navy);color:#F4F1EA;border-color:var(--navy);display:inline-flex;align-items:center;gap:6px}
+nav.toc a.xt::before{font-size:12px;opacity:.85}
+nav.toc a.xt[href="#map"]::before{content:"◎"}
+nav.toc a.xt[href="#mcq"]::before{content:"?"}
+nav.toc a.xt[href="#review"]::before{content:"✓"}
+nav.toc a.xt[href="#ntc"]::before,nav.toc a.xt[href="#imgid"]::before{content:"▣"}
+nav.toc a.xt:hover{background:var(--tan);border-color:var(--tan);color:#0F2244}
+nav.toc a.lo-l{border-left:4px solid var(--tan)}
+nav.toc .tsep{flex:none;width:1px;align-self:stretch;background:var(--line);margin:0 4px}
+ul.bigp{list-style:none;padding:0;margin:12px 0 4px;display:grid;gap:8px}
+ul.bigp > li{position:relative;margin:0;padding:8px 12px 8px 34px;background:var(--sunk);border:1px solid var(--line);border-left:4px solid var(--tan);border-radius:8px}
+ul.bigp > li::before{content:"➜";position:absolute;left:11px;top:8px;color:var(--tan-ink);font-weight:800}
+ul.bigp ul{margin:5px 0 0;padding-left:18px}
+ul.bigp ul li{margin:2px 0;list-style:"→  "}
+
+/* layout v3: light only, wider page, 3-up callouts */
+:root{color-scheme:light}
+.wrap{max-width:1320px}
+.coset{grid-template-columns:repeat(auto-fill,minmax(max(260px,calc((100% - 12px)/3)),1fr));align-items:start;gap:6px}
+
+/* final pass: wide diagrams scroll on phones */
+@media (max-width:700px){figure.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}figure.wide > svg{min-width:640px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="word" href="../index.html">HOYA<span>DOCS</span></a>
+  <div class="topr">
+    <div class="rev">Block 2 &middot; Immunology &middot; IRD11 &middot; Rev 1.0 &middot; Updated Oct 22, 2026</div>
+  </div>
+</header>
+<nav class="hubnav" aria-label="Immunology sections">
+  <a href="../index.html">Home</a>
+  <span class="sep"></span>
+  <a href="../IRD-Games/index.html"><i style="background:#5B4BC4"></i>Immuno Games</a>
+  <a href="index.html" aria-current="page"><i style="background:#C4631B"></i>Study Guides</a>
+  <a href="../Pathology-Database/HoyaDocs_IRD_Pathology_Database.html"><i style="background:#1F7F78"></i>Path Database</a>
+  <a href="../Pharmacology-Database/HoyaDocs_IRD_Pharm_Database.html"><i style="background:#1F7F78"></i>Pharm Database</a>
+</nav>
+
+<header class="hero">
+  <div class="k">IRD11 &middot; Immunology &middot; Study Guide</div>
+  <h1>Hypersensitivity Reactions</h1>
+</header>
+
+<div class="panel">
+  <h2>Learning objectives</h2>
+  <ol class="lo-list">
+    <li><span class="n">LO 1</span><span>Walk through how each of the four hypersensitivity types works: what sets it off, which antibodies or cells do the damage, and how fast it appears.</span></li>
+    <li><span class="n">LO 2</span><span>Read a description of an immune mechanism and decide whether it is a type I, II, III or IV reaction.</span></li>
+    <li><span class="n">LO 3</span><span>Name the classic diseases and clinical scenarios that belong to each hypersensitivity type.</span></li>
+  </ol>
+  <div class="legend" aria-label="Callout key">
+    <span class="lg-s1">★ Step 1 HY</span>
+    <span class="lg-trap">⚠ Step 1 trap</span>
+    <span class="lg-mem">✎ Memory tool</span>
+    <span class="lg-bz">“ Buzzwords</span>
+  </div>
+</div>
+
+<nav class="panel toc" aria-label="Jump to">
+  <h2>Jump to</h2>
+  <div class="links">
+    <a class="xt" href="#map">Big picture</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="lo-l" href="#lo1">LO 1 · Four mechanisms</a>
+    <a class="lo-l" href="#lo2">LO 2 · Classify by mechanism</a>
+    <a class="lo-l" href="#lo3">LO 3 · Examples</a>
+    <span class="tsep" aria-hidden="true"></span>
+    <a class="xt" href="#mcq">Practice MCQs</a>
+    <a class="xt" href="#review">Rapid review</a>
+  </div>
+</nav>
+
+<!-- ===================== MAP ===================== -->
+<section class="lo" id="map">
+  <h2><span class="num">MAP</span><span>Big picture</span></h2>
+  <figure class="wide"><svg viewBox="0 0 960 400" role="img" aria-label="Concept map of the four hypersensitivity types: types I to III are antibody-mediated and type IV is T-cell mediated; each column lists mediator, antigen, injury, timing, test and classic example, with the ACID mnemonic and a classification rule along the bottom">
+    <rect x="290" y="8" width="380" height="42" rx="10" class="box"/>
+    <text x="480" y="27" font-size="15" font-weight="700" text-anchor="middle">Sensitized host meets the antigen again</text>
+    <text x="480" y="43" font-size="12" text-anchor="middle" class="mut">exaggerated immune response → host tissue damage</text>
+    <text x="362" y="66" font-size="12.5" font-weight="800" text-anchor="middle" class="mut">ANTIBODY-MEDIATED (IgE · IgG · IgM)</text>
+    <path d="M20,82 L20,72 L705,72 L705,82" class="ln"/>
+    <text x="832" y="66" font-size="12.5" font-weight="800" text-anchor="middle" class="mut">T-CELL-MEDIATED</text>
+    <path d="M725,82 L725,72 L940,72 L940,82" class="ln"/>
+    <!-- column I -->
+    <rect x="20" y="90" width="215" height="240" rx="10" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+    <rect x="20" y="90" width="215" height="32" rx="10" style="fill:var(--c2)"/>
+    <text x="127.5" y="111" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--panel)">TYPE I · IMMEDIATE</text>
+    <text x="30" y="146" font-size="11.5" class="mut">Who</text><text x="88" y="146" font-size="12.5" font-weight="700">IgE + mast cells</text>
+    <text x="30" y="172" font-size="11.5" class="mut">Antigen</text><text x="88" y="172" font-size="12.5">soluble allergen</text>
+    <text x="30" y="198" font-size="11.5" class="mut">Injury</text><text x="88" y="198" font-size="12.5">histamine, LTs</text>
+    <text x="30" y="224" font-size="11.5" class="mut">Timing</text><text x="88" y="224" font-size="12.5">min · late 8–12 h</text>
+    <text x="30" y="250" font-size="11.5" class="mut">Test</text><text x="88" y="250" font-size="12.5">skin prick, IgE</text>
+    <text x="30" y="276" font-size="11.5" class="mut">Classic</text><text x="88" y="276" font-size="12.5">anaphylaxis, asthma</text>
+    <text x="127.5" y="316" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c2)">A · Anaphylactic</text>
+    <!-- column II -->
+    <rect x="255" y="90" width="215" height="240" rx="10" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+    <rect x="255" y="90" width="215" height="32" rx="10" style="fill:var(--c4)"/>
+    <text x="362.5" y="111" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--panel)">TYPE II · CYTOTOXIC</text>
+    <text x="265" y="146" font-size="11.5" class="mut">Who</text><text x="323" y="146" font-size="12.5" font-weight="700">IgG/IgM on a cell</text>
+    <text x="265" y="172" font-size="11.5" class="mut">Antigen</text><text x="323" y="172" font-size="12.5">fixed: cell / matrix</text>
+    <text x="265" y="198" font-size="11.5" class="mut">Injury</text><text x="323" y="198" font-size="12.5">complement, ADCC, block</text>
+    <text x="265" y="224" font-size="11.5" class="mut">Timing</text><text x="323" y="224" font-size="12.5">hours–days</text>
+    <text x="265" y="250" font-size="11.5" class="mut">Test</text><text x="323" y="250" font-size="12.5">Coombs, linear IF</text>
+    <text x="265" y="276" font-size="11.5" class="mut">Classic</text><text x="323" y="276" font-size="12.5">AIHA, MG, Goodpasture</text>
+    <text x="362.5" y="316" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c4)">C · Cytotoxic</text>
+    <!-- column III -->
+    <rect x="490" y="90" width="215" height="240" rx="10" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+    <rect x="490" y="90" width="215" height="32" rx="10" style="fill:var(--c5)"/>
+    <text x="597.5" y="111" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--panel)">TYPE III · IMMUNE COMPLEX</text>
+    <text x="500" y="146" font-size="11.5" class="mut">Who</text><text x="558" y="146" font-size="12.5" font-weight="700">Ag–IgG complexes</text>
+    <text x="500" y="172" font-size="11.5" class="mut">Antigen</text><text x="558" y="172" font-size="12.5">soluble, circulating</text>
+    <text x="500" y="198" font-size="11.5" class="mut">Injury</text><text x="558" y="198" font-size="12.5">complement → PMNs</text>
+    <text x="500" y="224" font-size="11.5" class="mut">Timing</text><text x="558" y="224" font-size="12.5">hours → 1–2 wk</text>
+    <text x="500" y="250" font-size="11.5" class="mut">Test</text><text x="558" y="250" font-size="12.5">↓ C3/C4, granular IF</text>
+    <text x="500" y="276" font-size="11.5" class="mut">Classic</text><text x="558" y="276" font-size="12.5">SLE, PSGN, Arthus</text>
+    <text x="597.5" y="316" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c5)">I · Immune complex</text>
+    <!-- column IV -->
+    <rect x="725" y="90" width="215" height="240" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+    <rect x="725" y="90" width="215" height="32" rx="10" style="fill:var(--c1)"/>
+    <text x="832.5" y="111" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--panel)">TYPE IV · DELAYED</text>
+    <text x="735" y="146" font-size="11.5" class="mut">Who</text><text x="793" y="146" font-size="12.5" font-weight="700">T cells, no Ab</text>
+    <text x="735" y="172" font-size="11.5" class="mut">Antigen</text><text x="793" y="172" font-size="12.5">hapten, self, graft</text>
+    <text x="735" y="198" font-size="11.5" class="mut">Injury</text><text x="793" y="198" font-size="12.5">TH1→MΦ, CD8 kill</text>
+    <text x="735" y="224" font-size="11.5" class="mut">Timing</text><text x="793" y="224" font-size="12.5">24–72 h</text>
+    <text x="735" y="250" font-size="11.5" class="mut">Test</text><text x="793" y="250" font-size="12.5">PPD, patch test</text>
+    <text x="735" y="276" font-size="11.5" class="mut">Classic</text><text x="793" y="276" font-size="12.5">contact derm, T1DM</text>
+    <text x="832.5" y="316" font-size="14" font-weight="800" text-anchor="middle" style="fill:var(--c1)">D · Delayed</text>
+    <!-- LO2 band -->
+    <rect x="20" y="346" width="920" height="44" rx="10" style="fill:var(--panel);stroke:var(--line);stroke-width:1.2"/>
+    <text x="480" y="373" font-size="13" text-anchor="middle"><tspan font-weight="800">Sort it:</tspan> IgE? → I · antibody on a FIXED antigen? → II · SOLUBLE complexes, ↓C3? → III · only T cells, 24–72 h? → IV</text>
+  </svg></figure>
+  <ul class="bigp">
+    <li><b>Hypersensitivity</b> = normal immune machinery aimed wrong or too hard → <b>tissue damage</b>
+      <ul><li>needs <b>prior sensitization</b> → damage on <b>re-exposure</b></li><li>types I–III = <b>antibody</b> · type IV = <b>T cells only</b></li></ul></li>
+    <li><b>Type I</b> → T<sub>H</sub>2 → <b>IgE</b> on mast cells → cross-link → histamine
+      <ul><li>early phase <b>minutes</b> · late phase <b>8–12 h</b> (eosinophils, leukotrienes)</li></ul></li>
+    <li><b>Type II</b> → IgG/IgM on a <b>fixed</b> cell/matrix antigen → tissue-specific
+      <ul><li>complement · MAC · opsonization · ADCC → cell dies</li><li>receptor block/stimulation → cell lives (MG, Graves)</li></ul></li>
+    <li><b>Type III</b> → <b>soluble</b> antigen + IgG → complexes deposit → systemic
+      <ul><li>complement consumed → <b>↓ C3/C4</b> → neutrophils → vasculitis</li><li>Arthus (local, hours) · serum sickness (systemic, 1–2 wk)</li></ul></li>
+    <li><b>Type IV</b> → T<sub>H</sub>1 (IFN-γ → macrophage) · T<sub>H</sub>17 (IL-17 → neutrophil) · CD8 kill
+      <ul><li>delayed <b>24–72 h</b> → PPD induration · contact dermatitis</li></ul></li>
+    <li>Tests → skin prick (I) · <b>Coombs</b> (II) · ↓C3/C4 + granular IF (III) · PPD/patch (IV)</li>
+  </ul>
+</section>
+
+<!-- ===================== LO 1 ===================== -->
+<section class="lo" id="lo1">
+  <h2><span class="num">LO 1</span><span>The four mechanisms</span><span class="sub">Triggers, effectors and timing for types I, II, III and IV</span></h2>
+  <div class="goal"><b>By the end:</b> you can fill the four-type master chart from memory (mediator, antigen, effector, timing, test), narrate type I sensitization and degranulation, list the five ways type II antibodies injure cells, explain why immune complexes consume complement, and describe the three T-cell arms of type IV.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What is a hypersensitivity reaction, and how are the four types organized?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Hypersensitivity</b> = an <b>exaggerated or inappropriate</b> adaptive immune response that damages the host's own tissues.
+        <ul><li>The machinery is normal (IgE, IgG, complement, T cells); the <b>target or intensity</b> is wrong (harmless allergen, self, drug, foreign serum).</li>
+        <li>Requires <b>prior sensitization</b>: the first meeting primes the response; damage shows on <b>re-exposure</b>.</li></ul></li>
+      <li>Classified into <b>four types</b> by <b>what does the damage</b>:
+        <ul><li><b>Types I–III = antibody-mediated</b> (I = IgE; II and III = IgG, sometimes IgM).</li>
+        <li><b>Type IV = T-cell-mediated</b>: the <b>only one with no antibody</b>.</li>
+        <li>Type number roughly tracks speed: <b>I fastest (minutes)</b> → <b>IV slowest (days)</b>.</li></ul></li>
+    </ul>
+    <h4>Master chart</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Type</th><th>Mediator</th><th>Antigen</th><th>Effector mechanism</th><th>Timing</th><th>Classic test</th></tr></thead>
+      <tbody>
+        <tr><th>I · immediate</th><td><b>IgE</b> (T<sub>H</sub>2-driven)</td><td>Soluble allergen</td><td>Mast cell / basophil degranulation (histamine, leukotrienes); eosinophils</td><td><b>Minutes</b>; late phase <b>8–12 h</b></td><td>Skin prick (wheal &amp; flare); allergen-specific IgE</td></tr>
+        <tr><th>II · antibody to cell/matrix</th><td><b>IgG</b> (rarely IgM)</td><td><b>Fixed</b> on a cell surface or matrix</td><td>Complement (MAC, C3b opsonin, C5a), phagocytes, NK-cell ADCC, or receptor dysfunction</td><td>Hours–days</td><td><b>Direct / indirect Coombs</b></td></tr>
+        <tr><th>III · immune complex</th><td>IgG–antigen complexes</td><td><b>Soluble</b>, circulating</td><td>Complexes deposit in vessel walls / basement membranes → complement → neutrophils</td><td>Arthus: hours; serum sickness: <b>1–2 weeks</b></td><td><b>↓ C3/C4</b>; granular immunofluorescence</td></tr>
+        <tr><th>IV · delayed</th><td><b>T cells</b> (T<sub>H</sub>1, T<sub>H</sub>17, CD8⁺); no antibody</td><td>Soluble or cell-associated (haptens, self, graft)</td><td>Macrophage activation (IFN-γ) / neutrophil activation (IL-17); CTL killing</td><td><b>24–72 h</b> (1–3 days)</td><td>PPD (induration); patch test</td></tr>
+      </tbody></table></div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which hypersensitivity type can be transferred to a naive animal with serum, and which only with T cells?</span></summary><div class="a">Types <b>I–III</b> transfer with <b>serum</b> (they are antibody-driven). <b>Type IV</b> transfers only with <b>T cells</b>; serum alone does nothing because there is no antibody involved.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>ACID</b> = <b>A</b>naphylactic (I) · <b>C</b>ytotoxic (II) · <b>I</b>mmune complex (III) · <b>D</b>elayed (IV).</p><p>Speed ladder: I = seconds–minutes, II = hours–days, III = hours (Arthus) to 1–2 weeks (serum sickness), IV = 1–3 days.</p></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><p>Don't classify by organ or symptom (a rash or nephritis can be any type). Classify by the <b>mediator + where the antigen sits</b>: IgE → I; antibody on a fixed antigen → II; soluble antigen–antibody complexes → III; no antibody → IV.</p></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> Type I, step one: how does a person become <b>sensitized</b> to an allergen?</span></summary><div class="gqb">
+    <ul>
+      <li><b>First exposure = sensitization → no symptoms.</b> It only "arms" the system.</li>
+    </ul>
+    <figure class="wide"><svg viewBox="0 0 960 300" role="img" aria-label="Type I hypersensitivity. Top row, first exposure: allergen crosses mucosa, dendritic cell with co-stimulation, naive CD4 T cell becomes TH2, B cell switches to IgE under IL-4, plasma cell secretes IgE, mast cell armed with IgE on FcepsilonRI. Bottom row, re-exposure: allergen cross-links two IgE on a mast cell, degranulation, early phase in minutes and late phase at 8 to 12 hours">
+      <defs><marker id="t1-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <text x="15" y="22" font-size="13" font-weight="800" style="fill:var(--c2)">① FIRST EXPOSURE · SENSITIZATION (no symptoms)</text>
+      <rect x="15" y="34" width="140" height="72" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="85" y="58" font-size="13" font-weight="700" text-anchor="middle">Allergen enters</text>
+      <text x="85" y="76" font-size="12" text-anchor="middle" class="mut">crosses mucosa</text>
+      <text x="85" y="93" font-size="12" text-anchor="middle" class="mut">Der p 1 cuts occludin</text>
+      <line x1="157" y1="70" x2="173" y2="70" class="ln" marker-end="url(#t1-ar)"/>
+      <rect x="175" y="34" width="140" height="72" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="245" y="58" font-size="13" font-weight="700" text-anchor="middle">Dendritic cell</text>
+      <text x="245" y="76" font-size="12" text-anchor="middle" class="mut">TLR4·MD-2, C-lectins</text>
+      <text x="245" y="93" font-size="12" text-anchor="middle" class="mut">+ co-stimulation</text>
+      <line x1="317" y1="70" x2="333" y2="70" class="ln" marker-end="url(#t1-ar)"/>
+      <rect x="335" y="34" width="140" height="72" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="405" y="58" font-size="13" font-weight="700" text-anchor="middle">Naive CD4⁺ T</text>
+      <text x="405" y="76" font-size="12" text-anchor="middle" class="mut">→ TH2 cell</text>
+      <text x="405" y="93" font-size="12" text-anchor="middle" class="mut">IL-4 · IL-5 · IL-13</text>
+      <line x1="477" y1="70" x2="493" y2="70" class="ln" marker-end="url(#t1-ar)"/>
+      <rect x="495" y="34" width="140" height="72" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="565" y="58" font-size="13" font-weight="700" text-anchor="middle">B cell</text>
+      <text x="565" y="76" font-size="12" text-anchor="middle" class="mut">IL-4 + CD40L</text>
+      <text x="565" y="93" font-size="12" text-anchor="middle" class="mut">→ switch to IgE</text>
+      <line x1="637" y1="70" x2="653" y2="70" class="ln" marker-end="url(#t1-ar)"/>
+      <rect x="655" y="34" width="140" height="72" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="725" y="58" font-size="13" font-weight="700" text-anchor="middle">Plasma cell</text>
+      <text x="725" y="76" font-size="12" text-anchor="middle" class="mut">secretes</text>
+      <text x="725" y="93" font-size="12" text-anchor="middle" class="mut">allergen-specific IgE</text>
+      <line x1="797" y1="70" x2="813" y2="70" class="ln" marker-end="url(#t1-ar)"/>
+      <rect x="815" y="34" width="140" height="72" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:2.2"/>
+      <text x="885" y="58" font-size="13" font-weight="700" text-anchor="middle">Mast cell armed</text>
+      <text x="885" y="76" font-size="12" text-anchor="middle" class="mut">IgE on FcεRI</text>
+      <text x="885" y="93" font-size="12" text-anchor="middle" class="mut">"locked and loaded"</text>
+      <text x="15" y="142" font-size="13" font-weight="800" style="fill:var(--c4)">② RE-EXPOSURE · CROSS-LINKING</text>
+      <circle cx="140" cy="240" r="46" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:2"/>
+      <circle cx="115" cy="222" r="4" style="fill:var(--c2)"/><circle cx="165" cy="222" r="4" style="fill:var(--c2)"/>
+      <circle cx="112" cy="262" r="4" style="fill:var(--c2)"/><circle cx="168" cy="262" r="4" style="fill:var(--c2)"/>
+      <circle cx="140" cy="272" r="4" style="fill:var(--c2)"/><circle cx="140" cy="214" r="4" style="fill:var(--c2)"/>
+      <text x="140" y="245" font-size="12" font-weight="700" text-anchor="middle">Mast cell</text>
+      <path d="M122,199 L122,186 L115,176 M122,186 L129,176 M158,199 L158,186 L151,176 M158,186 L165,176" style="fill:none;stroke:var(--c2);stroke-width:2.5"/>
+      <rect x="126" y="166" width="28" height="10" rx="5" style="fill:var(--c6)"/>
+      <text x="176" y="170" font-size="11.5" class="mut">allergen</text>
+      <text x="108" y="194" font-size="11.5" text-anchor="end" class="mut">IgE·FcεRI</text>
+      <line x1="192" y1="240" x2="292" y2="240" class="ln" marker-end="url(#t1-ar)"/>
+      <text x="242" y="231" font-size="11.5" text-anchor="middle" font-weight="700">degranulation</text>
+      <text x="242" y="257" font-size="11.5" text-anchor="middle" class="mut">≥2 IgE bridged</text>
+      <rect x="300" y="152" width="305" height="136" rx="10" style="fill:var(--sunk);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="314" y="174" font-size="13" font-weight="800" style="fill:var(--c2)">EARLY PHASE · MINUTES</text>
+      <text x="314" y="196" font-size="12">Preformed: histamine, tryptase, heparin</text>
+      <text x="314" y="216" font-size="12">→ vasodilation = flare (erythema)</text>
+      <text x="314" y="236" font-size="12">→ ↑ permeability = wheal (edema)</text>
+      <text x="314" y="256" font-size="12">→ smooth-muscle / bronchoconstriction</text>
+      <text x="314" y="276" font-size="12">→ hives, wheeze, hypotension</text>
+      <line x1="607" y1="220" x2="636" y2="220" class="ln" marker-end="url(#t1-ar)"/>
+      <rect x="640" y="152" width="305" height="136" rx="10" style="fill:var(--sunk);stroke:var(--c4);stroke-width:1.5"/>
+      <text x="654" y="174" font-size="13" font-weight="800" style="fill:var(--c4)">LATE PHASE · 8–12 h</text>
+      <text x="654" y="196" font-size="12">New: leukotrienes C4/D4/E4, PGD2, PAF</text>
+      <text x="654" y="216" font-size="12">+ cytokines (TNF-α, IL-4, IL-5, IL-13)</text>
+      <text x="654" y="236" font-size="12">→ eosinophils (IL-5, eotaxin), basophils</text>
+      <text x="654" y="256" font-size="12">→ TH2 cells, mucus, sustained swelling</text>
+      <text x="654" y="276" font-size="12">→ ongoing airway damage in asthma</text>
+    </svg></figure>
+    <h4>How the allergen gets noticed</h4>
+    <ul>
+      <li><b>Protease allergens</b> break in: house-dust-mite <b>Der p 1</b> is an enzyme that <b>cleaves occludin</b> in epithelial tight junctions → crosses the airway mucosa → taken up by dendritic cells.
+        <ul><li>Allergen proteases also trigger <b>protease-activated receptors</b> on epithelium → cytokines that attract DCs.</li></ul></li>
+      <li><b>Non-protease allergens</b> are recognized by DC innate receptors: <b>TLR4 with MD-2 and CD14</b>, plus <b>C-type lectins</b> (DC-SIGN, dectin-2, mannose receptor).
+        <ul><li>Some hijack these: <b>Der p 2 mimics MD-2</b> and engages TLR4; others carry bound LPS or mannose glycans.</li></ul></li>
+      <li>The DC presents allergen peptide on MHC II to a <b>naive CD4⁺ T cell</b>.
+        <ul><li><b>MHC presentation alone is not enough</b> to activate a naive T cell; it also needs <b>co-stimulatory signals</b>. In an allergic person the APC supplies them.</li>
+        <li>The naive T cell becomes a <b>T<sub>H</sub>2</b> cell.</li></ul></li>
+      <li>T<sub>H</sub>2 cells → <b>IL-4</b> → B-cell <b>class switch to IgE</b>; T<sub>H</sub>2 cells also <b>recruit eosinophils</b>.</li>
+      <li>Secreted IgE is "obsessed with" mast cells: it binds the <b>high-affinity Fcε receptor (FcεRI)</b> on mast cells and basophils → cell is <b>armed</b>.</li>
+    </ul>
+    <h4>T<sub>H</sub>2 and mast-cell cytokines</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Cytokine</th><th>Role in type I hypersensitivity</th></tr></thead>
+      <tbody>
+        <tr><th>IL-4</th><td>Drives B-cell <b>class switch to IgE</b>; promotes T<sub>H</sub>2 differentiation</td></tr>
+        <tr><th>IL-5</th><td><b>Eosinophil</b> production, differentiation and activation</td></tr>
+        <tr><th>IL-13</th><td>Amplifies the T<sub>H</sub>2 response and IgE switching; smooth-muscle contraction, mucus</td></tr>
+        <tr><th>IL-3, GM-CSF</th><td>Eosinophil production and activation</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>Amplification loop:</b> mast cells themselves make <b>IL-4</b> and express <b>CD40L</b> → further push B cells to make IgE.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why does a person have no symptoms the first time they meet an allergen?</span></summary><div class="a">The first exposure is <b>sensitization</b>: the allergen drives T<sub>H</sub>2 cells and IgE class switching, and IgE loads onto mast cells. There is no preformed IgE on mast cells yet to be cross-linked, so nothing degranulates.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> Type I, step two: what happens on <b>re-exposure</b>, and why are there early and late phases?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Trigger = cross-linking:</b> a multivalent allergen binds <b>≥ 2 IgE molecules</b> on adjacent FcεRI receptors → receptor aggregation → signaling → <b>degranulation</b>.
+        <ul><li>A single occupied IgE does nothing; <b>receptor clustering is the signal</b>.</li></ul></li>
+      <li><b>IgE paradox:</b> IgE has the <b>lowest serum concentration</b> of all immunoglobulins, yet causes anaphylaxis.
+        <ul><li>Most IgE is not free; it is <b>bound tightly to FcεRI</b> on mast cells and basophils → tissues are "locked and loaded."</li>
+        <li>Free serum IgE half-life ≈ <b>2 days</b>; cell-bound IgE persists <b>weeks–months</b>.</li></ul></li>
+    </ul>
+    <div class="two">
+      <div class="card" style="--cc:var(--c2)"><h4>Early phase · minutes</h4>
+        <ul><li>Release of <b>preformed</b> granule mediators, mainly <b>histamine</b></li>
+        <li>→ <b>smooth-muscle contraction</b>, <b>vasodilation</b>, <b>↑ vascular permeability</b></li>
+        <li>e.g., sudden trouble breathing, hives</li></ul></div>
+      <div class="card" style="--cc:var(--c4)"><h4>Late phase · 8–12 h</h4>
+        <ul><li>Recruited <b>eosinophils</b> and T<sub>H</sub>2 cells</li>
+        <li>Newly made <b>leukotrienes</b> and cytokines</li>
+        <li>→ sustained inflammation; explains persistent airway inflammation in asthma after the first bronchospasm</li></ul></div>
+    </div>
+    <h4>What activated mast cells release</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Class</th><th>Examples</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><th>Enzyme</th><td><b>Tryptase</b>, chymase, cathepsin G</td><td>Remodel connective-tissue matrix</td></tr>
+        <tr><th>Toxic mediator</th><td><b>Histamine</b>, heparin</td><td>↑ vascular permeability, smooth-muscle contraction; toxic to parasites; anticoagulation</td></tr>
+        <tr><th>Lipid mediator</th><td>Prostaglandin D₂, <b>leukotrienes C₄/D₄/E₄</b></td><td>Bronchoconstriction, mucus, ↑ permeability; chemotaxis of eosinophils, basophils, T<sub>H</sub>2</td></tr>
+        <tr><th>Lipid mediator</th><td><b>Platelet-activating factor</b></td><td>Attracts leukocytes; activates neutrophils, eosinophils, platelets</td></tr>
+        <tr><th>Chemokine</th><td>CCL3</td><td>Attracts monocytes, macrophages, neutrophils</td></tr>
+        <tr><th>Cytokine</th><td>TNF-α (some preformed)</td><td>Inflammation; activates endothelium</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>Preformed</b> (histamine, tryptase, heparin) act in minutes; <b>newly synthesized</b> lipid mediators and cytokines sustain the late phase.</li>
+      <li><b>Effector cells:</b> mast cells (and basophils), <b>eosinophils</b>, T<sub>H</sub>2 cells.
+        <ul><li>Eosinophils are recruited by <b>IL-5 and eotaxin</b>; their granule proteins damage tissue (e.g., airway epithelium).</li>
+        <li>Eosinophils also secrete T<sub>H</sub>2 cytokines and the enzyme <b>IDO</b> (indoleamine 2,3-dioxygenase), which <b>inhibits T<sub>H</sub>1</b> cells → keeps the response T<sub>H</sub>2-polarized.</li></ul></li>
+      <li><b>Wheal-and-flare</b> = the hallmark immediate (&lt; 30 min) skin reaction (skin-prick testing):
+        <ul><li><b>Wheal</b> = raised pale edema from <b>↑ vascular permeability</b>.</li>
+        <li><b>Flare</b> = surrounding redness from <b>vasodilation</b>.</li></ul></li>
+      <li><b>Triggers</b> (typically soluble peptide antigens, not bound to cells):
+        <ul><li>Breathed / eaten: <b>food, dander, pollen, mold, dust mite, drugs</b>; injected: <b>bee stings</b>.</li>
+        <li>Skin contact: <b>latex</b>, lotions, soaps.</li>
+        <li>Route shapes the picture: inhaled → rhinitis/asthma; oral → GI symptoms/urticaria; IV/systemic → <b>anaphylaxis</b>.</li></ul></li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">On a skin-prick test, which part of the lesion reflects leaky vessels and which reflects dilated vessels?</span></summary><div class="a"><b>Wheal</b> (raised, pale center) = edema from <b>↑ permeability</b>. <b>Flare</b> (red halo) = <b>vasodilation</b>. Both come from dermal mast-cell histamine within minutes.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul>
+      <li><b>Anaphylaxis Rx:</b> <b>IM epinephrine first</b> (α₁ vasoconstriction, β₂ bronchodilation); antihistamines and steroids are adjuncts.</li>
+      <li><b>Serum tryptase</b> = marker of mast-cell activation (confirms anaphylaxis).</li>
+      <li>Biologics: <b>omalizumab</b> = anti-IgE; <b>mepolizumab/reslizumab</b> = anti-IL-5; <b>dupilumab</b> = anti-IL-4Rα (blocks IL-4 and IL-13).</li>
+      <li><b>Atopy</b> (asthma, allergic rhinitis, atopic dermatitis) is an inherited tendency to make IgE.</li>
+    </ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><ul>
+      <li>A first bee sting rarely causes anaphylaxis; the <b>second</b> one does (sensitization first).</li>
+      <li>Wheal ≠ flare: wheal = permeability/edema, flare = vasodilation/erythema.</li>
+      <li>Low serum IgE does not mean "no allergy": IgE lives on mast cells.</li>
+    </ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>"Locked and loaded":</b> IgE pre-loads the mast-cell "gun"; the allergen pulls the trigger only when it bridges <b>two</b> IgE (two fingers on the trigger).</p><p><b>IL-4 → IgE, IL-5 → eosinophils</b> ("5 rhymes with eos-in-hive").</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist">
+      <span><b>"wheal and flare"</b> → type I skin test</span>
+      <span><b>"minutes after exposure"</b> → type I</span>
+      <span><b>"↑ serum tryptase"</b> → mast-cell activation</span>
+      <span><b>"eosinophilia, Charcot-Leyden crystals"</b> → allergic asthma</span>
+      <span><b>"atopy"</b> → inherited IgE tendency</span>
+    </div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> Type II: what is the target antigen, and what are the five ways bound antibody injures or alters a cell?</span></summary><div class="gqb">
+    <ul>
+      <li><b>Mediator:</b> <b>IgG</b> (more rarely IgM) that binds an antigen <b>fixed on a cell surface or matrix</b>.
+        <ul><li>Origin: <b>self-reactive B cells</b> that escaped tolerance, or a normal response to a drug-modified cell.</li>
+        <li>Injury is <b>tissue-specific</b>: limited to wherever that antigen lives.</li></ul></li>
+      <li><b>Two antigen origins:</b>
+        <ul><li><b>Intrinsic</b> = a normal host molecule (e.g., <b>type IV collagen</b> in Goodpasture, <b>ACh receptor</b>).</li>
+        <li><b>Extrinsic</b> = a foreign molecule (e.g., <b>penicillin</b>) that <b>attaches to a host cell</b> and acts as a <b>hapten</b>.</li>
+        <li>Triggers are small antigens on a cell surface or a receptor.</li></ul></li>
+    </ul>
+    <figure class="wide"><svg viewBox="0 0 960 276" role="img" aria-label="Five type II mechanisms: complement fragments C3a and C5a recruiting neutrophils; MAC pore lysing the cell; opsonization and phagocytosis by splenic macrophages; antibody-dependent cellular cytotoxicity by NK cells through CD16; and non-cytotoxic receptor blocking or stimulating antibodies">
+      <defs><marker id="t2-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <!-- panel 1 -->
+      <rect x="12" y="10" width="178" height="210" rx="10" style="fill:var(--sunk);stroke:var(--line)"/>
+      <rect x="12" y="10" width="178" height="30" rx="10" style="fill:var(--c4)"/>
+      <text x="101" y="30" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--panel)">① Complement → PMNs</text>
+      <circle cx="61" cy="95" r="26" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.8"/>
+      <path d="M87,89 L94,95 L87,101 M94,95 L104,95" style="fill:none;stroke:var(--c4);stroke-width:2.2"/>
+      <line x1="107" y1="95" x2="126" y2="95" class="ln" marker-end="url(#t2-ar)"/>
+      <text x="112" y="74" font-size="11" text-anchor="middle" font-weight="700">C3a/C5a</text>
+      <circle cx="146" cy="95" r="18" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+      <circle cx="140" cy="92" r="4" style="fill:var(--c2)"/><circle cx="147" cy="99" r="4" style="fill:var(--c2)"/><circle cx="153" cy="91" r="4" style="fill:var(--c2)"/>
+      <text x="61" y="136" font-size="11" text-anchor="middle" class="mut">target</text>
+      <text x="146" y="128" font-size="11" text-anchor="middle" class="mut">PMN</text>
+      <text x="101" y="158" font-size="12" text-anchor="middle">IgG fixes complement</text>
+      <text x="101" y="175" font-size="12" text-anchor="middle">C3a, C5a call PMNs</text>
+      <text x="101" y="192" font-size="12" text-anchor="middle">→ enzymes, ROS</text>
+      <text x="101" y="209" font-size="12" text-anchor="middle" class="mut">e.g., Goodpasture</text>
+      <!-- panel 2 -->
+      <rect x="202" y="10" width="178" height="210" rx="10" style="fill:var(--sunk);stroke:var(--line)"/>
+      <rect x="202" y="10" width="178" height="30" rx="10" style="fill:var(--c4)"/>
+      <text x="291" y="30" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--panel)">② MAC lysis</text>
+      <circle cx="275" cy="95" r="30" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.8"/>
+      <path d="M269,66 L275,58 L281,66 M275,58 L275,48" style="fill:none;stroke:var(--c4);stroke-width:2.2"/>
+      <rect x="299" y="88" width="12" height="14" rx="2" style="fill:var(--c4)"/>
+      <circle cx="322" cy="90" r="2.5" style="fill:var(--c4)"/><circle cx="330" cy="97" r="2.5" style="fill:var(--c4)"/><circle cx="323" cy="104" r="2.5" style="fill:var(--c4)"/>
+      <text x="291" y="140" font-size="11" text-anchor="middle" class="mut">MAC = C5b–9 pore</text>
+      <text x="291" y="158" font-size="12" text-anchor="middle">Classical pathway</text>
+      <text x="291" y="175" font-size="12" text-anchor="middle">→ MAC inserts</text>
+      <text x="291" y="192" font-size="12" text-anchor="middle">→ cell lysis</text>
+      <text x="291" y="209" font-size="12" text-anchor="middle" class="mut">e.g., ABO mismatch</text>
+      <!-- panel 3 -->
+      <rect x="392" y="10" width="178" height="210" rx="10" style="fill:var(--sunk);stroke:var(--line)"/>
+      <rect x="392" y="10" width="178" height="30" rx="10" style="fill:var(--c4)"/>
+      <text x="481" y="30" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--panel)">③ Opsonization</text>
+      <circle cx="510" cy="95" r="36" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.8"/>
+      <circle cx="446" cy="95" r="18" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.8"/>
+      <path d="M464,90 L470,95 L464,100 M470,95 L480,95" style="fill:none;stroke:var(--c4);stroke-width:2.2"/>
+      <circle cx="458" cy="81" r="4" style="fill:var(--c6)"/>
+      <text x="516" y="92" font-size="13" font-weight="700" text-anchor="middle">MΦ</text>
+      <text x="516" y="108" font-size="11" text-anchor="middle" class="mut">spleen</text>
+      <text x="446" y="130" font-size="11" text-anchor="middle" class="mut">IgG + C3b</text>
+      <text x="481" y="158" font-size="12" text-anchor="middle">IgG ± C3b = opsonins</text>
+      <text x="481" y="175" font-size="12" text-anchor="middle">FcγR / CR1 bind</text>
+      <text x="481" y="192" font-size="12" text-anchor="middle">→ eaten in spleen</text>
+      <text x="481" y="209" font-size="12" text-anchor="middle" class="mut">e.g., AIHA, HDN</text>
+      <!-- panel 4 -->
+      <rect x="582" y="10" width="178" height="210" rx="10" style="fill:var(--sunk);stroke:var(--line)"/>
+      <rect x="582" y="10" width="178" height="30" rx="10" style="fill:var(--c4)"/>
+      <text x="671" y="30" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--panel)">④ ADCC (NK cell)</text>
+      <circle cx="630" cy="95" r="24" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.8"/>
+      <path d="M654,89 L661,95 L654,101 M661,95 L672,95" style="fill:none;stroke:var(--c4);stroke-width:2.2"/>
+      <circle cx="698" cy="95" r="26" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.8"/>
+      <text x="700" y="92" font-size="13" font-weight="700" text-anchor="middle">NK</text>
+      <text x="700" y="108" font-size="11" text-anchor="middle" class="mut">CD16</text>
+      <text x="630" y="134" font-size="11" text-anchor="middle" class="mut">target</text>
+      <text x="671" y="158" font-size="12" text-anchor="middle">FcγRIII binds IgG Fc</text>
+      <text x="671" y="175" font-size="12" text-anchor="middle">→ perforin, granzyme</text>
+      <text x="671" y="192" font-size="12" text-anchor="middle">antibody aims,</text>
+      <text x="671" y="209" font-size="12" text-anchor="middle" class="mut">NK cell kills</text>
+      <!-- panel 5 -->
+      <rect x="772" y="10" width="178" height="210" rx="10" style="fill:var(--sunk);stroke:var(--line)"/>
+      <rect x="772" y="10" width="178" height="30" rx="10" style="fill:var(--c1)"/>
+      <text x="861" y="30" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--panel)">⑤ Dysfunction</text>
+      <rect x="784" y="108" width="154" height="10" style="fill:var(--c1-soft);stroke:var(--c1)"/>
+      <rect x="816" y="88" width="8" height="20" style="fill:var(--c1)"/>
+      <path d="M813,87 L820,79 L827,87 M820,79 L820,68" style="fill:none;stroke:var(--c4);stroke-width:2.2"/>
+      <circle cx="846" cy="76" r="5" style="fill:var(--c6)"/>
+      <line x1="839" y1="69" x2="853" y2="83" style="stroke:var(--c4);stroke-width:2"/>
+      <rect x="896" y="88" width="8" height="20" style="fill:var(--c1)"/>
+      <path d="M893,87 L900,79 L907,87 M900,79 L900,68" style="fill:none;stroke:var(--c4);stroke-width:2.2"/>
+      <text x="820" y="136" font-size="11" text-anchor="middle" class="mut">block</text>
+      <text x="900" y="136" font-size="11" text-anchor="middle" class="mut">stimulate</text>
+      <text x="861" y="158" font-size="12" text-anchor="middle">Anti-receptor IgG</text>
+      <text x="861" y="175" font-size="12" text-anchor="middle">block AChR → MG</text>
+      <text x="861" y="192" font-size="12" text-anchor="middle">stimulate TSH-R</text>
+      <text x="861" y="209" font-size="12" text-anchor="middle" class="mut">→ Graves</text>
+      <rect x="12" y="232" width="748" height="34" rx="8" style="fill:var(--c4-soft);stroke:var(--c4)"/>
+      <text x="386" y="254" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--c4)">①–④ CYTOTOXIC → the target cell is destroyed</text>
+      <rect x="772" y="232" width="178" height="34" rx="8" style="fill:var(--c1-soft);stroke:var(--c1)"/>
+      <text x="861" y="254" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--c1)">NON-CYTOTOXIC</text>
+    </svg></figure>
+    <div class="scroll"><table>
+      <thead><tr><th>Type II mechanism</th><th>How it works</th><th>Effector</th></tr></thead>
+      <tbody>
+        <tr><th>Complement-mediated inflammation</th><td>Bound IgG activates complement → <b>C3a/C5a</b> recruit and activate <b>neutrophils</b> → they kill the cell</td><td>Neutrophils</td></tr>
+        <tr><th>Complement-mediated lysis</th><td>Classical pathway → <b>MAC (C5b–9)</b> inserts into the membrane → lysis</td><td>MAC</td></tr>
+        <tr><th>Opsonization (in spleen)</th><td>IgG ± <b>C3b</b> coat the cell → FcγR / CR1 on phagocytes bind → phagocytosis</td><td>Splenic macrophages</td></tr>
+        <tr><th>ADCC</th><td><b>FcγRIII (CD16)</b> on NK cells binds the Fc tail of cell-bound IgG → perforin/granzyme → lysis</td><td>NK cells</td></tr>
+        <tr><th>Antibody-mediated dysfunction (<b>non-cytotoxic</b>)</th><td>Antibody <b>blocks or stimulates</b> a receptor; binding prevents the normal ligand from binding</td><td>None (no cell killed)</td></tr>
+      </tbody></table></div>
+    <p><b>Worked example, drug-induced hemolytic anemia:</b></p>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>Hapten</b>High-dose IV penicillin binds the RBC membrane (extrinsic antigen)</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c4)"><b>Antibody</b>Penicillin-specific IgG (rarely IgM) coats the RBCs</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c4)"><b>Effector</b>Complement, MAC, C3b opsonization, ADCC</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c3)"><b>Result</b>Splenic phagocytosis / lysis → anemia, <b>direct Coombs +</b></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which of the five type II mechanisms does NOT kill the target cell, and name two diseases that use it.</span></summary><div class="a"><b>Antibody-mediated cellular dysfunction</b>. <b>Myasthenia gravis</b> (antibody blocks and internalizes AChR) and <b>Graves disease</b> (antibody stimulates the TSH receptor).</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q5.</b> How do the <b>Coombs tests</b> detect type II antibodies, and how does Rh disease work?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 960 300" role="img" aria-label="Coombs tests. Direct: patient's antibody-coated red cells plus anti-human globulin clump, meaning antibody is already on the red cells. Indirect: patient serum is mixed with reagent red cells, then anti-human globulin is added; clumping means free antibody is in the serum">
+      <defs><marker id="cb-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <text x="20" y="64" font-size="15" font-weight="800" style="fill:var(--c4)">DIRECT Coombs</text>
+      <text x="20" y="84" font-size="12" class="mut">Is antibody already</text>
+      <text x="20" y="100" font-size="12" class="mut">ON the RBCs?</text>
+      <circle cx="230" cy="90" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <path d="M225,77 L230,70 L235,77 M230,70 L230,61" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <circle cx="275" cy="90" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <path d="M270,77 L275,70 L280,77 M275,70 L275,61" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <circle cx="320" cy="90" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <path d="M315,77 L320,70 L325,77 M320,70 L320,61" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <text x="275" y="124" font-size="11" text-anchor="middle" class="mut">patient's washed RBCs</text>
+      <line x1="350" y1="90" x2="440" y2="90" class="ln" marker-end="url(#cb-ar)"/>
+      <text x="395" y="80" font-size="11.5" text-anchor="middle" font-weight="700">+ AHG</text>
+      <circle cx="502" cy="72" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <circle cx="542" cy="72" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <circle cx="502" cy="108" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <circle cx="542" cy="108" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <path d="M516,72 L528,72 M516,108 L528,108 M502,86 L502,94 M542,86 L542,94" style="stroke:var(--c1);stroke-width:4"/>
+      <text x="522" y="140" font-size="11" text-anchor="middle" class="mut">agglutination</text>
+      <rect x="640" y="52" width="300" height="72" rx="10" style="fill:var(--sunk);stroke:var(--c4)"/>
+      <text x="654" y="76" font-size="12.5" font-weight="700">Clumps = IgG or C3 already on RBCs</text>
+      <text x="654" y="95" font-size="12">AIHA · drug-induced hemolysis</text>
+      <text x="654" y="112" font-size="12">HDN newborn · transfusion reaction</text>
+      <line x1="20" y1="158" x2="940" y2="158" style="stroke:var(--line);stroke-width:1.2;stroke-dasharray:5 4"/>
+      <text x="20" y="214" font-size="15" font-weight="800" style="fill:var(--c1)">INDIRECT Coombs</text>
+      <text x="20" y="234" font-size="12" class="mut">Is FREE antibody</text>
+      <text x="20" y="250" font-size="12" class="mut">in the SERUM?</text>
+      <path d="M195,210 L200,217 L205,210 M200,217 L200,226" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <path d="M215,228 L220,235 L225,228 M220,235 L220,244" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <path d="M190,238 L195,245 L200,238 M195,245 L195,254" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <text x="205" y="276" font-size="11" text-anchor="middle" class="mut">patient serum</text>
+      <text x="252" y="238" font-size="18" font-weight="800" text-anchor="middle">+</text>
+      <circle cx="285" cy="222" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <circle cx="317" cy="244" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <text x="300" y="276" font-size="11" text-anchor="middle" class="mut">reagent RBCs</text>
+      <line x1="340" y1="232" x2="382" y2="232" class="ln" marker-end="url(#cb-ar)"/>
+      <text x="361" y="222" font-size="11" text-anchor="middle">mix</text>
+      <circle cx="410" cy="238" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <path d="M405,225 L410,218 L415,225 M410,218 L410,209" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <text x="410" y="276" font-size="11" text-anchor="middle" class="mut">now coated</text>
+      <line x1="435" y1="232" x2="482" y2="232" class="ln" marker-end="url(#cb-ar)"/>
+      <text x="458" y="222" font-size="11.5" text-anchor="middle" font-weight="700">+ AHG</text>
+      <circle cx="510" cy="215" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <circle cx="550" cy="215" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <circle cx="510" cy="251" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <circle cx="550" cy="251" r="14" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <path d="M524,215 L536,215 M524,251 L536,251 M510,229 L510,237 M550,229 L550,237" style="stroke:var(--c1);stroke-width:4"/>
+      <text x="530" y="285" font-size="11" text-anchor="middle" class="mut">agglutination</text>
+      <rect x="640" y="196" width="300" height="72" rx="10" style="fill:var(--sunk);stroke:var(--c1)"/>
+      <text x="654" y="220" font-size="12.5" font-weight="700">Clumps = antibody free in serum</text>
+      <text x="654" y="239" font-size="12">Rh⁻ mother's antibody screen</text>
+      <text x="654" y="256" font-size="12">pre-transfusion crossmatch</text>
+    </svg></figure>
+    <div class="two">
+      <div class="card" style="--cc:var(--c4)"><h4>Direct Coombs</h4>
+        <ul><li>Isolate the patient's <b>RBCs</b> → wash → add <b>Coombs reagent</b> (anti-human globulin, e.g., rabbit anti-human Ig).</li>
+        <li><b>Agglutinates (clumps)</b> → antibody/complement is <b>already bound to the RBCs</b>, where it shouldn't be.</li></ul></div>
+      <div class="card" style="--cc:var(--c1)"><h4>Indirect Coombs</h4>
+        <ul><li>Patient's <b>serum</b> + reagent RBCs carrying a <b>known antigen</b> → then Coombs reagent.</li>
+        <li><b>Agglutinates</b> → <b>free antibody</b> is present in the serum.</li></ul></div>
+    </div>
+    <h4>Rh incompatibility: hemolytic disease of the newborn (erythroblastosis fetalis)</h4>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>1st pregnancy</b>Rh⁻ mother meets Rh⁺ fetal RBCs, mainly <b>at delivery</b></div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c1)"><b>Sensitized</b>Slow primary response (mostly <b>IgM</b>, does not cross placenta) + <b>memory B cells</b></div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c4)"><b>Next Rh⁺ baby</b>Anti-Rh <b>IgG</b> crosses the placenta → destroys fetal RBCs (type II)</div>
+    </div>
+    <ul>
+      <li>First pregnancy usually spared: sensitization happens at delivery and the first response is IgM.</li>
+      <li><b>Testing:</b> mother → <b>indirect Coombs on her serum</b> (+ Rh⁺ RBCs + anti-human Ig). Newborn → <b>direct Coombs on the baby's RBCs</b> (coated with maternal IgG). Positive = agglutination.</li>
+      <li><b>RhoGAM</b> = <b>anti-Rh(D) IgG</b> given to the Rh⁻ mother → coats and clears fetal Rh⁺ RBCs before her B cells respond → <b>prevents B-cell activation and memory-cell formation</b>. Passive antibody blocks active sensitization, so it must be given <b>before</b> she is sensitized.</li>
+      <li><b>ABO-incompatible transfusion</b> is also type II: the recipient has <b>preformed antibodies</b> to the A/B carbohydrate antigens on donor RBCs → antibody binds the RBC surface → <b>complement-mediated hemolysis</b>.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A newborn is jaundiced and anemic. Which Coombs test, on which sample, shows maternal antibody on his cells?</span></summary><div class="a"><b>Direct Coombs on the baby's RBCs</b>. The maternal IgG is already bound to his cells, so adding anti-human globulin clumps them.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul>
+      <li><b>RhoGAM timing:</b> ~<b>28 weeks</b> and within <b>72 h of delivery</b> of an Rh⁺ baby (also after bleeding, abortion, amniocentesis).</li>
+      <li><b>Acute hemolytic transfusion reaction:</b> anti-ABO (IgM, IgG) → intravascular hemolysis within minutes–24 h → fever, hypotension, <b>flank pain</b>, hemoglobinuria, DIC.</li>
+      <li>Other transfusion reactions: <b>allergic/anaphylactic</b> (type I; anaphylaxis classically in <b>IgA-deficient</b> recipients with anti-IgA), <b>febrile nonhemolytic</b> (cytokines from donor WBCs), <b>delayed hemolytic</b> (anamnestic IgG to minor antigens, extravascular).</li>
+      <li><b>Hyperacute graft rejection</b> (minutes) = preformed antibody → type II.</li>
+    </ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><ul>
+      <li>The mother is tested with the <b>indirect</b> test on her <b>serum</b>, not her RBCs (her cells are Rh⁻ and carry no antibody).</li>
+      <li>Drug-induced hemolysis = <b>type II</b> (drug is a hapten on the RBC), not type I, even though penicillin also causes type I anaphylaxis.</li>
+    </ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>D</b>irect = antibody <b>D</b>irectly on the RBC. <b>I</b>ndirect = antibody <b>I</b>n the serum, waiting.</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist">
+      <span><b>"positive direct Coombs"</b> → antibody on RBCs (type II)</span>
+      <span><b>"Rh⁻ mother, second pregnancy"</b> → HDN</span>
+      <span><b>"flank pain + hemoglobinuria after transfusion"</b> → ABO mismatch</span>
+      <span><b>"CD16 / FcγRIII"</b> → NK-cell ADCC</span>
+    </div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q6.</b> Type III: how do immune complexes form, deposit, and destroy tissue?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 960 300" role="img" aria-label="Type III hypersensitivity in a blood vessel: IgG binds soluble antigen forming immune complexes; large complexes are cleared by macrophages while small ones made in antigen excess escape; they deposit in the vessel wall and activate complement, lowering C3 and C4; neutrophils arrive, fail to engulf the deposits and release enzymes and reactive oxygen species causing vasculitis">
+      <defs><marker id="t3-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <text x="125" y="22" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--c5)">① Complexes form</text>
+      <text x="365" y="22" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--c5)">② Small ones escape</text>
+      <text x="605" y="22" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--c5)">③ Deposit + complement</text>
+      <text x="845" y="22" font-size="13" font-weight="800" text-anchor="middle" style="fill:var(--c5)">④ Neutrophils attack</text>
+      <rect x="10" y="34" width="940" height="96" style="fill:var(--c4-soft)"/>
+      <text x="20" y="124" font-size="11" class="mut">blood (lumen)</text>
+      <rect x="10" y="130" width="940" height="40" style="fill:var(--c6-soft);stroke:var(--c6);stroke-width:1.2"/>
+      <text x="20" y="154" font-size="11.5" class="mut">vessel wall / basement membrane</text>
+      <!-- step 1 -->
+      <text x="60" y="56" font-size="11" text-anchor="middle" class="mut">soluble Ag</text>
+      <circle cx="60" cy="72" r="6" style="fill:var(--c6)"/>
+      <path d="M89,92 L95,100 L101,92 M95,100 L95,112" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <text x="106" y="112" font-size="11" class="mut">IgG</text>
+      <circle cx="170" cy="66" r="6" style="fill:var(--c6)"/>
+      <path d="M163,62 L158,66 L163,70 M158,66 L150,66 M177,62 L182,66 L177,70 M182,66 L190,66" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <circle cx="185" cy="102" r="6" style="fill:var(--c6)"/>
+      <path d="M178,98 L173,102 L178,106 M173,102 L165,102 M192,98 L197,102 L192,106 M197,102 L205,102" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <!-- step 2 -->
+      <circle cx="276" cy="56" r="5" style="fill:var(--c6)"/><circle cx="294" cy="56" r="5" style="fill:var(--c6)"/>
+      <circle cx="276" cy="74" r="5" style="fill:var(--c6)"/><circle cx="294" cy="74" r="5" style="fill:var(--c6)"/>
+      <path d="M281,56 L289,56 M281,74 L289,74 M276,61 L276,69 M294,61 L294,69 M280,60 L290,70" style="stroke:var(--c5);stroke-width:2"/>
+      <line x1="302" y1="65" x2="322" y2="65" class="ln" marker-end="url(#t3-ar)"/>
+      <circle cx="340" cy="65" r="16" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.6"/>
+      <text x="340" y="69" font-size="11" text-anchor="middle" font-weight="700">MΦ</text>
+      <text x="312" y="100" font-size="11" text-anchor="middle" class="mut">large → cleared</text>
+      <circle cx="410" cy="58" r="5" style="fill:var(--c6)"/>
+      <path d="M404,54 L399,58 L404,62 M399,58 L392,58 M416,54 L421,58 L416,62 M421,58 L428,58" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <line x1="414" y1="68" x2="434" y2="124" class="ln" marker-end="url(#t3-ar)"/>
+      <text x="400" y="120" font-size="11" text-anchor="end" class="mut">small → lodge</text>
+      <!-- step 3 -->
+      <text x="605" y="62" font-size="12" text-anchor="middle" font-weight="700">complement activated</text>
+      <text x="605" y="80" font-size="11.5" text-anchor="middle" class="mut">C3, C4 consumed · C5a released</text>
+      <line x1="605" y1="88" x2="605" y2="134" class="ln" marker-start="url(#t3-ar)"/>
+      <circle cx="565" cy="150" r="5" style="fill:var(--c6)"/>
+      <path d="M559,146 L555,150 L559,154 M571,146 L575,150 L571,154" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <circle cx="635" cy="152" r="5" style="fill:var(--c6)"/>
+      <path d="M629,148 L625,152 L629,156 M641,148 L645,152 L641,156" style="fill:none;stroke:var(--c5);stroke-width:2"/>
+      <circle cx="590" cy="160" r="3.5" style="fill:var(--c4)"/><circle cx="620" cy="140" r="3.5" style="fill:var(--c4)"/>
+      <!-- step 4 -->
+      <circle cx="800" cy="80" r="14" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+      <circle cx="795" cy="78" r="3.5" style="fill:var(--c2)"/><circle cx="801" cy="84" r="3.5" style="fill:var(--c2)"/><circle cx="806" cy="77" r="3.5" style="fill:var(--c2)"/>
+      <line x1="812" y1="92" x2="836" y2="132" class="ln" marker-end="url(#t3-ar)"/>
+      <circle cx="855" cy="150" r="14" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+      <circle cx="850" cy="148" r="3.5" style="fill:var(--c2)"/><circle cx="856" cy="154" r="3.5" style="fill:var(--c2)"/><circle cx="861" cy="147" r="3.5" style="fill:var(--c2)"/>
+      <path d="M875,140 L887,134 M877,152 L891,152 M875,163 L887,169 M835,163 L823,169" style="stroke:var(--c4);stroke-width:2"/>
+      <text x="895" y="80" font-size="11.5" text-anchor="middle" font-weight="700" style="fill:var(--c4)">enzymes + ROS</text>
+      <!-- descriptions -->
+      <text x="125" y="196" font-size="12" text-anchor="middle">IgG binds SOLUBLE antigen</text>
+      <text x="125" y="214" font-size="12" text-anchor="middle">(self DNA, strep antigen,</text>
+      <text x="125" y="232" font-size="12" text-anchor="middle">foreign serum protein)</text>
+      <text x="125" y="250" font-size="12" text-anchor="middle">→ immune complexes</text>
+      <text x="365" y="196" font-size="12" text-anchor="middle">Large lattices → phagocytes clear</text>
+      <text x="365" y="214" font-size="12" text-anchor="middle">Small complexes (antigen excess)</text>
+      <text x="365" y="232" font-size="12" text-anchor="middle">stay soluble, circulate longer</text>
+      <text x="365" y="250" font-size="12" text-anchor="middle">→ lodge at filtering sites</text>
+      <text x="605" y="196" font-size="12" text-anchor="middle">Glomeruli, joints, skin vessels</text>
+      <text x="605" y="214" font-size="12" text-anchor="middle">Classical complement fires</text>
+      <text x="605" y="232" font-size="12" text-anchor="middle">→ ↓ serum C3/C4</text>
+      <text x="605" y="250" font-size="12" text-anchor="middle">granular "lumpy-bumpy" IF</text>
+      <text x="845" y="196" font-size="12" text-anchor="middle">PMNs can't engulf wall-stuck</text>
+      <text x="845" y="214" font-size="12" text-anchor="middle">complexes → "frustrated"</text>
+      <text x="845" y="232" font-size="12" text-anchor="middle">lysosomal enzymes + ROS out</text>
+      <text x="845" y="250" font-size="12" text-anchor="middle">→ vasculitis, fibrinoid necrosis</text>
+      <text x="480" y="284" font-size="12.5" text-anchor="middle" font-weight="700" style="fill:var(--c5)">Systemic: wherever complexes land → glomerulonephritis · arthritis · vasculitis · rash</text>
+    </svg></figure>
+    <ul>
+      <li><b>Antigen is soluble</b> (not fixed on a cell): IgG binds it in the circulation → <b>antigen–antibody (immune) complexes</b>.
+        <ul><li>Lupus example: after APCs engulf and present <b>soluble DNA/nucleoprotein</b> from dying cells to helper T cells, plasma cells <b>class-switch from IgM to IgG</b> → anti-DNA IgG binds its antigen.</li></ul></li>
+      <li><b>Size matters:</b> large complexes are cleared by phagocytes; <b>small complexes formed in antigen excess escape clearance</b>, float around longer and lodge in high-filtration sites.</li>
+      <li>Deposited in <b>blood vessel walls / tissue basement membranes</b> → <b>complement activation</b> (C5a) → neutrophil recruitment.</li>
+      <li>Neutrophils try to phagocytose the deposits, <b>fail</b>, and "save face" by releasing <b>lysosomal enzymes and ROS</b> → vasculitis, tissue destruction.</li>
+      <li><b>Complement is consumed → serum C3 and C4 FALL</b>. Low levels track active disease (low complement + high anti-dsDNA = active lupus nephritis).</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">During a lupus flare, will serum C3 and C4 be high or low? Why?</span></summary><div class="a"><b>Low.</b> Deposited immune complexes activate the classical pathway and <b>consume</b> C3 and C4 faster than the liver replaces them. Falling C3/C4 signals active disease.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q7.</b> Type III in two classic forms: how do the <b>Arthus reaction</b> and <b>serum sickness</b> differ?</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Feature</th><th>Arthus reaction</th><th>Serum sickness</th></tr></thead>
+      <tbody>
+        <tr><th>Extent</th><td><b>Localized</b> (skin at the injection site)</td><td><b>Systemic</b></td></tr>
+        <tr><th>Setting</th><td>Antigen injected into a person with <b>preformed IgG</b> (e.g., repeated vaccine booster)</td><td>Large dose of <b>foreign protein</b> (antiserum, monoclonal antibody, drugs)</td></tr>
+        <tr><th>Timing</th><td><b>Hours</b></td><td>~<b>1–2 weeks</b> after first exposure</td></tr>
+        <tr><th>Findings</th><td>Local edema, erythema, hemorrhage, <b>fibrinoid necrosis</b> of small vessels</td><td>Fever, rash/urticaria, <b>arthralgia</b>, lymphadenopathy, proteinuria/nephritis, ↓ C3/C4</td></tr>
+      </tbody></table></div>
+    <h4>Arthus sequence</h4>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>Inject</b>Antigen meets high titers of preformed IgG locally</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c5)"><b>Complexes</b>Form in dermal vessel walls → complement</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c2)"><b>Mast cells</b>C5a binds C5a receptors; complexes bind FcγRIII → degranulation</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c4)"><b>Damage</b>Neutrophil influx, fluid/protein leak, phagocytosis, vessel occlusion</div>
+    </div>
+    <ul><li>Seen with repeated vaccine boosters, insect stings, or <b>inhaled antigens</b> (bacterial spores, fungi, dried fecal proteins) → <b>hypersensitivity pneumonitis</b>.</li></ul>
+    <h4>Serum-sickness timeline</h4>
+    <figure class="wide"><svg viewBox="0 0 960 270" role="img" aria-label="Serum sickness timeline over 28 days after one large dose of foreign protein: foreign antigen falls slowly then rapidly; antibody rises after about one week; immune complexes peak around days 8 to 16, the symptomatic window, while serum C3 and C4 dip and then recover">
+      <rect x="307" y="30" width="237" height="180" style="fill:var(--c4-soft);opacity:.6"/>
+      <text x="425" y="46" font-size="11.5" text-anchor="middle" font-weight="700" style="fill:var(--c4)">symptomatic window</text>
+      <line x1="70" y1="30" x2="70" y2="210" class="ln"/>
+      <line x1="70" y1="210" x2="900" y2="210" class="ln"/>
+      <text x="40" y="124" font-size="11" text-anchor="middle" class="mut" transform="rotate(-90 40 124)">level</text>
+      <path d="M70,45 C190,52 250,62 277,72 C330,95 420,190 544,204 L900,206" style="fill:none;stroke:var(--c6);stroke-width:2.6"/>
+      <path d="M70,206 L250,206 C330,204 430,95 603,64 L900,56" style="fill:none;stroke:var(--c1);stroke-width:2.6"/>
+      <path d="M70,207 L255,207 C300,206 340,108 396,104 C450,100 490,200 560,206 L900,207" style="fill:none;stroke:var(--c5);stroke-width:2.6"/>
+      <path d="M70,120 L290,120 C340,122 360,165 400,168 C440,170 470,125 560,120 L900,120" style="fill:none;stroke:var(--c3);stroke-width:2.2;stroke-dasharray:7 5"/>
+      <text x="80" y="36" font-size="11.5" font-weight="700" style="fill:var(--c6)">foreign antigen</text>
+      <text x="906" y="60" font-size="11.5" font-weight="700" style="fill:var(--c1)">antibody</text>
+      <text x="906" y="124" font-size="11.5" font-weight="700" style="fill:var(--c3)">C3/C4</text>
+      <text x="396" y="94" font-size="11.5" font-weight="700" text-anchor="middle" style="fill:var(--c5)">immune complexes</text>
+      <text x="70" y="228" font-size="11" text-anchor="middle" class="mut">0</text>
+      <text x="277" y="228" font-size="11" text-anchor="middle" class="mut">7</text>
+      <text x="485" y="228" font-size="11" text-anchor="middle" class="mut">14</text>
+      <text x="692" y="228" font-size="11" text-anchor="middle" class="mut">21</text>
+      <text x="900" y="228" font-size="11" text-anchor="middle" class="mut">28</text>
+      <text x="485" y="254" font-size="12" text-anchor="middle" class="mut">Days after one large dose of foreign protein (e.g., horse antivenom)</text>
+    </svg></figure>
+    <ul>
+      <li>Antibody against the foreign protein appears after ~<b>1 week</b> → while antigen is still in <b>excess</b>, small soluble complexes form that are poorly cleared → deposit → <b>fever, rash, lymphadenopathy, vasculitis, arthritis, nephritis</b>.</li>
+      <li>As antibody rises to <b>antibody excess</b>, large complexes are cleared → symptoms <b>resolve</b> (self-limited once the foreign antigen is gone).</li>
+      <li><b>Re-administration of foreign serum:</b> a first dose of horse-derived serum induces antibodies against the horse proteins (an <b>anti-isotypic response</b>). Giving the same serum again → those antibodies form immune complexes with it → <b>serum sickness (type III)</b>, with faster onset because antibody is preformed.</li>
+      <li>Modern causes: <b>chimeric monoclonal antibodies</b> (e.g., infliximab, rituximab), penicillin, sulfa drugs.</li>
+    </ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why do serum-sickness symptoms fade on their own after a couple of weeks?</span></summary><div class="a">Antibody keeps rising until it is in <b>excess</b>; then complexes become <b>large</b> and are cleared by phagocytes, and the foreign antigen is eliminated. No more small complexes → no more deposition.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul>
+      <li>Type III renal disease → <b>granular ("lumpy-bumpy") immunofluorescence</b> and subepithelial humps (PSGN); type II anti-GBM → <b>linear</b> IF.</li>
+      <li>Serum sickness: fever + urticaria + arthralgia + proteinuria + <b>↓ C3</b> ~5–10 days after a chimeric mAb or antivenom.</li>
+      <li>Hypersensitivity pneumonitis (farmer's lung, bird fancier's) = mixed type III/IV to inhaled organic antigens.</li>
+    </ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><ul>
+      <li>Complement in active type III disease is <b>LOW</b> (consumed), not high.</li>
+      <li>Arthus vs type I vs type IV at an injection site: type I = wheal in <b>minutes</b>; Arthus = firm, hemorrhagic, <b>neutrophilic</b> in <b>hours</b>; type IV = <b>lymphocyte/macrophage</b> induration at <b>48–72 h</b>.</li>
+      <li>Type II vs III both use IgG: ask whether the antigen is <b>fixed</b> (II) or <b>soluble</b> (III).</li>
+    </ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Type III = 3 things stuck together:</b> antigen + antibody + complement.</p><p>Lupus <b>drinks</b> complement: "the flare uses up C3 and C4."</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist">
+      <span><b>"lumpy-bumpy / granular deposits"</b> → immune complexes</span>
+      <span><b>"fibrinoid necrosis at injection site, hours"</b> → Arthus</span>
+      <span><b>"antivenom / chimeric mAb, then fever + joint pain + ↓C3"</b> → serum sickness</span>
+      <span><b>"antigen excess"</b> → small, pathogenic complexes</span>
+    </div></div></details>
+  </div>
+
+  <details class="gq"><summary><span class="qt"><b>Q8.</b> Type IV: why is it delayed, and which T cells do the damage?</span></summary><div class="gqb">
+    <ul>
+      <li><b>T-cell mediated, no antibody.</b> Develops over <b>24–72 h (1–3 days)</b> because T cells and macrophages must be <b>recruited and activated</b>.</li>
+      <li>Can be transferred to another animal by <b>T cells, not serum</b>.</li>
+      <li>APCs carry antigen to CD4⁺ T cells (→ T<sub>H</sub>1 and T<sub>H</sub>17) and to CD8⁺ T cells.</li>
+    </ul>
+    <figure class="wide"><svg viewBox="0 0 960 285" role="img" aria-label="Type IV hypersensitivity: an antigen-presenting cell drives three arms. TH1 cells induced by IL-12 release interferon gamma to activate macrophages; TH17 cells induced by IL-6 and TGF-beta release IL-17 to recruit neutrophils; CD8 cytotoxic T cells kill targets through perforin and granzyme or Fas ligand">
+      <defs><marker id="t4-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <rect x="15" y="84" width="170" height="112" rx="10" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+      <text x="100" y="114" font-size="14" font-weight="800" text-anchor="middle">APC</text>
+      <text x="100" y="134" font-size="11.5" text-anchor="middle" class="mut">presents hapten-,</text>
+      <text x="100" y="150" font-size="11.5" text-anchor="middle" class="mut">self- or graft-peptide</text>
+      <text x="100" y="170" font-size="11.5" text-anchor="middle" class="mut">(Langerhans cell in skin)</text>
+      <line x1="187" y1="110" x2="236" y2="48" class="ln" marker-end="url(#t4-ar)"/>
+      <line x1="187" y1="140" x2="236" y2="140" class="ln" marker-end="url(#t4-ar)"/>
+      <line x1="187" y1="170" x2="236" y2="226" class="ln" marker-end="url(#t4-ar)"/>
+      <!-- row 1 -->
+      <rect x="240" y="18" width="150" height="56" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.5"/>
+      <text x="315" y="42" font-size="14" font-weight="800" text-anchor="middle">TH1</text>
+      <text x="315" y="61" font-size="11.5" text-anchor="middle" class="mut">induced by IL-12</text>
+      <line x1="392" y1="46" x2="446" y2="46" class="ln" marker-end="url(#t4-ar)"/>
+      <text x="419" y="38" font-size="11.5" text-anchor="middle" font-weight="700">IFN-γ</text>
+      <rect x="450" y="18" width="170" height="56" rx="9" style="fill:var(--c3-soft);stroke:var(--c3);stroke-width:1.5"/>
+      <text x="535" y="42" font-size="13" font-weight="700" text-anchor="middle">Macrophage</text>
+      <text x="535" y="61" font-size="11.5" text-anchor="middle" class="mut">IL-1, TNF-α, enzymes, ROS</text>
+      <line x1="622" y1="46" x2="676" y2="46" class="ln" marker-end="url(#t4-ar)"/>
+      <rect x="680" y="18" width="265" height="56" rx="9" style="fill:var(--sunk);stroke:var(--line)"/>
+      <text x="692" y="42" font-size="12.5" font-weight="700">Induration, granuloma</text>
+      <text x="692" y="61" font-size="11.5" class="mut">PPD · contact dermatitis · Hashimoto</text>
+      <!-- row 2 -->
+      <rect x="240" y="112" width="150" height="56" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.5"/>
+      <text x="315" y="136" font-size="14" font-weight="800" text-anchor="middle">TH17</text>
+      <text x="315" y="155" font-size="11.5" text-anchor="middle" class="mut">IL-6 (+ TGF-β)</text>
+      <line x1="392" y1="140" x2="446" y2="140" class="ln" marker-end="url(#t4-ar)"/>
+      <text x="419" y="132" font-size="11.5" text-anchor="middle" font-weight="700">IL-17</text>
+      <rect x="450" y="112" width="170" height="56" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="535" y="136" font-size="13" font-weight="700" text-anchor="middle">Neutrophils</text>
+      <text x="535" y="155" font-size="11.5" text-anchor="middle" class="mut">recruited, activated</text>
+      <line x1="622" y1="140" x2="676" y2="140" class="ln" marker-end="url(#t4-ar)"/>
+      <rect x="680" y="112" width="265" height="56" rx="9" style="fill:var(--sunk);stroke:var(--line)"/>
+      <text x="692" y="136" font-size="12.5" font-weight="700">Neutrophil-rich inflammation</text>
+      <text x="692" y="155" font-size="11.5" class="mut">same damage route as macrophages · RA</text>
+      <!-- row 3 -->
+      <rect x="240" y="200" width="150" height="56" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.5"/>
+      <text x="315" y="224" font-size="14" font-weight="800" text-anchor="middle">CD8⁺ CTL</text>
+      <text x="315" y="243" font-size="11.5" text-anchor="middle" class="mut">peptide on MHC I</text>
+      <line x1="392" y1="228" x2="446" y2="228" class="ln" marker-end="url(#t4-ar)"/>
+      <text x="419" y="220" font-size="11.5" text-anchor="middle" font-weight="700">direct</text>
+      <rect x="450" y="200" width="170" height="56" rx="9" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.5"/>
+      <text x="535" y="224" font-size="13" font-weight="700" text-anchor="middle">Perforin + granzyme</text>
+      <text x="535" y="243" font-size="11.5" text-anchor="middle" class="mut">or FasL → Fas (TNFR1)</text>
+      <line x1="622" y1="228" x2="676" y2="228" class="ln" marker-end="url(#t4-ar)"/>
+      <rect x="680" y="200" width="265" height="56" rx="9" style="fill:var(--sunk);stroke:var(--line)"/>
+      <text x="692" y="224" font-size="12.5" font-weight="700">Target-cell apoptosis</text>
+      <text x="692" y="243" font-size="11.5" class="mut">T1DM β cells · graft rejection</text>
+      <text x="480" y="278" font-size="12" text-anchor="middle" class="mut">No antibody · visible at 24–72 h because cells must be recruited</text>
+    </svg></figure>
+    <div class="three">
+      <div class="card" style="--cc:var(--c3)"><h4>T<sub>H</sub>1 arm</h4>
+        <ul><li>APC releases <b>IL-12</b> → T<sub>H</sub>1</li>
+        <li><b>IFN-γ</b> activates macrophages, which:
+          <ul><li>release <b>IL-1 and TNF-α</b> → endothelium expresses leukocyte-recruiting (adhesion) receptors</li>
+          <li>release <b>enzymes and ROS</b> → tissue damage</li></ul></li>
+        <li>Macrophage-rich lesions: induration, granulomas</li></ul></div>
+      <div class="card" style="--cc:var(--c2)"><h4>T<sub>H</sub>17 arm</h4>
+        <ul><li>APC releases <b>IL-6</b> (+ TGF-β) → T<sub>H</sub>17</li>
+        <li><b>IL-17</b> recruits and activates <b>neutrophils</b></li>
+        <li>Neutrophils cause damage similar to macrophages</li></ul></div>
+      <div class="card" style="--cc:var(--c4)"><h4>CD8⁺ CTL arm</h4>
+        <ul><li>Kills targets <b>directly</b>:
+          <ol><li><b>Perforin + granzymes</b> released from cytotoxic granules → granzymes enter target → apoptosis</li>
+          <li><b>Fas ligand</b> on the CTL binds <b>Fas</b> on the target → apoptosis</li></ol></li>
+        <li>TNF binding <b>TNFR1</b> = another death-receptor route</li>
+        <li>e.g., β-cell destruction in type 1 DM, acute cellular graft rejection</li></ul></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">A lesion biopsy shows mainly macrophages and CD4⁺ T cells; another shows mainly neutrophils with T cells. Which T<sub>H</sub> subset dominates each?</span></summary><div class="a">Macrophage-rich = <b>T<sub>H</sub>1</b> (IFN-γ). Neutrophil-rich = <b>T<sub>H</sub>17</b> (IL-17).</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q9.</b> Type IV in the skin: how do the <b>tuberculin (PPD)</b> reaction and <b>contact dermatitis</b> unfold?</span></summary><div class="gqb">
+    <h4>Delayed-type hypersensitivity (tuberculin) reaction</h4>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>1 · Inject</b>Mycobacterial protein into the skin → processed by local APCs</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c1)"><b>2 · Recognize</b>Memory T<sub>H</sub>1 effector cell sees it → cytokines act on vascular endothelium</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c3)"><b>3 · Recruit</b>Macrophages, T cells and plasma leak in → <b>induration</b> at <b>24–72 h</b></div>
+    </div>
+    <ul>
+      <li>Read the PPD at <b>48–72 h</b>; <b>only induration (firm swelling) counts</b>, not redness.</li>
+      <li>Positive requires <b>prior exposure</b> (infection or BCG vaccination).</li>
+    </ul>
+    <h4>Contact hypersensitivity</h4>
+    <ul>
+      <li><b>Sensitizers = small reactive haptens</b> that bind self proteins → the hapten–self complex looks foreign:
+        <ul><li>lipid-soluble plant chemicals: <b>poison ivy urushiol</b> (pentadecacatechol)</li>
+        <li>reactive divalent cations / small metal ions: <b>nickel, chromate</b></li>
+        <li>chemicals such as <b>DNFB</b></li></ul></li>
+    </ul>
+    <div class="flow">
+      <div class="st" style="--cc:var(--c6)"><b>Penetrate</b>Sensitizer enters skin, binds self proteins</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c1)"><b>Present</b><b>Langerhans cells</b> (epidermal DCs) show haptenated peptides to T<sub>H</sub>1</div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c3)"><b>Amplify</b>IFN-γ → keratinocytes secrete IL-1, TNF-α, <b>CXCL8, CXCL9, CXCL11</b></div><div class="ar">→</div>
+      <div class="st" style="--cc:var(--c4)"><b>Lesion</b>Macrophages recruited → erythema, infiltrate, vesicles, intraepidermal abscesses</div>
+    </div>
+    <ul><li>Keratinocytes turn a small T-cell signal into a full epidermal reaction (vesicles, spongiosis). Onset over <b>1–3 days</b>.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Why does poison ivy rash appear two days after the hike rather than within minutes?</span></summary><div class="a">It is <b>type IV</b>: urushiol-modified skin proteins must be presented by Langerhans cells, memory T<sub>H</sub>1 cells must be activated, and macrophages recruited. That takes <b>1–3 days</b>; no IgE is involved.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul>
+      <li><b>False-negative PPD</b> with <b>anergy</b>: HIV, sarcoidosis, steroids/immunosuppression, overwhelming TB.</li>
+      <li><b>IGRA</b> (interferon-γ release assay) is not affected by prior <b>BCG</b>; PPD can be.</li>
+      <li>Contact allergy is diagnosed with a <b>patch test</b> (read at 48–96 h).</li>
+    </ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><ul>
+      <li>Measure PPD <b>induration</b>, not erythema.</li>
+      <li>Poison ivy / nickel dermatitis = <b>type IV</b>, not type I, despite the itch. Latex can do <b>both</b>: immediate urticaria/anaphylaxis (I) or delayed glove dermatitis (IV).</li>
+    </ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>4 T's of type IV:</b> <b>T</b> cells · <b>T</b>ransplant rejection · <b>T</b>B skin test · <b>T</b>ouching (contact dermatitis).</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist">
+      <span><b>"induration at 48–72 h"</b> → DTH / PPD</span>
+      <span><b>"linear vesicles after hiking"</b> → urushiol, type IV</span>
+      <span><b>"rash under watch / belt buckle"</b> → nickel</span>
+      <span><b>"Langerhans cell"</b> → skin APC</span>
+      <span><b>"perforin, granzyme, Fas–FasL"</b> → CD8⁺ CTL</span>
+    </div></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 1 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A man got horse-derived antivenom after a snake bite last year and receives it again today. Several days later he has fever, urticaria, joint pain, proteinuria and low C3. Explain.</span></summary><div class="a"><b>Serum sickness (type III).</b> The first dose triggered an <b>anti-isotypic</b> antibody response to horse proteins; on re-exposure, those antibodies form immune complexes with the foreign serum → deposit in joints, kidney and skin → complement consumed → inflammation.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A boy is stung by a bee and has only local swelling. Two years later, a second sting causes hives, wheeze and hypotension within minutes. Why the difference?</span></summary><div class="a"><b>Type I needs sensitization.</b> Sting 1 produced venom-specific IgE that armed his mast cells; sting 2 cross-linked that preformed IgE → systemic degranulation → anaphylaxis. Treat with IM epinephrine.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A patient on high-dose IV penicillin develops anemia with a positive direct Coombs test. Name the type and mechanism.</span></summary><div class="a"><b>Type II, extrinsic (hapten) antigen.</b> Penicillin binds the RBC membrane; penicillin-specific IgG coats the cells → complement activation and opsonization → splenic phagocytosis/lysis.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">Hours after his fourth tetanus booster in a short period, a man has a firm, red, swollen area at the injection site. Biopsy: neutrophils, complement and fibrinoid necrosis of small vessels. Diagnosis?</span></summary><div class="a"><b>Arthus reaction (local type III).</b> Injected antigen meets high titers of IgG → complexes in dermal vessel walls → complement → neutrophil influx. Not type I (no wheal in minutes) and not type IV (onset in hours, neutrophilic).</div></details>
+  <details class="ask"><summary><span class="q">A5</span><span class="qt">Predict: a patient on high-dose prednisone gets a PPD placed despite known prior TB exposure. What might the reading show, and why?</span></summary><div class="a"><b>Possible false-negative (no induration).</b> The reaction depends on memory T<sub>H</sub>1 cells and macrophage recruitment; steroids suppress both (anergy). An IGRA or clinical evaluation is needed.</div></details>
+</section>
+
+<!-- ===================== LO 2 ===================== -->
+<section class="lo" id="lo2">
+  <h2><span class="num">LO 2</span><span>Classify by mechanism</span><span class="sub">Given what the immune system is doing, name the type</span></h2>
+  <div class="goal"><b>By the end:</b> you can run a four-question decision tree on any mechanism, separate type II from type III using antigen location, immunofluorescence pattern and complement use, and handle diseases that mix types.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What questions, asked in order, sort any mechanism into a type?</span></summary><div class="gqb">
+    <figure class="wide"><svg viewBox="0 0 960 340" role="img" aria-label="Decision tree: IgE on mast cells within minutes leads to type I; otherwise antibody on an antigen fixed to a cell or matrix leads to type II; otherwise soluble antigen-antibody complexes with low C3 lead to type III; otherwise T cells without antibody at 24 to 72 hours lead to type IV">
+      <defs><marker id="dt-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker></defs>
+      <rect x="30" y="8" width="420" height="34" rx="9" class="box"/>
+      <text x="240" y="30" font-size="13.5" font-weight="800" text-anchor="middle">Read the mechanism in the stem</text>
+      <line x1="240" y1="42" x2="240" y2="58" class="ln" marker-end="url(#dt-ar)"/>
+      <rect x="30" y="62" width="420" height="48" rx="9" style="fill:var(--panel);stroke:var(--c2);stroke-width:1.5"/>
+      <text x="240" y="83" font-size="13" font-weight="700" text-anchor="middle">IgE on mast cells? Histamine within minutes?</text>
+      <text x="240" y="100" font-size="11.5" text-anchor="middle" class="mut">wheal and flare · eosinophils · late phase 8–12 h</text>
+      <rect x="30" y="132" width="420" height="48" rx="9" style="fill:var(--panel);stroke:var(--c4);stroke-width:1.5"/>
+      <text x="240" y="153" font-size="13" font-weight="700" text-anchor="middle">Antibody on an antigen FIXED to a cell / matrix?</text>
+      <text x="240" y="170" font-size="11.5" text-anchor="middle" class="mut">tissue-specific · Coombs + · linear IF · receptor block</text>
+      <rect x="30" y="202" width="420" height="48" rx="9" style="fill:var(--panel);stroke:var(--c5);stroke-width:1.5"/>
+      <text x="240" y="223" font-size="13" font-weight="700" text-anchor="middle">SOLUBLE antigen–antibody complexes deposit?</text>
+      <text x="240" y="240" font-size="11.5" text-anchor="middle" class="mut">systemic · ↓ C3/C4 · granular IF · vasculitis</text>
+      <rect x="30" y="272" width="420" height="48" rx="9" style="fill:var(--panel);stroke:var(--c1);stroke-width:1.5"/>
+      <text x="240" y="293" font-size="13" font-weight="700" text-anchor="middle">No antibody: T cells / macrophages, 24–72 h?</text>
+      <text x="240" y="310" font-size="11.5" text-anchor="middle" class="mut">IFN-γ · IL-17 · perforin/granzyme · Fas–FasL</text>
+      <line x1="240" y1="110" x2="240" y2="129" class="ln" marker-end="url(#dt-ar)"/><text x="252" y="125" font-size="11.5" class="mut">no</text>
+      <line x1="240" y1="180" x2="240" y2="199" class="ln" marker-end="url(#dt-ar)"/><text x="252" y="195" font-size="11.5" class="mut">no</text>
+      <line x1="240" y1="250" x2="240" y2="269" class="ln" marker-end="url(#dt-ar)"/><text x="252" y="265" font-size="11.5" class="mut">no</text>
+      <line x1="452" y1="86" x2="556" y2="86" class="ln" marker-end="url(#dt-ar)"/><text x="504" y="80" font-size="11.5" text-anchor="middle" font-weight="700">yes</text>
+      <line x1="452" y1="156" x2="556" y2="156" class="ln" marker-end="url(#dt-ar)"/><text x="504" y="150" font-size="11.5" text-anchor="middle" font-weight="700">yes</text>
+      <line x1="452" y1="226" x2="556" y2="226" class="ln" marker-end="url(#dt-ar)"/><text x="504" y="220" font-size="11.5" text-anchor="middle" font-weight="700">yes</text>
+      <line x1="452" y1="296" x2="556" y2="296" class="ln" marker-end="url(#dt-ar)"/><text x="504" y="290" font-size="11.5" text-anchor="middle" font-weight="700">yes</text>
+      <rect x="560" y="62" width="380" height="48" rx="9" style="fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.6"/>
+      <text x="574" y="83" font-size="14" font-weight="800" style="fill:var(--c2)">TYPE I · immediate</text>
+      <text x="574" y="100" font-size="11.5" class="mut">anaphylaxis · asthma · hay fever · hives</text>
+      <rect x="560" y="132" width="380" height="48" rx="9" style="fill:var(--c4-soft);stroke:var(--c4);stroke-width:1.6"/>
+      <text x="574" y="153" font-size="14" font-weight="800" style="fill:var(--c4)">TYPE II · cytotoxic / receptor</text>
+      <text x="574" y="170" font-size="11.5" class="mut">AIHA · HDN · Goodpasture · MG · Graves · pemphigus</text>
+      <rect x="560" y="202" width="380" height="48" rx="9" style="fill:var(--c5-soft);stroke:var(--c5);stroke-width:1.6"/>
+      <text x="574" y="223" font-size="14" font-weight="800" style="fill:var(--c5)">TYPE III · immune complex</text>
+      <text x="574" y="240" font-size="11.5" class="mut">SLE · PSGN · serum sickness · Arthus</text>
+      <rect x="560" y="272" width="380" height="48" rx="9" style="fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.6"/>
+      <text x="574" y="293" font-size="14" font-weight="800" style="fill:var(--c1)">TYPE IV · delayed T cell</text>
+      <text x="574" y="310" font-size="11.5" class="mut">PPD · contact dermatitis · T1DM · Hashimoto · graft</text>
+    </svg></figure>
+    <h4>Classify each mechanism</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Mechanism described</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>Allergen cross-links IgE on mast cells → histamine within minutes</td><th>I</th></tr>
+        <tr><td>IgG binds an antigen fixed on red cells → complement, opsonization</td><th>II</th></tr>
+        <tr><td>Antibody binds a receptor and blocks or stimulates it (no cell death)</td><th>II</th></tr>
+        <tr><td>NK cells use CD16 to kill antibody-coated cells</td><th>II</th></tr>
+        <tr><td>Soluble antigen–IgG complexes deposit in glomeruli and vessel walls; ↓ C3</td><th>III</th></tr>
+        <tr><td>Neutrophils release enzymes at vessel walls after complexes fix complement (hours after local injection)</td><th>III</th></tr>
+        <tr><td>Sensitized T<sub>H</sub>1 cells release IFN-γ → macrophages; lesion at 48 h</td><th>IV</th></tr>
+        <tr><td>CD8⁺ T cells kill target cells via perforin/granzyme or Fas–FasL</td><th>IV</th></tr>
+      </tbody></table></div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">"IL-17 recruits neutrophils that damage the tissue." Type?</span></summary><div class="a"><b>Type IV</b> (T<sub>H</sub>17 arm). Neutrophils appear in type III too, but there they are summoned by complement from immune complexes; here the driver is a <b>T cell</b> with no antibody.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> Types II and III both use IgG. How do you tell them apart?</span></summary><div class="gqb">
+    <div class="scroll"><table>
+      <thead><tr><th>Feature</th><th>Type II</th><th>Type III</th></tr></thead>
+      <tbody>
+        <tr><th>Antibody</th><td>IgG (IgM)</td><td>IgG</td></tr>
+        <tr><th>Antigen</th><td><b>Bound to a cell surface or matrix</b> (intrinsic, or drug attached)</td><td><b>Soluble</b> → antigen–antibody complexes</td></tr>
+        <tr><th>Distribution</th><td><b>Tissue-specific</b> (wherever the antigen is)</td><td><b>Systemic</b> (wherever complexes deposit)</td></tr>
+        <tr><th>Complement use</th><td>Small amounts, local</td><td><b>Large amounts → ↓ serum C3/C4</b></td></tr>
+        <tr><th>Kidney IF</th><td><b>Linear</b> (anti-GBM)</td><td><b>Granular / lumpy-bumpy</b></td></tr>
+        <tr><th>Prototype</th><td>Autoimmune hemolytic anemia</td><td>SLE, serum sickness</td></tr>
+      </tbody></table></div>
+    <ul><li><b>Deciding question:</b> is the antibody stuck to a cell or tissue (II), or did it meet soluble antigen and then deposit as a complex (III)?</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Kidney biopsy: smooth, ribbon-like IgG outlining the GBM. Type II or III?</span></summary><div class="a"><b>Type II.</b> A <b>linear</b> pattern means antibody bound evenly to a <b>fixed</b> antigen (type IV collagen). Immune-complex deposits would look <b>granular</b>.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> What do you do with diseases that use more than one type?</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c5)"><h4>Rheumatoid arthritis <span class="tag" style="--cc:var(--c5)">III + IV</span></h4>
+        <p><b>III:</b> rheumatoid factor (autoantibody to IgG)–IgG complexes in the joint → complement, neutrophils.</p>
+        <p><b>IV:</b> T<sub>H</sub>1/T<sub>H</sub>17 cells and macrophages in the synovium → TNF, IL-1, IL-6.</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>SLE <span class="tag" style="--cc:var(--c5)">III (also II, IV)</span></h4>
+        <p><b>Predominantly III</b>: anti-DNA/nucleoprotein complexes → nephritis, rash, arthritis.</p>
+        <p><b>II</b> components: autoantibody cytopenias. Some <b>IV</b> contribution.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Hashimoto thyroiditis <span class="tag" style="--cc:var(--c1)">IV</span></h4>
+        <p>Has antibodies (anti-TPO, anti-thyroglobulin), but <b>T-cell destruction</b> drives gland loss → classify as IV.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Type 1 diabetes <span class="tag" style="--cc:var(--c1)">IV</span></h4>
+        <p>Islet autoantibodies are <b>markers</b>; <b>CD8⁺ CTLs</b> (perforin/granzyme, Fas–FasL) destroy β cells.</p></div>
+    </div>
+    <ul><li><b>Rule:</b> classify by what <b>causes the tissue damage</b>, not by which antibodies are measurable.</li>
+    <li><b>Autoimmune diseases are never type I.</b></li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Hashimoto patients have high anti-TPO antibody. Why isn't it classed as type II?</span></summary><div class="a">The antibodies are diagnostic markers; the gland is destroyed mainly by <b>T cells</b> (CD8⁺ killing, T<sub>H</sub>1), so the damaging mechanism is <b>type IV</b>.</div></details>
+  </div></details>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb"><ul>
+      <li>Goodpasture target = <b>α3 chain of type IV collagen</b> (anti-GBM) → hemoptysis + hematuria, linear IF.</li>
+      <li>PSGN: 2–4 weeks after strep pharyngitis or impetigo, cola urine, periorbital edema, HTN, <b>↓ C3</b>, granular IF.</li>
+      <li>Boards phrase type II receptor diseases as "non-cytotoxic" or "antibody-mediated cellular dysfunction."</li>
+    </ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><ul>
+      <li>Neutrophils ≠ automatically type III: T<sub>H</sub>17 (type IV) and type II complement-mediated inflammation also bring neutrophils. Look for <b>who called them</b>.</li>
+      <li>Linear vs granular IF is the fastest II vs III discriminator in a renal vignette.</li>
+      <li>Some sources list SLE under type II; teach it as <b>predominantly III</b> with II components.</li>
+    </ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Ask in order:</b> "<b>E</b>? <b>F</b>ixed? <b>S</b>oluble? <b>T</b>?" → I, II, III, IV ("<b>EFST</b>: Every Fact Sorts Types").</p></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 2 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">A woman has fluctuating weakness that worsens through the day; her antibodies cause acetylcholine receptors to be internalized and degraded. Type and subtype?</span></summary><div class="a"><b>Type II, non-cytotoxic</b> (antibody-mediated cellular dysfunction) → myasthenia gravis. Graves is the stimulating counterpart (anti-TSH receptor).</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">A young man has hemoptysis and hematuria; kidney biopsy shows linear IgG along the GBM. Type, and is the antigen intrinsic or extrinsic?</span></summary><div class="a"><b>Type II, intrinsic antigen</b>: autoantibody against type IV collagen of glomerular and alveolar basement membranes (Goodpasture syndrome).</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">Two weeks after impetigo, a 7-year-old has cola-colored urine, periorbital edema and hypertension. C3 is low; biopsy shows granular deposits. Type?</span></summary><div class="a"><b>Type III</b>: post-streptococcal glomerulonephritis. Strep antigen–antibody complexes deposit in glomeruli → complement consumption → neutrophilic inflammation.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">A research islet biopsy from a child with new polyuria and weight loss shows CD8⁺ T cells destroying β cells. Type?</span></summary><div class="a"><b>Type IV</b>: CTL-mediated (perforin/granzyme, Fas–FasL) destruction in type 1 diabetes. Islet autoantibodies are markers, not the main effectors.</div></details>
+  <details class="ask"><summary><span class="q">A5</span><span class="qt">Synovial fluid in RA contains rheumatoid factor–IgG complexes and the synovium is packed with T<sub>H</sub>1/T<sub>H</sub>17 cells and macrophages. Which types?</span></summary><div class="a"><b>Both III and IV.</b> Complexes → complement and neutrophils (III); T cells and macrophages → TNF, IL-1, IL-6 (IV).</div></details>
+</section>
+
+<!-- ===================== LO 3 ===================== -->
+<section class="lo" id="lo3">
+  <h2><span class="num">LO 3</span><span>Classic examples</span><span class="sub">Match diseases and scenarios to their hypersensitivity type</span></h2>
+  <div class="goal"><b>By the end:</b> you can give at least three examples of each type, explain the antigen in each, and recognize them from a short vignette.</div>
+
+  <details class="gq"><summary><span class="qt"><b>Q1.</b> What does type I look like in patients?</span></summary><div class="gqb">
+    <ul><li>Same mechanism every time (IgE + mast cells); the <b>clinical picture depends on route and dose</b>.</li></ul>
+    <div class="scroll"><table>
+      <thead><tr><th>Reaction</th><th>Common allergens</th><th>Route</th><th>Response</th></tr></thead>
+      <tbody>
+        <tr><th>Systemic anaphylaxis</th><td>Drugs, venoms, peanuts, serum</td><td>Intravenous (directly or after oral absorption)</td><td>Edema, ↑ permeability, <b>laryngeal edema</b>, circulatory collapse, death</td></tr>
+        <tr><th>Acute urticaria (wheal and flare)</th><td>Animal hair, insect bites, allergy testing</td><td>Skin</td><td>Local ↑ blood flow and permeability, edema</td></tr>
+        <tr><th>Allergic rhinoconjunctivitis (hay fever)</th><td>Pollens, dust-mite feces</td><td>Conjunctiva, nasal mucosa</td><td>Edema of conjunctiva and nasal mucosa, sneezing</td></tr>
+        <tr><th>Asthma</th><td>Danders, pollens, dust-mite feces</td><td>Inhalation to lower airways</td><td>Bronchoconstriction, mucus, airway inflammation</td></tr>
+        <tr><th>Food allergy</th><td>Peanuts, tree nuts, shellfish, milk, eggs, wheat</td><td>Oral</td><td>Vomiting, diarrhea, pruritus, urticaria, (rarely) anaphylaxis</td></tr>
+      </tbody></table></div>
+    <ul><li><b>Atopic dermatitis</b> = type I (IgE-mediated, T<sub>H</sub>2-driven) atopic disease with mast-cell and eosinophil activation in the skin, on top of a <b>defective skin barrier</b>. Same atopic family as allergic asthma and rhinitis.</li></ul>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Minutes after a peanut cookie, a 9-year-old with known peanut allergy has hives, lip swelling, wheeze and hypotension. Antibody, cell, mediator?</span></summary><div class="a"><b>IgE, mast cells/basophils, preformed histamine</b> (plus leukotrienes). Fast because sensitization already armed the mast cells; oral antigen absorbed into blood → systemic activation.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q2.</b> Which diseases are type II, and what is the antigen in each?</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c4)"><h4>Autoimmune hemolytic anemia</h4><p>IgG (± drug hapten) on RBCs → opsonization, complement. <b>Direct Coombs +</b>. Penicillin = extrinsic antigen.</p></div>
+      <div class="dcard" style="--cc:var(--c4)"><h4>Hemolytic disease of the newborn</h4><p>Maternal <b>anti-Rh IgG</b> crosses placenta → fetal RBC destruction. Prevent with RhoGAM.</p></div>
+      <div class="dcard" style="--cc:var(--c4)"><h4>ABO transfusion reaction</h4><p>Preformed anti-A/B antibody → complement-mediated hemolysis of donor RBCs.</p></div>
+      <div class="dcard" style="--cc:var(--c4)"><h4>Goodpasture syndrome</h4><p>Intrinsic antigen: <b>type IV collagen</b> of glomerular and alveolar basement membranes → hematuria + hemoptysis, linear IF.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Myasthenia gravis <span class="tag" style="--cc:var(--c1)">non-cytotoxic</span></h4><p>Anti-<b>AChR</b> blocks and internalizes receptors → fatigable weakness.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Graves disease <span class="tag" style="--cc:var(--c1)">non-cytotoxic</span></h4><p>Anti-<b>TSH receptor</b> <b>stimulates</b> → hyperthyroidism.</p></div>
+      <div class="dcard" style="--cc:var(--c4)"><h4>Pemphigus vulgaris</h4><p>Anti-<b>desmoglein</b> (desmosomes) → intraepidermal blisters.</p></div>
+      <div class="dcard" style="--cc:var(--c4)"><h4>Bullous pemphigoid</h4><p>Anti-<b>hemidesmosome</b> → subepidermal blisters.</p></div>
+      <div class="dcard" style="--cc:var(--c4)"><h4>Rheumatic fever / heart disease</h4><p><b>Molecular mimicry</b>: anti-strep antibody cross-reacts with <b>cardiac myosin</b>.</p></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Which two type II skin diseases target structural adhesion proteins, and at what level do they split the skin?</span></summary><div class="a"><b>Pemphigus vulgaris</b> (desmoglein → intraepidermal split) and <b>bullous pemphigoid</b> (hemidesmosome → subepidermal split).</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q3.</b> Which diseases are type III?</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c5)"><h4>Systemic lupus erythematosus</h4><p>IgG against <b>DNA and nucleoproteins</b> from dying cells → complexes in kidney (<b>lupus nephritis</b>), skin, joints, serosa, vessels → ↓ C3/C4.</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>Post-streptococcal GN</h4><p>Strep antigen–antibody complexes in glomeruli after pharyngitis or impetigo; granular deposits, ↓ C3.</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>Serum sickness</h4><p>Antibodies to a <b>foreign serum</b> (e.g., anti-snake serum for a human bite), chimeric mAbs, drugs → systemic complexes.</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>Arthus reaction</h4><p>Local complexes at an injection site (repeat boosters) → neutrophils, fibrinoid necrosis.</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>Rheumatoid arthritis</h4><p>RF–IgG complexes in joints (type III) plus T-cell synovitis (type IV).</p></div>
+      <div class="dcard" style="--cc:var(--c5)"><h4>Hypersensitivity pneumonitis</h4><p>Inhaled spores, fungi, dried fecal proteins → Arthus-like lung reaction.</p></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">What single lab value links SLE, PSGN and serum sickness?</span></summary><div class="a"><b>Low serum C3</b> (often C4 too): all three consume complement through deposited immune complexes.</div></details>
+  </div></details>
+
+  <details class="gq"><summary><span class="qt"><b>Q4.</b> Which diseases are type IV?</span></summary><div class="gqb">
+    <div class="dgrid">
+      <div class="dcard" style="--cc:var(--c1)"><h4>Contact dermatitis</h4><p>Poison ivy (urushiol), nickel, chromate, latex gloves → Langerhans cells → T<sub>H</sub>1; vesicles at 1–3 days.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Mantoux / PPD test</h4><p>Memory T<sub>H</sub>1 + macrophages → <b>induration</b> at 48–72 h.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Type 1 diabetes</h4><p>CD8⁺ CTLs destroy β cells (perforin/granzyme, Fas–FasL).</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Hashimoto thyroiditis</h4><p>T-cell destruction of the thyroid; anti-TPO/anti-thyroglobulin are markers.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Graft rejection (acute cellular)</h4><p>Host T cells recognize donor MHC → CTL killing, T<sub>H</sub>1 inflammation.</p></div>
+      <div class="dcard" style="--cc:var(--c1)"><h4>Celiac disease (gluten sensitivity)</h4><p>Gliadin-specific, <b>HLA-DQ2/DQ8</b>-restricted CD4⁺ T<sub>H</sub>1 cells and intraepithelial CD8⁺ T cells damage villi. Anti-tTG/endomysial IgA = diagnostic markers.</p></div>
+    </div>
+    <details class="ask"><summary><span class="q">Check</span><span class="qt">Gluten triggers celiac disease. Is it a food "allergy" in the type I sense?</span></summary><div class="a"><b>No.</b> Celiac damage is <b>type IV</b> (T cells against gliadin). A true wheat allergy with hives/anaphylaxis would be type I (IgE).</div></details>
+  </div></details>
+
+  <h4>Master disease table</h4>
+  <div class="scroll"><table>
+    <thead><tr><th>Disease</th><th>Type</th><th>Key antigen / mechanism</th></tr></thead>
+    <tbody>
+      <tr><td>Anaphylaxis, allergic asthma, hay fever</td><th>I</th><td>IgE on mast cells</td></tr>
+      <tr><td>Atopic dermatitis</td><th>I</th><td>IgE / T<sub>H</sub>2 (with barrier defect)</td></tr>
+      <tr><td>Autoimmune hemolytic anemia, drug-induced hemolysis</td><th>II</th><td>IgG on RBCs (± drug hapten)</td></tr>
+      <tr><td>Hemolytic disease of the newborn</td><th>II</th><td>Maternal anti-Rh IgG</td></tr>
+      <tr><td>Goodpasture syndrome</td><th>II</th><td>Anti-type IV collagen (GBM, alveoli)</td></tr>
+      <tr><td>Myasthenia gravis / Graves disease</td><th>II (non-cytotoxic)</th><td>Block AChR / stimulate TSH-R</td></tr>
+      <tr><td>Pemphigus vulgaris / bullous pemphigoid</td><th>II</th><td>Anti-desmoglein / anti-hemidesmosome</td></tr>
+      <tr><td>Rheumatic fever</td><th>II</th><td>Anti-strep cross-reacts with cardiac myosin</td></tr>
+      <tr><td>SLE, lupus nephritis</td><th>III (also II, IV)</th><td>Anti-DNA/nucleoprotein immune complexes</td></tr>
+      <tr><td>Post-strep GN, serum sickness, Arthus</td><th>III</th><td>Immune complexes</td></tr>
+      <tr><td>Rheumatoid arthritis</td><th>III + IV</th><td>RF–IgG complexes + T<sub>H</sub>1/T<sub>H</sub>17 synovitis</td></tr>
+      <tr><td>Contact dermatitis, PPD reaction</td><th>IV</th><td>T<sub>H</sub>1 + macrophages</td></tr>
+      <tr><td>Type 1 diabetes, Hashimoto thyroiditis, graft rejection, celiac</td><th>IV</th><td>T cells (CD8 killing, T<sub>H</sub>1)</td></tr>
+    </tbody></table></div>
+  <div class="coset">
+    <details class="co s1"><summary class="t">Step 1 HY</summary><div class="cb">
+      <p><b>Pemphigus vs pemphigoid</b></p>
+      <ul><li><b>Pemphigus vulgaris:</b> flaccid blisters, <b>oral involvement</b>, <b>Nikolsky +</b>, net-like (intercellular) IF.</li>
+      <li><b>Bullous pemphigoid:</b> tense blisters, elderly, usually no oral lesions, <b>Nikolsky −</b>, <b>linear IF at the basement membrane</b>.</li></ul></div></details>
+    <details class="co trap"><summary class="t">Step 1 trap</summary><div class="cb"><ul>
+      <li>Rheumatic fever is <b>type II</b> (mimicry), while PSGN after the same organism is <b>type III</b>.</li>
+      <li>"Arthritis" alone does not mean one type: RA = III + IV; serum sickness arthralgia = III.</li>
+      <li>Penicillin can cause type I (anaphylaxis), II (hemolysis), III (serum sickness-like) and IV (rash): read the mechanism.</li>
+    </ul></div></details>
+    <details class="co mem"><summary class="t">Memory tool</summary><div class="cb"><p><b>Type II = "antibody to a thing you can point at"</b>: RBC, GBM, AChR, TSH-R, desmoglein, hemidesmosome, cardiac myosin.</p><p><b>Type III = "SAP":</b> <b>S</b>LE, <b>A</b>rthus, <b>P</b>SGN (+ serum sickness).</p></div></details>
+    <details class="co bz"><summary class="t">Buzzwords</summary><div class="cb"><div class="bzlist">
+      <span><b>"Nikolsky +, oral erosions"</b> → pemphigus (II)</span>
+      <span><b>"tense bullae, elderly"</b> → pemphigoid (II)</span>
+      <span><b>"hemoptysis + hematuria"</b> → Goodpasture (II)</span>
+      <span><b>"anti-dsDNA, ↓C3"</b> → SLE (III)</span>
+      <span><b>"HLA-DQ2/DQ8"</b> → celiac (IV)</span>
+    </div></div></details>
+  </div>
+
+  <h3><span class="step">Apply</span>LO 3 application questions</h3>
+  <details class="ask"><summary><span class="q">A1</span><span class="qt">Two days after hiking, a woman has linear, itchy vesicles on her forearms where she brushed plants. Which skin cell first presented the antigen, and what type of reaction is this?</span></summary><div class="a"><b>Langerhans cells</b> presented urushiol-modified proteins → <b>T<sub>H</sub>1-mediated type IV contact dermatitis</b>. Onset over 1–3 days = delayed.</div></details>
+  <details class="ask"><summary><span class="q">A2</span><span class="qt">An Rh⁻ woman delivers an Rh⁺ baby. What should she receive, and what does it prevent?</span></summary><div class="a"><b>RhoGAM (anti-Rh(D) IgG) within 72 h.</b> It clears fetal Rh⁺ RBCs before her B cells respond, preventing anti-Rh memory and type II HDN in the next Rh⁺ pregnancy.</div></details>
+  <details class="ask"><summary><span class="q">A3</span><span class="qt">A 70-year-old has tense blisters on the trunk, no oral lesions, and linear IgG/C3 at the basement membrane. Type and target?</span></summary><div class="a"><b>Type II, bullous pemphigoid</b>: antibody to <b>hemidesmosomes</b> → subepidermal blisters.</div></details>
+  <details class="ask"><summary><span class="q">A4</span><span class="qt">A woman develops an itchy rash under her new watch band 2 days after starting to wear it. Type and likely sensitizer?</span></summary><div class="a"><b>Type IV contact dermatitis to nickel</b>, a small metal ion hapten that binds skin proteins. Confirm with a patch test.</div></details>
+  <details class="ask"><summary><span class="q">A5</span><span class="qt">Which of these is the odd one out by type: Goodpasture, myasthenia gravis, rheumatic fever, lupus nephritis?</span></summary><div class="a"><b>Lupus nephritis</b> (type III, immune complexes). The others are type II (fixed-antigen antibodies).</div></details>
+</section>
+
+<!-- ===================== MCQ ===================== -->
+<section class="lo" id="mcq">
+  <h2><span class="num">MCQ</span><span>Practice questions</span><span class="sub">Click an answer to see the explanation.</span></h2>
+  <div class="tools"><span class="score" id="score">Score: 0 / 0</span><button type="button" id="resetq">Reset</button></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">1</span>A 32-year-old beekeeper is stung on the hand. Within 5 minutes she develops generalized hives, throat tightness, wheezing and a blood pressure of 78/40 mm Hg. She had a mild local reaction to a sting last summer. Which event most directly initiated her reaction?</p>
+    <div class="opts"><button data-k="A">A. IgG binding venom on her own cells and fixing complement</button><button data-k="B">B. Free serum IgE neutralizing histamine in the blood</button><button data-k="C">C. Venom bridging IgE bound to FcεRI on mast cells</button><button data-k="D">D. Memory T<sub>H</sub>1 cells releasing IFN-γ at the sting site</button><button data-k="E">E. Venom–IgG complexes depositing in small vessels</button></div>
+    <div class="exp" hidden><b>C.</b> Type I anaphylaxis: prior sting sensitized her; now multivalent venom cross-links preformed IgE on FcεRI → degranulation within minutes. A is type II; B is wrong (IgE doesn't neutralize histamine, and most IgE is cell-bound); D is type IV (24–72 h); E is type III (hours to days).</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">2</span>Ten minutes into a transfusion of packed RBCs, a 58-year-old man develops fever, chills, flank pain and hypotension; his urine turns red-brown. A clerical error is found: type A blood was given to a type O recipient. Which mechanism best explains the hemolysis?</p>
+    <div class="opts"><button data-k="A">A. Preformed recipient antibody binding donor RBC antigens and activating complement</button><button data-k="B">B. Donor IgE cross-linking recipient mast cells</button><button data-k="C">C. Recipient CD8⁺ T cells killing donor RBCs via Fas–FasL</button><button data-k="D">D. Soluble A antigen forming circulating complexes that deposit in the kidney</button><button data-k="E">E. Donor leukocyte cytokines causing fever only</button></div>
+    <div class="exp" hidden><b>A.</b> ABO mismatch is type II: preformed anti-A antibodies (IgM, IgG) bind donor RBCs → classical complement → MAC → intravascular hemolysis, hemoglobinuria. B would be an allergic transfusion reaction; C describes type IV (RBCs lack MHC I); D is a type III idea; E describes febrile nonhemolytic reaction, which lacks hemolysis.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">3</span>A 26-year-old health-care worker has a PPD placed. At 72 hours there is 15 mm of firm induration. Which process is chiefly responsible for the induration?</p>
+    <div class="opts"><button data-k="A">A. Histamine release from dermal mast cells</button><button data-k="B">B. IgG–antigen complexes fixing complement in dermal vessels</button><button data-k="C">C. NK-cell killing of antibody-coated keratinocytes</button><button data-k="D">D. Neutrophil release of enzymes after C5a recruitment</button><button data-k="E">E. IFN-γ from memory T<sub>H</sub>1 cells recruiting and activating macrophages</button></div>
+    <div class="exp" hidden><b>E.</b> Delayed-type (type IV) hypersensitivity: memory T<sub>H</sub>1 cells recognize mycobacterial antigen and release IFN-γ → macrophages and T cells accumulate → induration at 48–72 h. A is type I (minutes); B and D are type III/Arthus (hours, neutrophilic); C is type II ADCC.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">4</span>Eight days after starting a chimeric monoclonal antibody for Crohn disease, a 35-year-old man develops fever, an urticarial rash, polyarthralgia, lymphadenopathy and mild proteinuria. Which laboratory finding is most expected?</p>
+    <div class="opts"><button data-k="A">A. Elevated serum C3 and C4</button><button data-k="B">B. Decreased serum C3</button><button data-k="C">C. Positive direct Coombs test</button><button data-k="D">D. Linear IgG along the GBM</button><button data-k="E">E. Markedly elevated serum tryptase</button></div>
+    <div class="exp" hidden><b>B.</b> Serum sickness (type III): antibodies to the foreign (mouse) portions form immune complexes → deposit → complement consumed → low C3/C4. A is the opposite. C points to type II RBC antibody. D is anti-GBM (type II). E marks acute mast-cell degranulation (type I).</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">5</span>A 29-year-old woman has double vision and ptosis that worsen toward evening and improve with rest. Her serum contains antibodies to the nicotinic acetylcholine receptor. How do these antibodies produce disease?</p>
+    <div class="opts"><button data-k="A">A. IgE cross-linking on neuromuscular-junction mast cells</button><button data-k="B">B. Immune complexes depositing in skeletal-muscle capillaries</button><button data-k="C">C. CD8⁺ T-cell killing of motor neurons</button><button data-k="D">D. Binding receptors, blocking and internalizing them without killing the cell</button><button data-k="E">E. Stimulating the receptor to cause continuous depolarization</button></div>
+    <div class="exp" hidden><b>D.</b> Myasthenia gravis = type II, non-cytotoxic (antibody-mediated cellular dysfunction): anti-AChR blocks and down-regulates receptors. E describes the stimulating form (Graves, TSH-R). A, B, C are types I, III and IV.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">6</span>A 27-year-old Rh-negative woman at 12 weeks of her second pregnancy had an Rh-positive first child and did not receive prophylaxis. Which test best determines whether she has anti-Rh antibodies?</p>
+    <div class="opts"><button data-k="A">A. Indirect Coombs test on her serum</button><button data-k="B">B. Direct Coombs test on her RBCs</button><button data-k="C">C. Direct Coombs test on her serum</button><button data-k="D">D. Skin-prick test with Rh antigen</button><button data-k="E">E. Serum C3 and C4 levels</button></div>
+    <div class="exp" hidden><b>A.</b> Free antibody in the mother's serum is detected by mixing her serum with Rh⁺ reagent RBCs and anti-human globulin (indirect Coombs). B would be negative: her Rh⁻ RBCs carry no anti-Rh. C mislabels the test (direct = on RBCs). D tests IgE. E reflects immune-complex disease.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">7</span>A 23-year-old man has hemoptysis and rising creatinine. Renal biopsy shows crescentic glomerulonephritis with smooth linear IgG along the glomerular basement membrane. Which statement best describes his disease mechanism?</p>
+    <div class="opts"><button data-k="A">A. Type I; IgE against inhaled antigens</button><button data-k="B">B. Type III; circulating complexes of soluble antigen</button><button data-k="C">C. Type II; antibody against a fixed basement-membrane antigen</button><button data-k="D">D. Type IV; T<sub>H</sub>1 granulomas in lung and kidney</button><button data-k="E">E. Type II; antibody against an extrinsic drug hapten</button></div>
+    <div class="exp" hidden><b>C.</b> Goodpasture syndrome: autoantibody to the α3 chain of type IV collagen (an intrinsic, fixed antigen) in glomerular and alveolar basement membranes → linear IF. B would give granular deposits. E has the right type but the wrong (extrinsic) antigen. A and D do not fit.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">8</span>A 40-year-old farm worker who received several tetanus boosters over the past few years gets another after a laceration. Six hours later there is a painful, firm, hemorrhagic swelling at the injection site. Biopsy shows neutrophils and fibrinoid necrosis of dermal vessels. What is the best explanation?</p>
+    <div class="opts"><button data-k="A">A. Type I wheal-and-flare reaction</button><button data-k="B">B. Type II ADCC against tetanus-coated keratinocytes</button><button data-k="C">C. Type IV delayed-type hypersensitivity</button><button data-k="D">D. Systemic serum sickness</button><button data-k="E">E. Localized immune-complex (Arthus) reaction</button></div>
+    <div class="exp" hidden><b>E.</b> High titers of preformed IgG meet injected toxoid locally → complexes in vessel walls → complement, C5a, mast-cell FcγRIII engagement → neutrophil influx and vessel necrosis within hours. A occurs within minutes and lacks necrosis. C peaks at 48–72 h with mononuclear cells. D is systemic and takes days. B is not a recognized mechanism here.</div></div>
+
+  <div class="mcq" data-ans="B"><p class="stem"><span class="qn">9</span>A 30-year-old woman with chronic diarrhea and iron-deficiency anemia has villous atrophy and intraepithelial lymphocytosis on duodenal biopsy. She is HLA-DQ2 positive and has anti-tissue transglutaminase IgA. Which hypersensitivity type mainly causes the mucosal damage?</p>
+    <div class="opts"><button data-k="A">A. Type I, IgE against wheat proteins</button><button data-k="B">B. Type IV, gliadin-specific T cells</button><button data-k="C">C. Type II, anti-tTG IgA killing enterocytes</button><button data-k="D">D. Type III, gliadin–IgA complexes in villous capillaries</button><button data-k="E">E. Type II, receptor-stimulating antibodies</button></div>
+    <div class="exp" hidden><b>B.</b> Celiac disease: DQ2/DQ8-restricted CD4⁺ T<sub>H</sub>1 cells against deamidated gliadin plus intraepithelial CD8⁺ T cells damage villi. Anti-tTG IgA is a diagnostic marker, not the main effector (C). A describes true wheat allergy. D and E are not the mechanism.</div></div>
+
+  <div class="mcq" data-ans="D"><p class="stem"><span class="qn">10</span>Two days after clearing brush, a 19-year-old develops streaks of itchy vesicles on his forearms. Which cell first presented the sensitizing antigen in his skin?</p>
+    <div class="opts"><button data-k="A">A. Mast cell</button><button data-k="B">B. Keratinocyte</button><button data-k="C">C. Neutrophil</button><button data-k="D">D. Langerhans cell</button><button data-k="E">E. Plasma cell</button></div>
+    <div class="exp" hidden><b>D.</b> Urushiol binds skin proteins; epidermal dendritic cells (Langerhans cells) present the haptenated peptides to T<sub>H</sub>1 cells (type IV). Keratinocytes (B) amplify later with IL-1, TNF-α and chemokines but are not the initial APC. A is type I; C and E are not APCs for this response.</div></div>
+
+  <div class="mcq" data-ans="A"><p class="stem"><span class="qn">11</span>A 24-year-old with allergic asthma has an early wheeze after cat exposure that resolves, then a second episode of airway narrowing 9 hours later with sputum eosinophilia. A monoclonal antibody against which cytokine would most directly reduce the cell driving the second episode?</p>
+    <div class="opts"><button data-k="A">A. IL-5</button><button data-k="B">B. IL-12</button><button data-k="C">C. IL-17</button><button data-k="D">D. IFN-γ</button><button data-k="E">E. IL-2</button></div>
+    <div class="exp" hidden><b>A.</b> The late phase (8–12 h) is driven by recruited eosinophils; IL-5 controls eosinophil production and activation (mepolizumab/reslizumab). B and D drive T<sub>H</sub>1 (type IV); C is T<sub>H</sub>17; E is T-cell growth factor.</div></div>
+
+  <div class="mcq" data-ans="E"><p class="stem"><span class="qn">12</span>A 45-year-old man collapses with hypotension and diffuse urticaria minutes after an IV antibiotic. He is resuscitated with IM epinephrine. Which serum test drawn within a few hours best confirms mast-cell degranulation?</p>
+    <div class="opts"><button data-k="A">A. C3 and C4</button><button data-k="B">B. Direct Coombs test</button><button data-k="C">C. Total IgG</button><button data-k="D">D. Interferon-γ release assay</button><button data-k="E">E. Tryptase</button></div>
+    <div class="exp" hidden><b>E.</b> Tryptase is a mast-cell granule enzyme released with histamine; a raised level confirms anaphylaxis. A tracks immune-complex disease; B detects antibody on RBCs; C is nonspecific; D detects TB-specific T-cell memory.</div></div>
+
+  <div class="mcq" data-ans="C"><p class="stem"><span class="qn">13</span>A 9-year-old has cola-colored urine, periorbital edema and hypertension 3 weeks after impetigo. Serum C3 is low and biopsy shows granular "lumpy-bumpy" IgG and C3 deposits. Which mechanism best explains the glomerular injury?</p>
+    <div class="opts"><button data-k="A">A. Antibody against a fixed collagen antigen of the GBM</button><button data-k="B">B. Anti-streptococcal antibody cross-reacting with cardiac myosin</button><button data-k="C">C. Streptococcal antigen–antibody complexes depositing and activating complement</button><button data-k="D">D. T<sub>H</sub>17 cells recruiting neutrophils</button><button data-k="E">E. IgE-mediated mast-cell degranulation in the kidney</button></div>
+    <div class="exp" hidden><b>C.</b> Post-streptococcal GN is type III: circulating complexes deposit → complement consumed (↓C3) → neutrophils. A is Goodpasture (linear IF). B is rheumatic fever (type II mimicry). D and E do not fit granular deposits or low complement.</div></div>
+</section>
+
+<!-- ===================== REVIEW ===================== -->
+<section class="lo" id="review">
+  <h2><span class="num">✓</span><span>Rapid review</span></h2>
+  <ul class="check">
+    <li><input id="r1" type="checkbox"><label for="r1"><b>ACID</b>: Anaphylactic (I), Cytotoxic (II), Immune complex (III), Delayed (IV). I–III = antibody; IV = T cells only.</label></li>
+    <li><input id="r2" type="checkbox"><label for="r2">Type I sensitization: DC + <b>co-stimulation</b> → T<sub>H</sub>2 → <b>IL-4</b> → IgE → binds <b>FcεRI</b> on mast cells. First exposure = no symptoms.</label></li>
+    <li><input id="r3" type="checkbox"><label for="r3">Der p 1 cleaves <b>occludin</b>; Der p 2 mimics <b>MD-2</b> (TLR4); C-type lectins (DC-SIGN, dectin-2, mannose receptor) also sense allergens.</label></li>
+    <li><input id="r4" type="checkbox"><label for="r4">Degranulation needs <b>≥2 IgE cross-linked</b>. IgE is lowest in serum but "locked and loaded" on mast cells (free t½ ~2 days).</label></li>
+    <li><input id="r5" type="checkbox"><label for="r5">Early phase <b>minutes</b> (histamine) · late phase <b>8–12 h</b> (eosinophils via IL-5/eotaxin, leukotrienes); eosinophil <b>IDO</b> inhibits T<sub>H</sub>1.</label></li>
+    <li><input id="r6" type="checkbox"><label for="r6"><b>Wheal</b> = permeability edema · <b>flare</b> = vasodilation erythema. Tryptase confirms anaphylaxis; treat with IM epinephrine.</label></li>
+    <li><input id="r7" type="checkbox"><label for="r7">Type II antigen = <b>fixed</b>: intrinsic (type IV collagen, AChR) or extrinsic hapten (penicillin on RBC). Injury is tissue-specific.</label></li>
+    <li><input id="r8" type="checkbox"><label for="r8">Type II effectors: C3a/C5a → PMNs · MAC lysis · C3b opsonization in spleen · <b>ADCC via CD16 on NK</b> · non-cytotoxic receptor block/stimulate.</label></li>
+    <li><input id="r9" type="checkbox"><label for="r9"><b>Direct Coombs</b> = antibody on patient RBCs; <b>indirect</b> = free antibody in serum. Rh⁻ mother → indirect on serum; baby → direct on RBCs.</label></li>
+    <li><input id="r10" type="checkbox"><label for="r10">HDN: first pregnancy spared (sensitized at delivery, IgM first). <b>RhoGAM</b> (anti-D IgG) blocks maternal B-cell activation; ~28 wk + within 72 h.</label></li>
+    <li><input id="r11" type="checkbox"><label for="r11">Type III: <b>soluble</b> antigen; small complexes (antigen excess) escape clearance → deposit → complement → frustrated neutrophils → vasculitis; <b>↓ C3/C4</b>.</label></li>
+    <li><input id="r12" type="checkbox"><label for="r12"><b>Arthus</b> = local, hours, fibrinoid necrosis (repeat boosters). <b>Serum sickness</b> = systemic, 1–2 wk, fever/rash/arthralgia/proteinuria; foreign serum, chimeric mAbs.</label></li>
+    <li><input id="r13" type="checkbox"><label for="r13">Re-giving horse serum after an <b>anti-isotypic</b> response → type III serum sickness.</label></li>
+    <li><input id="r14" type="checkbox"><label for="r14">Type IV, 24–72 h, no antibody: T<sub>H</sub>1 (IL-12 → IFN-γ → macrophage IL-1/TNF/ROS) · T<sub>H</sub>17 (IL-6 → IL-17 → neutrophils) · CD8 (perforin/granzyme, FasL–Fas, TNFR1).</label></li>
+    <li><input id="r15" type="checkbox"><label for="r15">Contact sensitizers: urushiol, nickel, chromate, DNFB → <b>Langerhans cells</b> → T<sub>H</sub>1 → keratinocyte IL-1/TNF/CXCL8/9/11. PPD: read <b>induration</b> at 48–72 h.</label></li>
+    <li><input id="r16" type="checkbox"><label for="r16">II vs III: fixed vs soluble · tissue-specific vs systemic · <b>linear vs granular</b> IF · little vs lots of complement.</label></li>
+    <li><input id="r17" type="checkbox"><label for="r17">Examples: I = anaphylaxis, asthma, atopic dermatitis · II = AIHA, HDN, Goodpasture, MG, Graves, pemphigus, pemphigoid, rheumatic fever · III = SLE, PSGN, serum sickness, Arthus · IV = contact dermatitis, PPD, T1DM, Hashimoto, graft rejection, celiac. RA = III + IV.</label></li>
+  </ul>
+</section>
+
+<footer class="foot">
+  <div class="rev">HoyaDocs &middot; Block 2 &middot; Immunology &middot; IRD11</div>
+  <div class="rev">Rev 1.0 &middot; Updated Oct 22, 2026</div>
+</footer>
+</div>
+<script>
+(function(){
+  var KEY='ird11';
+  var answered=0, right=0, score=document.getElementById('score');
+  function upd(){ if(score) score.textContent='Score: '+right+' / '+answered; }
+  document.querySelectorAll('.mcq').forEach(function(q){
+    var ans=q.getAttribute('data-ans');
+    q.querySelectorAll('.opts button').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(q.dataset.done) return;
+        q.dataset.done='1'; answered++;
+        var k=b.getAttribute('data-k');
+        if(k===ans){ b.classList.add('ok'); right++; }
+        else { b.classList.add('no'); q.querySelector('[data-k="'+ans+'"]').classList.add('ok'); }
+        q.querySelector('.exp').hidden=false; upd();
+      });
+    });
+  });
+  var rs=document.getElementById('resetq');
+  if(rs) rs.addEventListener('click',function(){
+    answered=0; right=0; upd();
+    document.querySelectorAll('.mcq').forEach(function(q){
+      delete q.dataset.done; q.querySelector('.exp').hidden=true;
+      q.querySelectorAll('button').forEach(function(b){ b.classList.remove('ok','no'); });
+    });
+  });
+  document.querySelectorAll('.check input').forEach(function(c){
+    try{ if(localStorage.getItem(KEY+'-'+c.id)==='1') c.checked=true; }catch(e){}
+    c.addEventListener('change',function(){ try{ localStorage.setItem(KEY+'-'+c.id, c.checked?'1':'0'); }catch(e){} });
+  });
+})();
+</script>
+<script>
+(function(){function op(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(h);if(!t)return;var d=t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}setTimeout(function(){t.scrollIntoView();},30);}window.addEventListener('hashchange',op);op();})();
+</script>
+</body>
+</html>
